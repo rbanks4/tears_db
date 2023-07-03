@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class Item (
-    @StringRes val stringResId: Int,
+    val name: String,
+    val weapon: Weapon,
     @DrawableRes val imageResId: Int
         )

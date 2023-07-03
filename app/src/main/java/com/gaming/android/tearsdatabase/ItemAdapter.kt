@@ -1,5 +1,6 @@
 package com.gaming.android.tearsdatabase
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -21,14 +22,12 @@ class ItemAdapter (private val itemList: List<Weapon>) : RecyclerView.Adapter<It
         holder.bind(itemList[position])
     }
     class ItemViewHolder(private val itemBinding: ItemViewBinding): RecyclerView.ViewHolder(itemBinding.root) {
-//        fun bind(item: Item){
-//            itemBinding.itemImage.setImageResource(item.imageResId)
-//            itemBinding.itemTitle.setText(item.stringResId)
-//        }
         fun bind(item: Weapon){
-//            itemBinding.itemImage.setImageResource(item.name)
-            itemBinding.itemTitle.setText(item.name)
+            val context = itemBinding.root.context
+            itemBinding.itemImage.setImageResource(item.getDrawable(context))
+            itemBinding.itemTitle.text = item.name
         }
     }
+
 
 }
