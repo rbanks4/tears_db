@@ -1,6 +1,8 @@
 package com.gaming.android.tearsdatabase
 
 data class Weapon (
-    private val name: String,
-    private val damage: Int
+    val name: String,
+    val shown_attack: Int,
+    val durability: Int,
+    val sub_type: List<String>
         )
