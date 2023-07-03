@@ -1,4 +1,4 @@
-# tears_db
+# tears_db (Tears of the Kingdom Database Tool for Android) 
 Currently coding a ver_0.01 that has the bare bones that can be added upon later.
 This project uses MongoDB (free version) so the data I pull I limited -- most of it is local because I'm not paying for this to be full backend when most data won't ever change.
 
