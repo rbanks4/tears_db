@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu_item_search"
+        android:title="@string/search"
+        android:icon="@drawable/search_vector"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/menu_item_clear"
+        android:title="@string/clear_search"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/sort_damage_high_to_low"
+        android:title="@string/sort_dmg_high_low"/>
+
+    <item android:id="@+id/sort_damage_low_to_high"
+        android:title="@string/sort_dmg_low_high"/>
+
+    <item android:id="@+id/sort_durability_high_to_low"
+        android:title="@string/sort_dur_high_low"/>
+
+    <item android:id="@+id/sort_durability_low_to_high"
+        android:title="@string/sort_dur_low_high"/>
+
+</menu>

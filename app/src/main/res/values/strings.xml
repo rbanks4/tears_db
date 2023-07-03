@@ -3,4 +3,10 @@
     <string name="weapon_damage">Damage: %d</string>
     <string name="weapon_durability">Durability: %d</string>
     <string name="weapon_subtype">Subtype: %s</string>
+    <string name="search">Search</string>
+    <string name="clear_search">Clear Search</string>
+    <string name="sort_dmg_high_low">Damage: High to Low</string>
+    <string name="sort_dmg_low_high">Damage: Low to High</string>
+    <string name="sort_dur_high_low">Durability: High to Low</string>
+    <string name="sort_dur_low_high">Durability: Low to High</string>
 </resources>
