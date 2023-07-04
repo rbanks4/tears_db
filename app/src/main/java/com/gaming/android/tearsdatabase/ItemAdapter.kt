@@ -1,11 +1,10 @@
 package com.gaming.android.tearsdatabase
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gaming.android.tearsdatabase.databinding.ItemViewBinding
-class ItemAdapter (private val itemList: List<Weapon>, private val controller: FragmentController) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class ItemAdapter (private var itemList: List<Weapon>, private val controller: FragmentController) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(), ListUpdater {
     private lateinit var binding: ItemViewBinding
 
 
@@ -35,6 +34,16 @@ class ItemAdapter (private val itemList: List<Weapon>, private val controller: F
         private fun showDetailsFragment(weapon: Weapon){
             controller.transition(WeaponDetailsFragment(weapon))
         }
+    }
+
+    override fun update(weapons: List<Weapon>) {
+        println("update called")
+        itemList = weapons
+        notifyDataSetChanged()
+    }
+
+    override fun getList(): List<Weapon> {
+        return itemList
     }
 
 
