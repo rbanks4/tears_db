@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gaming.android.tearsdatabase.databinding.ItemViewBinding
-class ItemAdapter (private var itemList: List<Weapon>, private val controller: FragmentController) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(), ListUpdater {
+class ItemAdapter (private var itemList: List<Weapon>, private val controller: FragmentController?) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(), ListUpdater {
     private lateinit var binding: ItemViewBinding
 
 
@@ -20,7 +20,7 @@ class ItemAdapter (private var itemList: List<Weapon>, private val controller: F
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.bind(itemList[position])
     }
-    class ItemViewHolder(private val itemBinding: ItemViewBinding, private val controller: FragmentController): RecyclerView.ViewHolder(itemBinding.root) {
+    class ItemViewHolder(private val itemBinding: ItemViewBinding, private val controller: FragmentController?): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(item: Weapon){
             val context = itemBinding.root.context
             itemBinding.itemImage.setImageResource(item.getDrawable(context))
@@ -32,7 +32,9 @@ class ItemAdapter (private var itemList: List<Weapon>, private val controller: F
         }
 
         private fun showDetailsFragment(weapon: Weapon){
-            controller.transition(WeaponDetailsFragment(weapon))
+            var f = WeaponDetailsFragment()
+            f.init(weapon)
+            controller?.transition(f)
         }
     }
 

@@ -11,13 +11,28 @@ import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gaming.android.tearsdatabase.databinding.FragmentWeaponListBinding
 
-class WeaponListFragment(var weapons: List<Weapon>, var controller: FragmentController): Fragment(R.layout.fragment_weapon_list) {
+class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
     private lateinit var bind: FragmentWeaponListBinding
     private lateinit var listUpdater: ListUpdater
+    private var weapons: List<Weapon>? = null
+    private var controller: FragmentController? = null
     val TAG = "WeaponsListFragment"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    fun setController(fragController: FragmentController) {
+        controller = fragController
+    }
+
+    fun setWeapons(weaponList: List<Weapon>) {
+
+        weapons = weaponList
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,30 +54,40 @@ class WeaponListFragment(var weapons: List<Weapon>, var controller: FragmentCont
 
                 val searchItem: MenuItem = menu.findItem(R.id.menu_item_search)
                 val menuClear: MenuItem = menu.findItem(R.id.menu_item_clear)
-
                 val searchView = SearchView(bind.root.context)
+                searchView.clearFocus()
 
                 searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
                     override fun onQueryTextSubmit(query: String?): Boolean {
                         Log.d(TAG, "QueryTextSubmit: $query")
                         val regex = if(query.isNullOrBlank()) "." else query
-                        val nameList = weapons.filter {
-                            it.name.lowercase().matches(".*$regex.*".toRegex())
+
+                        if(!weapons.isNullOrEmpty()) {
+                            val nameList = weapons!!.filter {
+                                it.name.lowercase().matches(".*$regex.*".toRegex())
+                            }
+                            val subList = weapons!!.filter {
+                                if (it.sub_type.isNotEmpty())
+                                    it.sub_type[0].lowercase().matches(".*$regex.*".toRegex())
+                                else false
+                            }
+                            val finalList = nameList + subList
+                            Log.d(
+                                TAG,
+                                "QueryTextSubmit: results were ${finalList.toSet().toList()}"
+                            )
+                            listUpdater.update(finalList.toSet().toList())
+                        } else {
+                            Log.d(TAG, "weapons are null")
+
                         }
-                        val subList = weapons.filter {
-                            if(it.sub_type.isNotEmpty())
-                                it.sub_type[0].lowercase().matches(".*$regex.*".toRegex())
-                            else false
-                        }
-                        val finalList = nameList + subList
-                        Log.d(TAG, "QueryTextSubmit: results were ${finalList.toSet().toList()}")
-                        listUpdater.update(finalList.toSet().toList())
+
                         return true
                     }
 
                     override fun onQueryTextChange(newText: String?): Boolean {
-                        if(newText.isNullOrBlank()) {
-                            listUpdater.update(weapons)
+                        if(newText.isNullOrBlank() && !weapons.isNullOrEmpty()) {
+                            listUpdater.update(weapons!!)
                         }
                         return true
                     }
@@ -102,12 +127,16 @@ class WeaponListFragment(var weapons: List<Weapon>, var controller: FragmentCont
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val itemAdapter = ItemAdapter(weapons, controller)
-        bind = FragmentWeaponListBinding.inflate(inflater, container,false)
-        bind.mainList.adapter = itemAdapter
-        listUpdater = itemAdapter
-        bind.mainList.layoutManager = GridLayoutManager(bind.root.context, 3)
+    ): View {
+        bind = FragmentWeaponListBinding.inflate(inflater, container, false)
+        if(!weapons.isNullOrEmpty()) {
+            val itemAdapter = ItemAdapter(weapons!!, controller)
+            listUpdater = itemAdapter
+            bind.mainList.adapter = itemAdapter
+            bind.mainList.layoutManager = GridLayoutManager(bind.root.context, 3)
+        } else {
+            Log.d(TAG, "onCreateView weapons are null")
+        }
         return bind.root
     }
 }
