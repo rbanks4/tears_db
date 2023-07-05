@@ -1,23 +1,38 @@
 package com.gaming.android.tearsdatabase
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import com.gaming.android.tearsdatabase.databinding.FragmentWeaponDetailsBinding
 import kotlinx.coroutines.newFixedThreadPoolContext
 
-class WeaponDetailsFragment() : Fragment(R.layout.fragment_weapon_details) {
+const val VIEW_MODEL_DETAILS = "weapon_details"
+class WeaponDetailsFragment : Fragment(R.layout.fragment_weapon_details) {
     private lateinit var binding: FragmentWeaponDetailsBinding
-    var weapon: Weapon? = null
+    private var weapon: Weapon? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if(savedInstanceState != null)
+            weapon = savedInstanceState.getParcelable<WeaponParcel>(VIEW_MODEL_DETAILS)?.toWeapon()
     }
 
     fun init(newWeapon: Weapon) {
         weapon = newWeapon
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if(weapon != null)
+            outState.putParcelable(VIEW_MODEL_DETAILS, weapon!!.toParcelable())
     }
 
     override fun onCreateView(

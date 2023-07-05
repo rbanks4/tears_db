@@ -1,8 +1,10 @@
 package com.gaming.android.tearsdatabase
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -20,14 +22,10 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        controller = activity as MainActivity
     }
 
-    fun setController(fragController: FragmentController) {
-        controller = fragController
-    }
-
-    fun setWeapons(weaponList: List<Weapon>) {
-
+    fun init(weaponList: List<Weapon>) {
         weapons = weaponList
     }
 
@@ -42,6 +40,7 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
 
         menuHost.addMenuProvider(object: MenuProvider {
 
+
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.fragment_search_items, menu)
 
@@ -55,9 +54,8 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
                 val searchItem: MenuItem = menu.findItem(R.id.menu_item_search)
                 val menuClear: MenuItem = menu.findItem(R.id.menu_item_clear)
                 val searchView = SearchView(bind.root.context)
-                searchView.clearFocus()
 
-                searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+                searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
                         Log.d(TAG, "QueryTextSubmit: $query")
                         val regex = if(query.isNullOrBlank()) "." else query
@@ -93,13 +91,20 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
                     }
 
                 })
-                searchView.isIconified = false
                 searchItem.actionView = searchView
                 searchItem.icon = bind.root.context.getDrawable(R.drawable.search_vector)
 
                 menuClear.setOnMenuItemClickListener {
                     searchView.setQuery("", false)
                     true
+                }
+                menuClear.actionView?.clearFocus()
+                item.actionView?.clearFocus()
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    searchView.isIconified = false
+                    searchView.isFocusedByDefault = false
+                    searchView.clearFocus()
                 }
             }
 

@@ -6,19 +6,19 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Call
 
-
-class MainActivity : AppCompatActivity(), FragmentController {
+class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwner {
     private lateinit var bind: ActivityMainBinding
     private lateinit var weaponsListFragment: WeaponListFragment
     private val weaponsViewModel: WeaponsViewModel by viewModels()
     private var TAG = "MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = ActivityMainBinding.inflate(layoutInflater)
@@ -83,8 +83,7 @@ class MainActivity : AppCompatActivity(), FragmentController {
         val weapons = weaponsViewModel.getWeapons()
         if(!weapons.isNullOrEmpty()) {
             weaponsListFragment = WeaponListFragment()
-            weaponsListFragment.setController(this)
-            weaponsListFragment.setWeapons(weapons)
+            weaponsListFragment.init(weapons)
             transition(weaponsListFragment)
         }
     }
