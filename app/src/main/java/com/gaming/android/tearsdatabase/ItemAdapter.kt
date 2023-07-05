@@ -21,7 +21,7 @@ class ItemAdapter (private var itemList: List<Weapon>, private val controller: F
         holder.bind(itemList[position])
     }
     class ItemViewHolder(private val itemBinding: ItemViewBinding, private val controller: FragmentController?): RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(item: Weapon){
+        fun bind(item: Weapon) {
             val context = itemBinding.root.context
             itemBinding.itemImage.setImageResource(item.getDrawable(context))
             itemBinding.itemTitle.text = item.name
@@ -32,7 +32,7 @@ class ItemAdapter (private var itemList: List<Weapon>, private val controller: F
         }
 
         private fun showDetailsFragment(weapon: Weapon){
-            var f = WeaponDetailsFragment()
+            val f = WeaponDetailsFragment()
             f.init(weapon)
             controller?.transition(f)
         }

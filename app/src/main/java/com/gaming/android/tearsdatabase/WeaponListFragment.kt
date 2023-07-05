@@ -9,16 +9,19 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gaming.android.tearsdatabase.databinding.FragmentWeaponListBinding
 
+    private const val TAG = "WeaponsListFragment"
 class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
     private lateinit var bind: FragmentWeaponListBinding
     private lateinit var listUpdater: ListUpdater
     private var weapons: List<Weapon>? = null
     private var controller: FragmentController? = null
-    val TAG = "WeaponsListFragment"
+
+    private val weaponsViewModel: WeaponsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,10 +58,14 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
                 val menuClear: MenuItem = menu.findItem(R.id.menu_item_clear)
                 val searchView = SearchView(bind.root.context)
 
+                if(!weaponsViewModel.searchString.isNullOrBlank())
+                    searchView.setQuery(weaponsViewModel.searchString, false)
+
                 searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
                         Log.d(TAG, "QueryTextSubmit: $query")
                         val regex = if(query.isNullOrBlank()) "." else query
+                        weaponsViewModel.searchString = regex
 
                         if(!weapons.isNullOrEmpty()) {
                             val nameList = weapons!!.filter {
@@ -74,6 +81,8 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
                                 TAG,
                                 "QueryTextSubmit: results were ${finalList.toSet().toList()}"
                             )
+
+                            weaponsViewModel.searchList = finalList.toSet().toList()
                             listUpdater.update(finalList.toSet().toList())
                         } else {
                             Log.d(TAG, "weapons are null")
@@ -86,6 +95,7 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
                     override fun onQueryTextChange(newText: String?): Boolean {
                         if(newText.isNullOrBlank() && !weapons.isNullOrEmpty()) {
                             listUpdater.update(weapons!!)
+                            weaponsViewModel.searchList = weapons
                         }
                         return true
                     }
@@ -109,19 +119,24 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                var listUpdate: List<Weapon>? = null
                 when(menuItem.itemId) {
                     R.id.sort_damage_high_to_low ->
-                        listUpdater.update(listUpdater.getList()
-                            .sortedByDescending { it.shown_attack })
+                        listUpdate = listUpdater.getList()
+                            .sortedByDescending { it.shown_attack }
                     R.id.sort_durability_low_to_high ->
-                        listUpdater.update(listUpdater.getList()
-                            .sortedBy { it.shown_attack })
+                        listUpdate = listUpdater.getList()
+                            .sortedBy { it.shown_attack }
                     R.id.sort_durability_high_to_low ->
-                        listUpdater.update(listUpdater.getList()
-                            .sortedByDescending { it.durability })
+                        listUpdate = listUpdater.getList()
+                            .sortedByDescending { it.durability }
                     R.id.sort_damage_low_to_high ->
-                        listUpdater.update(listUpdater.getList()
-                            .sortedBy { it.durability })
+                        listUpdate = listUpdater.getList()
+                            .sortedBy { it.durability }
+                }
+                if(!listUpdate.isNullOrEmpty()) {
+                    listUpdater.update(listUpdate)
+                    weaponsViewModel.searchList = listUpdate
                 }
                 return true
             }
@@ -135,7 +150,8 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
     ): View {
         bind = FragmentWeaponListBinding.inflate(inflater, container, false)
         if(!weapons.isNullOrEmpty()) {
-            val itemAdapter = ItemAdapter(weapons!!, controller)
+            val weaponsList = if(weaponsViewModel.searchList != null) weaponsViewModel.searchList else weapons
+            val itemAdapter = ItemAdapter(weaponsList!!, controller)
             listUpdater = itemAdapter
             bind.mainList.adapter = itemAdapter
             bind.mainList.layoutManager = GridLayoutManager(bind.root.context, 3)

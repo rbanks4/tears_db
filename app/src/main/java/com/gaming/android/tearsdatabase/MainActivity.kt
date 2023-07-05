@@ -13,11 +13,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Call
 
+    private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwner {
     private lateinit var bind: ActivityMainBinding
     private lateinit var weaponsListFragment: WeaponListFragment
     private val weaponsViewModel: WeaponsViewModel by viewModels()
-    private var TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +26,14 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
 
         Log.d(TAG, "onCreate(Bundle?) called")
 
-        if(weaponsViewModel.getWeapons().isNullOrEmpty()) {
+        if(weaponsViewModel.weapons.isNullOrEmpty()) {
             fetchWeapons(this)
         }
     }
 
     override fun onStart() {
         super.onStart()
-        buildRecyclerView(this)
+        buildRecyclerView()
         Log.d(TAG, "onStart() called")
     }
 
@@ -53,9 +53,8 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
                     if (response.body() != null) {
                         val weapons = response.body()?.documents
                         if(!weapons.isNullOrEmpty()) {
-                            println("my favorite item from response is: ${weapons[0].name}")
                             setWeapons(weapons)
-                            buildRecyclerView(activity)
+                            buildRecyclerView()
                         } else {
                             //todo have a backup
                             println("response returned empty list")
@@ -76,11 +75,11 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
     }
 
     fun setWeapons(weapons: List<Weapon>) {
-        weaponsViewModel.setWeapons(weapons)
+        weaponsViewModel.weapons = weapons
     }
 
-    private fun buildRecyclerView(activity: MainActivity){
-        val weapons = weaponsViewModel.getWeapons()
+    private fun buildRecyclerView(){
+        val weapons = weaponsViewModel.weapons
         if(!weapons.isNullOrEmpty()) {
             weaponsListFragment = WeaponListFragment()
             weaponsListFragment.init(weapons)
