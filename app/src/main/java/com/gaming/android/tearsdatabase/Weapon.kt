@@ -18,4 +18,7 @@ data class Weapon (
         return image
     }
 
+    fun toParcelable(): WeaponParcel {
+        return WeaponParcel(name, shown_attack, durability, sub_type)
+    }
 }

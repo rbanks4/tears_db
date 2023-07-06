@@ -1,32 +1,43 @@
 package com.gaming.android.tearsdatabase
 
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Call
 
-
-class MainActivity : AppCompatActivity(), FragmentController {
+    private const val TAG = "MainActivity"
+class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwner {
     private lateinit var bind: ActivityMainBinding
-    private var CONNECT_STRING = "mongodb+srv://user:pw@myhobbydb.o8ovpd1.mongodb.net/?retryWrites=true&w=majority"
+    private lateinit var weaponsListFragment: WeaponListFragment
+    private val weaponsViewModel: WeaponsViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
-        if(savedInstanceState == null) {
+        Log.d(TAG, "onCreate(Bundle?) called")
+
+        if(weaponsViewModel.weapons.isNullOrEmpty()) {
             fetchWeapons(this)
         }
-
-
     }
 
-    fun fetchWeapons(activity: MainActivity) {
+    override fun onStart() {
+        super.onStart()
+        buildRecyclerView()
+        Log.d(TAG, "onStart() called")
+    }
+
+    private fun fetchWeapons(activity: MainActivity) {
         val apiService = ApiClient.apiService
         val weaponRequest = WeaponRequest("myhobbydb", "totk", "weapons")
         val call = apiService.getWeapons(weaponRequest)
@@ -40,9 +51,14 @@ class MainActivity : AppCompatActivity(), FragmentController {
                     println("response successful")
                     println(response.body())
                     if (response.body() != null) {
-                        var weapons = response.body()?.documents
-                        println("my favorite item from response is: ${weapons?.get(1)?.name}")
-                        buildRecyclerView(weapons!!, activity)
+                        val weapons = response.body()?.documents
+                        if(!weapons.isNullOrEmpty()) {
+                            setWeapons(weapons)
+                            buildRecyclerView()
+                        } else {
+                            //todo have a backup
+                            println("response returned empty list")
+                        }
                     }
 
                 } else {
@@ -58,8 +74,17 @@ class MainActivity : AppCompatActivity(), FragmentController {
         })
     }
 
-    fun buildRecyclerView(weapons: List<Weapon>, activity: MainActivity){
-        transition(WeaponListFragment(weapons, activity))
+    fun setWeapons(weapons: List<Weapon>) {
+        weaponsViewModel.weapons = weapons
+    }
+
+    private fun buildRecyclerView(){
+        val weapons = weaponsViewModel.weapons
+        if(!weapons.isNullOrEmpty()) {
+            weaponsListFragment = WeaponListFragment()
+            weaponsListFragment.init(weapons)
+            transition(weaponsListFragment)
+        }
     }
 
     override fun transition(fragment: Fragment) {
