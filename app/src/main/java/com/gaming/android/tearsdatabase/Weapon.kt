@@ -7,12 +7,13 @@ data class Weapon (
     val name: String,
     val shown_attack: Int,
     val durability: Int,
-    val sub_type: List<String>
+    val sub_type: List<String>,
+    @DrawableRes var image: Int? = 0
         ) {
-    @DrawableRes var image: Int = 0
+
 
     @DrawableRes
-    fun getDrawable(context: Context): Int {
+    fun getDrawable(context: Context): Int? {
         if(image == 0)
             image = DataSource.loadWeaponImage(name, context)
         return image
