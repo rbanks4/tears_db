@@ -1,6 +1,7 @@
 package com.gaming.android.tearsdatabase
 
 import android.content.res.Configuration
+import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -11,15 +12,19 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
@@ -28,7 +33,6 @@ import com.gaming.android.tearsdatabase.theme.TearsTheme
 
 private const val TAG = "WeaponsListFragment"
 class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
-//    private lateinit var bind: FragmentWeaponListBinding
     private lateinit var listUpdater: ListUpdater
     private var weapons: List<Weapon>? = mutableListOf()
     private var controller: FragmentController? = null
@@ -47,7 +51,7 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
     fun WeaponCard(wpn: Weapon) {
         Column(modifier = Modifier.padding(all = 8.dp)) {
             Image(
-                painter = painterResource(id = wpn.image?:R.drawable.wooden_stick),
+                painter = painterResource(id = wpn.image),
                 contentDescription = wpn.name,
                 modifier = Modifier
                     .size(100.dp)
@@ -61,7 +65,8 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
                 else MaterialTheme.colorScheme.surface
             )
 
-            Column (modifier = Modifier.clickable { isExpanded = !isExpanded }){
+            Column (modifier = Modifier.clickable { isExpanded = !isExpanded }
+                .align(Alignment.CenterHorizontally)){
                 Text(
                     text = wpn.name,
                     color = MaterialTheme.colorScheme.secondary,
@@ -78,7 +83,7 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
                         .padding(1.dp)
                 ) {
                     Text(
-                        text = "Name: ${wpn.name} \nDamage: ${wpn.shown_attack} \nDurability: ${wpn.durability} \nSub Type: ${wpn.sub_type}",
+                        text = "Damage: ${wpn.shown_attack} \nDurability: ${wpn.durability} \nSub Type: ${wpn.sub_type}",
                         modifier = Modifier.padding(all = 4.dp),
                         maxLines = if(isExpanded) Int.MAX_VALUE else 1,
                         style = MaterialTheme.typography.bodyMedium
@@ -90,38 +95,48 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
 
     @Composable
     fun Conversation(weapons: List<Weapon>?){
-        val weap by remember {mutableStateOf(mutableStateListOf<Weapon>())}
+        val weap = remember { mutableStateListOf<Weapon>() }
+        var textState by remember { mutableStateOf("") }
         if(weapons != null) {
             weap.clear()
             weapons.map {
                 weap.add(it)
             }
-//            SearchBar(
-//                query = "",
-//                onQueryChange = { query -> onQueryTextChange(query, weap) },
-//                onSearch = { query -> querySearch(query, weap)},
-//                active = true,
-//                onActiveChange = {}
-//            ){}
             Row(modifier = Modifier.padding(all = 8.dp)) {
                 Scaffold(
                     topBar = {
                         TextField(
-                            value = "check anything",
-                            onValueChange = { query -> onQueryTextChange(query, weap) },
-                            modifier = Modifier.width(3000.dp)
+                            value = textState,
+                            enabled = true,
+                            onValueChange = { query ->
+                                textState = query
+                                weap.clear()
+                                querySearch(query)?.map {
+                                    weap.add(it)
+                                }
+                            },
+                            readOnly = false,
+                            modifier = Modifier.width(3000.dp),
+                            leadingIcon = { Image(painter = painterResource(id = R.drawable.search_vector),
+                                contentDescription = "search",
+                                modifier = Modifier
+                                    .size(20.dp)) },
+                            supportingText = { Text("search for weapons(s)") }
                         )
                     }
                 ) { contentPadding ->
-                    LazyColumn {
-                        items(weap) { weapon ->
-                            WeaponCard(weapon)
-                        }
+                    LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                        modifier = Modifier.padding(contentPadding),
+                        content = {
+                            items(weap.size) { index ->
+                                WeaponCard(weap[index])
+                            }
+                        })
+
                     }
                 }
             }
         }
-    }
 
     @Preview(name = "Light Mode")
     @Preview(
@@ -133,7 +148,8 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
     fun PreviewMessageCard() {
         TearsTheme {
             Surface {
-                WeaponCard(Weapon("Boat Oar", 3, 3, listOf("Blunt"), R.drawable.boat_oar))
+                WeaponCard(Weapon("Boat Oar", 3, 3, listOf("Blunt"))
+                    .setDrawable(R.drawable.boat_oar))
             }
         }
     }
@@ -247,7 +263,7 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
 //        return bind.root
 //    }
 
-    fun querySearch(query: String, weap: SnapshotStateList<Weapon>): List<Weapon>? {
+    fun querySearch(query: String): List<Weapon>? {
         Log.d(TAG, "QueryTextSubmit: $query")
         val regex = if(query.isNullOrBlank()) "." else query
         weaponsViewModel.searchString = regex
@@ -268,12 +284,8 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
             )
 
             weaponsViewModel.searchList = finalList.toSet().toList()
-            //listUpdater.update(finalList.toSet().toList())
         } else {
             Log.d(TAG, "weapons are null")
-        }
-        weaponsViewModel.searchList?.map {
-            weap.add(it)
         }
         return weaponsViewModel.searchList
     }

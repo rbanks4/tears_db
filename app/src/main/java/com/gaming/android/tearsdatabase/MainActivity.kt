@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
         super.onCreate(savedInstanceState)
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
+        supportActionBar?.hide()
 
         Log.d(TAG, "onCreate(Bundle?) called")
 
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
         val newList = mutableListOf<Weapon>()
         weapons.map {
             val wpn = Weapon(it.name, it.shown_attack, it.durability, it.sub_type)
-            wpn.getDrawable(this)
+                .setDrawable(this)
             newList.add(wpn)
         }
         weaponsViewModel.weapons = newList

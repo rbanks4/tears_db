@@ -23,7 +23,7 @@ class ItemAdapter (private var itemList: List<Weapon>, private val controller: F
     class ItemViewHolder(private val itemBinding: ItemViewBinding, private val controller: FragmentController?): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(item: Weapon) {
             val context = itemBinding.root.context
-            itemBinding.itemImage.setImageResource(item.getDrawable(context)?:R.drawable.wooden_stick)
+            itemBinding.itemImage.setImageResource(item.getDrawable(context))
             itemBinding.itemTitle.text = item.name
 
             itemBinding.root.setOnClickListener {
