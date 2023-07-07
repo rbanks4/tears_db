@@ -7,7 +7,7 @@ class DataSource {
 
     companion object {
         fun loadWeaponImages(weapons: List<Weapon>, context: Context): List<Item> {
-            return weapons.map { Item(it.name, it, it.getDrawable(context)?:R.drawable.wooden_stick) }
+            return weapons.map { Item(it.name, it, it.getDrawable(context)) }
         }
 
         @DrawableRes

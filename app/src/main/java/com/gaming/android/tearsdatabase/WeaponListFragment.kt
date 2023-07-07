@@ -1,30 +1,27 @@
 package com.gaming.android.tearsdatabase
 
 import android.content.res.Configuration
-import android.graphics.Paint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
@@ -32,8 +29,11 @@ import androidx.fragment.app.viewModels
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 
 private const val TAG = "WeaponsListFragment"
-class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
-    private lateinit var listUpdater: ListUpdater
+const val SORT_DAMAGE_INC = 1
+const val SORT_DAMAGE_DEC = 2
+const val SORT_DURABILITY_INC = 3
+const val SORT_DURABILITY_DEC = 4
+class WeaponListFragment: Fragment() {
     private var weapons: List<Weapon>? = mutableListOf()
     private var controller: FragmentController? = null
 
@@ -55,6 +55,11 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
                 contentDescription = wpn.name,
                 modifier = Modifier
                     .size(100.dp)
+                    .clickable{
+                        val f = WeaponDetailsFragment()
+                        f.init(wpn)
+                        controller?.transition(f)
+                    }
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -65,7 +70,8 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
                 else MaterialTheme.colorScheme.surface
             )
 
-            Column (modifier = Modifier.clickable { isExpanded = !isExpanded }
+            Column (modifier = Modifier
+                .clickable { isExpanded = !isExpanded }
                 .align(Alignment.CenterHorizontally)){
                 Text(
                     text = wpn.name,
@@ -97,6 +103,7 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
     fun Conversation(weapons: List<Weapon>?){
         val weap = remember { mutableStateListOf<Weapon>() }
         var textState by remember { mutableStateOf("") }
+        var expanded by remember { mutableStateOf(false) }
         if(weapons != null) {
             weap.clear()
             weapons.map {
@@ -105,24 +112,85 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
             Row(modifier = Modifier.padding(all = 8.dp)) {
                 Scaffold(
                     topBar = {
-                        TextField(
-                            value = textState,
-                            enabled = true,
-                            onValueChange = { query ->
-                                textState = query
-                                weap.clear()
-                                querySearch(query)?.map {
-                                    weap.add(it)
-                                }
-                            },
-                            readOnly = false,
-                            modifier = Modifier.width(3000.dp),
-                            leadingIcon = { Image(painter = painterResource(id = R.drawable.search_vector),
-                                contentDescription = "search",
-                                modifier = Modifier
-                                    .size(20.dp)) },
-                            supportingText = { Text("search for weapons(s)") }
-                        )
+                        Row(modifier = Modifier.padding(end = 8.dp)) {
+                            TextField(
+                                value = textState,
+                                enabled = true,
+                                onValueChange = { query ->
+                                    textState = query
+                                    weap.clear()
+                                    querySearch(query)?.map {
+                                        weap.add(it)
+                                    }
+                                },
+                                modifier = Modifier.width(1000.dp),
+                                readOnly = false,
+                                leadingIcon = {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.search_vector),
+                                        contentDescription = "search",
+                                        modifier = Modifier
+                                            .size(20.dp),
+                                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary,
+                                        BlendMode.Color)
+                                    )},
+                                trailingIcon = {
+                                               IconButton(
+                                                   onClick = { expanded = !expanded },
+                                                   modifier = Modifier
+                                                       .size(20.dp)
+                                               ){
+                                                   Icon(
+                                                       imageVector = Icons.Default.MoreVert,
+                                                       contentDescription = "More"
+                                                   )
+                                               }
+                                },
+                                supportingText = { Text("search for weapons(s)") }
+                            )
+
+                            DropdownMenu(expanded = expanded,
+                                onDismissRequest = { expanded = false },
+                                modifier = Modifier.wrapContentSize(Alignment.TopEnd)
+                            ) {
+                                DropdownMenuItem(
+                                    text = { Text(getString(R.string.sort_dmg_high_low)) },
+                                    onClick = {
+                                        weap.clear()
+                                        onMenuItemSelected(2)?.map{
+                                            weap.add(it)
+                                        }
+                                    }
+                                )
+                                DropdownMenuItem(
+                                    text = { Text(getString(R.string.sort_dmg_low_high)) },
+                                    onClick = {
+                                        weap.clear()
+                                        onMenuItemSelected(1)?.map {
+                                            weap.add(it)
+                                        }
+                                    }
+                                )
+                                DropdownMenuItem(
+                                    text = { Text(getString(R.string.sort_dur_high_low)) },
+                                    onClick = {
+                                        weap.clear()
+                                        onMenuItemSelected(4)?.map {
+                                            weap.add(it)
+                                        }
+                                    }
+                                )
+                                DropdownMenuItem(
+                                    text = { Text(getString(R.string.sort_dur_low_high)) },
+                                    onClick = {
+                                        weap.clear()
+                                        onMenuItemSelected(3)?.map {
+                                            weap.add(it)
+                                        }
+                                    }
+                                )
+                            }
+                        }
                     }
                 ) { contentPadding ->
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
@@ -166,103 +234,6 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
         super.onResume()
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        val menuHost: MenuHost = requireActivity()
-//
-//        menuHost.addMenuProvider(object: MenuProvider {
-//
-//
-//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-//                menuInflater.inflate(R.menu.fragment_search_items, menu)
-//
-//                val item = menu.add("Search")
-//                item.setIcon(android.R.drawable.ic_menu_search)
-//                item.setShowAsAction(
-//                    MenuItem.SHOW_AS_ACTION_IF_ROOM
-//                            or MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
-//                )
-//
-//                val searchItem: MenuItem = menu.findItem(R.id.menu_item_search)
-//                val menuClear: MenuItem = menu.findItem(R.id.menu_item_clear)
-//                val searchView = SearchView(bind.root.context)
-//
-//                if(!weaponsViewModel.searchString.isNullOrBlank())
-//                    searchView.setQuery(weaponsViewModel.searchString, false)
-//
-//                searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-//                    override fun onQueryTextSubmit(query: String?): Boolean {
-//                        querySearch(query)
-//                        return true
-//                    }
-//
-//                    override fun onQueryTextChange(newText: String?): Boolean {
-//                        onQueryTextChange(newText)
-//                        return true
-//                    }
-//
-//                })
-//                searchItem.actionView = searchView
-//                searchItem.icon = bind.root.context.getDrawable(R.drawable.search_vector)
-//
-//                menuClear.setOnMenuItemClickListener {
-//                    searchView.setQuery("", false)
-//                    true
-//                }
-//                menuClear.actionView?.clearFocus()
-//                item.actionView?.clearFocus()
-//
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                    searchView.isIconified = false
-//                    searchView.isFocusedByDefault = false
-//                    searchView.clearFocus()
-//                }
-//            }
-//
-//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-//                var listUpdate: List<Weapon>? = null
-//                when(menuItem.itemId) {
-//                    R.id.sort_damage_high_to_low ->
-//                        listUpdate = listUpdater.getList()
-//                            .sortedByDescending { it.shown_attack }
-//                    R.id.sort_durability_low_to_high ->
-//                        listUpdate = listUpdater.getList()
-//                            .sortedBy { it.shown_attack }
-//                    R.id.sort_durability_high_to_low ->
-//                        listUpdate = listUpdater.getList()
-//                            .sortedByDescending { it.durability }
-//                    R.id.sort_damage_low_to_high ->
-//                        listUpdate = listUpdater.getList()
-//                            .sortedBy { it.durability }
-//                }
-//                if(!listUpdate.isNullOrEmpty()) {
-//                    listUpdater.update(listUpdate)
-//                    weaponsViewModel.searchList = listUpdate
-//                }
-//                return true
-//            }
-//        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-//    }
-
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View {
-//        bind = FragmentWeaponListBinding.inflate(inflater, container, false)
-//        if(!weapons.isNullOrEmpty()) {
-//            val weaponsList = if(weaponsViewModel.searchList != null) weaponsViewModel.searchList else weapons
-//            val itemAdapter = ItemAdapter(weaponsList!!, controller)
-//            listUpdater = itemAdapter
-//            bind.mainList.adapter = itemAdapter
-//            bind.mainList.layoutManager = GridLayoutManager(bind.root.context, 3)
-//        } else {
-//            Log.d(TAG, "onCreateView weapons are null")
-//        }
-//        return bind.root
-//    }
-
     fun querySearch(query: String): List<Weapon>? {
         Log.d(TAG, "QueryTextSubmit: $query")
         val regex = if(query.isNullOrBlank()) "." else query
@@ -300,7 +271,31 @@ class WeaponListFragment: Fragment(R.layout.fragment_weapon_list) {
         return weapons
     }
 
-    @OptIn(ExperimentalMaterial3Api::class)
+    private fun onMenuItemSelected(choice: Int): List<Weapon>? {
+        var listUpdate: List<Weapon>? = null
+        val list =
+            if(!weaponsViewModel.searchList.isNullOrEmpty())
+                weaponsViewModel.searchList
+            else weapons
+
+        when (choice) {
+            SORT_DAMAGE_DEC ->
+                listUpdate = list?.sortedByDescending { it.shown_attack }
+            SORT_DAMAGE_INC ->
+                listUpdate = list?.sortedBy { it.shown_attack }
+            SORT_DURABILITY_DEC ->
+                listUpdate = list?.sortedByDescending { it.durability }
+            SORT_DURABILITY_INC ->
+                listUpdate = list?.sortedBy { it.durability }
+        }
+        return if (!listUpdate.isNullOrEmpty()) {
+            weaponsViewModel.searchList = listUpdate
+            weaponsViewModel.searchList
+        } else {
+            weapons
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
