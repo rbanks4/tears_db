@@ -100,10 +100,88 @@ class WeaponListFragment: Fragment() {
     }
 
     @Composable
-    fun Conversation(weapons: List<Weapon>?){
-        val weap = remember { mutableStateListOf<Weapon>() }
+    fun TopBar(onQuerySearch: (String) -> Unit, onListEdit: (Int) -> Unit) {
         var textState by remember { mutableStateOf("") }
+        Row(modifier = Modifier.padding(end = 8.dp)) {
+            TextField(
+                value = textState,
+                enabled = true,
+                onValueChange = { query ->
+                    textState = query
+                    onQuerySearch(query)
+                },
+                modifier = Modifier.width(1000.dp),
+                readOnly = false,
+                leadingIcon = {
+                    Image(
+                        painter = painterResource(id = R.drawable.search_vector),
+                        contentDescription = "search",
+                        modifier = Modifier
+                            .size(20.dp),
+                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary,
+                            BlendMode.Color)
+                    )},
+                trailingIcon = {
+                    MenuBox(
+                        onListEdit = { onListEdit(it)
+                        }
+                    )
+                },
+                supportingText = { Text("search for weapons(s)") }
+            )
+
+        }
+    }
+
+    @Composable
+    fun MenuBox(onListEdit: (Int) -> Unit) {
         var expanded by remember { mutableStateOf(false) }
+        IconButton(
+            onClick = { expanded = !expanded },
+            modifier = Modifier
+                .size(20.dp)
+        ) {
+            Box {
+                Icon(
+                    imageVector = Icons.Default.MoreVert,
+                    contentDescription = "More"
+                )
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false },
+                    modifier = Modifier.wrapContentSize(Alignment.TopEnd)
+                ) {
+                    DropdownMenuItem(
+                        text = { Text(getString(R.string.sort_dmg_high_low)) },
+                        onClick = { onListEdit(SORT_DAMAGE_DEC) }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(getString(R.string.sort_dmg_low_high)) },
+                        onClick = {
+                            onListEdit(SORT_DAMAGE_INC)
+                        }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(getString(R.string.sort_dur_high_low)) },
+                        onClick = {
+                            onListEdit(SORT_DURABILITY_DEC)
+                        }
+                    )
+                    DropdownMenuItem(
+                        text = { Text(getString(R.string.sort_dur_low_high)) },
+                        onClick = {
+                            onListEdit(SORT_DURABILITY_INC)
+                        }
+                    )
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun WeaponList(weapons: List<Weapon>?){
+        val weap = remember { mutableStateListOf<Weapon>() }
+
         if(weapons != null) {
             weap.clear()
             weapons.map {
@@ -112,87 +190,20 @@ class WeaponListFragment: Fragment() {
             Row(modifier = Modifier.padding(all = 8.dp)) {
                 Scaffold(
                     topBar = {
-                        Row(modifier = Modifier.padding(end = 8.dp)) {
-                            TextField(
-                                value = textState,
-                                enabled = true,
-                                onValueChange = { query ->
-                                    textState = query
-                                    weap.clear()
-                                    querySearch(query)?.map {
-                                        weap.add(it)
-                                    }
-                                },
-                                modifier = Modifier.width(1000.dp),
-                                readOnly = false,
-                                leadingIcon = {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.search_vector),
-                                        contentDescription = "search",
-                                        modifier = Modifier
-                                            .size(20.dp),
-                                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary,
-                                        BlendMode.Color)
-                                    )},
-                                trailingIcon = {
-                                               IconButton(
-                                                   onClick = { expanded = !expanded },
-                                                   modifier = Modifier
-                                                       .size(20.dp)
-                                               ){
-                                                   Box {
-                                                       Icon(
-                                                           imageVector = Icons.Default.MoreVert,
-                                                           contentDescription = "More"
-                                                       )
-                                                       DropdownMenu(expanded = expanded,
-                                                           onDismissRequest = { expanded = false },
-                                                           modifier = Modifier.wrapContentSize(Alignment.TopEnd)
-                                                       ) {
-                                                           DropdownMenuItem(
-                                                               text = { Text(getString(R.string.sort_dmg_high_low)) },
-                                                               onClick = {
-                                                                   weap.clear()
-                                                                   onMenuItemSelected(2)?.map{
-                                                                       weap.add(it)
-                                                                   }
-                                                               }
-                                                           )
-                                                           DropdownMenuItem(
-                                                               text = { Text(getString(R.string.sort_dmg_low_high)) },
-                                                               onClick = {
-                                                                   weap.clear()
-                                                                   onMenuItemSelected(1)?.map {
-                                                                       weap.add(it)
-                                                                   }
-                                                               }
-                                                           )
-                                                           DropdownMenuItem(
-                                                               text = { Text(getString(R.string.sort_dur_high_low)) },
-                                                               onClick = {
-                                                                   weap.clear()
-                                                                   onMenuItemSelected(4)?.map {
-                                                                       weap.add(it)
-                                                                   }
-                                                               }
-                                                           )
-                                                           DropdownMenuItem(
-                                                               text = { Text(getString(R.string.sort_dur_low_high)) },
-                                                               onClick = {
-                                                                   weap.clear()
-                                                                   onMenuItemSelected(3)?.map {
-                                                                       weap.add(it)
-                                                                   }
-                                                               }
-                                                           )
-                                                       }
-                                                   }
-                                               }
-                                },
-                                supportingText = { Text("search for weapons(s)") }
-                            )
-
-                        }
+                        TopBar(
+                            onQuerySearch = {
+                                weap.clear()
+                                querySearch(it)?.map {weapon ->
+                                    weap.add(weapon)
+                                }
+                            },
+                            onListEdit = {
+                                weap.clear()
+                                onMenuItemSelected(it)?.map{ weapon ->
+                                    weap.add(weapon)
+                                }
+                            }
+                        )
                     }
                 ) { contentPadding ->
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
@@ -228,7 +239,7 @@ class WeaponListFragment: Fragment() {
     @Composable
     fun PreviewConversation() {
         TearsTheme {
-            Conversation(SampleData.weapons)
+            WeaponList(SampleData.weapons)
         }
     }
 
@@ -307,7 +318,7 @@ class WeaponListFragment: Fragment() {
             setContent {
                 TearsTheme {
                     val weaponsList = if(weaponsViewModel.searchList != null) weaponsViewModel.searchList else weapons
-                    Conversation(weaponsList)
+                    WeaponList(weaponsList)
                 }
             }
         }
