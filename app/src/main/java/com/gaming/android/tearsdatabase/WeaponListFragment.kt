@@ -140,56 +140,58 @@ class WeaponListFragment: Fragment() {
                                                    modifier = Modifier
                                                        .size(20.dp)
                                                ){
-                                                   Icon(
-                                                       imageVector = Icons.Default.MoreVert,
-                                                       contentDescription = "More"
-                                                   )
+                                                   Box {
+                                                       Icon(
+                                                           imageVector = Icons.Default.MoreVert,
+                                                           contentDescription = "More"
+                                                       )
+                                                       DropdownMenu(expanded = expanded,
+                                                           onDismissRequest = { expanded = false },
+                                                           modifier = Modifier.wrapContentSize(Alignment.TopEnd)
+                                                       ) {
+                                                           DropdownMenuItem(
+                                                               text = { Text(getString(R.string.sort_dmg_high_low)) },
+                                                               onClick = {
+                                                                   weap.clear()
+                                                                   onMenuItemSelected(2)?.map{
+                                                                       weap.add(it)
+                                                                   }
+                                                               }
+                                                           )
+                                                           DropdownMenuItem(
+                                                               text = { Text(getString(R.string.sort_dmg_low_high)) },
+                                                               onClick = {
+                                                                   weap.clear()
+                                                                   onMenuItemSelected(1)?.map {
+                                                                       weap.add(it)
+                                                                   }
+                                                               }
+                                                           )
+                                                           DropdownMenuItem(
+                                                               text = { Text(getString(R.string.sort_dur_high_low)) },
+                                                               onClick = {
+                                                                   weap.clear()
+                                                                   onMenuItemSelected(4)?.map {
+                                                                       weap.add(it)
+                                                                   }
+                                                               }
+                                                           )
+                                                           DropdownMenuItem(
+                                                               text = { Text(getString(R.string.sort_dur_low_high)) },
+                                                               onClick = {
+                                                                   weap.clear()
+                                                                   onMenuItemSelected(3)?.map {
+                                                                       weap.add(it)
+                                                                   }
+                                                               }
+                                                           )
+                                                       }
+                                                   }
                                                }
                                 },
                                 supportingText = { Text("search for weapons(s)") }
                             )
 
-                            DropdownMenu(expanded = expanded,
-                                onDismissRequest = { expanded = false },
-                                modifier = Modifier.wrapContentSize(Alignment.TopEnd)
-                            ) {
-                                DropdownMenuItem(
-                                    text = { Text(getString(R.string.sort_dmg_high_low)) },
-                                    onClick = {
-                                        weap.clear()
-                                        onMenuItemSelected(2)?.map{
-                                            weap.add(it)
-                                        }
-                                    }
-                                )
-                                DropdownMenuItem(
-                                    text = { Text(getString(R.string.sort_dmg_low_high)) },
-                                    onClick = {
-                                        weap.clear()
-                                        onMenuItemSelected(1)?.map {
-                                            weap.add(it)
-                                        }
-                                    }
-                                )
-                                DropdownMenuItem(
-                                    text = { Text(getString(R.string.sort_dur_high_low)) },
-                                    onClick = {
-                                        weap.clear()
-                                        onMenuItemSelected(4)?.map {
-                                            weap.add(it)
-                                        }
-                                    }
-                                )
-                                DropdownMenuItem(
-                                    text = { Text(getString(R.string.sort_dur_low_high)) },
-                                    onClick = {
-                                        weap.clear()
-                                        onMenuItemSelected(3)?.map {
-                                            weap.add(it)
-                                        }
-                                    }
-                                )
-                            }
                         }
                     }
                 ) { contentPadding ->
