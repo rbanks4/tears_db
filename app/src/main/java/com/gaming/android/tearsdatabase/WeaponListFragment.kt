@@ -12,21 +12,23 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.gaming.android.tearsdatabase.navigation.NavigationItem
 import com.gaming.android.tearsdatabase.theme.TearsTheme
+import kotlinx.coroutines.launch
 
 private const val TAG = "WeaponsListFragment"
 const val SORT_DAMAGE_INC = 1
@@ -55,7 +57,7 @@ class WeaponListFragment: Fragment() {
                 contentDescription = wpn.name,
                 modifier = Modifier
                     .size(100.dp)
-                    .clickable{
+                    .clickable {
                         val f = WeaponDetailsFragment()
                         f.init(wpn)
                         controller?.transition(f)
@@ -100,9 +102,24 @@ class WeaponListFragment: Fragment() {
     }
 
     @Composable
-    fun TopBar(onQuerySearch: (String) -> Unit, onListEdit: (Int) -> Unit) {
+    fun TopBar(
+        onQuerySearch: (String) -> Unit,
+        onListEdit: (Int) -> Unit,
+        onOpenDrawer: () -> Unit) {
         var textState by remember { mutableStateOf("") }
+        val ctx = LocalContext.current
         Row(modifier = Modifier.padding(end = 8.dp)) {
+            IconButton(
+                onClick = { onOpenDrawer() },
+                modifier = Modifier
+                    .size(50.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Menu,
+                    contentDescription = ctx.getString(R.string.menu_box_icon_description),
+                    tint = MaterialTheme.colorScheme.onSurface
+                )
+            }
             TextField(
                 value = textState,
                 enabled = true,
@@ -115,11 +132,10 @@ class WeaponListFragment: Fragment() {
                 leadingIcon = {
                     Image(
                         painter = painterResource(id = R.drawable.search_vector),
-                        contentDescription = getString(R.string.search_description),
+                        contentDescription = ctx.getString(R.string.search_description),
                         modifier = Modifier
                             .size(20.dp),
-                        colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary,
-                            BlendMode.Color)
+                        colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.onSurface)
                     )},
                 trailingIcon = {
                     MenuBox(
@@ -127,15 +143,82 @@ class WeaponListFragment: Fragment() {
                         }
                     )
                 },
-                supportingText = { Text(getString(R.string.search_details)) }
+                supportingText = { Text(ctx.getString(R.string.search_details)) }
             )
         }
 
     }
 
     @Composable
+    fun createDrawer() {
+        val drawerState = rememberDrawerState(DrawerValue.Open)
+        val scope = rememberCoroutineScope()
+        // icons to mimic drawer destinations
+        val items = listOf(
+            NavigationItem(
+                Icon(
+                    painter = painterResource(R.drawable.wooden_stick),
+                    contentDescription = "",
+                    modifier = Modifier.fillMaxSize(),
+                    tint = MaterialTheme.colorScheme.onSurface
+                ), "Weapons"
+            ),
+            NavigationItem(
+                Icon(
+                    painter = painterResource(R.drawable.wooden_stick),
+                    contentDescription = "",
+                    modifier = Modifier.fillMaxSize(),
+                    tint = MaterialTheme.colorScheme.onSurface
+                ), "Bows"
+            ),
+            NavigationItem(
+                Icon(
+                    painter = painterResource(R.drawable.wooden_stick),
+                    contentDescription = "",
+                    modifier = Modifier.fillMaxSize(),
+                    tint = MaterialTheme.colorScheme.onSurface
+                ), "Shields"
+            ),
+            NavigationItem(
+                Icon(
+                    painter = painterResource(R.drawable.wooden_stick),
+                    contentDescription = "",
+                    modifier = Modifier.fillMaxSize(),
+                    tint = MaterialTheme.colorScheme.onSurface
+                ), "Materials"
+            )
+        )
+        val selectedItem = remember { mutableStateOf(items[0]) }
+        ModalNavigationDrawer(
+            drawerState = drawerState,
+            drawerContent = {
+                ModalDrawerSheet {
+                    Spacer(Modifier.height(12.dp))
+                    items.forEach { item ->
+                        NavigationDrawerItem(
+                            icon = { item.icon },
+                            label = { Text(item.name) },
+                            selected = item == selectedItem.value,
+                            onClick = {
+                                scope.launch { drawerState.close() }
+                                selectedItem.value = item
+                            },
+                            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+                        )
+                    }
+                }
+            },
+            content = {
+                val weaponsList = if(weaponsViewModel.searchList != null) weaponsViewModel.searchList else weapons
+                WeaponList(weapons = weaponsList, openDrawer = { scope.launch { drawerState.open() }})
+            }
+        )
+    }
+
+    @Composable
     fun MenuBox(onListEdit: (Int) -> Unit) {
         var expanded by remember { mutableStateOf(false) }
+        val ctx = LocalContext.current
         IconButton(
             onClick = { expanded = !expanded },
             modifier = Modifier
@@ -144,7 +227,7 @@ class WeaponListFragment: Fragment() {
             Box {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
-                    contentDescription = getString(R.string.menu_box_icon_description)
+                    contentDescription = ctx.getString(R.string.menu_box_icon_description)
                 )
                 DropdownMenu(
                     expanded = expanded,
@@ -152,23 +235,23 @@ class WeaponListFragment: Fragment() {
                     modifier = Modifier.wrapContentSize(Alignment.TopEnd)
                 ) {
                     DropdownMenuItem(
-                        text = { Text(getString(R.string.sort_dmg_high_low)) },
+                        text = { Text(ctx.getString(R.string.sort_dmg_high_low)) },
                         onClick = { onListEdit(SORT_DAMAGE_DEC) }
                     )
                     DropdownMenuItem(
-                        text = { Text(getString(R.string.sort_dmg_low_high)) },
+                        text = { Text(ctx.getString(R.string.sort_dmg_low_high)) },
                         onClick = {
                             onListEdit(SORT_DAMAGE_INC)
                         }
                     )
                     DropdownMenuItem(
-                        text = { Text(getString(R.string.sort_dur_high_low)) },
+                        text = { Text(ctx.getString(R.string.sort_dur_high_low)) },
                         onClick = {
                             onListEdit(SORT_DURABILITY_DEC)
                         }
                     )
                     DropdownMenuItem(
-                        text = { Text(getString(R.string.sort_dur_low_high)) },
+                        text = { Text(ctx.getString(R.string.sort_dur_low_high)) },
                         onClick = {
                             onListEdit(SORT_DURABILITY_INC)
                         }
@@ -179,7 +262,7 @@ class WeaponListFragment: Fragment() {
     }
 
     @Composable
-    fun WeaponList(weapons: List<Weapon>?){
+    fun WeaponList(weapons: List<Weapon>?, openDrawer: () -> Unit){
         val weap = remember { mutableStateListOf<Weapon>() }
 
         if(weapons != null) {
@@ -202,7 +285,8 @@ class WeaponListFragment: Fragment() {
                                 onMenuItemSelected(it)?.map{ weapon ->
                                     weap.add(weapon)
                                 }
-                            }
+                            },
+                            onOpenDrawer = { openDrawer() }
                         )
                     }
                 ) { contentPadding ->
@@ -214,10 +298,10 @@ class WeaponListFragment: Fragment() {
                             }
                         })
 
-                    }
                 }
             }
         }
+    }
 
     @Preview(name = "Light Mode")
     @Preview(
@@ -236,10 +320,23 @@ class WeaponListFragment: Fragment() {
     }
 
     @Preview
+    @Preview(
+        uiMode = Configuration.UI_MODE_NIGHT_YES,
+        showBackground = true,
+        name = "Dark Mode"
+    )
+    @Composable
+    fun PreviewTopBar() {
+        TearsTheme {
+            TopBar(onQuerySearch = {}, onListEdit = {}, onOpenDrawer = {})
+        }
+    }
+
+    @Preview
     @Composable
     fun PreviewConversation() {
         TearsTheme {
-            WeaponList(SampleData.weapons)
+            WeaponList(weapons = SampleData.weapons, openDrawer = {})
         }
     }
 
@@ -317,8 +414,7 @@ class WeaponListFragment: Fragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 TearsTheme {
-                    val weaponsList = if(weaponsViewModel.searchList != null) weaponsViewModel.searchList else weapons
-                    WeaponList(weaponsList)
+                    createDrawer()
                 }
             }
         }
