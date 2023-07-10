@@ -16,7 +16,7 @@ See <a href="https://github.com/rbanks4/tears_db/tree/version_0.01">Version 0.01
 Task List:
 
 - [x] search feature
-- [ ] navigation panel
+- [x] navigation panel
 - [ ] add materials listings
 - [ ] add materials images
 - [ ] add bow and sheild listings
