@@ -115,7 +115,7 @@ class WeaponListFragment: Fragment() {
                 leadingIcon = {
                     Image(
                         painter = painterResource(id = R.drawable.search_vector),
-                        contentDescription = "search",
+                        contentDescription = getString(R.string.search_description),
                         modifier = Modifier
                             .size(20.dp),
                         colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary,
@@ -127,10 +127,10 @@ class WeaponListFragment: Fragment() {
                         }
                     )
                 },
-                supportingText = { Text("search for weapons(s)") }
+                supportingText = { Text(getString(R.string.search_details)) }
             )
-
         }
+
     }
 
     @Composable
@@ -144,7 +144,7 @@ class WeaponListFragment: Fragment() {
             Box {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
-                    contentDescription = "More"
+                    contentDescription = getString(R.string.menu_box_icon_description)
                 )
                 DropdownMenu(
                     expanded = expanded,
