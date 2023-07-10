@@ -6,6 +6,10 @@ This project uses MongoDB (free version) so the data I pull I limited -- most of
 |--- | --- |
 |<img src="https://github.com/rbanks4/tears_db/assets/8659702/68b32b4b-4e3d-47fb-b697-ea418f35110c"> | <img src="https://github.com/rbanks4/tears_db/assets/8659702/687d1ba2-6c1d-4009-bd20-8e24fdc4751b"> |
 
+|Update (7/10/23) Converted list view to compose |TBD |
+|--- | --- |
+|<img src="https://github.com/rbanks4/tears_db/assets/8659702/7ae026e9-9e9d-43c1-b3fe-4a82de809b5c"> | |
+
 
 Task List:
 
