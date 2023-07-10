@@ -9,4 +9,7 @@
     <string name="sort_dmg_low_high">Damage: Low to High</string>
     <string name="sort_dur_high_low">Durability: High to Low</string>
     <string name="sort_dur_low_high">Durability: Low to High</string>
+    <string name="search_details">search for weapons(s)</string>
+    <string name="search_description">search</string>
+    <string name="menu_box_icon_description">More</string>
 </resources>
