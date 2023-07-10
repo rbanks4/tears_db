@@ -42,7 +42,7 @@ class WeaponDetailsFragment : Fragment(R.layout.fragment_weapon_details) {
     ): View {
         binding = FragmentWeaponDetailsBinding.inflate(inflater, container, false)
         if(weapon != null) {
-            binding.image.setImageResource(weapon!!.image)
+            binding.image.setImageResource(weapon!!.image?:R.drawable.wooden_stick)
             binding.name.text = weapon!!.name
             binding.damage.text = getString(R.string.weapon_damage, weapon!!.shown_attack)
             binding.durability.text = getString(R.string.weapon_durability, weapon!!.durability)

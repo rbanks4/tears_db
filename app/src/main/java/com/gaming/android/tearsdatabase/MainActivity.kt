@@ -23,11 +23,12 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
         super.onCreate(savedInstanceState)
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
+        supportActionBar?.hide()
 
         Log.d(TAG, "onCreate(Bundle?) called")
 
         if(weaponsViewModel.weapons.isNullOrEmpty()) {
-            fetchWeapons(this)
+            fetchWeapons()
         }
     }
 
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
         Log.d(TAG, "onStart() called")
     }
 
-    private fun fetchWeapons(activity: MainActivity) {
+    private fun fetchWeapons() {
         val apiService = ApiClient.apiService
         val weaponRequest = WeaponRequest("myhobbydb", "totk", "weapons")
         val call = apiService.getWeapons(weaponRequest)
@@ -75,7 +76,13 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
     }
 
     fun setWeapons(weapons: List<Weapon>) {
-        weaponsViewModel.weapons = weapons
+        val newList = mutableListOf<Weapon>()
+        weapons.map {
+            val wpn = Weapon(it.name, it.shown_attack, it.durability, it.sub_type)
+                .setDrawable(this)
+            newList.add(wpn)
+        }
+        weaponsViewModel.weapons = newList
     }
 
     private fun buildRecyclerView(){
