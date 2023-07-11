@@ -8,15 +8,15 @@ See <a href="https://github.com/rbanks4/tears_db/tree/version_0.01">Version 0.01
 |--- | --- |
 |<img src="https://github.com/rbanks4/tears_db/assets/8659702/68b32b4b-4e3d-47fb-b697-ea418f35110c"> | <img src="https://github.com/rbanks4/tears_db/assets/8659702/687d1ba2-6c1d-4009-bd20-8e24fdc4751b"> |
 
-|Update (7/10/23) Converted list view to compose |TBD |
+|Update (7/10/23) Converted list view to compose | Same Day: Adding Nav Drawer |
 |--- | --- |
-|<img src="https://github.com/rbanks4/tears_db/assets/8659702/7ae026e9-9e9d-43c1-b3fe-4a82de809b5c"> | |
+|<img src="https://github.com/rbanks4/tears_db/assets/8659702/7ae026e9-9e9d-43c1-b3fe-4a82de809b5c"> | <img src="https://github.com/rbanks4/tears_db/assets/8659702/0c3e9f26-7abf-4e09-bf0c-ca667e851c07">|
 
 
 Task List:
 
 - [x] search feature
-- [ ] navigation panel
+- [x] navigation panel
 - [ ] add materials listings
 - [ ] add materials images
 - [ ] add bow and sheild listings
