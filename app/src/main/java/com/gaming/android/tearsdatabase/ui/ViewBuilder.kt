@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
@@ -14,12 +15,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.R
+import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.navigation.NavigationItem
 import kotlinx.coroutines.launch
@@ -180,10 +184,22 @@ class ViewBuilder {
     ){
         val displayedWeapons = remember { mutableStateListOf<Weapon>() }
 
+        val selectedWeapon = remember { mutableStateOf(SampleData.weapons[1]) }
+        val open = remember { mutableStateOf(false) }
+
+        if(open.value) {
+            Dialog(
+                onDismissRequest = { open.value = false },
+                content = { WeaponDetails(selectedWeapon.value) }
+            )
+        }
+
         if(weapons != null) {
-            displayedWeapons.clear()
-            weapons.map {
-                displayedWeapons.add(it)
+            if(displayedWeapons.isNullOrEmpty()) {
+                displayedWeapons.clear()
+                weapons.map {
+                    displayedWeapons.add(it)
+                }
             }
             Row(modifier = Modifier.padding(all = 8.dp)) {
                 Scaffold(
@@ -209,7 +225,8 @@ class ViewBuilder {
                         modifier = Modifier.padding(contentPadding),
                         content = {
                             items(displayedWeapons.size) { index ->
-                                WeaponCard(wpn = displayedWeapons[index], onClick = { onWeaponClick(it) })
+                                WeaponCard(wpn = displayedWeapons[index], onClick = { selectedWeapon.value = it
+                                open.value = true})
                             }
                         })
 
@@ -221,12 +238,12 @@ class ViewBuilder {
     @Composable
     fun CreateDrawer(
         weapons: List<Weapon>?,
-        onWeaponClick: (Weapon) -> Unit,
         onQuery: (String) -> List<Weapon>?,
         onMenuItemSelected: (Int) -> List<Weapon>?
     ) {
         val drawerState = rememberDrawerState(DrawerValue.Open)
         val scope = rememberCoroutineScope()
+
         // icons to mimic drawer destinations
         val items = listOf(
             NavigationItem(
@@ -286,11 +303,83 @@ class ViewBuilder {
                 WeaponList(
                     weapons = weapons,
                     openDrawer = { scope.launch { drawerState.open() }},
-                    onWeaponClick = { onWeaponClick(it) },
+                    onWeaponClick = {  },
                     onQuery = { onQuery(it) },
                     onMenuItemSelected = { onMenuItemSelected(it) }
                 )
             }
         )
+    }
+
+    @Composable
+    fun WeaponDetails(weapon: Weapon) {
+        Surface(
+            Modifier
+                .requiredWidth(IntrinsicSize.Min)
+                .requiredHeight(IntrinsicSize.Min)
+                .clip(RoundedCornerShape(20.dp))) {
+            Column(modifier = Modifier.padding(all = 8.dp)) {
+                Image(
+                    painter = painterResource(id = weapon.image),
+                    contentDescription = weapon.name,
+                    modifier = Modifier
+                        .size(100.dp)
+                        .align(Alignment.CenterHorizontally)
+                )
+
+                TitleRow(weapon.name)
+                SubtitleRow(name = "Compendium no. ${weapon.compendium_no}")
+                Spacer(Modifier.padding(all = 8.dp))
+                DetailRow(name = "Damage:", value = weapon.shown_attack.toString())
+                DetailRow(name = "Durability:", value = weapon.durability.toString())
+                DetailRow(
+                    name = "Guard Break Power:",
+                    value = weapon.guard_break_power.toString()
+                )
+                DetailRow(
+                    name = "Fuse Damage:",
+                    value = weapon.fuse_damage.toString())
+
+                if(weapon.fuse_durability != null) {
+                    DetailRow(
+                        name = "Fuse Durability:",
+                        value = weapon.fuse_durability.toString()
+                    )
+                }
+                if(weapon.attach_zoani_attk != null) {
+                    DetailRow(
+                        name = "Zonai Attack:",
+                        value = weapon.attach_zoani_attk.toString()
+                    )
+                }
+                DetailRow(name = "Shield Bash Damage:", value = weapon.shield_bash_damage.toString())
+                DetailRow(name = "Sub Type:", value = weapon.sub_type)
+                DetailRow(name= "Subtype2:", value = weapon.sub_type2)
+
+            }
+        }
+    }
+
+    @Composable
+    fun TitleRow(name: String) {
+        Row {
+            Text(text = name, color = MaterialTheme.colorScheme.secondary, style = MaterialTheme.typography.titleMedium)
+        }
+    }
+
+    @Composable
+    fun SubtitleRow(name: String) {
+        Row {
+            Text(text = name, style = MaterialTheme.typography.titleSmall)
+        }
+    }
+
+    @Composable
+    fun DetailRow(name: String, value: String) {
+        Row(modifier = Modifier.padding(vertical = 4.dp)) {
+            Text(text = name, color = MaterialTheme.colorScheme.secondary, style = MaterialTheme.typography.titleSmall)
+            Spacer(Modifier.padding(horizontal = 4.dp))
+            Text(text = value, style = MaterialTheme.typography.bodySmall)
+        }
     }
 }
