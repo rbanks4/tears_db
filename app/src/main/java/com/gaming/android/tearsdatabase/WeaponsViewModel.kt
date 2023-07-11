@@ -3,6 +3,7 @@ package com.gaming.android.tearsdatabase
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.gaming.android.tearsdatabase.models.Weapon
 
 private const val TAG = "WeaponsViewModel"
 private const val WEAPONS_ITEM = "weapons"

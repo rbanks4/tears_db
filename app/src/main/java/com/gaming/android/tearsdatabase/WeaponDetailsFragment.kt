@@ -1,18 +1,13 @@
 package com.gaming.android.tearsdatabase
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import com.gaming.android.tearsdatabase.databinding.FragmentWeaponDetailsBinding
-import kotlinx.coroutines.newFixedThreadPoolContext
+import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.models.WeaponParcel
 
 const val VIEW_MODEL_DETAILS = "weapon_details"
 class WeaponDetailsFragment : Fragment(R.layout.fragment_weapon_details) {

@@ -1,4 +1,4 @@
-package com.gaming.android.tearsdatabase
+package com.gaming.android.tearsdatabase.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

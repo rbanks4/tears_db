@@ -1,7 +1,9 @@
-package com.gaming.android.tearsdatabase
+package com.gaming.android.tearsdatabase.data
 
 import android.content.Context
 import androidx.annotation.DrawableRes
+import com.gaming.android.tearsdatabase.models.Item
+import com.gaming.android.tearsdatabase.models.Weapon
 
 class DataSource {
 

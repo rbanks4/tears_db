@@ -6,9 +6,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import com.gaming.android.tearsdatabase.api.ApiClient
+import com.gaming.android.tearsdatabase.api.DataRequest
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
+import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.api.WeaponsResponse
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Call
@@ -40,13 +43,13 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
 
     private fun fetchWeapons() {
         val apiService = ApiClient.apiService
-        val weaponRequest = WeaponRequest("myhobbydb", "totk", "weapons")
-        val call = apiService.getWeapons(weaponRequest)
+        val dataRequest = DataRequest(collection = "weapons2")
+        val call = apiService.getWeapons(dataRequest)
 
-        call.enqueue(object : Callback<Weapons> {
+        call.enqueue(object : Callback<WeaponsResponse> {
             override fun onResponse(
-                call: Call<Weapons>,
-                response: Response<Weapons>
+                call: Call<WeaponsResponse>,
+                response: Response<WeaponsResponse>
             ) {
                 if(response.isSuccessful) {
                     println("response successful")
@@ -69,7 +72,7 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
                 }
             }
 
-            override fun onFailure(call: Call<Weapons>, t: Throwable) {
+            override fun onFailure(call: Call<WeaponsResponse>, t: Throwable) {
                 println("failed call: " + t.message)
             }
         })
@@ -78,8 +81,7 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
     fun setWeapons(weapons: List<Weapon>) {
         val newList = mutableListOf<Weapon>()
         weapons.map {
-            val wpn = Weapon(it.name, it.shown_attack, it.durability, it.sub_type)
-                .setDrawable(this)
+            val wpn = it.setDrawable(this)
             newList.add(wpn)
         }
         weaponsViewModel.weapons = newList
