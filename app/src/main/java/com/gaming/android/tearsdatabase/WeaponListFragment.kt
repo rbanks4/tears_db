@@ -26,6 +26,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.gaming.android.tearsdatabase.data.SampleData
+import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 
 private const val TAG = "WeaponsListFragment"
@@ -229,7 +231,8 @@ class WeaponListFragment: Fragment() {
     fun PreviewMessageCard() {
         TearsTheme {
             Surface {
-                WeaponCard(Weapon("Boat Oar", 3, 3, listOf("Blunt"))
+                WeaponCard(
+                    Weapon("Boat Oar", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3)
                     .setDrawable(R.drawable.boat_oar))
             }
         }

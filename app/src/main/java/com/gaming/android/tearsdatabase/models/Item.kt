@@ -1,7 +1,6 @@
-package com.gaming.android.tearsdatabase
+package com.gaming.android.tearsdatabase.models
 
 import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 
 data class Item (
     val name: String,

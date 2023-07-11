@@ -1,4 +1,4 @@
-package com.gaming.android.tearsdatabase
+package com.gaming.android.tearsdatabase.api
 
 import retrofit2.Call
 import retrofit2.http.Body
@@ -9,5 +9,5 @@ interface ApiService {
 
     @Headers("api-key: " + "xzEOCq63EkHsw8PIh9CAbDPuERVTOuNKJSQSivxYvZBcv8hmuwk6FfaZhuGXztoJ")
     @POST("action/find")
-    fun getWeapons(@Body request: WeaponRequest): Call<Weapons>
+    fun getWeapons(@Body request: DataRequest): Call<WeaponsResponse>
 }
