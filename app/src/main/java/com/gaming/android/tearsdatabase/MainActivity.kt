@@ -9,6 +9,7 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
+import com.gaming.android.tearsdatabase.models.Material
 import com.gaming.android.tearsdatabase.models.Weapon
 
 private const val TAG = "MainActivity"
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
     private lateinit var bind: ActivityMainBinding
     private lateinit var weaponsListFragment: WeaponListFragment
     private val weaponsViewModel: WeaponsViewModel by viewModels()
+    private val materialViewModel: MaterialsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,10 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
             Endpoints.fetchWeapons(
                 updateWeapons = { weapons -> setWeapons(weapons) },
                 buildView = { buildRecyclerView() }
+            )
+
+            Endpoints.fetchMaterials(
+                updateMaterials = { setMaterials(it) }
             )
         }
     }
@@ -46,6 +52,10 @@ class MainActivity : AppCompatActivity(), FragmentController, ViewModelStoreOwne
             newList.add(wpn)
         }
         weaponsViewModel.weapons = newList
+    }
+
+    fun setMaterials(materials: List<Material>) {
+        materialViewModel.materials = materials
     }
 
     private fun buildRecyclerView(){
