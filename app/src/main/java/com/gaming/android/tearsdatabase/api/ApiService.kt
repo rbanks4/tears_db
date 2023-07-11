@@ -10,4 +10,8 @@ interface ApiService {
     @Headers("api-key: " + "xzEOCq63EkHsw8PIh9CAbDPuERVTOuNKJSQSivxYvZBcv8hmuwk6FfaZhuGXztoJ")
     @POST("action/find")
     fun getWeapons(@Body request: DataRequest): Call<WeaponsResponse>
+
+    @Headers("api-key: " + "xzEOCq63EkHsw8PIh9CAbDPuERVTOuNKJSQSivxYvZBcv8hmuwk6FfaZhuGXztoJ")
+    @POST("action/find")
+    fun getMaterials(@Body request: DataRequest): Call<MaterialsResponse>
 }
