@@ -22,7 +22,6 @@ class Endpoints {
                 ) {
                     if (response.isSuccessful) {
                         println("response successful")
-                        println(response.body())
                         if (response.body() != null) {
                             val weapons = response.body()?.documents
                             weapons?.let {
@@ -46,7 +45,7 @@ class Endpoints {
             })
         }
 
-        fun fetchMaterials(updateMaterials: (List<Material>) -> Unit){
+        fun fetchMaterials(updateMaterials: (List<Material>) -> Unit, buildView: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = MATERIALS)
             val call = apiService.getMaterials(dataRequest)
@@ -58,9 +57,9 @@ class Endpoints {
                 ) {
                     if (response.isSuccessful) {
                         println("response successful")
-                        println(response.body())
                         response.body()?.documents?.let { materials ->
                             updateMaterials(materials)
+                            buildView()
                             println("materials response list size is ${materials.size}")
                         }
 

@@ -21,7 +21,7 @@ class DataSource {
             return context.resources.getIdentifier(name, "drawable", context.packageName)
         }
 
-        private fun camelToSnakeCase(name: String): String {
+        fun camelToSnakeCase(name: String): String {
             val pattern = " .".toRegex()
             return name.replace("\\(|\\)".toRegex(), "")
                 .replace("'", "")
