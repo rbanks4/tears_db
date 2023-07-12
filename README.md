@@ -12,6 +12,11 @@ See <a href="https://github.com/rbanks4/tears_db/tree/version_0.01">Version 0.01
 |--- | --- |
 |<img src="https://github.com/rbanks4/tears_db/assets/8659702/7ae026e9-9e9d-43c1-b3fe-4a82de809b5c"> | <img src="https://github.com/rbanks4/tears_db/assets/8659702/0c3e9f26-7abf-4e09-bf0c-ca667e851c07">|
 
+|Update (7/12/23) Adding Materials List | TBD |
+|--- | --- |
+|<img src="https://github.com/rbanks4/tears_db/assets/8659702/3c10233c-87fd-4457-8286-584e6ae0ddfe"> | TBD
+
+
 
 Task List:
 
