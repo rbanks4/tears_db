@@ -1,6 +1,7 @@
 package com.gaming.android.tearsdatabase.models
 
 import android.content.Context
+import android.util.Log
 import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.R

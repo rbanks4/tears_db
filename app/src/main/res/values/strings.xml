@@ -5,11 +5,18 @@
     <string name="weapon_subtype">Subtype: %s</string>
     <string name="search">Search</string>
     <string name="clear_search">Clear Search</string>
+
+<!--    menu sorting-->
     <string name="sort_dmg_high_low">Damage: High to Low</string>
     <string name="sort_dmg_low_high">Damage: Low to High</string>
     <string name="sort_dur_high_low">Durability: High to Low</string>
     <string name="sort_dur_low_high">Durability: Low to High</string>
-    <string name="search_details">search for weapons(s)</string>
+    <string name="sort_mat_hp">HP Recover: High to Low</string>
+    <string name="sort_mat_add_damage_dec">Damage: High to Low</string>
+    <string name="sort_mat_add_damage_inc">Damage: Low to High</string>
+
+<!--    top bar details-->
+    <string name="search_details">search for item(s)</string>
     <string name="search_description">search</string>
     <string name="menu_box_icon_description">More</string>
 </resources>

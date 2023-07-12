@@ -1,6 +1,7 @@
 package com.gaming.android.tearsdatabase.data
 
 import com.gaming.android.tearsdatabase.R
+import com.gaming.android.tearsdatabase.models.Material
 import com.gaming.android.tearsdatabase.models.Weapon
 
 object SampleData {
@@ -16,5 +17,27 @@ object SampleData {
         Weapon("Lizal Boomerang", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.lizal_boomerang),
         Weapon("Gnarled Wooden Stick", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.gnarled_wooden_stick),
         Weapon("Gerudo Spear (Intact)", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.gerudo_spear_intact)
+    )
+
+    val materials = listOf(
+        Material("Hot Footed Frog", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+            .setDrawable(R.drawable.hot_footed_frog),
+        Material("Energetic Rino Beetle", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+            .setDrawable(R.drawable.energetic_rhino_beetle),
+        Material("Smotherwing Butterfly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+            .setDrawable(R.drawable.smotherwing_butterfly),
+        Material("Sticky Frog", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+            .setDrawable(R.drawable.sticky_frog),
+        Material("Sticky Lizard", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+            .setDrawable(R.drawable.sticky_lizard),
+        Material("Deep Firefly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+            .setDrawable(R.drawable.deep_firefly),
+        Material("Tireless Frog", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+            .setDrawable(R.drawable.tireless_frog),
+        Material("Cold Darner", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+            .setDrawable(R.drawable.cold_darner),
+        Material("Sunset Firefly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+            .setDrawable(R.drawable.sunset_firefly)
+
     )
 }
