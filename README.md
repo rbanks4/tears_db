@@ -17,8 +17,8 @@ Task List:
 
 - [x] search feature
 - [x] navigation panel
-- [ ] add materials listings
-- [ ] add materials images
+- [x] add materials listings
+- [x] add materials images
 - [ ] add bow and sheild listings
 - [ ] add bow images
 - [ ] add sheild images

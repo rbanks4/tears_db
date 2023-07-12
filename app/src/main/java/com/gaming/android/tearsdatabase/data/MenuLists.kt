@@ -36,6 +36,22 @@ class MenuLists {
             MenuItem(
                 text = R.string.sort_mat_add_damage_inc,
                 action = SORT_DAMAGE_INC
+            ),
+            MenuItem(
+                text = R.string.sort_mat_sell_dec,
+                action = SORT_SELLING_DEC
+            ),
+            MenuItem(
+                text = R.string.sort_mat_sell_inc,
+                action = SORT_SELLING_INC
+            ),
+            MenuItem(
+                text = R.string.sort_mat_buy_dec,
+                action = SORT_BUYING_DEC
+            ),
+            MenuItem(
+                text = R.string.sort_mat_buy_inc,
+                action = SORT_BUYING_INC
             )
         )
     }

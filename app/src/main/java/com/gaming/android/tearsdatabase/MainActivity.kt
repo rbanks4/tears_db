@@ -25,6 +25,10 @@ const val SORT_DAMAGE_DEC = 2
 const val SORT_DURABILITY_INC = 3
 const val SORT_DURABILITY_DEC = 4
 const val SORT_HP_DEC = 5
+const val SORT_SELLING_DEC = 6
+const val SORT_SELLING_INC = 7
+const val SORT_BUYING_DEC = 8
+const val SORT_BUYING_INC = 9
 
 const val MENU_TYPE_WEAPONS = 1
 const val MENU_TYPE_MATERIALS = 4
@@ -107,14 +111,15 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
             }
             val subList = list!!.filter {
                 if (it.sub_type.isNotEmpty())
-                    it.sub_type[0].lowercase().matches(".*$regex.*".toRegex())
+                    it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
                 else false
             }
-            val finalList = nameList + subList
-            Log.d(
-                TAG,
-                "QueryTextSubmit: results were ${finalList.toSet().toList()}"
-            )
+            val subList2 = list!!.filter {
+                if (it.sub_type2.isNotEmpty())
+                    it.sub_type2.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                else false
+            }
+            val finalList = nameList + subList + subList2
 
             weaponsViewModel.searchList = finalList.toSet().toList()
         }
@@ -133,14 +138,20 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
             }
             val subList = list!!.filter {
                 if (it.sub_type.isNotEmpty())
-                    it.sub_type[0].lowercase().matches(".*$regex.*".toRegex())
+                    it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
                 else false
             }
-            val finalList = nameList + subList
-            Log.d(
-                TAG,
-                "QueryTextSubmit: results were ${finalList.toSet().toList()}"
-            )
+            val effects = list!!.filter {
+                if (it.effect_type.isNotEmpty())
+                    it.effect_type.lowercase().matches(".*$regex.*".toRegex())
+                else false
+            }
+            val color = list!!.filter {
+                if (it.dye_color.isNotEmpty())
+                    it.dye_color.lowercase().matches(".*$regex.*".toRegex())
+                else false
+            }
+            val finalList = nameList + subList + effects + color
 
             materialViewModel.searchList = finalList.toSet().toList()
         }
@@ -190,6 +201,19 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
             SORT_DAMAGE_DEC ->
                 listUpdate = list?.sortedByDescending { it.additional_damage }
                     ?.filter{ it.additional_damage != -1 }
+            SORT_SELLING_DEC ->
+                listUpdate = list?.sortedByDescending { it.selling_price }
+                    ?.filter{ it.selling_price != null }
+            SORT_SELLING_INC ->
+                listUpdate = list?.sortedBy { it.selling_price }
+                    ?.filter{ it.selling_price != null }
+            SORT_BUYING_DEC ->
+                listUpdate = list?.sortedByDescending { it.buying_price }
+                    ?.filter{ it.buying_price != null }
+            SORT_BUYING_INC ->
+                listUpdate = list?.sortedBy { it.buying_price }
+                    ?.filter{ it.buying_price != null }
+
         }
         return if (!listUpdate.isNullOrEmpty()) {
             materialViewModel.searchList = listUpdate

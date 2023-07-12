@@ -14,6 +14,10 @@
     <string name="sort_mat_hp">HP Recover: High to Low</string>
     <string name="sort_mat_add_damage_dec">Damage: High to Low</string>
     <string name="sort_mat_add_damage_inc">Damage: Low to High</string>
+    <string name="sort_mat_sell_dec">Selling: High to Low</string>
+    <string name="sort_mat_sell_inc">Selling: Low to High</string>
+    <string name="sort_mat_buy_dec">Buying: High to Low</string>
+    <string name="sort_mat_buy_inc">Buying: Low to High</string>
 
 <!--    top bar details-->
     <string name="search_details">search for item(s)</string>

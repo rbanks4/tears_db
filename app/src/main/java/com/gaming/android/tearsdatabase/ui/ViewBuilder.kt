@@ -174,9 +174,8 @@ class ViewBuilder {
 
     @Composable
     fun MaterialCard(mat: Material, onClick: (Material) -> Unit) {
-        System.out.println("creating a new image ${mat.name}")
 
-        var text = if(mat.effect_type.isNotEmpty())
+        var text = if(mat.effect_type.isNotEmpty() && !mat.effect_type.equals("None"))
             "Effect: ${mat.effect_type}"
         else if(mat.hp_recover != 0 && mat.hp_recover != null)
             "Hp Recover: ${mat.hp_recover}"
@@ -196,6 +195,7 @@ class ViewBuilder {
                     .clickable {
                         onClick(mat)
                     }
+                    .align(Alignment.CenterHorizontally)
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -212,7 +212,8 @@ class ViewBuilder {
                 Text(
                     text = mat.name,
                     color = MaterialTheme.colorScheme.secondary,
-                    style = MaterialTheme.typography.titleSmall
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))
@@ -247,6 +248,7 @@ class ViewBuilder {
 
         val selectedWeapon = remember { mutableStateOf(SampleData.weapons[1]) }
         val open = remember { mutableStateOf(false) }
+        val currentQuery = remember { mutableStateOf("") }
 
         if(open.value) {
             Dialog(
@@ -256,7 +258,7 @@ class ViewBuilder {
         }
 
         if(weapons != null) {
-            if(displayedWeapons.isNullOrEmpty()) {
+            if(displayedWeapons.isNullOrEmpty() && currentQuery.value.isEmpty()) {
                 displayedWeapons.clear()
                 weapons.map {
                     displayedWeapons.add(it)
@@ -267,6 +269,7 @@ class ViewBuilder {
                     topBar = {
                         TopBar(
                             onQuerySearch = {
+                                currentQuery.value = it
                                 displayedWeapons.clear()
                                 onQuery(it)?.map {weapon ->
                                     displayedWeapons.add(weapon)
@@ -309,6 +312,7 @@ class ViewBuilder {
 
         val selectedMaterial = remember { mutableStateOf(SampleData.materials[1]) }
         val open = remember { mutableStateOf(false) }
+        val currentQuery = remember { mutableStateOf("") }
 
         if(open.value) {
             Dialog(
@@ -318,7 +322,7 @@ class ViewBuilder {
         }
 
         if(materials != null) {
-            if(displayedMaterials.isNullOrEmpty()) {
+            if(displayedMaterials.isNullOrEmpty() && currentQuery.value.isEmpty()) {
                 displayedMaterials.clear()
                 materials.map {
                     displayedMaterials.add(it)
@@ -329,6 +333,7 @@ class ViewBuilder {
                     topBar = {
                         TopBar(
                             onQuerySearch = {
+                                currentQuery.value = it
                                 displayedMaterials.clear()
                                 onQuery(it)?.map { material ->
                                     displayedMaterials.add(material)
@@ -517,7 +522,7 @@ class ViewBuilder {
                 TitleRow(material.name)
                 if(material.effect_type.isNotEmpty() && !material.effect_type.equals("None"))
                     SubtitleRow(name = "Effect Type: ${material.effect_type}")
-                else if(material.hp_recover != 0)
+                else if(material.hp_recover != 0 && material.hp_recover != null)
                     SubtitleRow(name = "Hp Recover: ${material.hp_recover}")
                 else if(material.additional_damage != -1)
                     SubtitleRow(name = "Additional Damage: ${material.additional_damage}")
@@ -548,7 +553,7 @@ class ViewBuilder {
                         value = material.dye_color.toString()
                     )
                 }
-                if(material.effect_type.isNotEmpty()) {
+                if(material.effect_type.isNotEmpty() && !material.effect_type.equals("None")) {
                     DetailRow(
                         name = "Effect type:",
                         value = material.effect_type.toString()
@@ -584,7 +589,7 @@ class ViewBuilder {
                         value = material.sheild_bash_damage.toString()
                     )
                 }
-                if(material.boost_effective_time != 0) {
+                if(material.boost_effective_time != 0 && material.boost_effective_time != null) {
                     DetailRow(
                         name = "Boost effect time:",
                         value = material.boost_effective_time.toString()
@@ -611,7 +616,7 @@ class ViewBuilder {
                 if(material.boost_critical_cook != 0 && material.boost_critical_cook != null) {
                     DetailRow(
                         name = "Boost critical cook:",
-                        value = material.boost_critical_cook.toString()
+                        value = material.boost_critical_cook.toString() + "%"
                     )
                 }
                 if(material.sub_type.isNotEmpty()) {
