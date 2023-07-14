@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
+import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.MenuItem
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder
@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
 
     private val weaponsViewModel: WeaponsViewModel by viewModels()
     private val materialViewModel: MaterialsViewModel by viewModels()
+    private val bowViewModel: BowsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +57,11 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
 
             Endpoints.fetchMaterials(
                 updateMaterials = { setMaterials(it) },
+                buildView = { buildRecyclerView() }
+            )
+
+            Endpoints.fetchBows(
+                updateBows = { setBows(it) },
                 buildView = { buildRecyclerView() }
             )
         }
@@ -83,6 +89,15 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         }
         materialViewModel.materials = newList.toSet().toList()
         materialViewModel.searchList = materialViewModel.materials
+    }
+
+    fun setBows(bows: List<Bow>) {
+        val newList = mutableListOf<Bow>()
+        bows.map {
+            newList.add(it.setDrawable(this))
+        }
+        bowViewModel.bows = newList.toSet().toList()
+        bowViewModel.searchList = bowViewModel.bows
     }
 
     private fun buildRecyclerView(){

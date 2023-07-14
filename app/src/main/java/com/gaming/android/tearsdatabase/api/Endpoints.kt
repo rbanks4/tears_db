@@ -1,5 +1,6 @@
 package com.gaming.android.tearsdatabase.api
 
+import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
 import com.gaming.android.tearsdatabase.models.Weapon
 import retrofit2.Callback
@@ -8,6 +9,7 @@ import retrofit2.Call
 
 const val WEAPONS = "weapons2"
 const val MATERIALS = "materials"
+const val BOWS = "bows"
 class Endpoints {
     companion object {
         fun fetchWeapons(updateWeapons: (List<Weapon>) -> Unit, buildView: () -> Unit) {
@@ -71,6 +73,38 @@ class Endpoints {
                 }
 
                 override fun onFailure(call: Call<MaterialsResponse>, t: Throwable) {
+                    println("failed call: " + t.message)
+                }
+
+            })
+        }
+
+        fun fetchBows(updateBows: (List<Bow>) -> Unit, buildView: () -> Unit){
+            val apiService = ApiClient.apiService
+            val dataRequest = DataRequest(collection = BOWS)
+            val call = apiService.getBows(dataRequest)
+
+            call.enqueue(object: Callback<BowsResponse> {
+                override fun onResponse(
+                    call: Call<BowsResponse>,
+                    response: Response<BowsResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        println("response successful")
+                        response.body()?.documents?.let { bows ->
+                            updateBows(bows)
+                            buildView()
+                            println("bows response list size is ${bows.size}")
+                        }
+
+                    } else {
+                        println("response failed")
+                        println(response.code())
+                        println(response.errorBody())
+                    }
+                }
+
+                override fun onFailure(call: Call<BowsResponse>, t: Throwable) {
                     println("failed call: " + t.message)
                 }
 
