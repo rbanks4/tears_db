@@ -16,18 +16,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.gaming.android.tearsdatabase.MENU_TYPE_BOWS
 import com.gaming.android.tearsdatabase.MENU_TYPE_MATERIALS
+import com.gaming.android.tearsdatabase.MENU_TYPE_SHIELDS
 import com.gaming.android.tearsdatabase.MENU_TYPE_WEAPONS
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
+import com.gaming.android.tearsdatabase.models.Shield
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.BowCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.MaterialCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.WeaponCard
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.TopBar
+import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.ShieldCard
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.BowDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.MaterialDetails
+import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.ShieldDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.WeaponDetails
 
 class ViewLists {
@@ -226,6 +230,71 @@ class ViewLists {
                 }
             }
         }
+
+        @Composable
+        fun ShieldList(
+            shields: List<Shield>?,
+            openDrawer: () -> Unit,
+            onQuery: (String) -> List<Shield>?,
+            onMenuItemSelected: (Int) -> List<Shield>?
+        ) {
+            val displayedShields = remember { mutableStateListOf<Shield>() }
+
+            val selectedShield = remember { mutableStateOf(SampleData.shields[1]) }
+            val open = remember { mutableStateOf(false) }
+            val currentQuery = remember { mutableStateOf("") }
+
+            if (open.value) {
+                Dialog(
+                    onDismissRequest = { open.value = false },
+                    content = { ShieldDetails(selectedShield.value) }
+                )
+            }
+
+            if (shields != null) {
+                if (displayedShields.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                    displayedShields.clear()
+                    shields.map {
+                        displayedShields.add(it)
+                    }
+                }
+                Row(modifier = Modifier.padding(all = 8.dp)) {
+                    Scaffold(
+                        topBar = {
+                            TopBar(
+                                onQuerySearch = {
+                                    currentQuery.value = it
+                                    displayedShields.clear()
+                                    onQuery(it)?.map { material ->
+                                        displayedShields.add(material)
+                                    }
+                                },
+                                onListEdit = {
+                                    displayedShields.clear()
+                                    onMenuItemSelected(it)?.map { shield ->
+                                        displayedShields.add(shield)
+                                    }
+                                },
+                                onOpenDrawer = { openDrawer() },
+                                menuType = MENU_TYPE_SHIELDS
+                            )
+                        }
+                    ) { contentPadding ->
+                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                            modifier = Modifier.padding(contentPadding),
+                            content = {
+                                items(displayedShields.size) { index ->
+                                    ShieldCard(shield = displayedShields[index], onClick = {
+                                        selectedShield.value = it
+                                        open.value = true
+                                    })
+                                }
+                            })
+
+                    }
+                }
+            }
+        }
     }
 
     @Preview(name = "Light Mode")
@@ -254,6 +323,14 @@ class ViewLists {
     fun PreviewBowList() {
         TearsTheme {
             BowList(bows = SampleData.bows, openDrawer = {}, onQuery = { SampleData.bows }, onMenuItemSelected = { SampleData. bows })
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewShieldList() {
+        TearsTheme {
+            ShieldList(shields = SampleData.shields, openDrawer = {}, onQuery = { SampleData.shields }, onMenuItemSelected = { SampleData. shields })
         }
     }
 }

@@ -31,7 +31,7 @@ Task List:
 - [x] add bow view
 - [x] add sheild listings
 - [x] add sheild images
-- [ ] add sheild view
+- [x] add sheild view
 - [ ] modify search for each category
 - [ ] add recipes
 - [ ] add armor and effects

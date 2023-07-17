@@ -3,6 +3,7 @@ package com.gaming.android.tearsdatabase.data
 import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
+import com.gaming.android.tearsdatabase.models.Shield
 import com.gaming.android.tearsdatabase.models.Weapon
 
 object SampleData {
@@ -61,5 +62,26 @@ object SampleData {
             .setDrawable(R.drawable.forest_dwellers_bow),
         Bow("Zora Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
             .setDrawable(R.drawable.zora_bow)
+    )
+
+    val shields = listOf(
+        Shield("Traveler's Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+            .setDrawable(R.drawable.travelers_shield),
+        Shield("Soldier's Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+            .setDrawable(R.drawable.soldiers_shield),
+        Shield("Spiked Boko Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+            .setDrawable(R.drawable.spiked_boko_shield),
+        Shield("Boko Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+            .setDrawable(R.drawable.boko_shield),
+        Shield("Lizal Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+            .setDrawable(R.drawable.lizal_shield),
+        Shield("Lynel Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+            .setDrawable(R.drawable.lynel_shield),
+        Shield("Savage Lynel Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+            .setDrawable(R.drawable.savage_lynel_shield),
+        Shield("Zonaite Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+            .setDrawable(R.drawable.zonaite_shield),
+        Shield("Zora Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+            .setDrawable(R.drawable.zora_shield)
     )
 }

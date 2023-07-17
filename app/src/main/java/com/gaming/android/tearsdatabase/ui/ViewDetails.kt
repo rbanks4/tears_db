@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
+import com.gaming.android.tearsdatabase.models.Shield
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 
@@ -281,6 +282,55 @@ class ViewDetails {
         }
 
         @Composable
+        fun ShieldDetails(shield: Shield) {
+            Surface(
+                Modifier
+                    .requiredWidth(IntrinsicSize.Min)
+                    .requiredHeight(IntrinsicSize.Min)
+                    .clip(RoundedCornerShape(20.dp))
+            ) {
+                Column(modifier = Modifier.padding(all = 8.dp)) {
+                    Image(
+                        painter = painterResource(id = shield.image),
+                        contentDescription = shield.name,
+                        modifier = Modifier
+                            .size(100.dp)
+                            .align(Alignment.CenterHorizontally)
+                    )
+
+                    TitleRow(shield.name)
+                    SubtitleRow(name = "Compendium no. ${shield.compendium_no}")
+                    Spacer(Modifier.padding(all = 8.dp))
+                    DetailRow(name = "Guard Power:", value = shield.guard_power.toString())
+                    DetailRow(name = "Durability:", value = shield.durability.toString())
+                    DetailRow(
+                        name = "Shield Surfing Damage Ratio:",
+                        value = shield.shield_surfing_damage_ratio.toString()
+                    )
+                    DetailRow(
+                        name = "Shield Surfing Friction:",
+                        value = shield.shield_surfing_friction.toString()
+                    )
+
+                    if (shield.additional_damage != null) {
+                        DetailRow(
+                            name = "Additional Damage:",
+                            value = shield.additional_damage.toString()
+                        )
+                    }
+
+                    if(shield.sub_type.isNotEmpty()) {
+                        DetailRow(name = "Sub Type:", value = shield.sub_type)
+                    }
+
+                    if(shield.sub_type2.isNotEmpty()) {
+                        DetailRow(name = "Subtype2:", value = shield.sub_type2)
+                    }
+
+                }
+            }
+        }
+        @Composable
         fun TitleRow(name: String) {
             Row {
                 Text(
@@ -337,6 +387,14 @@ class ViewDetails {
     fun PreviewBowDetailsView() {
         TearsTheme {
             BowDetails(bow = SampleData.bows[1])
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewShieldDetailsView() {
+        TearsTheme {
+            ShieldDetails(shield = SampleData.shields[1])
         }
     }
 }
