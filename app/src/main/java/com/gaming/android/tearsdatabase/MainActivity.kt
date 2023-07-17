@@ -201,7 +201,12 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     it.sub_type2.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
                 else false
             }
-            val finalList = nameList + subList + subList2
+            val other = list!!.filter {
+                if (it.other.isNotEmpty())
+                    it.other.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                else false
+            }
+            val finalList = nameList + subList + subList2 + other
 
             bowViewModel.searchList = finalList.toSet().toList()
         }
