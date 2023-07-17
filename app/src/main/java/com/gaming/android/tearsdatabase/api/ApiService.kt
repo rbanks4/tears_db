@@ -14,4 +14,8 @@ interface ApiService {
     @Headers("api-key: " + "xzEOCq63EkHsw8PIh9CAbDPuERVTOuNKJSQSivxYvZBcv8hmuwk6FfaZhuGXztoJ")
     @POST("action/find")
     fun getMaterials(@Body request: DataRequest): Call<MaterialsResponse>
+
+    @Headers("api-key: " + "xzEOCq63EkHsw8PIh9CAbDPuERVTOuNKJSQSivxYvZBcv8hmuwk6FfaZhuGXztoJ")
+    @POST("action/find")
+    fun getBows(@Body request: DataRequest): Call<BowsResponse>
 }
