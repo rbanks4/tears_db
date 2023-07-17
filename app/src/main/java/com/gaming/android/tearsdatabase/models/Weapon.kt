@@ -43,8 +43,4 @@ data class Weapon (
     fun findDrawable(ctx: Context) {
         image = DataSource.loadWeaponImage(name, ctx)
     }
-
-    fun toParcelable(): WeaponParcel {
-        return WeaponParcel(name, compendium_no, base_attack, shown_attack, durability, guard_break_power, sub_type, fuse_durability?:0, fuse_damage, sub_type2, attach_zoani_attk?:0, shield_bash_damage)
-    }
 }
