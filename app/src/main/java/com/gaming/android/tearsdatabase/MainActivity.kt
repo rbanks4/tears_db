@@ -59,6 +59,11 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                 updateBows = { setBows(it) },
                 buildView = { buildRecyclerView() }
             )
+
+            Endpoints.fetchShields(
+                updateShields = { },
+                buildView = { }
+            )
         }
     }
 
