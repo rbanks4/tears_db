@@ -47,11 +47,7 @@ class ViewCards {
                 Column(modifier = Modifier
                     .clickable { isExpanded = !isExpanded }
                     .align(Alignment.CenterHorizontally)) {
-                    Text(
-                        text = wpn.name,
-                        color = MaterialTheme.colorScheme.secondary,
-                        style = MaterialTheme.typography.titleSmall
-                    )
+                    itemTitle(title = wpn.name)
 
                     Spacer(modifier = Modifier.height(4.dp))
                     Surface(
@@ -163,11 +159,7 @@ class ViewCards {
                 Column(modifier = Modifier
                     .clickable { isExpanded = !isExpanded }
                     .align(Alignment.CenterHorizontally)) {
-                    Text(
-                        text = bow.name,
-                        color = MaterialTheme.colorScheme.secondary,
-                        style = MaterialTheme.typography.titleSmall
-                    )
+                    itemTitle(bow.name)
 
                     Spacer(modifier = Modifier.height(4.dp))
                     Surface(
@@ -187,6 +179,15 @@ class ViewCards {
                     }
                 }
             }
+        }
+
+        @Composable
+        fun itemTitle(title: String){
+            Text(
+                text = title,
+                color = MaterialTheme.colorScheme.secondary,
+                style = MaterialTheme.typography.titleSmall
+            )
         }
     }
 

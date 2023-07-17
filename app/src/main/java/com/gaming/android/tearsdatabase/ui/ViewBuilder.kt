@@ -31,6 +31,7 @@ import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.navigation.NavigationItem
+import com.gaming.android.tearsdatabase.navigation.NavigationItems
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.BowList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.MaterialList
@@ -160,40 +161,7 @@ class ViewBuilder {
             val scope = rememberCoroutineScope()
 
             // icons to mimic drawer destinations
-            val items = listOf(
-                NavigationItem(
-                    Icon(
-                        painter = painterResource(R.drawable.wooden_stick),
-                        contentDescription = "",
-                        modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    ), "Weapons"
-                ),
-                NavigationItem(
-                    Icon(
-                        painter = painterResource(R.drawable.wooden_stick),
-                        contentDescription = "",
-                        modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    ), "Bows"
-                ),
-                NavigationItem(
-                    Icon(
-                        painter = painterResource(R.drawable.wooden_stick),
-                        contentDescription = "",
-                        modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    ), "Shields"
-                ),
-                NavigationItem(
-                    Icon(
-                        painter = painterResource(R.drawable.apple),
-                        contentDescription = "",
-                        modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    ), "Materials"
-                )
-            )
+            val items = NavigationItems.getNavItems()
             val selectedItem = remember { mutableStateOf(items[0]) }
 
             ModalNavigationDrawer(
@@ -209,7 +177,13 @@ class ViewBuilder {
                                     scope.launch { drawerState.close() }
                                     selectedItem.value = item
                                 },
-                                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+                                modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding),
+                                icon = { Icon(
+                                    painter = painterResource(item.icon),
+                                    contentDescription = "",
+                                    modifier = Modifier.size(20.dp),
+                                    tint = MaterialTheme.colorScheme.onSurface
+                                ) }
                             )
                         }
                     }

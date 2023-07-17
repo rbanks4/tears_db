@@ -16,36 +16,16 @@ class NavigationItems {
         fun getNavItems(): List<NavigationItem> {
             return listOf(
                 NavigationItem(
-                    Icon(
-                    painter = painterResource(R.drawable.wooden_stick),
-                    contentDescription = "",
-                    modifier = Modifier.size(20.dp),
-                    tint = MaterialTheme.colorScheme.onSurface
-                    ), "Weapons"
+                    R.drawable.wooden_stick, "Weapons"
                 ),
                 NavigationItem(
-                    Icon(
-                        painter = painterResource(R.drawable.wooden_stick),
-                        contentDescription = "",
-                        modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    ), "Bows"
+                    R.drawable.travelers_bow, "Bows"
                 ),
                 NavigationItem(
-                    Icon(
-                        painter = painterResource(R.drawable.wooden_stick),
-                        contentDescription = "",
-                        modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    ), "Shields"
+                    R.drawable.wooden_stick, "Shields"
                 ),
                 NavigationItem(
-                    Icon(
-                        painter = painterResource(R.drawable.apple),
-                        contentDescription = "",
-                        modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    ), "Materials"
+                    R.drawable.apple, "Materials"
                 )
             )
         }
