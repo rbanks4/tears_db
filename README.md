@@ -12,9 +12,10 @@ See <a href="https://github.com/rbanks4/tears_db/tree/version_0.01">Version 0.01
 |--- | --- |
 |<img src="https://github.com/rbanks4/tears_db/assets/8659702/7ae026e9-9e9d-43c1-b3fe-4a82de809b5c"> | <img src="https://github.com/rbanks4/tears_db/assets/8659702/0c3e9f26-7abf-4e09-bf0c-ca667e851c07">|
 
-|Update (7/12/23) Adding Materials List | Update (7/16/23) Adding Bows List |
-|--- | --- |
-|<img src="https://github.com/rbanks4/tears_db/assets/8659702/3c10233c-87fd-4457-8286-584e6ae0ddfe"> | <img src="https://github.com/rbanks4/tears_db/assets/8659702/a3aa55a9-346a-4bbc-8480-f6fb8de5272a">
+|Update (7/12/23) Adding Materials List | Update (7/16/23) Adding Bows List | Update (7/17/23) Adding Shield List
+|--- | --- | --- |
+|<img src="https://github.com/rbanks4/tears_db/assets/8659702/3c10233c-87fd-4457-8286-584e6ae0ddfe"> | <img src="https://github.com/rbanks4/tears_db/assets/8659702/a3aa55a9-346a-4bbc-8480-f6fb8de5272a"> | <img src="https://github.com/rbanks4/tears_db/assets/8659702/fef139a8-6f6e-4158-bd39-6503cc1e2e62">
+
 
 
 
@@ -31,7 +32,7 @@ Task List:
 - [x] add bow view
 - [x] add sheild listings
 - [x] add sheild images
-- [ ] add sheild view
+- [x] add sheild view
 - [ ] modify search for each category
 - [ ] add recipes
 - [ ] add armor and effects
