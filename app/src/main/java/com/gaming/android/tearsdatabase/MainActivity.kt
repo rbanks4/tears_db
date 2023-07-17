@@ -10,6 +10,7 @@ import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
+import com.gaming.android.tearsdatabase.models.Shield
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private val weaponsViewModel: WeaponsViewModel by viewModels()
     private val materialViewModel: MaterialsViewModel by viewModels()
     private val bowViewModel: BowsViewModel by viewModels()
+    private val shieldViewModel: ShieldsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,8 +63,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
             )
 
             Endpoints.fetchShields(
-                updateShields = { },
-                buildView = { }
+                updateShields = { setShields(it) },
+                buildView = { buildRecyclerView() }
             )
         }
     }
@@ -98,6 +100,15 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         }
         bowViewModel.bows = newList.toSet().toList()
         bowViewModel.searchList = bowViewModel.bows
+    }
+
+    fun setShields(shields: List<Shield>) {
+        val newList = mutableListOf<Shield>()
+        shields.map {
+            newList.add(it.setDrawable(this))
+        }
+        shieldViewModel.shields = newList.toSet().toList()
+        shieldViewModel.searchList = shieldViewModel.shields
     }
 
     private fun buildRecyclerView(){
