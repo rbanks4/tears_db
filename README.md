@@ -29,8 +29,8 @@ Task List:
 - [x] add bow listings
 - [x] add bow images
 - [x] add bow view
-- [ ] add sheild listings
-- [ ] add sheild images
+- [x] add sheild listings
+- [x] add sheild images
 - [ ] add sheild view
 - [ ] modify search for each category
 - [ ] add recipes
