@@ -25,8 +25,8 @@ import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.data.MenuLists
 import com.gaming.android.tearsdatabase.data.SampleData
+import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.MenuItem
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.navigation.NavigationItem
 import kotlinx.coroutines.launch
@@ -115,6 +115,18 @@ class ViewBuilder {
                                 onClick = { onListEdit(it.action) }
                             )
                         }
+                        MENU_TYPE_BOWS -> MenuLists.bowsMenuList.forEach {
+                            DropdownMenuItem(
+                                text = { Text(ctx.getString(it.text)) },
+                                onClick = { onListEdit(it.action) }
+                            )
+                        }
+                        MENU_TYPE_SHIELDS -> MenuLists.shieldsMenuList.forEach {
+                            DropdownMenuItem(
+                                text = { Text(ctx.getString(it.text)) },
+                                onClick = { onListEdit(it.action) }
+                            )
+                        }
                     }
 
                 }
@@ -162,7 +174,7 @@ class ViewBuilder {
                         .padding(1.dp)
                 ) {
                     Text(
-                        text = "Damage: ${wpn.shown_attack} \nDurability: ${wpn.durability} \nSub Type: ${wpn.sub_type}",
+                        text = "Damage: ${wpn.shown_attack} \nDurability: ${wpn.durability}",
                         modifier = Modifier.padding(all = 4.dp),
                         maxLines = if(isExpanded) Int.MAX_VALUE else 1,
                         style = MaterialTheme.typography.bodyMedium
@@ -214,6 +226,58 @@ class ViewBuilder {
                     color = MaterialTheme.colorScheme.secondary,
                     style = MaterialTheme.typography.titleSmall,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
+                Surface(
+                    shape = MaterialTheme.shapes.medium,
+                    shadowElevation = 1.dp,
+                    color = surfaceColor,
+                    modifier = Modifier
+                        .animateContentSize()
+                        .padding(1.dp)
+                ) {
+                    Text(
+                        text = text,
+                        modifier = Modifier.padding(all = 4.dp),
+                        maxLines = if(isExpanded) Int.MAX_VALUE else 1,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun BowCard(bow: Bow, onClick: (Bow) -> Unit) {
+        var text = "Damage: ${bow.base_attack} \nDurability: ${bow.durability}"
+
+        Column(modifier = Modifier.padding(all = 8.dp)) {
+            Image(
+                painter = painterResource(id = bow.image),
+                contentDescription = bow.name,
+                modifier = Modifier
+                    .size(100.dp)
+                    .clickable {
+                        onClick(bow)
+                    }
+            )
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            var isExpanded by remember { mutableStateOf(false) }
+            val surfaceColor by animateColorAsState(
+                if(isExpanded) MaterialTheme.colorScheme.primary
+                else MaterialTheme.colorScheme.surface
+            )
+
+            Column (modifier = Modifier
+                .clickable { isExpanded = !isExpanded }
+                .align(Alignment.CenterHorizontally)){
+                Text(
+                    text = bow.name,
+                    color = MaterialTheme.colorScheme.secondary,
+                    style = MaterialTheme.typography.titleSmall
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))
@@ -365,13 +429,82 @@ class ViewBuilder {
     }
 
     @Composable
+    fun BowList(
+        bows: List<Bow>?,
+        openDrawer: () -> Unit,
+        onQuery: (String) -> List<Bow>?,
+        onMenuItemSelected: (Int) -> List<Bow>?
+    ) {
+        val displayedBows = remember { mutableStateListOf<Bow>() }
+
+        val selectedBow = remember { mutableStateOf(SampleData.bows[1]) }
+        val open = remember { mutableStateOf(false) }
+        val currentQuery = remember { mutableStateOf("") }
+
+        if(open.value) {
+            Dialog(
+                onDismissRequest = { open.value = false },
+                content = { BowDetails(selectedBow.value) }
+            )
+        }
+
+        if(bows != null) {
+            if(displayedBows.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                displayedBows.clear()
+                bows.map {
+                    displayedBows.add(it)
+                }
+            }
+            Row(modifier = Modifier.padding(all = 8.dp)) {
+                Scaffold(
+                    topBar = {
+                        TopBar(
+                            onQuerySearch = {
+                                currentQuery.value = it
+                                displayedBows.clear()
+                                onQuery(it)?.map { material ->
+                                    displayedBows.add(material)
+                                }
+                            },
+                            onListEdit = {
+                                displayedBows.clear()
+                                onMenuItemSelected(it)?.map{ bow ->
+                                    displayedBows.add(bow)
+                                }
+                            },
+                            onOpenDrawer = { openDrawer() },
+                            menuType = MENU_TYPE_BOWS
+                        )
+                    }
+                ) { contentPadding ->
+                    LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                        modifier = Modifier.padding(contentPadding),
+                        content = {
+                            items(displayedBows.size) { index ->
+                                BowCard(bow = displayedBows[index], onClick = { selectedBow.value = it
+                                    open.value = true})
+                            }
+                        })
+
+                }
+            }
+        }
+    }
+
+    @Composable
     fun CreateDrawer(
         weapons: List<Weapon>?,
         materials: List<Material>?,
+        bows: List<Bow>?,
+        shields: List<Unit>?,
         onQueryWeapon: (String) -> List<Weapon>?,
         onWeaponMenuItemSelected: (Int) -> List<Weapon>?,
         onQueryMaterial: (String) -> List<Material>?,
-        onMaterialMenuItemSelected: (Int) -> List<Material>?
+        onMaterialMenuItemSelected: (Int) -> List<Material>?,
+        onQueryBow: (String) -> List<Bow>?,
+        onBowMenuItemSelected: (Int) -> List<Bow>?,
+        onQueryShield: (String) -> Unit?,
+        onShieldMenuItemSelected: (Int) -> Unit?
     ) {
         val drawerState = rememberDrawerState(DrawerValue.Open)
         val scope = rememberCoroutineScope()
@@ -440,7 +573,12 @@ class ViewBuilder {
                         onQuery = { onQueryWeapon(it) },
                         onWeaponMenuItemSelected = onWeaponMenuItemSelected
                     )
-                    items[1].name -> Text("TBD")
+                    items[1].name -> BowList(
+                        bows = bows,
+                        openDrawer = { scope.launch { drawerState.open() }},
+                        onQuery = { onQueryBow(it) },
+                        onMenuItemSelected = onBowMenuItemSelected
+                    )
                     items[2].name -> Text("TBD")
                     items[3].name -> MaterialList(
                         materials = materials,
@@ -621,6 +759,84 @@ class ViewBuilder {
                 }
                 if(material.sub_type.isNotEmpty()) {
                     DetailRow(name = "Sub Type:", value = material.sub_type)
+                }
+
+            }
+        }
+    }
+
+    @Composable
+    fun BowDetails(bow: Bow) {
+        Surface(
+            Modifier
+                .requiredWidth(IntrinsicSize.Min)
+                .requiredHeight(IntrinsicSize.Min)
+                .clip(RoundedCornerShape(20.dp))) {
+            Column(modifier = Modifier.padding(all = 8.dp)) {
+                Image(
+                    painter = painterResource(id = bow.image),
+                    contentDescription = bow.name,
+                    modifier = Modifier
+                        .size(100.dp)
+                        .align(Alignment.CenterHorizontally)
+                )
+
+                TitleRow(bow.name)
+                SubtitleRow(name = "Compendium no. ${bow.compendium_no}")
+
+                Spacer(Modifier.padding(all = 8.dp))
+
+                DetailRow(
+                    name = "Damage: ",
+                    value = bow.base_attack.toString()
+                )
+
+                DetailRow(
+                    name = "Durability: ",
+                    value = bow.durability.toString()
+                )
+
+                DetailRow(
+                    name = "Range: ",
+                    value = bow.range.toString()
+                )
+
+                DetailRow(
+                    name = "Drawing Time: ",
+                    value = bow.drawing_time.toString()
+                )
+
+                DetailRow(
+                    name = "Reload Time: ",
+                    value = bow.reload_time.toString()
+                )
+
+                if(bow.additional_damage != null && bow.additional_damage != 0) {
+                    DetailRow(
+                        name = "Additional Damage: ",
+                        value = bow.additional_damage.toString()
+                    )
+                }
+
+                if(bow.sub_type.isNotEmpty()) {
+                    DetailRow(
+                        name = "Sub Type: ",
+                        value = bow.sub_type
+                    )
+                }
+
+                if(bow.sub_type2.isNotEmpty()) {
+                    DetailRow(
+                        name = "Sub Type 2: ",
+                        value = bow.sub_type2
+                    )
+                }
+
+                if(bow.other.isNotEmpty()) {
+                    DetailRow(
+                        name = "Other Type: ",
+                        value = bow.other
+                    )
                 }
 
             }
