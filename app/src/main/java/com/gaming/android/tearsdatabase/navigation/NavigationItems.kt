@@ -22,7 +22,7 @@ class NavigationItems {
                     R.drawable.travelers_bow, "Bows"
                 ),
                 NavigationItem(
-                    R.drawable.wooden_stick, "Shields"
+                    R.drawable.pot_lid, "Shields"
                 ),
                 NavigationItem(
                     R.drawable.apple, "Materials"
