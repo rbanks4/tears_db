@@ -1,6 +1,7 @@
 package com.gaming.android.tearsdatabase.data
 
 import com.gaming.android.tearsdatabase.R
+import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
 import com.gaming.android.tearsdatabase.models.Weapon
 
@@ -39,5 +40,26 @@ object SampleData {
         Material("Sunset Firefly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
             .setDrawable(R.drawable.sunset_firefly)
 
+    )
+
+    val bows = listOf(
+        Bow("Traveler's Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+            .setDrawable(R.drawable.travelers_bow),
+        Bow("Soldier's Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+            .setDrawable(R.drawable.soldiers_bow),
+        Bow("Spiked Boko Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+            .setDrawable(R.drawable.spiked_boko_bow),
+        Bow("Boko Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+            .setDrawable(R.drawable.boko_bow),
+        Bow("Lizal Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+            .setDrawable(R.drawable.lizal_bow),
+        Bow("Lynel Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+            .setDrawable(R.drawable.lynel_bow),
+        Bow("Strengtheneed Lizal Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+            .setDrawable(R.drawable.strengthened_lizal_bow),
+        Bow("Forest Dweller's Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+            .setDrawable(R.drawable.forest_dwellers_bow),
+        Bow("Zora Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+            .setDrawable(R.drawable.zora_bow)
     )
 }

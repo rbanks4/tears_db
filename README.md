@@ -24,9 +24,13 @@ Task List:
 - [x] navigation panel
 - [x] add materials listings
 - [x] add materials images
-- [ ] add bow and sheild listings
-- [ ] add bow images
+- [x] add materials view
+- [x] add bow listings
+- [x] add bow images
+- [x] add bow view
+- [ ] add sheild listings
 - [ ] add sheild images
+- [ ] add sheild view
 - [ ] modify search for each category
 - [ ] add recipes
 - [ ] add armor and effects

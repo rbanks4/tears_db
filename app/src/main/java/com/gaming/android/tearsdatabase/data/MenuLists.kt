@@ -54,5 +54,35 @@ class MenuLists {
                 action = SORT_BUYING_INC
             )
         )
+
+        val bowsMenuList = listOf(
+            MenuItem(
+                text = R.string.sort_dmg_high_low,
+                action = SORT_DAMAGE_DEC
+            ),
+            MenuItem(
+                text = R.string.sort_dmg_low_high,
+                action = SORT_DAMAGE_INC
+            ),
+            MenuItem(
+                text = R.string.sort_dur_high_low,
+                action = SORT_DURABILITY_DEC
+            ),
+            MenuItem(
+                text = R.string.sort_dur_low_high,
+                action = SORT_DURABILITY_INC
+            )
+        )
+
+        val shieldsMenuList = listOf(
+            MenuItem(
+                text = R.string.sort_dur_high_low,
+                action = SORT_DURABILITY_DEC
+            ),
+            MenuItem(
+                text = R.string.sort_dur_low_high,
+                action = SORT_DURABILITY_INC
+            )
+        )
     }
 }
