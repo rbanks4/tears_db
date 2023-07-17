@@ -1,23 +1,18 @@
 package com.gaming.android.tearsdatabase
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
-import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.theme.TearsTheme
-import com.gaming.android.tearsdatabase.ui.ViewBuilder
+import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
 
 private const val TAG = "MainActivity"
 const val SORT_DAMAGE_INC = 1
@@ -36,8 +31,6 @@ const val MENU_TYPE_SHIELDS = 3
 const val MENU_TYPE_MATERIALS = 4
 class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private lateinit var bind: ActivityMainBinding
-    private val viewBuilder: ViewBuilder = ViewBuilder()
-
 
     private val weaponsViewModel: WeaponsViewModel by viewModels()
     private val materialViewModel: MaterialsViewModel by viewModels()
@@ -105,7 +98,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private fun buildRecyclerView(){
         setContent {
             TearsTheme {
-                viewBuilder.CreateDrawer(
+                CreateDrawer(
                     weapons = weaponsViewModel.searchList?:weaponsViewModel.weapons,
                     materials = materialViewModel.searchList?:materialViewModel.materials,
                     bows = bowViewModel.searchList?:bowViewModel.bows,
@@ -300,85 +293,6 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
             bowViewModel.searchList
         } else {
             bowViewModel.bows
-        }
-    }
-
-    @Preview(name = "Light Mode")
-    @Preview(
-        uiMode = Configuration.UI_MODE_NIGHT_YES,
-        showBackground = true,
-        name = "Dark Mode"
-    )
-    @Composable
-    fun PreviewWeaponCard() {
-        TearsTheme {
-            Surface {
-                viewBuilder.WeaponCard(
-                    wpn= SampleData.weapons[1],
-                    onClick = {}
-                )
-            }
-        }
-    }
-
-    @Preview(name = "Light Mode")
-    @Preview(
-        uiMode = Configuration.UI_MODE_NIGHT_YES,
-        showBackground = true,
-        name = "Dark Mode"
-    )
-    @Composable
-    fun PreviewMaterialCard() {
-        TearsTheme {
-            Surface {
-                viewBuilder.MaterialCard(
-                    mat= SampleData.materials[1],
-                    onClick = {}
-                )
-            }
-        }
-    }
-
-    @Preview
-    @Preview(
-        uiMode = Configuration.UI_MODE_NIGHT_YES,
-        showBackground = true,
-        name = "Dark Mode"
-    )
-    @Composable
-    fun PreviewTopBar() {
-        TearsTheme {
-            viewBuilder.TopBar(onQuerySearch = {}, onListEdit = {}, onOpenDrawer = {}, menuType = MENU_TYPE_WEAPONS)
-        }
-    }
-
-    @Preview
-    @Composable
-    fun WeaponList() {
-        TearsTheme {
-            viewBuilder.WeaponList(weapons = SampleData.weapons, openDrawer = {}, onWeaponClick = {}, onQuery = { SampleData.weapons }, onWeaponMenuItemSelected = { SampleData. weapons })
-        }
-    }
-
-    @Preview
-    @Composable
-    fun MaterialList() {
-        TearsTheme {
-            viewBuilder.MaterialList(materials = SampleData.materials, openDrawer = {}, onMaterialClick = {}, onQuery = { SampleData.materials }, onMenuItemSelected = { SampleData. materials })
-        }
-    }
-
-    @Preview(name = "Light Mode")
-    @Preview(
-        uiMode = Configuration.UI_MODE_NIGHT_YES,
-        showBackground = true,
-        name = "Dark Mode"
-    )
-
-    @Composable
-    fun DetailsView() {
-        TearsTheme {
-            viewBuilder.WeaponDetails(weapon = SampleData.weapons[1])
         }
     }
 }
