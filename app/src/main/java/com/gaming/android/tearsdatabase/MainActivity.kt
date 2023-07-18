@@ -10,6 +10,7 @@ import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
+import com.gaming.android.tearsdatabase.models.Shield
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private val weaponsViewModel: WeaponsViewModel by viewModels()
     private val materialViewModel: MaterialsViewModel by viewModels()
     private val bowViewModel: BowsViewModel by viewModels()
+    private val shieldViewModel: ShieldsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +59,11 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
 
             Endpoints.fetchBows(
                 updateBows = { setBows(it) },
+                buildView = { buildRecyclerView() }
+            )
+
+            Endpoints.fetchShields(
+                updateShields = { setShields(it) },
                 buildView = { buildRecyclerView() }
             )
         }
@@ -95,6 +102,15 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         bowViewModel.searchList = bowViewModel.bows
     }
 
+    fun setShields(shields: List<Shield>) {
+        val newList = mutableListOf<Shield>()
+        shields.map {
+            newList.add(it.setDrawable(this))
+        }
+        shieldViewModel.shields = newList.toSet().toList()
+        shieldViewModel.searchList = shieldViewModel.shields
+    }
+
     private fun buildRecyclerView(){
         setContent {
             TearsTheme {
@@ -102,15 +118,15 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     weapons = weaponsViewModel.searchList?:weaponsViewModel.weapons,
                     materials = materialViewModel.searchList?:materialViewModel.materials,
                     bows = bowViewModel.searchList?:bowViewModel.bows,
-                    shields = listOf(),
+                    shields = shieldViewModel.searchList?:shieldViewModel.shields,
                     onQueryWeapon = { queryWeaponSearch(it) },
                     onWeaponMenuItemSelected = { onWeaponMenuItemSelected(it) },
                     onQueryMaterial = { queryMaterialSearch(it) },
                     onMaterialMenuItemSelected = { onMaterialMenuItemSelected(it) },
                     onQueryBow = { queryBowSearch(it) },
                     onBowMenuItemSelected = { onBowMenuItemSelected(it) },
-                    onQueryShield = {},
-                    onShieldMenuItemSelected = {}
+                    onQueryShield = { queryShieldSearch(it) },
+                    onShieldMenuItemSelected = { onShieldMenuItemSelected(it) }
                 )
             }
         }
@@ -207,6 +223,33 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         return bowViewModel.searchList
     }
 
+    fun queryShieldSearch(query: String): List<Shield>? {
+        Log.d(TAG, "QueryTextSubmit: $query")
+        val regex = if(query.isNullOrBlank()) "." else query
+        shieldViewModel.searchString = regex
+
+        shieldViewModel.shields.let {list ->
+            val nameList = list!!.filter {
+                it.name.lowercase().matches(".*$regex.*".toRegex())
+            }
+            val subList = list!!.filter {
+                if (it.sub_type.isNotEmpty())
+                    it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                else false
+            }
+            val subList2 = list!!.filter {
+                if (it.sub_type2.isNotEmpty())
+                    it.sub_type2.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                else false
+            }
+            val finalList = nameList + subList + subList2
+
+            shieldViewModel.searchList = finalList.toSet().toList()
+        }
+
+        return shieldViewModel.searchList
+    }
+
     private fun onWeaponMenuItemSelected(choice: Int): List<Weapon>? {
         var listUpdate: List<Weapon>? = null
         val list =
@@ -293,6 +336,31 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
             bowViewModel.searchList
         } else {
             bowViewModel.bows
+        }
+    }
+
+    private fun onShieldMenuItemSelected(choice: Int): List<Shield>? {
+        var listUpdate: List<Shield>? = null
+        val list =
+            if(!shieldViewModel.searchList.isNullOrEmpty())
+                shieldViewModel.searchList
+            else shieldViewModel.shields
+
+        when (choice) {
+            SORT_DAMAGE_DEC ->
+                listUpdate = list?.sortedByDescending { it.additional_damage }
+            SORT_DAMAGE_INC ->
+                listUpdate = list?.sortedBy { it.additional_damage }
+            SORT_DURABILITY_DEC ->
+                listUpdate = list?.sortedByDescending { it.durability }
+            SORT_DURABILITY_INC ->
+                listUpdate = list?.sortedBy { it.durability }
+        }
+        return if (!listUpdate.isNullOrEmpty()) {
+            shieldViewModel.searchList = listUpdate
+            shieldViewModel.searchList
+        } else {
+            shieldViewModel.shields
         }
     }
 }
