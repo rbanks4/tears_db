@@ -7,6 +7,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
+import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryBowSearch
+import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMaterialSearch
+import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryShieldSearch
+import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryWeaponSearch
+import com.gaming.android.tearsdatabase.data.SortData.Companion.onWeaponMenuItemSelected
+import com.gaming.android.tearsdatabase.data.SortData.Companion.onMaterialMenuItemSelected
+import com.gaming.android.tearsdatabase.data.SortData.Companion.onBowMenuItemSelected
+import com.gaming.android.tearsdatabase.data.SortData.Companion.onShieldMenuItemSelected
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Material
@@ -111,6 +119,22 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         shieldViewModel.searchList = shieldViewModel.shields
     }
 
+    fun updateWeapons(wpns: List<Weapon>) {
+        weaponsViewModel.searchList = wpns
+    }
+
+    fun updateMaterials(mats: List<Material>) {
+        materialViewModel.searchList = mats
+    }
+
+    fun updateBows(bows: List<Bow>) {
+        bowViewModel.searchList = bows
+    }
+
+    fun updateShields(shds: List<Shield>) {
+        shieldViewModel.searchList = shds
+    }
+
     private fun buildRecyclerView(){
         setContent {
             TearsTheme {
@@ -119,248 +143,48 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     materials = materialViewModel.searchList?:materialViewModel.materials,
                     bows = bowViewModel.searchList?:bowViewModel.bows,
                     shields = shieldViewModel.searchList?:shieldViewModel.shields,
-                    onQueryWeapon = { queryWeaponSearch(it) },
-                    onWeaponMenuItemSelected = { onWeaponMenuItemSelected(it) },
-                    onQueryMaterial = { queryMaterialSearch(it) },
-                    onMaterialMenuItemSelected = { onMaterialMenuItemSelected(it) },
-                    onQueryBow = { queryBowSearch(it) },
-                    onBowMenuItemSelected = { onBowMenuItemSelected(it) },
-                    onQueryShield = { queryShieldSearch(it) },
-                    onShieldMenuItemSelected = { onShieldMenuItemSelected(it) }
+                    onQueryWeapon = {
+                        queryWeaponSearch(it, weaponsViewModel) { list ->
+                            updateWeapons(list)
+                        }
+                    },
+                    onWeaponMenuItemSelected = {
+                        onWeaponMenuItemSelected(it, weaponsViewModel) { list ->
+                            updateWeapons(list)
+                        }
+                    },
+                    onQueryMaterial = {
+                        queryMaterialSearch(it, materialViewModel) { list ->
+                            updateMaterials(list)
+                        }
+                    },
+                    onMaterialMenuItemSelected = {
+                        onMaterialMenuItemSelected(it, materialViewModel) { list ->
+                            updateMaterials(list)
+                        }
+                    },
+                    onQueryBow = {
+                        queryBowSearch(it, bowViewModel) { list ->
+                            updateBows(list)
+                        }
+                    },
+                    onBowMenuItemSelected = {
+                        onBowMenuItemSelected(it, bowViewModel) { list ->
+                            updateBows(list)
+                        }
+                    },
+                    onQueryShield = {
+                        queryShieldSearch(it, shieldViewModel) { list ->
+                            updateShields(list)
+                        }
+                    },
+                    onShieldMenuItemSelected = {
+                        onShieldMenuItemSelected(it, shieldViewModel) { list ->
+                            updateShields(list)
+                        }
+                    }
                 )
             }
-        }
-    }
-
-    fun queryWeaponSearch(query: String): List<Weapon>? {
-        Log.d(TAG, "QueryTextSubmit: $query")
-        val regex = if(query.isNullOrBlank()) "." else query
-        weaponsViewModel.searchString = regex
-
-        weaponsViewModel.weapons.let {list ->
-            val nameList = list!!.filter {
-                it.name.lowercase().matches(".*$regex.*".toRegex())
-            }
-            val subList = list!!.filter {
-                if (it.sub_type.isNotEmpty())
-                    it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            val subList2 = list!!.filter {
-                if (it.sub_type2.isNotEmpty())
-                    it.sub_type2.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            val finalList = nameList + subList + subList2
-
-            weaponsViewModel.searchList = finalList.toSet().toList()
-        }
-
-        return weaponsViewModel.searchList
-    }
-
-    fun queryMaterialSearch(query: String): List<Material>? {
-        Log.d(TAG, "QueryTextSubmit: $query")
-        val regex = if(query.isNullOrBlank()) "." else query
-        materialViewModel.searchString = regex
-
-        materialViewModel.materials.let {list ->
-            val nameList = list!!.filter {
-                it.name.lowercase().matches(".*$regex.*".toRegex())
-            }
-            val subList = list!!.filter {
-                if (it.sub_type.isNotEmpty())
-                    it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            val effects = list!!.filter {
-                if (it.effect_type.isNotEmpty())
-                    it.effect_type.lowercase().matches(".*$regex.*".toRegex())
-                else false
-            }
-            val color = list!!.filter {
-                if (it.dye_color.isNotEmpty())
-                    it.dye_color.lowercase().matches(".*$regex.*".toRegex())
-                else false
-            }
-            val finalList = nameList + subList + effects + color
-
-            materialViewModel.searchList = finalList.toSet().toList()
-        }
-
-        return materialViewModel.searchList
-    }
-
-    fun queryBowSearch(query: String): List<Bow>? {
-        Log.d(TAG, "QueryTextSubmit: $query")
-        val regex = if(query.isNullOrBlank()) "." else query
-        bowViewModel.searchString = regex
-
-        bowViewModel.bows.let {list ->
-            val nameList = list!!.filter {
-                it.name.lowercase().matches(".*$regex.*".toRegex())
-            }
-            val subList = list!!.filter {
-                if (it.sub_type.isNotEmpty())
-                    it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            val subList2 = list!!.filter {
-                if (it.sub_type2.isNotEmpty())
-                    it.sub_type2.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            val other = list!!.filter {
-                if (it.other.isNotEmpty())
-                    it.other.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            val finalList = nameList + subList + subList2 + other
-
-            bowViewModel.searchList = finalList.toSet().toList()
-        }
-
-        return bowViewModel.searchList
-    }
-
-    fun queryShieldSearch(query: String): List<Shield>? {
-        Log.d(TAG, "QueryTextSubmit: $query")
-        val regex = if(query.isNullOrBlank()) "." else query
-        shieldViewModel.searchString = regex
-
-        shieldViewModel.shields.let {list ->
-            val nameList = list!!.filter {
-                it.name.lowercase().matches(".*$regex.*".toRegex())
-            }
-            val subList = list!!.filter {
-                if (it.sub_type.isNotEmpty())
-                    it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            val subList2 = list!!.filter {
-                if (it.sub_type2.isNotEmpty())
-                    it.sub_type2.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            val finalList = nameList + subList + subList2
-
-            shieldViewModel.searchList = finalList.toSet().toList()
-        }
-
-        return shieldViewModel.searchList
-    }
-
-    private fun onWeaponMenuItemSelected(choice: Int): List<Weapon>? {
-        var listUpdate: List<Weapon>? = null
-        val list =
-            if(!weaponsViewModel.searchList.isNullOrEmpty())
-                weaponsViewModel.searchList
-            else weaponsViewModel.weapons
-
-        when (choice) {
-            SORT_DAMAGE_DEC ->
-                listUpdate = list?.sortedByDescending { it.shown_attack }
-            SORT_DAMAGE_INC ->
-                listUpdate = list?.sortedBy { it.shown_attack }
-            SORT_DURABILITY_DEC ->
-                listUpdate = list?.sortedByDescending { it.durability }
-            SORT_DURABILITY_INC ->
-                listUpdate = list?.sortedBy { it.durability }
-        }
-        return if (!listUpdate.isNullOrEmpty()) {
-            weaponsViewModel.searchList = listUpdate
-            weaponsViewModel.searchList
-        } else {
-            weaponsViewModel.weapons
-        }
-    }
-
-    private fun onMaterialMenuItemSelected(choice: Int): List<Material>? {
-        var listUpdate: List<Material>? = null
-        val list =
-            if(!materialViewModel.searchList.isNullOrEmpty())
-                materialViewModel.searchList
-            else materialViewModel.materials
-
-        when (choice) {
-            SORT_HP_DEC ->
-                listUpdate = list?.sortedByDescending { it.hp_recover }
-                    ?.filter{ it.hp_recover != 0 && it.hp_recover != null }
-            SORT_DAMAGE_INC ->
-                listUpdate = list?.sortedBy { it.additional_damage }
-                    ?.filter{ it.additional_damage != -1 }
-            SORT_DAMAGE_DEC ->
-                listUpdate = list?.sortedByDescending { it.additional_damage }
-                    ?.filter{ it.additional_damage != -1 }
-            SORT_SELLING_DEC ->
-                listUpdate = list?.sortedByDescending { it.selling_price }
-                    ?.filter{ it.selling_price != null }
-            SORT_SELLING_INC ->
-                listUpdate = list?.sortedBy { it.selling_price }
-                    ?.filter{ it.selling_price != null }
-            SORT_BUYING_DEC ->
-                listUpdate = list?.sortedByDescending { it.buying_price }
-                    ?.filter{ it.buying_price != null }
-            SORT_BUYING_INC ->
-                listUpdate = list?.sortedBy { it.buying_price }
-                    ?.filter{ it.buying_price != null }
-
-        }
-        return if (!listUpdate.isNullOrEmpty()) {
-            materialViewModel.searchList = listUpdate
-            materialViewModel.searchList
-        } else {
-            materialViewModel.materials
-        }
-    }
-
-    private fun onBowMenuItemSelected(choice: Int): List<Bow>? {
-        var listUpdate: List<Bow>? = null
-        val list =
-            if(!bowViewModel.searchList.isNullOrEmpty())
-                bowViewModel.searchList
-            else bowViewModel.bows
-
-        when (choice) {
-            SORT_DAMAGE_DEC ->
-                listUpdate = list?.sortedByDescending { it.base_attack }
-            SORT_DAMAGE_INC ->
-                listUpdate = list?.sortedBy { it.base_attack }
-            SORT_DURABILITY_DEC ->
-                listUpdate = list?.sortedByDescending { it.durability }
-            SORT_DURABILITY_INC ->
-                listUpdate = list?.sortedBy { it.durability }
-        }
-        return if (!listUpdate.isNullOrEmpty()) {
-            bowViewModel.searchList = listUpdate
-            bowViewModel.searchList
-        } else {
-            bowViewModel.bows
-        }
-    }
-
-    private fun onShieldMenuItemSelected(choice: Int): List<Shield>? {
-        var listUpdate: List<Shield>? = null
-        val list =
-            if(!shieldViewModel.searchList.isNullOrEmpty())
-                shieldViewModel.searchList
-            else shieldViewModel.shields
-
-        when (choice) {
-            SORT_DAMAGE_DEC ->
-                listUpdate = list?.sortedByDescending { it.additional_damage }
-            SORT_DAMAGE_INC ->
-                listUpdate = list?.sortedBy { it.additional_damage }
-            SORT_DURABILITY_DEC ->
-                listUpdate = list?.sortedByDescending { it.durability }
-            SORT_DURABILITY_INC ->
-                listUpdate = list?.sortedBy { it.durability }
-        }
-        return if (!listUpdate.isNullOrEmpty()) {
-            shieldViewModel.searchList = listUpdate
-            shieldViewModel.searchList
-        } else {
-            shieldViewModel.shields
         }
     }
 }
