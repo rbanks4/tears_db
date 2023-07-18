@@ -26,8 +26,6 @@ class SortData {
                     listUpdate = list?.sortedBy { it.durability }
             }
             return if (!listUpdate.isNullOrEmpty()) {
-                //weaponsViewModel.searchList = listUpdate
-                //weaponsViewModel.searchList
                 updateList(listUpdate)
                 listUpdate
             } else {
@@ -90,6 +88,18 @@ class SortData {
                     listUpdate = list?.sortedByDescending { it.durability }
                 SORT_DURABILITY_INC ->
                     listUpdate = list?.sortedBy { it.durability }
+                SORT_DRAWING_TIME_DEC ->
+                    listUpdate = list?.sortedByDescending { it.drawing_time }
+                SORT_DRAWING_TIME_INC ->
+                    listUpdate = list?.sortedBy { it.drawing_time }
+                SORT_RELOAD_TIME_DEC ->
+                    listUpdate = list?.sortedByDescending { it.reload_time }
+                SORT_RELOAD_TIME_INC ->
+                    listUpdate = list?.sortedBy { it.reload_time }
+                SORT_RANGE_DEC ->
+                    listUpdate = list?.sortedByDescending { it.range }
+                SORT_RANGE_INC ->
+                    listUpdate = list?.sortedBy { it.range }
             }
             return if (!listUpdate.isNullOrEmpty()) {
                 updateList(listUpdate)
@@ -111,10 +121,10 @@ class SortData {
                     listUpdate = list?.sortedByDescending { it.additional_damage }
                 SORT_DAMAGE_INC ->
                     listUpdate = list?.sortedBy { it.additional_damage }
-                SORT_DURABILITY_DEC ->
-                    listUpdate = list?.sortedByDescending { it.durability }
-                SORT_DURABILITY_INC ->
-                    listUpdate = list?.sortedBy { it.durability }
+                SORT_SLIPPERINESS_DEC ->
+                    listUpdate = list?.sortedBy { it.shield_surfing_friction }
+                SORT_SLIPPERINESS_INC ->
+                    listUpdate = list?.sortedByDescending { it.shield_surfing_friction }
             }
             return if (!listUpdate.isNullOrEmpty()) {
                 updateList(listUpdate)
