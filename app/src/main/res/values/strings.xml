@@ -18,6 +18,14 @@
     <string name="sort_mat_sell_inc">Selling: Low to High</string>
     <string name="sort_mat_buy_dec">Buying: High to Low</string>
     <string name="sort_mat_buy_inc">Buying: Low to High</string>
+    <string name="sort_slp_high_low">Slipperiness: High to Low</string>
+    <string name="sort_slp_low_high">Slipperiness: Low to High</string>
+    <string name="sort_drw_high_low">Drawing: High to Low</string>
+    <string name="sort_drw_low_high">Drawing: Low to High</string>
+    <string name="sort_rld_high_low">Reload: High to Low</string>
+    <string name="sort_rld_low_high">Reload: Low to High</string>
+    <string name="sort_rng_high_low">Range: High to Low</string>
+    <string name="sort_rng_low_high">Range: Low to High</string>
 
 <!--    top bar details-->
     <string name="search_details">search for item(s)</string>

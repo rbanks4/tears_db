@@ -71,7 +71,31 @@ class MenuLists {
             MenuItem(
                 text = R.string.sort_dur_low_high,
                 action = SORT_DURABILITY_INC
-            )
+            ),
+            MenuItem(
+                text = R.string.sort_drw_high_low,
+                action = SORT_DRAWING_TIME_DEC
+            ),
+            MenuItem(
+                text = R.string.sort_drw_low_high,
+                action = SORT_DRAWING_TIME_INC
+            ),
+            MenuItem(
+                text = R.string.sort_rld_high_low,
+                action = SORT_RELOAD_TIME_DEC
+            ),
+            MenuItem(
+                text = R.string.sort_rld_low_high,
+                action = SORT_RELOAD_TIME_INC
+            ),
+            MenuItem(
+                text = R.string.sort_rng_high_low,
+                action = SORT_RANGE_DEC
+            ),
+            MenuItem(
+                text = R.string.sort_rng_low_high,
+                action = SORT_RANGE_INC
+            ),
         )
 
         val shieldsMenuList = listOf(
@@ -82,6 +106,14 @@ class MenuLists {
             MenuItem(
                 text = R.string.sort_dur_low_high,
                 action = SORT_DURABILITY_INC
+            ),
+            MenuItem(
+                text = R.string.sort_slp_high_low,
+                action = SORT_SLIPPERINESS_DEC
+            ),
+            MenuItem(
+                text = R.string.sort_slp_low_high,
+                action = SORT_SLIPPERINESS_INC
             )
         )
     }
