@@ -72,7 +72,6 @@ class SearchData {
 
                 currentList = finalList.toSet().toList()
                 updateSearchList(finalList.toSet().toList())
-                //materialViewModel.searchList = finalList.toSet().toList()
             }
 
             return currentList
@@ -107,7 +106,6 @@ class SearchData {
 
                 currentList = finalList.toSet().toList()
                 updateSearchList(finalList.toSet().toList())
-//                bowViewModel.searchList = finalList.toSet().toList()
             }
 
             return currentList
@@ -137,7 +135,6 @@ class SearchData {
 
                 currentList = finalList.toSet().toList()
                 updateSearchList(finalList.toSet().toList())
-//                shieldViewModel.searchList = finalList.toSet().toList()
             }
 
             return currentList
