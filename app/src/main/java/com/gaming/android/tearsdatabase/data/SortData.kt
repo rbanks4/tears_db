@@ -117,10 +117,10 @@ class SortData {
                 else shieldViewModel.shields
 
             when (choice) {
-                SORT_DAMAGE_DEC ->
-                    listUpdate = list?.sortedByDescending { it.additional_damage }
-                SORT_DAMAGE_INC ->
-                    listUpdate = list?.sortedBy { it.additional_damage }
+                SORT_DURABILITY_DEC ->
+                    listUpdate = list?.sortedByDescending { it.durability }
+                SORT_DURABILITY_INC ->
+                    listUpdate = list?.sortedBy { it.durability }
                 SORT_SLIPPERINESS_DEC ->
                     listUpdate = list?.sortedBy { it.shield_surfing_friction }
                 SORT_SLIPPERINESS_INC ->

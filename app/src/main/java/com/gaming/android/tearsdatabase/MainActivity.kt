@@ -152,44 +152,28 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     bows = bowViewModel.searchList?:bowViewModel.bows,
                     shields = shieldViewModel.searchList?:shieldViewModel.shields,
                     onQueryWeapon = {
-                        queryWeaponSearch(it, weaponsViewModel) { list ->
-                            updateWeapons(list)
-                        }
+                        queryWeaponSearch(it, weaponsViewModel, { updateWeapons(it) })
                     },
                     onWeaponMenuItemSelected = {
-                        onWeaponMenuItemSelected(it, weaponsViewModel) { list ->
-                            updateWeapons(list)
-                        }
+                        onWeaponMenuItemSelected(it, weaponsViewModel, { updateWeapons(it) })
                     },
                     onQueryMaterial = {
-                        queryMaterialSearch(it, materialViewModel) { list ->
-                            updateMaterials(list)
-                        }
+                        queryMaterialSearch(it, materialViewModel, { updateMaterials(it) })
                     },
                     onMaterialMenuItemSelected = {
-                        onMaterialMenuItemSelected(it, materialViewModel) { list ->
-                            updateMaterials(list)
-                        }
+                        onMaterialMenuItemSelected(it, materialViewModel, { updateMaterials(it) })
                     },
                     onQueryBow = {
-                        queryBowSearch(it, bowViewModel) { list ->
-                            updateBows(list)
-                        }
+                        queryBowSearch(it, bowViewModel, { updateBows(it) })
                     },
                     onBowMenuItemSelected = {
-                        onBowMenuItemSelected(it, bowViewModel) { list ->
-                            updateBows(list)
-                        }
+                        onBowMenuItemSelected(it, bowViewModel, { updateBows(it) })
                     },
                     onQueryShield = {
-                        queryShieldSearch(it, shieldViewModel) { list ->
-                            updateShields(list)
-                        }
+                        queryShieldSearch(it, shieldViewModel, { updateShields(it) })
                     },
                     onShieldMenuItemSelected = {
-                        onShieldMenuItemSelected(it, shieldViewModel) { list ->
-                            updateShields(list)
-                        }
+                        onShieldMenuItemSelected(it, shieldViewModel, { updateShields(it) })
                     }
                 )
             }
