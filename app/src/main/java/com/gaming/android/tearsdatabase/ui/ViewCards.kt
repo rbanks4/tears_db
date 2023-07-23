@@ -1,7 +1,6 @@
 package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
-import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
@@ -17,10 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gaming.android.tearsdatabase.data.SampleData
-import com.gaming.android.tearsdatabase.models.Bow
-import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.Shield
-import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 
 class ViewCards {
@@ -232,6 +228,102 @@ class ViewCards {
         }
 
         @Composable
+        fun RoastedFoodCard(item: RoastedFood, onClick: (RoastedFood) -> Unit) {
+            var text = "Recipe No: ${item.recipe_no}"
+
+            Column(modifier = Modifier.padding(all = 8.dp)) {
+                Image(
+                    painter = painterResource(id = item.image),
+                    contentDescription = item.name,
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clickable {
+                            onClick(item)
+                        }
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                var isExpanded by remember { mutableStateOf(false) }
+                val surfaceColor by animateColorAsState(
+                    if (isExpanded) MaterialTheme.colorScheme.primary
+                    else MaterialTheme.colorScheme.surface
+                )
+
+                Column(modifier = Modifier
+                    .clickable { isExpanded = !isExpanded }
+                    .align(Alignment.CenterHorizontally)) {
+                    itemTitle(item.name)
+
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Surface(
+                        shape = MaterialTheme.shapes.medium,
+                        shadowElevation = 1.dp,
+                        color = surfaceColor,
+                        modifier = Modifier
+                            .animateContentSize()
+                            .padding(1.dp)
+                    ) {
+                        Text(
+                            text = text,
+                            modifier = Modifier.padding(all = 4.dp),
+                            maxLines = if (isExpanded) Int.MAX_VALUE else 1,
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
+                }
+            }
+        }
+
+        @Composable
+        fun MealCard(item: Meal, onClick: (Meal) -> Unit) {
+            var text = "Recipe No: ${item.recipe_no}"
+
+            Column(modifier = Modifier.padding(all = 8.dp)) {
+                Image(
+                    painter = painterResource(id = item.image),
+                    contentDescription = item.name,
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clickable {
+                            onClick(item)
+                        }
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                var isExpanded by remember { mutableStateOf(false) }
+                val surfaceColor by animateColorAsState(
+                    if (isExpanded) MaterialTheme.colorScheme.primary
+                    else MaterialTheme.colorScheme.surface
+                )
+
+                Column(modifier = Modifier
+                    .clickable { isExpanded = !isExpanded }
+                    .align(Alignment.CenterHorizontally)) {
+                    itemTitle(item.name)
+
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Surface(
+                        shape = MaterialTheme.shapes.medium,
+                        shadowElevation = 1.dp,
+                        color = surfaceColor,
+                        modifier = Modifier
+                            .animateContentSize()
+                            .padding(1.dp)
+                    ) {
+                        Text(
+                            text = text,
+                            modifier = Modifier.padding(all = 4.dp),
+                            maxLines = if (isExpanded) Int.MAX_VALUE else 1,
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
+                }
+            }
+        }
+
+        @Composable
         fun itemTitle(title: String){
             Text(
                 text = title,
@@ -292,6 +384,32 @@ class ViewCards {
             Surface {
                 ShieldCard(
                     shield= SampleData.shields[1],
+                    onClick = {}
+                )
+            }
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewRoastedFoodCard() {
+        TearsTheme {
+            Surface {
+                RoastedFoodCard(
+                    item = SampleData.roastedFood[1],
+                    onClick = {}
+                )
+            }
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewMealCard() {
+        TearsTheme {
+            Surface {
+                MealCard(
+                    item = SampleData.meals[1],
                     onClick = {}
                 )
             }

@@ -14,23 +14,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.gaming.android.tearsdatabase.MENU_TYPE_BOWS
-import com.gaming.android.tearsdatabase.MENU_TYPE_MATERIALS
-import com.gaming.android.tearsdatabase.MENU_TYPE_SHIELDS
-import com.gaming.android.tearsdatabase.MENU_TYPE_WEAPONS
+import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.data.SampleData
-import com.gaming.android.tearsdatabase.models.Bow
-import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.Shield
-import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.BowCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.MaterialCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.WeaponCard
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.TopBar
+import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.MealCard
+import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.RoastedFoodCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.ShieldCard
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.BowDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.MaterialDetails
+import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.MealDetails
+import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.RoastedFoodDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.ShieldDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.WeaponDetails
 
@@ -295,6 +293,136 @@ class ViewLists {
                 }
             }
         }
+
+        @Composable
+        fun RoastedFoodList(
+            roastedFoods: List<RoastedFood>?,
+            openDrawer: () -> Unit,
+            onQuery: (String) -> List<RoastedFood>?,
+            onMenuItemSelected: (Int) -> List<RoastedFood>?
+        ) {
+            val displayed = remember { mutableStateListOf<RoastedFood>() }
+
+            val selected = remember { mutableStateOf(SampleData.roastedFood[1]) }
+            val open = remember { mutableStateOf(false) }
+            val currentQuery = remember { mutableStateOf("") }
+
+            if (open.value) {
+                Dialog(
+                    onDismissRequest = { open.value = false },
+                    content = { RoastedFoodDetails(selected.value) }
+                )
+            }
+
+            if (roastedFoods != null) {
+                if (displayed.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                    displayed.clear()
+                    roastedFoods.map {
+                        displayed.add(it)
+                    }
+                }
+                Row(modifier = Modifier.padding(all = 8.dp)) {
+                    Scaffold(
+                        topBar = {
+                            TopBar(
+                                onQuerySearch = {
+                                    currentQuery.value = it
+                                    displayed.clear()
+                                    onQuery(it)?.map { material ->
+                                        displayed.add(material)
+                                    }
+                                },
+                                onListEdit = {
+                                    displayed.clear()
+                                    onMenuItemSelected(it)?.map { shield ->
+                                        displayed.add(shield)
+                                    }
+                                },
+                                onOpenDrawer = { openDrawer() },
+                                menuType = MENU_TYPE_ROASTED_FOOD
+                            )
+                        }
+                    ) { contentPadding ->
+                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                            modifier = Modifier.padding(contentPadding),
+                            content = {
+                                items(displayed.size) { index ->
+                                    RoastedFoodCard(item = displayed[index], onClick = {
+                                        selected.value = it
+                                        open.value = true
+                                    })
+                                }
+                            })
+
+                    }
+                }
+            }
+        }
+
+        @Composable
+        fun MealList(
+            meals: List<Meal>?,
+            openDrawer: () -> Unit,
+            onQuery: (String) -> List<Meal>?,
+            onMenuItemSelected: (Int) -> List<Meal>?
+        ) {
+            val displayed = remember { mutableStateListOf<Meal>() }
+
+            val selected = remember { mutableStateOf(SampleData.meals[1]) }
+            val open = remember { mutableStateOf(false) }
+            val currentQuery = remember { mutableStateOf("") }
+
+            if (open.value) {
+                Dialog(
+                    onDismissRequest = { open.value = false },
+                    content = { MealDetails(selected.value) }
+                )
+            }
+
+            if (meals != null) {
+                if (displayed.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                    displayed.clear()
+                    meals.map {
+                        displayed.add(it)
+                    }
+                }
+                Row(modifier = Modifier.padding(all = 8.dp)) {
+                    Scaffold(
+                        topBar = {
+                            TopBar(
+                                onQuerySearch = {
+                                    currentQuery.value = it
+                                    displayed.clear()
+                                    onQuery(it)?.map { material ->
+                                        displayed.add(material)
+                                    }
+                                },
+                                onListEdit = {
+                                    displayed.clear()
+                                    onMenuItemSelected(it)?.map { shield ->
+                                        displayed.add(shield)
+                                    }
+                                },
+                                onOpenDrawer = { openDrawer() },
+                                menuType = MENU_TYPE_ROASTED_FOOD
+                            )
+                        }
+                    ) { contentPadding ->
+                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                            modifier = Modifier.padding(contentPadding),
+                            content = {
+                                items(displayed.size) { index ->
+                                    MealCard(item = displayed[index], onClick = {
+                                        selected.value = it
+                                        open.value = true
+                                    })
+                                }
+                            })
+
+                    }
+                }
+            }
+        }
     }
 
     @Preview(name = "Light Mode")
@@ -331,6 +459,22 @@ class ViewLists {
     fun PreviewShieldList() {
         TearsTheme {
             ShieldList(shields = SampleData.shields, openDrawer = {}, onQuery = { SampleData.shields }, onMenuItemSelected = { SampleData. shields })
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewRoastedFoodList() {
+        TearsTheme {
+            RoastedFoodList(roastedFoods = SampleData.roastedFood, openDrawer = {}, onQuery = { SampleData.roastedFood }, onMenuItemSelected = { SampleData. roastedFood })
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewMealList() {
+        TearsTheme {
+            MealList(meals = SampleData.meals, openDrawer = {}, onQuery = { SampleData.meals }, onMenuItemSelected = { SampleData. meals })
         }
     }
 }
