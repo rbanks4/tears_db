@@ -26,6 +26,7 @@
     <string name="sort_rld_low_high">Reload: Low to High</string>
     <string name="sort_rng_high_low">Range: High to Low</string>
     <string name="sort_rng_low_high">Range: Low to High</string>
+    <string name="sort_id_low_high">ID: Low to High</string>
 
 <!--    top bar details-->
     <string name="search_details">search for item(s)</string>

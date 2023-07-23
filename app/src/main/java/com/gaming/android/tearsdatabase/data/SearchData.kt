@@ -1,18 +1,13 @@
 package com.gaming.android.tearsdatabase.data
 
 import android.util.Log
-import com.gaming.android.tearsdatabase.BowsViewModel
-import com.gaming.android.tearsdatabase.MaterialsViewModel
-import com.gaming.android.tearsdatabase.ShieldsViewModel
-import com.gaming.android.tearsdatabase.WeaponsViewModel
-import com.gaming.android.tearsdatabase.models.Bow
-import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.Shield
-import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.*
+import com.gaming.android.tearsdatabase.models.*
 
 const val TAG = "SearchData"
 
 class SearchData {
+    //todo could use generics(?) to make this code simplified (i.e. fun <T> querySearch(..., list: (List<T>) -> Unit):List<T>
     companion object {
         fun queryWeaponSearch(query: String, weaponsViewModel: WeaponsViewModel, updateSearchList: (List<Weapon>) -> Unit): List<Weapon>? {
             Log.d(TAG, "QueryTextSubmit: $query")
@@ -132,6 +127,59 @@ class SearchData {
                     else false
                 }
                 val finalList = nameList + subList + subList2
+
+                currentList = finalList.toSet().toList()
+                updateSearchList(finalList.toSet().toList())
+            }
+
+            return currentList
+        }
+
+        fun queryRoastedFoodSearch(query: String, viewModel: RoastedFoodViewModel, updateSearchList: (List<RoastedFood>) -> Unit): List<RoastedFood>? {
+            Log.d(TAG, "QueryTextSubmit: $query")
+            val regex = if(query.isNullOrBlank()) "." else query
+            var currentList = listOf<RoastedFood>()
+            viewModel.searchString = regex
+
+            viewModel.roastedFood.let { list ->
+                val nameList = list!!.filter {
+                    it.name.lowercase().matches(".*$regex.*".toRegex())
+                }
+                val subList = list!!.filter {
+                    if (it.sub_type.isNotEmpty())
+                        it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                    else false
+                }
+                val subList2 = list!!.filter {
+                    if (it.effect_type.isNotEmpty())
+                        it.effect_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                    else false
+                }
+                val finalList = nameList + subList + subList2
+
+                currentList = finalList.toSet().toList()
+                updateSearchList(finalList.toSet().toList())
+            }
+
+            return currentList
+        }
+
+        fun queryMealSearch(query: String, viewModel: MealsViewModel, updateSearchList: (List<Meal>) -> Unit): List<Meal>? {
+            Log.d(TAG, "QueryTextSubmit: $query")
+            val regex = if(query.isNullOrBlank()) "." else query
+            var currentList = listOf<Meal>()
+            viewModel.searchString = regex
+
+            viewModel.meals.let { list ->
+                val nameList = list!!.filter {
+                    it.name.lowercase().matches(".*$regex.*".toRegex())
+                }
+                val subList = list!!.filter {
+                    if (it.recipe.isNotEmpty())
+                        it.recipe.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                    else false
+                }
+                val finalList = nameList + subList
 
                 currentList = finalList.toSet().toList()
                 updateSearchList(finalList.toSet().toList())
