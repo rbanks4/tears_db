@@ -32,5 +32,10 @@ class DataSource {
                 .replace("è", "e")
                 .lowercase()
         }
+
+        fun recipeFormat(recipe: String): String {
+            return recipe.replace(" or", " or\n")
+                .replace(" and", " and\n")
+        }
     }
 }

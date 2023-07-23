@@ -148,7 +148,7 @@ class SortData {
                 SORT_SELLING_DEC ->
                     listUpdate = list?.sortedByDescending { it.selling_price }
                 SORT_ID_INC ->
-                    listUpdate = list?.sortedByDescending { it.recipe_no }
+                    listUpdate = list?.sortedBy { it.recipe_no }
             }
             return if (!listUpdate.isNullOrEmpty()) {
                 updateList(listUpdate)
@@ -167,7 +167,7 @@ class SortData {
 
             when (choice) {
                 SORT_ID_INC ->
-                    listUpdate = list?.sortedByDescending { it.recipe_no }
+                    listUpdate = list?.sortedBy { it.recipe_no }
             }
             return if (!listUpdate.isNullOrEmpty()) {
                 updateList(listUpdate)

@@ -126,13 +126,13 @@ class ViewBuilder {
                                     onClick = { onListEdit(it.action) }
                                 )
                             }
-                            MENU_TYPE_ROASTED_FOOD -> MenuLists.shieldsMenuList.forEach {
+                            MENU_TYPE_ROASTED_FOOD -> MenuLists.roastedFoodMenuList.forEach {
                                 DropdownMenuItem(
                                     text = { Text(ctx.getString(it.text)) },
                                     onClick = { onListEdit(it.action) }
                                 )
                             }
-                            MENU_TYPE_MEALS -> MenuLists.shieldsMenuList.forEach {
+                            MENU_TYPE_MEALS -> MenuLists.mealsMenuList.forEach {
                                 DropdownMenuItem(
                                     text = { Text(ctx.getString(it.text)) },
                                     onClick = { onListEdit(it.action) }

@@ -14,6 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
@@ -373,7 +374,7 @@ class ViewDetails {
         fun MealDetails(item: Meal) {
             Surface(
                 Modifier
-                    .requiredWidth(IntrinsicSize.Min)
+                    .requiredWidth(300.dp)
                     .requiredHeight(IntrinsicSize.Min)
                     .clip(RoundedCornerShape(20.dp))
             ) {
@@ -393,7 +394,7 @@ class ViewDetails {
                     item.bonus_heart?.let { DetailRow("Bonus Heart:", it.toString()) }
                     item.bonus_level?.let { DetailRow("Bonus Level:", it.toString()) }
                     item.bonus_time?.let {DetailRow("Bonus Time:", it.toString()) }
-                    DetailRow("Recipe:", item.recipe)
+                    DetailRow("Recipe:", DataSource.recipeFormat(item.recipe))
 
                 }
             }

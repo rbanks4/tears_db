@@ -29,7 +29,7 @@
     <string name="sort_id_low_high">ID: Low to High</string>
 
 <!--    top bar details-->
-    <string name="search_details">search for item(s)</string>
+    <string name="search_details">search for item(s) (ex. \'knight.*sword\')</string>
     <string name="search_description">search</string>
     <string name="menu_box_icon_description">More</string>
 </resources>
