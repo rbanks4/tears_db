@@ -1,10 +1,7 @@
 package com.gaming.android.tearsdatabase.data
 
 import com.gaming.android.tearsdatabase.R
-import com.gaming.android.tearsdatabase.models.Bow
-import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.Shield
-import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.models.*
 
 object SampleData {
     val weapons = listOf(
@@ -83,5 +80,27 @@ object SampleData {
             .setDrawable(R.drawable.zonaite_shield),
         Shield("Zora Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
             .setDrawable(R.drawable.zora_shield)
+    )
+
+    val roastedFood = listOf(
+        RoastedFood("Item_Boiled_A_01", "Hard-Boiled Egg", 1, 3, 3, 3, "None", 3, 3, "Blunt", 3, "blue")
+            .setDrawable(R.drawable.hard_boiled_egg),
+        RoastedFood("Item_Boiled_A_01", "Hard-Boiled Egg", 1, 3, 3, 3, "None", 3, 3, "Blunt", 3, "blue")
+            .setDrawable(R.drawable.hard_boiled_egg),
+        RoastedFood("Item_Boiled_A_01", "Hard-Boiled Egg", 1, 3, 3, 3, "None", 3, 3, "Blunt", 3, "blue")
+            .setDrawable(R.drawable.hard_boiled_egg),
+        RoastedFood("Item_Boiled_A_01", "Hard-Boiled Egg", 1, 3, 3, 3, "None", 3, 3, "Blunt", 3, "blue")
+            .setDrawable(R.drawable.hard_boiled_egg)
+    )
+
+    val meals = listOf(
+        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, "CookMushroom and CookMushroom", 3, 3, 3)
+            .setDrawable(R.drawable.mushroom_skewer),
+        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, "CookMushroom and CookMushroom", 3, 3, 3)
+            .setDrawable(R.drawable.mushroom_skewer),
+        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, "CookMushroom and CookMushroom", 3, 3, 3)
+            .setDrawable(R.drawable.mushroom_skewer),
+        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, "CookMushroom and CookMushroom", 3, 3, 3)
+            .setDrawable(R.drawable.mushroom_skewer)
     )
 }
