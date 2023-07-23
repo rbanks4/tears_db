@@ -10,9 +10,9 @@ data class Meal(
     val name: String,
     val recipe_no: Int,
     val recipe: String,
-    val bonus_heart: Int,
-    val bonus_level: Int,
-    val bonus_time: Int
+    val bonus_heart: Int?,
+    val bonus_level: Int?,
+    val bonus_time: Int?
         ) {
     @DrawableRes
     var image: Int = R.drawable.mushroom_skewer

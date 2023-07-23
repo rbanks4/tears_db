@@ -28,6 +28,8 @@ class DataSource {
                 .replace(pattern, "_$0")
                 .replace(" ", "")
                 .replace("-", "_")
+                .replace("é", "e")
+                .replace("è", "e")
                 .lowercase()
         }
     }
