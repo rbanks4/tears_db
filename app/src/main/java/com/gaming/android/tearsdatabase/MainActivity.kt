@@ -41,6 +41,7 @@ const val SORT_RELOAD_TIME_DEC = 15
 const val SORT_RELOAD_TIME_INC = 16
 const val SORT_RANGE_DEC = 17
 const val SORT_RANGE_INC = 18
+const val SORT_ID_INC = 19
 
 const val MENU_TYPE_WEAPONS = 1
 const val MENU_TYPE_BOWS = 2

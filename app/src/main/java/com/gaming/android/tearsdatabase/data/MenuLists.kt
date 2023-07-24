@@ -116,5 +116,19 @@ class MenuLists {
                 action = SORT_SLIPPERINESS_INC
             )
         )
+
+        val roastedFoodMenuList = listOf(
+            MenuItem(
+                text = R.string.sort_id_low_high,
+                action = SORT_ID_INC
+            )
+        )
+
+        val mealsMenuList = listOf(
+            MenuItem(
+                text = R.string.sort_id_low_high,
+                action = SORT_ID_INC
+            )
+        )
     }
 }
