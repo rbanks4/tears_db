@@ -22,13 +22,13 @@ class NavigationItems {
                     R.drawable.travelers_bow, "Bows"
                 ),
                 NavigationItem(
-                    R.drawable.pot_lid, "Shields"
+                    R.drawable.hylian_shield, "Shields"
                 ),
                 NavigationItem(
                     R.drawable.apple, "Materials"
                 ),
                 NavigationItem(
-                    R.drawable.apple, "Roasted/Chilled Food"
+                    R.drawable.roasted_porgy, "Roasted/Chilled Food"
                 ),
                 NavigationItem(
                     R.drawable.mushroom_skewer, "Recipes"
