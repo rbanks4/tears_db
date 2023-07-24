@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
+import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryBowSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMaterialSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMealSearch
@@ -74,30 +75,36 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         if(weaponsViewModel.weapons.isNullOrEmpty()) {
             Endpoints.fetchWeapons(
                 updateWeapons = { weapons -> setWeapons(weapons) },
-                buildView = { buildRecyclerView() }
+                buildView = { buildRecyclerView() },
+                onFailure = { setWeapons(DataSource.weaponBackup(this)) }
             )
 
             Endpoints.fetchMaterials(
                 updateMaterials = { setMaterials(it) },
-                buildView = { buildRecyclerView() }
+                buildView = { buildRecyclerView() },
+                onFailure = { setMaterials(DataSource.materialsBackup(this)) }
             )
 
             Endpoints.fetchBows(
                 updateBows = { setBows(it) },
-                buildView = { buildRecyclerView() }
+                buildView = { buildRecyclerView() },
+                onFailure = { setBows(DataSource.bowsBackup(this)) }
             )
 
             Endpoints.fetchShields(
                 updateShields = { setShields(it) },
-                buildView = { buildRecyclerView() }
+                buildView = { buildRecyclerView() },
+                onFailure = { setShields(DataSource.shieldsBackup(this)) }
             )
             Endpoints.fetchRoastedFood(
                 update = { setRoastedFood(it) },
-                buildView = { buildRecyclerView() }
+                buildView = { buildRecyclerView() },
+                onFailure = { setRoastedFood(DataSource.roastedBackup(this)) }
             )
             Endpoints.fetchMeals(
                 update = { setMeals(it) },
-                buildView = { buildRecyclerView() }
+                buildView = { buildRecyclerView() },
+                onFailure = { setMeals(DataSource.recipeBackup(this)) }
             )
         }
     }
@@ -106,6 +113,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         super.onStart()
         buildRecyclerView()
         Log.d(TAG, "onStart() called")
+        DataSource.weaponBackup(this)
     }
 
     fun setNav(nav: String) {

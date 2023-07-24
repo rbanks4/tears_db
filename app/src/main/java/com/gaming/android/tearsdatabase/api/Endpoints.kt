@@ -15,7 +15,7 @@ const val ROASTED_FOOD = "roasted"
 const val MEALS = "meals"
 class Endpoints {
     companion object {
-        fun fetchWeapons(updateWeapons: (List<Weapon>) -> Unit, buildView: () -> Unit) {
+        fun fetchWeapons(updateWeapons: (List<Weapon>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit) {
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = WEAPONS)
             val call = apiService.getWeapons(dataRequest)
@@ -33,11 +33,9 @@ class Endpoints {
                             weapons?.let {
                                 updateWeapons(weapons)
                                 buildView()
-                                //todo have a backup
                                 Log.w(label,"response list size is ${weapons.size}")
                             }
                         }
-
                     } else {
                         Log.w(label,"response failed")
                         Log.w(label,response.code().toString())
@@ -47,11 +45,13 @@ class Endpoints {
 
                 override fun onFailure(call: Call<WeaponsResponse>, t: Throwable) {
                     Log.w(label,"failed call: " + t.message)
+                    onFailure()
+                    buildView()
                 }
             })
         }
 
-        fun fetchMaterials(updateMaterials: (List<Material>) -> Unit, buildView: () -> Unit){
+        fun fetchMaterials(updateMaterials: (List<Material>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = MATERIALS)
             val call = apiService.getMaterials(dataRequest)
@@ -79,12 +79,14 @@ class Endpoints {
 
                 override fun onFailure(call: Call<MaterialsResponse>, t: Throwable) {
                     Log.w(label,"failed call: " + t.message)
+                    onFailure()
+                    buildView()
                 }
 
             })
         }
 
-        fun fetchBows(updateBows: (List<Bow>) -> Unit, buildView: () -> Unit){
+        fun fetchBows(updateBows: (List<Bow>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = BOWS)
             val call = apiService.getBows(dataRequest)
@@ -112,12 +114,14 @@ class Endpoints {
 
                 override fun onFailure(call: Call<BowsResponse>, t: Throwable) {
                     Log.w(label, "failed call: " + t.message)
+                    onFailure()
+                    buildView()
                 }
 
             })
         }
 
-        fun fetchShields(updateShields: (List<Shield>) -> Unit, buildView: () -> Unit){
+        fun fetchShields(updateShields: (List<Shield>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = SHIELDS)
             val call = apiService.getShields(dataRequest)
@@ -145,12 +149,14 @@ class Endpoints {
 
                 override fun onFailure(call: Call<ShieldsResponse>, t: Throwable) {
                     Log.w(label, "failed call: " + t.message)
+                    onFailure()
+                    buildView()
                 }
 
             })
         }
 
-        fun fetchRoastedFood(update: (List<RoastedFood>) -> Unit, buildView: () -> Unit){
+        fun fetchRoastedFood(update: (List<RoastedFood>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = ROASTED_FOOD)
             val call = apiService.getRoastedFood(dataRequest)
@@ -179,12 +185,14 @@ class Endpoints {
 
                 override fun onFailure(call: Call<RoastedFoodResponse>, t: Throwable) {
                     Log.w(label, "failed call: " + t.message)
+                    onFailure()
+                    buildView()
                 }
 
             })
         }
 
-        fun fetchMeals(update: (List<Meal>) -> Unit, buildView: () -> Unit){
+        fun fetchMeals(update: (List<Meal>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = MEALS)
             val call = apiService.getMeals(dataRequest)
@@ -212,6 +220,8 @@ class Endpoints {
 
                 override fun onFailure(call: Call<MealsResponse>, t: Throwable) {
                     Log.w(label, "failed call: " + t.message)
+                    onFailure()
+                    buildView()
                 }
 
             })

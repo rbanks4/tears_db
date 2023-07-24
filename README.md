@@ -33,9 +33,10 @@ Task List:
 - [x] add sheild listings
 - [x] add sheild images
 - [x] add sheild view
-- [ ] modify search for each category
-- [ ] add recipes
-- [ ] add armor and effects
+- [x] modify search for each category
+- [x] add recipes
+- [ ] add armor 
+- [ ] add effects
 - [ ] add enemies
 - [ ] add zonai (easy)
 - [ ] add animations
