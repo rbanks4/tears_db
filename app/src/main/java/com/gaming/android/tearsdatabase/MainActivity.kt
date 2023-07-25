@@ -9,17 +9,18 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryBowSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMaterialSearch
+import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMealSearch
+import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryRoastedFoodSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryShieldSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryWeaponSearch
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onWeaponMenuItemSelected
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onMaterialMenuItemSelected
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onBowMenuItemSelected
+import com.gaming.android.tearsdatabase.data.SortData.Companion.onMealItemSelected
+import com.gaming.android.tearsdatabase.data.SortData.Companion.onRoastedFoodItemSelected
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onShieldMenuItemSelected
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
-import com.gaming.android.tearsdatabase.models.Bow
-import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.Shield
-import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
 
@@ -47,6 +48,8 @@ const val MENU_TYPE_WEAPONS = 1
 const val MENU_TYPE_BOWS = 2
 const val MENU_TYPE_SHIELDS = 3
 const val MENU_TYPE_MATERIALS = 4
+const val MENU_TYPE_ROASTED_FOOD = 5
+const val MENU_TYPE_MEALS = 6
 class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private lateinit var bind: ActivityMainBinding
 
@@ -54,6 +57,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private val materialViewModel: MaterialsViewModel by viewModels()
     private val bowViewModel: BowsViewModel by viewModels()
     private val shieldViewModel: ShieldsViewModel by viewModels()
+    private val roastedFoodViewModel: RoastedFoodViewModel by viewModels()
+    private val mealsViewModel: MealsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -144,6 +149,14 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         shieldViewModel.searchList = shds
     }
 
+    fun updateRoastedFood(rstf: List<RoastedFood>) {
+        roastedFoodViewModel.searchList = rstf
+    }
+
+    fun updateMeals(mls: List<Meal>) {
+        mealsViewModel.searchList = mls
+    }
+
     private fun buildRecyclerView(){
         setContent {
             TearsTheme {
@@ -152,6 +165,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     materials = materialViewModel.searchList?:materialViewModel.materials,
                     bows = bowViewModel.searchList?:bowViewModel.bows,
                     shields = shieldViewModel.searchList?:shieldViewModel.shields,
+                    roastedFoods = roastedFoodViewModel.searchList?:roastedFoodViewModel.roastedFood,
+                    meals = mealsViewModel.searchList?:mealsViewModel.meals,
                     onQueryWeapon = {
                         queryWeaponSearch(it, weaponsViewModel, { updateWeapons(it) })
                     },
@@ -175,6 +190,18 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     },
                     onShieldMenuItemSelected = {
                         onShieldMenuItemSelected(it, shieldViewModel, { updateShields(it) })
+                    },
+                    onQueryRoastedFood = {
+                        queryRoastedFoodSearch(it, roastedFoodViewModel, { updateRoastedFood(it) })
+                    },
+                    onRoastedFoodMenuItemSelected = {
+                        onRoastedFoodItemSelected(it, roastedFoodViewModel, { updateRoastedFood(it) })
+                    },
+                    onQueryMeal = {
+                        queryMealSearch(it, mealsViewModel, { updateMeals(it) })
+                    },
+                    onMealMenuItemSelected = {
+                        onMealItemSelected(it, mealsViewModel, { updateMeals(it) })
                     }
                 )
             }
