@@ -26,6 +26,12 @@ class NavigationItems {
                 ),
                 NavigationItem(
                     R.drawable.apple, "Materials"
+                ),
+                NavigationItem(
+                    R.drawable.apple, "Roasted/Chilled Food"
+                ),
+                NavigationItem(
+                    R.drawable.mushroom_skewer, "Recipes"
                 )
             )
         }

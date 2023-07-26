@@ -88,6 +88,14 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                 updateShields = { setShields(it) },
                 buildView = { buildRecyclerView() }
             )
+            Endpoints.fetchRoastedFood(
+                update = { setRoastedFood(it) },
+                buildView = { buildRecyclerView() }
+            )
+            Endpoints.fetchMeals(
+                update = { setMeals(it) },
+                buildView = { buildRecyclerView() }
+            )
         }
     }
 
@@ -131,6 +139,24 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         }
         shieldViewModel.shields = newList.toSet().toList()
         shieldViewModel.searchList = shieldViewModel.shields
+    }
+
+    fun setRoastedFood(roastedFood: List<RoastedFood>) {
+        val newList = mutableListOf<RoastedFood>()
+        roastedFood.map {
+            newList.add(it.setDrawable(this))
+        }
+        roastedFoodViewModel.roastedFood = newList.toSet().toList()
+        roastedFoodViewModel.searchList = roastedFoodViewModel.roastedFood
+    }
+
+    fun setMeals(meals: List<Meal>) {
+        val newList = mutableListOf<Meal>()
+        meals.map {
+            newList.add(it.setDrawable(this))
+        }
+        mealsViewModel.meals = newList.toSet().toList()
+        mealsViewModel.searchList = mealsViewModel.meals
     }
 
     fun updateWeapons(wpns: List<Weapon>) {

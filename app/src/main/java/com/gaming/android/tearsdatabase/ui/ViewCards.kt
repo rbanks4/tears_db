@@ -1,6 +1,7 @@
 package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
@@ -277,6 +278,7 @@ class ViewCards {
 
         @Composable
         fun MealCard(item: Meal, onClick: (Meal) -> Unit) {
+            Log.d("ViewCards.MealCard", "Showing: ${item.name}")
             var text = "Recipe No: ${item.recipe_no}"
 
             Column(modifier = Modifier.padding(all = 8.dp)) {

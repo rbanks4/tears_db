@@ -390,9 +390,9 @@ class ViewDetails {
                     SubtitleRow(name = "Recipe no. ${item.recipe_no}")
                     Spacer(Modifier.padding(all = 8.dp))
 
-                    DetailRow("Bonus Heart:", item.bonus_heart.toString())
-                    DetailRow("Bonus Level:", item.bonus_level.toString())
-                    DetailRow("Bonus Time:", item.bonus_time.toString())
+                    item.bonus_heart?.let { DetailRow("Bonus Heart:", it.toString()) }
+                    item.bonus_level?.let { DetailRow("Bonus Level:", it.toString()) }
+                    item.bonus_time?.let {DetailRow("Bonus Time:", it.toString()) }
                     DetailRow("Recipe:", item.recipe)
 
                 }
