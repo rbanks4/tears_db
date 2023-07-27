@@ -11,7 +11,7 @@ class SearchData {
     companion object {
         fun queryWeaponSearch(query: String, weaponsViewModel: WeaponsViewModel, updateSearchList: (List<Weapon>) -> Unit): List<Weapon>? {
             Log.d(TAG, "QueryTextSubmit: $query")
-            val regex = if (query.isNullOrBlank()) "." else query
+            val regex = if (query.isNullOrBlank()) "." else query.lowercase()
             var currentList = listOf<Weapon>()
             weaponsViewModel.searchString = regex
 
@@ -40,7 +40,7 @@ class SearchData {
 
         fun queryMaterialSearch(query: String, materialViewModel: MaterialsViewModel, updateSearchList: (List<Material>) -> Unit): List<Material>? {
             Log.d(TAG, "QueryTextSubmit: $query")
-            val regex = if(query.isNullOrBlank()) "." else query
+            val regex = if(query.isNullOrBlank()) "." else query.lowercase()
             var currentList = listOf<Material>()
             materialViewModel.searchString = regex
 
@@ -74,7 +74,7 @@ class SearchData {
 
         fun queryBowSearch(query: String, bowViewModel: BowsViewModel, updateSearchList: (List<Bow>) -> Unit): List<Bow>? {
             Log.d(TAG, "QueryTextSubmit: $query")
-            val regex = if(query.isNullOrBlank()) "." else query
+            val regex = if(query.isNullOrBlank()) "." else query.lowercase()
             var currentList = listOf<Bow>()
             bowViewModel.searchString = regex
 
@@ -108,7 +108,7 @@ class SearchData {
 
         fun queryShieldSearch(query: String, shieldViewModel: ShieldsViewModel, updateSearchList: (List<Shield>) -> Unit): List<Shield>? {
             Log.d(TAG, "QueryTextSubmit: $query")
-            val regex = if(query.isNullOrBlank()) "." else query
+            val regex = if(query.isNullOrBlank()) "." else query.lowercase()
             var currentList = listOf<Shield>()
             shieldViewModel.searchString = regex
 
@@ -137,7 +137,7 @@ class SearchData {
 
         fun queryRoastedFoodSearch(query: String, viewModel: RoastedFoodViewModel, updateSearchList: (List<RoastedFood>) -> Unit): List<RoastedFood>? {
             Log.d(TAG, "QueryTextSubmit: $query")
-            val regex = if(query.isNullOrBlank()) "." else query
+            val regex = if(query.isNullOrBlank()) "." else query.lowercase()
             var currentList = listOf<RoastedFood>()
             viewModel.searchString = regex
 
@@ -166,7 +166,7 @@ class SearchData {
 
         fun queryMealSearch(query: String, viewModel: MealsViewModel, updateSearchList: (List<Meal>) -> Unit): List<Meal>? {
             Log.d(TAG, "QueryTextSubmit: $query")
-            val regex = if(query.isNullOrBlank()) "." else query
+            val regex = if(query.isNullOrBlank()) "." else query.lowercase()
             var currentList = listOf<Meal>()
             viewModel.searchString = regex
 
