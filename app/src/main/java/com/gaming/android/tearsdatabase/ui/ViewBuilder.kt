@@ -18,14 +18,13 @@ import androidx.compose.ui.unit.dp
 import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.data.MenuLists
-import com.gaming.android.tearsdatabase.models.Bow
-import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.Shield
-import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.navigation.NavigationItems
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.BowList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.MaterialList
+import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.MealList
+import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.RoastedFoodList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.WeaponList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.ShieldList
 import kotlinx.coroutines.launch
@@ -127,6 +126,18 @@ class ViewBuilder {
                                     onClick = { onListEdit(it.action) }
                                 )
                             }
+                            MENU_TYPE_ROASTED_FOOD -> MenuLists.roastedFoodMenuList.forEach {
+                                DropdownMenuItem(
+                                    text = { Text(ctx.getString(it.text)) },
+                                    onClick = { onListEdit(it.action) }
+                                )
+                            }
+                            MENU_TYPE_MEALS -> MenuLists.mealsMenuList.forEach {
+                                DropdownMenuItem(
+                                    text = { Text(ctx.getString(it.text)) },
+                                    onClick = { onListEdit(it.action) }
+                                )
+                            }
                         }
 
                     }
@@ -140,6 +151,8 @@ class ViewBuilder {
             materials: List<Material>?,
             bows: List<Bow>?,
             shields: List<Shield>?,
+            roastedFoods: List<RoastedFood>?,
+            meals: List<Meal>?,
             onQueryWeapon: (String) -> List<Weapon>?,
             onWeaponMenuItemSelected: (Int) -> List<Weapon>?,
             onQueryMaterial: (String) -> List<Material>?,
@@ -147,7 +160,11 @@ class ViewBuilder {
             onQueryBow: (String) -> List<Bow>?,
             onBowMenuItemSelected: (Int) -> List<Bow>?,
             onQueryShield: (String) -> List<Shield>?,
-            onShieldMenuItemSelected: (Int) -> List<Shield>?
+            onShieldMenuItemSelected: (Int) -> List<Shield>?,
+            onQueryRoastedFood: (String) -> List<RoastedFood>?,
+            onRoastedFoodMenuItemSelected: (Int) -> List<RoastedFood>?,
+            onQueryMeal: (String) -> List<Meal>?,
+            onMealMenuItemSelected: (Int) -> List<Meal>?
         ) {
             val drawerState = rememberDrawerState(DrawerValue.Open)
             val scope = rememberCoroutineScope()
@@ -205,6 +222,18 @@ class ViewBuilder {
                             openDrawer = { scope.launch { drawerState.open() } },
                             onQuery = { onQueryMaterial(it) },
                             onMenuItemSelected = { onMaterialMenuItemSelected(it) }
+                        )
+                        items[4].name -> RoastedFoodList(
+                            roastedFoods = roastedFoods,
+                            openDrawer = { scope.launch { drawerState.open() } },
+                            onQuery = { onQueryRoastedFood(it) },
+                            onMenuItemSelected = { onRoastedFoodMenuItemSelected(it) }
+                        )
+                        items[5].name -> MealList(
+                            meals = meals,
+                            openDrawer = { scope.launch { drawerState.open() } },
+                            onQuery = { onQueryMeal(it) },
+                            onMenuItemSelected = { onMealMenuItemSelected(it) }
                         )
                     }
                 }

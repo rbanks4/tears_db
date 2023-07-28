@@ -14,11 +14,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.data.SampleData
-import com.gaming.android.tearsdatabase.models.Bow
-import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.Shield
-import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 
 class ViewDetails {
@@ -330,6 +328,78 @@ class ViewDetails {
                 }
             }
         }
+
+        @Composable
+        fun RoastedFoodDetails(item: RoastedFood) {
+            Surface(
+                Modifier
+                    .requiredWidth(IntrinsicSize.Min)
+                    .requiredHeight(IntrinsicSize.Min)
+                    .clip(RoundedCornerShape(20.dp))
+            ) {
+                Column(modifier = Modifier.padding(all = 8.dp)) {
+                    Image(
+                        painter = painterResource(id = item.image),
+                        contentDescription = item.name,
+                        modifier = Modifier
+                            .size(100.dp)
+                            .align(Alignment.CenterHorizontally)
+                    )
+
+                    TitleRow(item.name)
+                    SubtitleRow(name = "Recipe no. ${item.recipe_no}")
+                    Spacer(Modifier.padding(all = 8.dp))
+
+                    DetailRow("Buying Price:", item.buying_price.toString())
+                    DetailRow("Selling Price:", item.selling_price.toString())
+                    DetailRow("Effect Type:", item.effect_type)
+                    DetailRow("Effect Level:", item.effect_level.toString())
+                    DetailRow("Effect Time:", item.effect_time.toString())
+                    DetailRow("HP:", item.hit_point_counter.toString())
+                    DetailRow("Color:", item.color)
+
+                    if (item.shield_bash_damage != null) {
+                        DetailRow("Shield Bash Damage:", item.shield_bash_damage.toString())
+                    }
+
+                    if(item.sub_type.isNotEmpty()) {
+                        DetailRow("Sub Type:", item.sub_type)
+                    }
+
+                }
+            }
+        }
+
+        @Composable
+        fun MealDetails(item: Meal) {
+            Surface(
+                Modifier
+                    .requiredWidth(300.dp)
+                    .requiredHeight(IntrinsicSize.Min)
+                    .clip(RoundedCornerShape(20.dp))
+            ) {
+                Column(modifier = Modifier.padding(all = 8.dp)) {
+                    Image(
+                        painter = painterResource(id = item.image),
+                        contentDescription = item.name,
+                        modifier = Modifier
+                            .size(100.dp)
+                            .align(Alignment.CenterHorizontally)
+                    )
+
+                    TitleRow(item.name)
+                    SubtitleRow(name = "Recipe no. ${item.recipe_no}")
+                    Spacer(Modifier.padding(all = 8.dp))
+
+                    item.bonus_heart?.let { DetailRow("Bonus Heart:", it.toString()) }
+                    item.bonus_level?.let { DetailRow("Bonus Level:", it.toString()) }
+                    item.bonus_time?.let {DetailRow("Bonus Time:", it.toString()) }
+                    DetailRow("Recipe:", DataSource.recipeFormat(item.recipe))
+
+                }
+            }
+        }
+
         @Composable
         fun TitleRow(name: String) {
             Row {
@@ -395,6 +465,22 @@ class ViewDetails {
     fun PreviewShieldDetailsView() {
         TearsTheme {
             ShieldDetails(shield = SampleData.shields[1])
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewRoastedFoodDetailsView() {
+        TearsTheme {
+            RoastedFoodDetails(item = SampleData.roastedFood[1])
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewMealDetailsView() {
+        TearsTheme {
+            MealDetails(item = SampleData.meals[1])
         }
     }
 }

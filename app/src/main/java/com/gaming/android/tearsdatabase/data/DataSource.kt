@@ -28,7 +28,14 @@ class DataSource {
                 .replace(pattern, "_$0")
                 .replace(" ", "")
                 .replace("-", "_")
+                .replace("é", "e")
+                .replace("è", "e")
                 .lowercase()
+        }
+
+        fun recipeFormat(recipe: String): String {
+            return recipe.replace(" or", " or\n")
+                .replace(" and", " and\n")
         }
     }
 }

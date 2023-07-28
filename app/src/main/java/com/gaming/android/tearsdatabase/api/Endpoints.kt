@@ -1,10 +1,7 @@
 package com.gaming.android.tearsdatabase.api
 
 import android.util.Log
-import com.gaming.android.tearsdatabase.models.Bow
-import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.Shield
-import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.models.*
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Call
@@ -14,6 +11,8 @@ const val WEAPONS = "weapons2"
 const val MATERIALS = "materials"
 const val BOWS = "bows"
 const val SHIELDS = "shields"
+const val ROASTED_FOOD = "roasted"
+const val MEALS = "meals"
 class Endpoints {
     companion object {
         fun fetchWeapons(updateWeapons: (List<Weapon>) -> Unit, buildView: () -> Unit) {
@@ -145,6 +144,73 @@ class Endpoints {
                 }
 
                 override fun onFailure(call: Call<ShieldsResponse>, t: Throwable) {
+                    Log.w(label, "failed call: " + t.message)
+                }
+
+            })
+        }
+
+        fun fetchRoastedFood(update: (List<RoastedFood>) -> Unit, buildView: () -> Unit){
+            val apiService = ApiClient.apiService
+            val dataRequest = DataRequest(collection = ROASTED_FOOD)
+            val call = apiService.getRoastedFood(dataRequest)
+            val label = "$TAG.$ROASTED_FOOD"
+
+            call.enqueue(object: Callback<RoastedFoodResponse> {
+                override fun onResponse(
+                    call: Call<RoastedFoodResponse>,
+                    response: Response<RoastedFoodResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.w(label, "response successful")
+                        response.body()?.documents?.let { roastedFood ->
+                            update(roastedFood)
+                            buildView()
+                            Log.w(label, "roasted food response list size is " +
+                                    "${roastedFood.size}")
+                        }
+
+                    } else {
+                        Log.w(label, "response failed")
+                        Log.w(label, response.code().toString())
+                        Log.w(label, response.errorBody().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<RoastedFoodResponse>, t: Throwable) {
+                    Log.w(label, "failed call: " + t.message)
+                }
+
+            })
+        }
+
+        fun fetchMeals(update: (List<Meal>) -> Unit, buildView: () -> Unit){
+            val apiService = ApiClient.apiService
+            val dataRequest = DataRequest(collection = MEALS)
+            val call = apiService.getMeals(dataRequest)
+            val label = "$TAG.$MEALS"
+
+            call.enqueue(object: Callback<MealsResponse> {
+                override fun onResponse(
+                    call: Call<MealsResponse>,
+                    response: Response<MealsResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.w(label, "response successful")
+                        response.body()?.documents?.let { meals ->
+                            update(meals)
+                            buildView()
+                            Log.w(label, "meal response list size is ${meals.size}")
+                        }
+
+                    } else {
+                        Log.w(label, "response failed")
+                        Log.w(label, response.code().toString())
+                        Log.w(label, response.errorBody().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<MealsResponse>, t: Throwable) {
                     Log.w(label, "failed call: " + t.message)
                 }
 

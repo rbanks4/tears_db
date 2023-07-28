@@ -1,10 +1,7 @@
 package com.gaming.android.tearsdatabase.data
 
 import com.gaming.android.tearsdatabase.*
-import com.gaming.android.tearsdatabase.models.Bow
-import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.Shield
-import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.models.*
 
 class SortData {
     companion object {
@@ -131,6 +128,52 @@ class SortData {
                 listUpdate
             } else {
                 shieldViewModel.shields
+            }
+        }
+
+        fun onRoastedFoodItemSelected(choice: Int, viewModel: RoastedFoodViewModel, updateList: (List<RoastedFood>) -> Unit): List<RoastedFood>? {
+            var listUpdate: List<RoastedFood>? = null
+            val list =
+                if(!viewModel.searchList.isNullOrEmpty())
+                    viewModel.searchList
+                else viewModel.roastedFood
+
+            when (choice) {
+                SORT_BUYING_INC ->
+                    listUpdate = list?.sortedByDescending { it.buying_price }
+                SORT_BUYING_DEC ->
+                    listUpdate = list?.sortedBy { it.buying_price }
+                SORT_SELLING_INC ->
+                    listUpdate = list?.sortedBy { it.selling_price }
+                SORT_SELLING_DEC ->
+                    listUpdate = list?.sortedByDescending { it.selling_price }
+                SORT_ID_INC ->
+                    listUpdate = list?.sortedBy { it.recipe_no }
+            }
+            return if (!listUpdate.isNullOrEmpty()) {
+                updateList(listUpdate)
+                listUpdate
+            } else {
+                viewModel.roastedFood
+            }
+        }
+
+        fun onMealItemSelected(choice: Int, viewModel: MealsViewModel, updateList: (List<Meal>) -> Unit): List<Meal>? {
+            var listUpdate: List<Meal>? = null
+            val list =
+                if(!viewModel.searchList.isNullOrEmpty())
+                    viewModel.searchList
+                else viewModel.meals
+
+            when (choice) {
+                SORT_ID_INC ->
+                    listUpdate = list?.sortedBy { it.recipe_no }
+            }
+            return if (!listUpdate.isNullOrEmpty()) {
+                updateList(listUpdate)
+                listUpdate
+            } else {
+                viewModel.meals
             }
         }
     }
