@@ -21,6 +21,8 @@ import com.gaming.android.tearsdatabase.data.SortData.Companion.onRoastedFoodIte
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onShieldMenuItemSelected
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.models.*
+import com.gaming.android.tearsdatabase.navigation.NavigationItems
+import com.gaming.android.tearsdatabase.navigation.WEAPONS_KEY
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
 
@@ -53,6 +55,7 @@ const val MENU_TYPE_MEALS = 6
 class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private lateinit var bind: ActivityMainBinding
 
+    private val viewModel: MainViewModel by viewModels()
     private val weaponsViewModel: WeaponsViewModel by viewModels()
     private val materialViewModel: MaterialsViewModel by viewModels()
     private val bowViewModel: BowsViewModel by viewModels()
@@ -103,6 +106,10 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         super.onStart()
         buildRecyclerView()
         Log.d(TAG, "onStart() called")
+    }
+
+    fun setNav(nav: String) {
+        viewModel.navItem = nav
     }
 
     fun setWeapons(weapons: List<Weapon>) {
@@ -187,12 +194,14 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         setContent {
             TearsTheme {
                 CreateDrawer(
+                    nav = viewModel.navItem,
                     weapons = weaponsViewModel.searchList?:weaponsViewModel.weapons,
                     materials = materialViewModel.searchList?:materialViewModel.materials,
                     bows = bowViewModel.searchList?:bowViewModel.bows,
                     shields = shieldViewModel.searchList?:shieldViewModel.shields,
                     roastedFoods = roastedFoodViewModel.searchList?:roastedFoodViewModel.roastedFood,
                     meals = mealsViewModel.searchList?:mealsViewModel.meals,
+                    onSetNav = { setNav(it) },
                     onQueryWeapon = {
                         queryWeaponSearch(it, weaponsViewModel, { updateWeapons(it) })
                     },

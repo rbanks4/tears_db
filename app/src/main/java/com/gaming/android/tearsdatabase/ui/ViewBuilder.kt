@@ -19,7 +19,7 @@ import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.data.MenuLists
 import com.gaming.android.tearsdatabase.models.*
-import com.gaming.android.tearsdatabase.navigation.NavigationItems
+import com.gaming.android.tearsdatabase.navigation.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.BowList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.MaterialList
@@ -147,12 +147,14 @@ class ViewBuilder {
 
         @Composable
         fun CreateDrawer(
+            nav: String?,
             weapons: List<Weapon>?,
             materials: List<Material>?,
             bows: List<Bow>?,
             shields: List<Shield>?,
             roastedFoods: List<RoastedFood>?,
             meals: List<Meal>?,
+            onSetNav: (String) -> Unit,
             onQueryWeapon: (String) -> List<Weapon>?,
             onWeaponMenuItemSelected: (Int) -> List<Weapon>?,
             onQueryMaterial: (String) -> List<Material>?,
@@ -171,7 +173,10 @@ class ViewBuilder {
 
             // icons to mimic drawer destinations
             val items = NavigationItems.getNavItems()
-            val selectedItem = remember { mutableStateOf(items[0]) }
+            var selectedItem by remember { mutableStateOf(nav) }
+            if(nav == null){
+                selectedItem = WEAPONS_KEY
+            }
 
             ModalNavigationDrawer(
                 drawerState = drawerState,
@@ -180,15 +185,16 @@ class ViewBuilder {
                         Spacer(Modifier.height(12.dp))
                         items.forEach { item ->
                             NavigationDrawerItem(
-                                label = { Text(item.name) },
-                                selected = item == selectedItem.value,
+                                label = { Text(item.key) },
+                                selected = item.key == selectedItem,
                                 onClick = {
                                     scope.launch { drawerState.close() }
-                                    selectedItem.value = item
+                                    selectedItem = item.key
+                                    onSetNav(item.key)
                                 },
                                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding),
                                 icon = { Icon(
-                                    painter = painterResource(item.icon),
+                                    painter = painterResource(item.value.icon),
                                     contentDescription = "",
                                     modifier = Modifier.size(20.dp),
                                     tint = MaterialTheme.colorScheme.onSurface
@@ -198,38 +204,38 @@ class ViewBuilder {
                     }
                 },
                 content = {
-                    when (selectedItem.value.name) {
-                        items[0].name -> WeaponList(
+                    when (selectedItem) {
+                        WEAPONS_KEY -> WeaponList(
                             weapons = weapons,
                             openDrawer = { scope.launch { drawerState.open() } },
                             onQuery = { onQueryWeapon(it) },
                             onWeaponMenuItemSelected = onWeaponMenuItemSelected
                         )
-                        items[1].name -> BowList(
+                        BOWS_KEY -> BowList(
                             bows = bows,
                             openDrawer = { scope.launch { drawerState.open() } },
                             onQuery = { onQueryBow(it) },
                             onMenuItemSelected = onBowMenuItemSelected
                         )
-                        items[2].name -> ShieldList(
+                        SHIELDS_KEY -> ShieldList(
                             shields = shields,
                             openDrawer = { scope.launch { drawerState.open() } },
                             onQuery = { onQueryShield(it) },
                             onMenuItemSelected = onShieldMenuItemSelected
                         )
-                        items[3].name -> MaterialList(
+                        MATERIALS_KEY -> MaterialList(
                             materials = materials,
                             openDrawer = { scope.launch { drawerState.open() } },
                             onQuery = { onQueryMaterial(it) },
                             onMenuItemSelected = { onMaterialMenuItemSelected(it) }
                         )
-                        items[4].name -> RoastedFoodList(
+                        ROASTED_CHILLED_KEY -> RoastedFoodList(
                             roastedFoods = roastedFoods,
                             openDrawer = { scope.launch { drawerState.open() } },
                             onQuery = { onQueryRoastedFood(it) },
                             onMenuItemSelected = { onRoastedFoodMenuItemSelected(it) }
                         )
-                        items[5].name -> MealList(
+                        RECIPES_KEY -> MealList(
                             meals = meals,
                             openDrawer = { scope.launch { drawerState.open() } },
                             onQuery = { onQueryMeal(it) },

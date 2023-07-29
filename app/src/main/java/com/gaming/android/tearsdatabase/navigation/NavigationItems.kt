@@ -9,29 +9,35 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.gaming.android.tearsdatabase.R
 
+const val WEAPONS_KEY = "Weapons"
+const val BOWS_KEY = "Bows"
+const val SHIELDS_KEY = "Shields"
+const val MATERIALS_KEY = "Materials"
+const val ROASTED_CHILLED_KEY = "Roasted/Chilled Food"
+const val RECIPES_KEY = "Recipes"
 
 class NavigationItems {
     companion object {
         @Composable
-        fun getNavItems(): List<NavigationItem> {
-            return listOf(
-                NavigationItem(
-                    R.drawable.wooden_stick, "Weapons"
+        fun getNavItems(): Map<String, NavigationItem> {
+            return mapOf(
+                WEAPONS_KEY to NavigationItem(
+                    R.drawable.wooden_stick, WEAPONS_KEY
                 ),
-                NavigationItem(
-                    R.drawable.travelers_bow, "Bows"
+                BOWS_KEY to NavigationItem(
+                    R.drawable.travelers_bow, BOWS_KEY
                 ),
-                NavigationItem(
-                    R.drawable.hylian_shield, "Shields"
+                SHIELDS_KEY to NavigationItem(
+                    R.drawable.hylian_shield, SHIELDS_KEY
                 ),
-                NavigationItem(
-                    R.drawable.apple, "Materials"
+                MATERIALS_KEY to NavigationItem(
+                    R.drawable.apple, MATERIALS_KEY
                 ),
-                NavigationItem(
-                    R.drawable.roasted_porgy, "Roasted/Chilled Food"
+                ROASTED_CHILLED_KEY to NavigationItem(
+                    R.drawable.roasted_porgy, ROASTED_CHILLED_KEY
                 ),
-                NavigationItem(
-                    R.drawable.mushroom_skewer, "Recipes"
+                RECIPES_KEY to NavigationItem(
+                    R.drawable.mushroom_skewer, RECIPES_KEY
                 )
             )
         }
