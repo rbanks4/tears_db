@@ -328,8 +328,11 @@ class ViewCards {
         @Composable
         fun ArmorCard(item: Armor, onClick: (Armor) -> Unit) {
             Log.d("ViewCards.ArmorCard", "Showing: ${item.name}")
-            val text = "Location: ${item.location}"
-            if(item.name.isEmpty()) return
+            val text = if(item.set_name.isNotEmpty()) {
+                item.set_name
+            } else if(item.effect.isNotEmpty()) {
+                 item.effect
+            } else "none"
 
             Column(modifier = Modifier.padding(all = 8.dp)) {
                 Image(

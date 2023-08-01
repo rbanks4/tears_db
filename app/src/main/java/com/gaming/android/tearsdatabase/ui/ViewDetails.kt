@@ -4,7 +4,9 @@ import android.content.res.Configuration
 import androidx.annotation.Dimension
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -406,7 +408,7 @@ class ViewDetails {
             Surface(
                 Modifier
                     .requiredWidth(300.dp)
-                    .requiredHeight(IntrinsicSize.Min)
+                    .fillMaxHeight(0.8f)
                     .clip(RoundedCornerShape(20.dp))
             ) {
                 var defense = item.base_defense.toString()
@@ -421,7 +423,7 @@ class ViewDetails {
                 item.selling_price_s3?.let { sellPrice += " | $it" }
                 item.selling_price_s4?.let { sellPrice += " | $it" }
 
-                Column(modifier = Modifier.padding(all = 8.dp)) {
+                Column(modifier = Modifier.padding(all = 8.dp).verticalScroll(rememberScrollState())) {
                     Image(
                         painter = painterResource(id = item.image),
                         contentDescription = item.name,
