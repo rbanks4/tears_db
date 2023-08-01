@@ -37,9 +37,13 @@ Task List:
 - [x] add recipes
 - [ ] add armor listings
 - [x] add armor images
-- [ ] add armor view
-- [ ] add effects
+- [x] add armor view
+- [ ] add effects listings
+- [ ] add effects images
+- [ ] add effects view
 - [ ] add enemies
-- [ ] add zonai (easy)
+- [ ] add zonai listings
+- [ ] add zonai images
+- [ ] add zonai view
 - [ ] add animations
 - [ ] improve ui

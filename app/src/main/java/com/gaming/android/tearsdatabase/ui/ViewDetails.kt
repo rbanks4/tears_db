@@ -1,9 +1,12 @@
 package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
+import androidx.annotation.Dimension
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -401,6 +404,83 @@ class ViewDetails {
         }
 
         @Composable
+        fun ArmorDetails(item: Armor) {
+            Surface(
+                Modifier
+                    .requiredWidth(300.dp)
+                    .fillMaxHeight(0.8f)
+                    .clip(RoundedCornerShape(20.dp))
+            ) {
+                var defense = item.base_defense.toString()
+                item.star_one?.let { defense += " | $it" }
+                item.star_two?.let { defense += " | $it" }
+                item.star_three?.let { defense += " | $it" }
+                item.star_four?.let { defense += " | $it" }
+
+                var sellPrice = item.selling_price.toString()
+                item.selling_price_s1?.let { sellPrice += " | $it" }
+                item.selling_price_s2?.let { sellPrice += " | $it" }
+                item.selling_price_s3?.let { sellPrice += " | $it" }
+                item.selling_price_s4?.let { sellPrice += " | $it" }
+
+                Column(modifier = Modifier.padding(all = 8.dp).verticalScroll(rememberScrollState())) {
+                    Image(
+                        painter = painterResource(id = item.image),
+                        contentDescription = item.name,
+                        modifier = Modifier
+                            .size(100.dp)
+                            .align(Alignment.CenterHorizontally)
+                    )
+
+                    TitleRow(item.name)
+                    SubtitleRow(name = item.location)
+                    if(item.coordinates.isNotEmpty()) {
+                        Spacer(Modifier.padding(all = 4.dp))
+                        SubtitleRow(name = "Coordinates: ${item.coordinates}")
+                    }
+                    Spacer(Modifier.padding(all = 8.dp))
+
+                    DetailRow("Actor Name:", item.actor_name)
+
+                    if(item.effect.isNotEmpty() && !item.effect.equals("none")) {
+                        DetailRow("Effect:", item.effect)
+                    }
+
+                    if(item.set_name.isNotEmpty() && !item.set_name.equals("none")) {
+                        DetailRow("Set:", item.set_name)
+                    }
+
+                    if(item.set_bonus.isNotEmpty() && !item.set_bonus.equals("none")) {
+                        DetailRow("Set Bonus:", item.set_bonus)
+                    }
+
+                    DetailRow("Defense:", defense)
+                    DetailRow("Buying Price:", item.buying_price.toString())
+                    DetailRow("Selling Price:",sellPrice)
+                    if(item.upgrade_s1.isNotEmpty()) {
+                        DetailRow("Upgrade 1:", item.upgrade_s1)
+                    }
+
+                    if(item.upgrade_s2.isNotEmpty()) {
+                        DetailRow("Upgrade 2:", item.upgrade_s2)
+                    }
+
+                    if(item.upgrade_s3.isNotEmpty()) {
+                        DetailRow("Upgrade 3:", item.upgrade_s3)
+                    }
+
+                    if(item.upgrade_s4.isNotEmpty()) {
+                        DetailRow("Upgrade 4:", item.upgrade_s4)
+                    }
+
+                    if(item.total_upgrades.isNotEmpty()) {
+                        DetailRow("Total Upgrades:", item.total_upgrades)
+                    }
+                }
+            }
+        }
+
+        @Composable
         fun TitleRow(name: String) {
             Row {
                 Text(
@@ -413,8 +493,8 @@ class ViewDetails {
 
         @Composable
         fun SubtitleRow(name: String) {
-            Row {
-                Text(text = name, style = MaterialTheme.typography.titleSmall)
+            Row (Modifier.width(280.dp)){
+                Text(text = name, style = MaterialTheme.typography.titleSmall, softWrap = true)
             }
         }
 
@@ -481,6 +561,14 @@ class ViewDetails {
     fun PreviewMealDetailsView() {
         TearsTheme {
             MealDetails(item = SampleData.meals[1])
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewArmorDetailsView() {
+        TearsTheme {
+            ArmorDetails(item = SampleData.armor[0])
         }
     }
 }
