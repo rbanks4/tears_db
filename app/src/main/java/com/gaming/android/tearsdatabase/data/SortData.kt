@@ -176,5 +176,26 @@ class SortData {
                 viewModel.meals
             }
         }
+
+        fun onArmorMenuItemSelected(choice: Int, viewModel: ArmorViewModel, updateList: (List<Armor>) -> Unit): List<Armor>? {
+            var listUpdate: List<Armor>? = null
+            val list =
+                if(!viewModel.searchList.isNullOrEmpty())
+                    viewModel.searchList
+                else viewModel.armor
+
+            when (choice) {
+                SORT_DEF_INC ->
+                    listUpdate = list?.sortedBy { it.base_defense }
+                SORT_DEF_DEC ->
+                    listUpdate = list?.sortedByDescending { it.base_defense }
+            }
+            return if (!listUpdate.isNullOrEmpty()) {
+                updateList(listUpdate)
+                listUpdate
+            } else {
+                viewModel.armor
+            }
+        }
     }
 }

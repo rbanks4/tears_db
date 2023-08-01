@@ -187,5 +187,39 @@ class SearchData {
 
             return currentList
         }
+
+        fun queryArmor(query: String, viewModel: ArmorViewModel, updateSearchList: (List<Armor>) -> Unit): List<Armor>? {
+            Log.d(TAG, "QueryTextSubmit: $query")
+            val regex = if(query.isNullOrBlank()) "." else query.lowercase()
+            var currentList = listOf<Armor>()
+            viewModel.searchString = regex
+
+            viewModel.armor.let { list ->
+                val nameList = list!!.filter {
+                    it.name.lowercase().matches(".*$regex.*".toRegex())
+                }
+                val subList = list!!.filter {
+                    if (it.set_name.isNotEmpty())
+                        it.set_name.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                    else false
+                }
+                val subList2 = list!!.filter {
+                    if (it.set_bonus.isNotEmpty())
+                        it.set_bonus.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                    else false
+                }
+                val subList3 = list!!.filter {
+                    if (it.effect.isNotEmpty())
+                        it.effect.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                    else false
+                }
+                val finalList = nameList + subList + subList2 + subList3
+
+                currentList = finalList.toSet().toList()
+                updateSearchList(finalList.toSet().toList())
+            }
+
+            return currentList
+        }
     }
 }

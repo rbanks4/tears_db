@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.data.DataSource
+import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryArmor
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryBowSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMaterialSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMealSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryRoastedFoodSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryShieldSearch
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryWeaponSearch
+import com.gaming.android.tearsdatabase.data.SortData.Companion.onArmorMenuItemSelected
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onWeaponMenuItemSelected
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onMaterialMenuItemSelected
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onBowMenuItemSelected
@@ -216,6 +218,10 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         mealsViewModel.searchList = mls
     }
 
+    fun updateArmor(arm: List<Armor>) {
+        armorViewModel.searchList = arm
+    }
+
     private fun buildRecyclerView(){
         setContent {
             TearsTheme {
@@ -266,10 +272,10 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                         onMealItemSelected(it, mealsViewModel, { updateMeals(it) })
                     },
                     onQueryArmor = {
-                        armorViewModel.armor
+                        queryArmor(it, armorViewModel, { updateArmor(it) })
                     },
                     onArmorMenuItemSelected = {
-                        armorViewModel.armor
+                        onArmorMenuItemSelected(it, armorViewModel, { updateArmor(it) })
                     }
                 )
             }
