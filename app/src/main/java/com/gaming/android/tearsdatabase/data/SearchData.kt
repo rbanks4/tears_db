@@ -1,21 +1,21 @@
 package com.gaming.android.tearsdatabase.data
 
 import android.util.Log
-import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.models.*
+import com.gaming.android.tearsdatabase.viewmodels.*
 
 const val TAG = "SearchData"
 
 class SearchData {
     //todo could use generics(?) to make this code simplified (i.e. fun <T> querySearch(..., list: (List<T>) -> Unit):List<T>
     companion object {
-        fun queryWeaponSearch(query: String, weaponsViewModel: WeaponsViewModel, updateSearchList: (List<Weapon>) -> Unit): List<Weapon>? {
+        fun queryWeaponSearch(query: String, viewModel: ItemViewModel<Weapon>, updateSearchList: (List<Weapon>) -> Unit): List<Weapon>? {
             Log.d(TAG, "QueryTextSubmit: $query")
             val regex = if (query.isNullOrBlank()) "." else query.lowercase()
             var currentList = listOf<Weapon>()
-            weaponsViewModel.searchString = regex
+            viewModel.searchString = regex
 
-            weaponsViewModel.weapons.let { list ->
+            viewModel.items.let { list ->
                 val nameList = list!!.filter {
                     it.name.lowercase().matches(".*$regex.*".toRegex())
                 }
@@ -38,13 +38,13 @@ class SearchData {
             return currentList
         }
 
-        fun queryMaterialSearch(query: String, materialViewModel: MaterialsViewModel, updateSearchList: (List<Material>) -> Unit): List<Material>? {
+        fun queryMaterialSearch(query: String, viewModel: ItemViewModel<Material>, updateSearchList: (List<Material>) -> Unit): List<Material>? {
             Log.d(TAG, "QueryTextSubmit: $query")
             val regex = if(query.isNullOrBlank()) "." else query.lowercase()
             var currentList = listOf<Material>()
-            materialViewModel.searchString = regex
+            viewModel.searchString = regex
 
-            materialViewModel.materials.let {list ->
+            viewModel.items.let { list ->
                 val nameList = list!!.filter {
                     it.name.lowercase().matches(".*$regex.*".toRegex())
                 }
@@ -78,7 +78,7 @@ class SearchData {
             var currentList = listOf<Bow>()
             bowViewModel.searchString = regex
 
-            bowViewModel.bows.let {list ->
+            bowViewModel.items.let { list ->
                 val nameList = list!!.filter {
                     it.name.lowercase().matches(".*$regex.*".toRegex())
                 }
@@ -112,7 +112,7 @@ class SearchData {
             var currentList = listOf<Shield>()
             shieldViewModel.searchString = regex
 
-            shieldViewModel.shields.let {list ->
+            shieldViewModel.items.let { list ->
                 val nameList = list!!.filter {
                     it.name.lowercase().matches(".*$regex.*".toRegex())
                 }
@@ -141,7 +141,7 @@ class SearchData {
             var currentList = listOf<RoastedFood>()
             viewModel.searchString = regex
 
-            viewModel.roastedFood.let { list ->
+            viewModel.items.let { list ->
                 val nameList = list!!.filter {
                     it.name.lowercase().matches(".*$regex.*".toRegex())
                 }
@@ -170,7 +170,7 @@ class SearchData {
             var currentList = listOf<Meal>()
             viewModel.searchString = regex
 
-            viewModel.meals.let { list ->
+            viewModel.items.let { list ->
                 val nameList = list!!.filter {
                     it.name.lowercase().matches(".*$regex.*".toRegex())
                 }
@@ -194,7 +194,7 @@ class SearchData {
             var currentList = listOf<Armor>()
             viewModel.searchString = regex
 
-            viewModel.armor.let { list ->
+            viewModel.items.let { list ->
                 val nameList = list!!.filter {
                     it.name.lowercase().matches(".*$regex.*".toRegex())
                 }

@@ -2,15 +2,16 @@ package com.gaming.android.tearsdatabase.data
 
 import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.models.*
+import com.gaming.android.tearsdatabase.viewmodels.*
 
 class SortData {
     companion object {
-        fun onWeaponMenuItemSelected(choice: Int, weaponsViewModel: WeaponsViewModel, updateList: (List<Weapon>) -> Unit): List<Weapon>? {
+        fun onWeaponMenuItemSelected(choice: Int, viewModel: ItemViewModel<Weapon>, updateList: (List<Weapon>) -> Unit): List<Weapon>? {
             var listUpdate: List<Weapon>? = null
             val list =
-                if(!weaponsViewModel.searchList.isNullOrEmpty())
-                    weaponsViewModel.searchList
-                else weaponsViewModel.weapons
+                if(!viewModel.searchList.isNullOrEmpty())
+                    viewModel.searchList
+                else viewModel.items
 
             when (choice) {
                 SORT_DAMAGE_DEC ->
@@ -26,16 +27,16 @@ class SortData {
                 updateList(listUpdate)
                 listUpdate
             } else {
-                weaponsViewModel.weapons
+                viewModel.items
             }
         }
 
-        fun onMaterialMenuItemSelected(choice: Int, materialViewModel: MaterialsViewModel, updateList: (List<Material>) -> Unit): List<Material>? {
+        fun onMaterialMenuItemSelected(choice: Int, viewModel: ItemViewModel<Material>, updateList: (List<Material>) -> Unit): List<Material>? {
             var listUpdate: List<Material>? = null
             val list =
-                if(!materialViewModel.searchList.isNullOrEmpty())
-                    materialViewModel.searchList
-                else materialViewModel.materials
+                if(!viewModel.searchList.isNullOrEmpty())
+                    viewModel.searchList
+                else viewModel.items
 
             when (choice) {
                 SORT_HP_DEC ->
@@ -65,7 +66,7 @@ class SortData {
                 updateList(listUpdate)
                 listUpdate
             } else {
-                materialViewModel.materials
+                viewModel.items
             }
         }
 
@@ -74,7 +75,7 @@ class SortData {
             val list =
                 if(!bowViewModel.searchList.isNullOrEmpty())
                     bowViewModel.searchList
-                else bowViewModel.bows
+                else bowViewModel.items
 
             when (choice) {
                 SORT_DAMAGE_DEC ->
@@ -102,7 +103,7 @@ class SortData {
                 updateList(listUpdate)
                 listUpdate
             } else {
-                bowViewModel.bows
+                bowViewModel.items
             }
         }
 
@@ -111,7 +112,7 @@ class SortData {
             val list =
                 if(!shieldViewModel.searchList.isNullOrEmpty())
                     shieldViewModel.searchList
-                else shieldViewModel.shields
+                else shieldViewModel.items
 
             when (choice) {
                 SORT_DURABILITY_DEC ->
@@ -127,7 +128,7 @@ class SortData {
                 updateList(listUpdate)
                 listUpdate
             } else {
-                shieldViewModel.shields
+                shieldViewModel.items
             }
         }
 
@@ -136,7 +137,7 @@ class SortData {
             val list =
                 if(!viewModel.searchList.isNullOrEmpty())
                     viewModel.searchList
-                else viewModel.roastedFood
+                else viewModel.items
 
             when (choice) {
                 SORT_BUYING_INC ->
@@ -154,7 +155,7 @@ class SortData {
                 updateList(listUpdate)
                 listUpdate
             } else {
-                viewModel.roastedFood
+                viewModel.items
             }
         }
 
@@ -163,7 +164,7 @@ class SortData {
             val list =
                 if(!viewModel.searchList.isNullOrEmpty())
                     viewModel.searchList
-                else viewModel.meals
+                else viewModel.items
 
             when (choice) {
                 SORT_ID_INC ->
@@ -173,7 +174,7 @@ class SortData {
                 updateList(listUpdate)
                 listUpdate
             } else {
-                viewModel.meals
+                viewModel.items
             }
         }
 
@@ -182,19 +183,21 @@ class SortData {
             val list =
                 if(!viewModel.searchList.isNullOrEmpty())
                     viewModel.searchList
-                else viewModel.armor
+                else viewModel.items
 
             when (choice) {
                 SORT_DEF_INC ->
                     listUpdate = list?.sortedBy { it.base_defense }
+                        ?.sortedBy { it.star_one }
                 SORT_DEF_DEC ->
                     listUpdate = list?.sortedByDescending { it.base_defense }
+                        ?.sortedByDescending { it.star_one }
             }
             return if (!listUpdate.isNullOrEmpty()) {
                 updateList(listUpdate)
                 listUpdate
             } else {
-                viewModel.armor
+                viewModel.items
             }
         }
     }

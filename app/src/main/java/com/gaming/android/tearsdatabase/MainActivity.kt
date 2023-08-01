@@ -26,6 +26,7 @@ import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
+import com.gaming.android.tearsdatabase.viewmodels.*
 
 private const val TAG = "MainActivity"
 const val SORT_DAMAGE_INC = 1
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
 
         Log.d(TAG, "onCreate(Bundle?) called")
 
-        if(weaponsViewModel.weapons.isNullOrEmpty()) {
+        if(weaponsViewModel.items.isNullOrEmpty()) {
             Endpoints.fetchWeapons(
                 updateWeapons = { weapons -> setWeapons(weapons) },
                 buildView = { buildRecyclerView() },
@@ -135,8 +136,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         weapons.map {
             newList.add(it.setDrawable(this))
         }
-        weaponsViewModel.weapons = newList.toSet().toList()
-        weaponsViewModel.searchList = weaponsViewModel.weapons
+        weaponsViewModel.items = newList.toSet().toList()
+        weaponsViewModel.searchList = weaponsViewModel.items
     }
 
     fun setMaterials(materials: List<Material>) {
@@ -144,8 +145,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         materials.map {
             newList.add(it.setDrawable(this))
         }
-        materialViewModel.materials = newList.toSet().toList()
-        materialViewModel.searchList = materialViewModel.materials
+        materialViewModel.items = newList.toSet().toList()
+        materialViewModel.searchList = materialViewModel.items
     }
 
     fun setBows(bows: List<Bow>) {
@@ -153,8 +154,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         bows.map {
             newList.add(it.setDrawable(this))
         }
-        bowViewModel.bows = newList.toSet().toList()
-        bowViewModel.searchList = bowViewModel.bows
+        bowViewModel.items = newList.toSet().toList()
+        bowViewModel.searchList = bowViewModel.items
     }
 
     fun setShields(shields: List<Shield>) {
@@ -162,8 +163,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         shields.map {
             newList.add(it.setDrawable(this))
         }
-        shieldViewModel.shields = newList.toSet().toList()
-        shieldViewModel.searchList = shieldViewModel.shields
+        shieldViewModel.items = newList.toSet().toList()
+        shieldViewModel.searchList = shieldViewModel.items
     }
 
     fun setRoastedFood(roastedFood: List<RoastedFood>) {
@@ -171,8 +172,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         roastedFood.map {
             newList.add(it.setDrawable(this))
         }
-        roastedFoodViewModel.roastedFood = newList.toSet().toList()
-        roastedFoodViewModel.searchList = roastedFoodViewModel.roastedFood
+        roastedFoodViewModel.items = newList.toSet().toList()
+        roastedFoodViewModel.searchList = roastedFoodViewModel.items
     }
 
     fun setMeals(meals: List<Meal>) {
@@ -180,8 +181,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         meals.map {
             newList.add(it.setDrawable(this))
         }
-        mealsViewModel.meals = newList.toSet().toList()
-        mealsViewModel.searchList = mealsViewModel.meals
+        mealsViewModel.items = newList.toSet().toList()
+        mealsViewModel.searchList = mealsViewModel.items
     }
 
     fun setArmor(armor: List<Armor>) {
@@ -189,8 +190,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         armor.map {
             newList.add(it.setDrawable(this))
         }
-        armorViewModel.armor = newList.toSet().toList()
-        armorViewModel.searchList = armorViewModel.armor
+        armorViewModel.items = newList.toSet().toList()
+        armorViewModel.searchList = armorViewModel.items
     }
 
 
@@ -227,13 +228,13 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
             TearsTheme {
                 CreateDrawer(
                     nav = viewModel.navItem,
-                    weapons = weaponsViewModel.searchList?:weaponsViewModel.weapons,
-                    materials = materialViewModel.searchList?:materialViewModel.materials,
-                    bows = bowViewModel.searchList?:bowViewModel.bows,
-                    shields = shieldViewModel.searchList?:shieldViewModel.shields,
-                    roastedFoods = roastedFoodViewModel.searchList?:roastedFoodViewModel.roastedFood,
-                    meals = mealsViewModel.searchList?:mealsViewModel.meals,
-                    armor = armorViewModel.searchList?:armorViewModel.armor,
+                    weapons = weaponsViewModel.getCurrent(),
+                    materials = materialViewModel.getCurrent(),
+                    bows = bowViewModel.getCurrent(),
+                    shields = shieldViewModel.getCurrent(),
+                    roastedFoods = roastedFoodViewModel.getCurrent(),
+                    meals = mealsViewModel.getCurrent(),
+                    armor = armorViewModel.getCurrent(),
                     onSetNav = { setNav(it) },
                     onQueryWeapon = {
                         queryWeaponSearch(it, weaponsViewModel, { updateWeapons(it) })
