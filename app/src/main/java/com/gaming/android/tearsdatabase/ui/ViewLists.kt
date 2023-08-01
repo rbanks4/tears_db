@@ -22,9 +22,11 @@ import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.BowCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.MaterialCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.WeaponCard
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.TopBar
+import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.ArmorCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.MealCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.RoastedFoodCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.ShieldCard
+import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.ArmorDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.BowDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.MaterialDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.MealDetails
@@ -423,6 +425,71 @@ class ViewLists {
                 }
             }
         }
+
+        @Composable
+        fun ArmorList(
+            armor: List<Armor>?,
+            openDrawer: () -> Unit,
+            onQuery: (String) -> List<Armor>?,
+            onMenuItemSelected: (Int) -> List<Armor>?
+        ) {
+            val displayed = remember { mutableStateListOf<Armor>() }
+
+            val selected = remember { mutableStateOf(SampleData.armor[1]) }
+            val open = remember { mutableStateOf(false) }
+            val currentQuery = remember { mutableStateOf("") }
+
+            if (open.value) {
+                Dialog(
+                    onDismissRequest = { open.value = false },
+                    content = { ArmorDetails(selected.value) }
+                )
+            }
+
+            if (armor != null) {
+                if (displayed.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                    displayed.clear()
+                    armor.map {
+                        displayed.add(it)
+                    }
+                }
+                Row(modifier = Modifier.padding(all = 8.dp)) {
+                    Scaffold(
+                        topBar = {
+                            TopBar(
+                                onQuerySearch = {
+                                    currentQuery.value = it
+                                    displayed.clear()
+                                    onQuery(it)?.map { material ->
+                                        displayed.add(material)
+                                    }
+                                },
+                                onListEdit = {
+                                    displayed.clear()
+                                    onMenuItemSelected(it)?.map { shield ->
+                                        displayed.add(shield)
+                                    }
+                                },
+                                onOpenDrawer = { openDrawer() },
+                                menuType = MENU_TYPE_ARMOR
+                            )
+                        }
+                    ) { contentPadding ->
+                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                            modifier = Modifier.padding(contentPadding),
+                            content = {
+                                items(displayed.size) { index ->
+                                    ArmorCard(item = displayed[index], onClick = {
+                                        selected.value = it
+                                        open.value = true
+                                    })
+                                }
+                            })
+
+                    }
+                }
+            }
+        }
     }
 
     @Preview(name = "Light Mode")
@@ -475,6 +542,14 @@ class ViewLists {
     fun PreviewMealList() {
         TearsTheme {
             MealList(meals = SampleData.meals, openDrawer = {}, onQuery = { SampleData.meals }, onMenuItemSelected = { SampleData. meals })
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewArmorList() {
+        TearsTheme {
+            ArmorList(armor = SampleData.armor, openDrawer = {}, onQuery = { SampleData.armor }, onMenuItemSelected = { SampleData. armor })
         }
     }
 }

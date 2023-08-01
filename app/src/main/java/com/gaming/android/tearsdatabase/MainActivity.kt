@@ -22,8 +22,6 @@ import com.gaming.android.tearsdatabase.data.SortData.Companion.onRoastedFoodIte
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onShieldMenuItemSelected
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.models.*
-import com.gaming.android.tearsdatabase.navigation.NavigationItems
-import com.gaming.android.tearsdatabase.navigation.WEAPONS_KEY
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
 
@@ -46,6 +44,8 @@ const val SORT_RELOAD_TIME_INC = 16
 const val SORT_RANGE_DEC = 17
 const val SORT_RANGE_INC = 18
 const val SORT_ID_INC = 19
+const val SORT_DEF_INC = 20
+const val SORT_DEF_DEC = 21
 
 const val MENU_TYPE_WEAPONS = 1
 const val MENU_TYPE_BOWS = 2
@@ -53,6 +53,7 @@ const val MENU_TYPE_SHIELDS = 3
 const val MENU_TYPE_MATERIALS = 4
 const val MENU_TYPE_ROASTED_FOOD = 5
 const val MENU_TYPE_MEALS = 6
+const val MENU_TYPE_ARMOR = 7
 class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private lateinit var bind: ActivityMainBinding
 
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private val shieldViewModel: ShieldsViewModel by viewModels()
     private val roastedFoodViewModel: RoastedFoodViewModel by viewModels()
     private val mealsViewModel: MealsViewModel by viewModels()
+    private val armorViewModel: ArmorViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +75,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         Log.d(TAG, "onCreate(Bundle?) called")
 
         if(weaponsViewModel.weapons.isNullOrEmpty()) {
+            setArmor(DataSource.armorBackup(this))
+
             Endpoints.fetchWeapons(
                 updateWeapons = { weapons -> setWeapons(weapons) },
                 buildView = { buildRecyclerView() },
@@ -174,6 +178,16 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         mealsViewModel.searchList = mealsViewModel.meals
     }
 
+    fun setArmor(armor: List<Armor>) {
+        val newList = mutableListOf<Armor>()
+        armor.map {
+            newList.add(it.setDrawable(this))
+        }
+        armorViewModel.armor = newList.toSet().toList()
+        armorViewModel.searchList = armorViewModel.armor
+    }
+
+
     fun updateWeapons(wpns: List<Weapon>) {
         weaponsViewModel.searchList = wpns
     }
@@ -209,6 +223,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     shields = shieldViewModel.searchList?:shieldViewModel.shields,
                     roastedFoods = roastedFoodViewModel.searchList?:roastedFoodViewModel.roastedFood,
                     meals = mealsViewModel.searchList?:mealsViewModel.meals,
+                    armor = armorViewModel.searchList?:armorViewModel.armor,
                     onSetNav = { setNav(it) },
                     onQueryWeapon = {
                         queryWeaponSearch(it, weaponsViewModel, { updateWeapons(it) })
@@ -245,6 +260,12 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     },
                     onMealMenuItemSelected = {
                         onMealItemSelected(it, mealsViewModel, { updateMeals(it) })
+                    },
+                    onQueryArmor = {
+                        armorViewModel.armor
+                    },
+                    onArmorMenuItemSelected = {
+                        armorViewModel.armor
                     }
                 )
             }

@@ -21,6 +21,7 @@ import com.gaming.android.tearsdatabase.data.MenuLists
 import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.navigation.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
+import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.ArmorList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.BowList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.MaterialList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.MealList
@@ -138,6 +139,12 @@ class ViewBuilder {
                                     onClick = { onListEdit(it.action) }
                                 )
                             }
+                            MENU_TYPE_ARMOR -> MenuLists.armorMenuList.forEach {
+                                DropdownMenuItem(
+                                    text = { Text(ctx.getString(it.text)) },
+                                    onClick = { onListEdit(it.action) }
+                                )
+                            }
                         }
 
                     }
@@ -154,6 +161,7 @@ class ViewBuilder {
             shields: List<Shield>?,
             roastedFoods: List<RoastedFood>?,
             meals: List<Meal>?,
+            armor: List<Armor>?,
             onSetNav: (String) -> Unit,
             onQueryWeapon: (String) -> List<Weapon>?,
             onWeaponMenuItemSelected: (Int) -> List<Weapon>?,
@@ -166,7 +174,9 @@ class ViewBuilder {
             onQueryRoastedFood: (String) -> List<RoastedFood>?,
             onRoastedFoodMenuItemSelected: (Int) -> List<RoastedFood>?,
             onQueryMeal: (String) -> List<Meal>?,
-            onMealMenuItemSelected: (Int) -> List<Meal>?
+            onMealMenuItemSelected: (Int) -> List<Meal>?,
+            onQueryArmor: (String) -> List<Armor>?,
+            onArmorMenuItemSelected: (Int) -> List<Armor>?
         ) {
             val drawerState = rememberDrawerState(DrawerValue.Open)
             val scope = rememberCoroutineScope()
@@ -240,6 +250,12 @@ class ViewBuilder {
                             openDrawer = { scope.launch { drawerState.open() } },
                             onQuery = { onQueryMeal(it) },
                             onMenuItemSelected = { onMealMenuItemSelected(it) }
+                        )
+                        ARMOR_KEY -> ArmorList(
+                            armor = armor,
+                            openDrawer = { scope.launch { drawerState.open() } },
+                            onQuery = { onQueryArmor(it) },
+                            onMenuItemSelected = { onArmorMenuItemSelected(it) }
                         )
                     }
                 }

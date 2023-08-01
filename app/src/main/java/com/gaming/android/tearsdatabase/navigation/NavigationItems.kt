@@ -15,6 +15,7 @@ const val SHIELDS_KEY = "Shields"
 const val MATERIALS_KEY = "Materials"
 const val ROASTED_CHILLED_KEY = "Roasted/Chilled Food"
 const val RECIPES_KEY = "Recipes"
+const val ARMOR_KEY = "Armor"
 
 class NavigationItems {
     companion object {
@@ -38,6 +39,9 @@ class NavigationItems {
                 ),
                 RECIPES_KEY to NavigationItem(
                     R.drawable.mushroom_skewer, RECIPES_KEY
+                ),
+                ARMOR_KEY to NavigationItem(
+                    R.drawable.hylian_hood, ARMOR_KEY
                 )
             )
         }

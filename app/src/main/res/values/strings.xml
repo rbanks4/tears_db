@@ -27,6 +27,8 @@
     <string name="sort_rng_high_low">Range: High to Low</string>
     <string name="sort_rng_low_high">Range: Low to High</string>
     <string name="sort_id_low_high">ID: Low to High</string>
+    <string name="sort_def_high_low">Defense: High to Low</string>
+    <string name="sort_def_low_high">Defense: Low to High</string>
 
 <!--    top bar details-->
     <string name="search_details">search for item(s) (ex. \'knight.*sword\')</string>
