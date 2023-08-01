@@ -75,8 +75,6 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         Log.d(TAG, "onCreate(Bundle?) called")
 
         if(weaponsViewModel.weapons.isNullOrEmpty()) {
-            setArmor(DataSource.armorBackup(this))
-
             Endpoints.fetchWeapons(
                 updateWeapons = { weapons -> setWeapons(weapons) },
                 buildView = { buildRecyclerView() },
@@ -109,6 +107,12 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                 update = { setMeals(it) },
                 buildView = { buildRecyclerView() },
                 onFailure = { setMeals(DataSource.recipeBackup(this)) }
+            )
+
+            Endpoints.fetchArmor(
+                update = { setArmor(it) },
+                buildView = { buildRecyclerView() },
+                onFailure = { setArmor(DataSource.armorBackup(this)) }
             )
         }
     }
