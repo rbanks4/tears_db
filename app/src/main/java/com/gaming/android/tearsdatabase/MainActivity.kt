@@ -8,20 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.data.DataSource
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryArmor
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryBowSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMaterialSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMealSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryRoastedFoodSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryShieldSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryWeaponSearch
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onArmorMenuItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onWeaponMenuItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onMaterialMenuItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onBowMenuItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onMealItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onRoastedFoodItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onShieldMenuItemSelected
+import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryItems
+import com.gaming.android.tearsdatabase.data.SortData.Companion.onSortMenuItemSelected
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
@@ -237,46 +225,46 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     armor = armorViewModel.getCurrent(),
                     onSetNav = { setNav(it) },
                     onQueryWeapon = {
-                        queryWeaponSearch(it, weaponsViewModel, { updateWeapons(it) })
+                        queryItems(it, weaponsViewModel, { updateWeapons(it) })
                     },
                     onWeaponMenuItemSelected = {
-                        onWeaponMenuItemSelected(it, weaponsViewModel, { updateWeapons(it) })
+                        onSortMenuItemSelected(it, weaponsViewModel, { updateWeapons(it) })
                     },
                     onQueryMaterial = {
-                        queryMaterialSearch(it, materialViewModel, { updateMaterials(it) })
+                        queryItems(it, materialViewModel, { updateMaterials(it) })
                     },
                     onMaterialMenuItemSelected = {
-                        onMaterialMenuItemSelected(it, materialViewModel, { updateMaterials(it) })
+                        onSortMenuItemSelected(it, materialViewModel, { updateMaterials(it) })
                     },
                     onQueryBow = {
-                        queryBowSearch(it, bowViewModel, { updateBows(it) })
+                        queryItems(it, bowViewModel, { updateBows(it) })
                     },
                     onBowMenuItemSelected = {
-                        onBowMenuItemSelected(it, bowViewModel, { updateBows(it) })
+                        onSortMenuItemSelected(it, bowViewModel, { updateBows(it) })
                     },
                     onQueryShield = {
-                        queryShieldSearch(it, shieldViewModel, { updateShields(it) })
+                        queryItems(it, shieldViewModel, { updateShields(it) })
                     },
                     onShieldMenuItemSelected = {
-                        onShieldMenuItemSelected(it, shieldViewModel, { updateShields(it) })
+                        onSortMenuItemSelected(it, shieldViewModel, { updateShields(it) })
                     },
                     onQueryRoastedFood = {
-                        queryRoastedFoodSearch(it, roastedFoodViewModel, { updateRoastedFood(it) })
+                        queryItems(it, roastedFoodViewModel, { updateRoastedFood(it) })
                     },
                     onRoastedFoodMenuItemSelected = {
-                        onRoastedFoodItemSelected(it, roastedFoodViewModel, { updateRoastedFood(it) })
+                        onSortMenuItemSelected(it, roastedFoodViewModel, { updateRoastedFood(it) })
                     },
                     onQueryMeal = {
-                        queryMealSearch(it, mealsViewModel, { updateMeals(it) })
+                        queryItems(it, mealsViewModel, { updateMeals(it) })
                     },
                     onMealMenuItemSelected = {
-                        onMealItemSelected(it, mealsViewModel, { updateMeals(it) })
+                        onSortMenuItemSelected(it, mealsViewModel, { updateMeals(it) })
                     },
                     onQueryArmor = {
-                        queryArmor(it, armorViewModel, { updateArmor(it) })
+                        queryItems(it, armorViewModel, { updateArmor(it) })
                     },
                     onArmorMenuItemSelected = {
-                        onArmorMenuItemSelected(it, armorViewModel, { updateArmor(it) })
+                        onSortMenuItemSelected(it, armorViewModel, { updateArmor(it) })
                     }
                 )
             }

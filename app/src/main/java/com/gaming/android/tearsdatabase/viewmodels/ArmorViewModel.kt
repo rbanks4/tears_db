@@ -2,6 +2,8 @@ package com.gaming.android.tearsdatabase.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.gaming.android.tearsdatabase.SORT_DEF_DEC
+import com.gaming.android.tearsdatabase.SORT_DEF_INC
 import com.gaming.android.tearsdatabase.models.Armor
 
 private const val ARMOR_ITEM = "armor"
@@ -19,4 +21,42 @@ class ArmorViewModel(private val savedStateHandle: SavedStateHandle): ViewModel(
     override var searchString: String?
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
+
+    override fun sort(choice: Int, list: List<Armor>?): List<Armor>? {
+        return when (choice) {
+            SORT_DEF_INC ->
+                list?.sortedBy { it.base_defense }
+                    ?.sortedBy { it.star_one }
+            SORT_DEF_DEC ->
+                list?.sortedByDescending { it.base_defense }
+                    ?.sortedByDescending { it.star_one }
+            else -> listOf()
+        }
+    }
+
+    override fun search(regex: Regex, viewModel: ItemViewModel<Armor>): List<Armor> {
+        var finalList: List<Armor>?
+        viewModel.items.let { list ->
+            val nameList = list!!.filter {
+                it.name.lowercase().matches(".*$regex.*".toRegex())
+            }
+            val subList = list.filter {
+                if (it.set_name.isNotEmpty())
+                    it.set_name.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                else false
+            }
+            val subList2 = list.filter {
+                if (it.set_bonus.isNotEmpty())
+                    it.set_bonus.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                else false
+            }
+            val subList3 = list.filter {
+                if (it.effect.isNotEmpty())
+                    it.effect.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                else false
+            }
+            finalList = nameList + subList + subList2 + subList3
+        }
+        return finalList?:listOf()
+    }
 }
