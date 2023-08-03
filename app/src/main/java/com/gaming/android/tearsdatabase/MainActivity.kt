@@ -8,24 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.data.DataSource
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryBowSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMaterialSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryMealSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryRoastedFoodSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryShieldSearch
-import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryWeaponSearch
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onWeaponMenuItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onMaterialMenuItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onBowMenuItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onMealItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onRoastedFoodItemSelected
-import com.gaming.android.tearsdatabase.data.SortData.Companion.onShieldMenuItemSelected
+import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryItems
+import com.gaming.android.tearsdatabase.data.SortData.Companion.onSortMenuItemSelected
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.models.*
-import com.gaming.android.tearsdatabase.navigation.NavigationItems
-import com.gaming.android.tearsdatabase.navigation.WEAPONS_KEY
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
+import com.gaming.android.tearsdatabase.viewmodels.*
 
 private const val TAG = "MainActivity"
 const val SORT_DAMAGE_INC = 1
@@ -46,6 +35,8 @@ const val SORT_RELOAD_TIME_INC = 16
 const val SORT_RANGE_DEC = 17
 const val SORT_RANGE_INC = 18
 const val SORT_ID_INC = 19
+const val SORT_DEF_INC = 20
+const val SORT_DEF_DEC = 21
 
 const val MENU_TYPE_WEAPONS = 1
 const val MENU_TYPE_BOWS = 2
@@ -53,6 +44,7 @@ const val MENU_TYPE_SHIELDS = 3
 const val MENU_TYPE_MATERIALS = 4
 const val MENU_TYPE_ROASTED_FOOD = 5
 const val MENU_TYPE_MEALS = 6
+const val MENU_TYPE_ARMOR = 7
 class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private lateinit var bind: ActivityMainBinding
 
@@ -63,6 +55,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private val shieldViewModel: ShieldsViewModel by viewModels()
     private val roastedFoodViewModel: RoastedFoodViewModel by viewModels()
     private val mealsViewModel: MealsViewModel by viewModels()
+    private val armorViewModel: ArmorViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +65,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
 
         Log.d(TAG, "onCreate(Bundle?) called")
 
-        if(weaponsViewModel.weapons.isNullOrEmpty()) {
+        if(weaponsViewModel.items.isNullOrEmpty()) {
             Endpoints.fetchWeapons(
                 updateWeapons = { weapons -> setWeapons(weapons) },
                 buildView = { buildRecyclerView() },
@@ -106,6 +99,12 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                 buildView = { buildRecyclerView() },
                 onFailure = { setMeals(DataSource.recipeBackup(this)) }
             )
+
+            Endpoints.fetchArmor(
+                update = { setArmor(it) },
+                buildView = { buildRecyclerView() },
+                onFailure = { setArmor(DataSource.armorBackup(this)) }
+            )
         }
     }
 
@@ -125,8 +124,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         weapons.map {
             newList.add(it.setDrawable(this))
         }
-        weaponsViewModel.weapons = newList.toSet().toList()
-        weaponsViewModel.searchList = weaponsViewModel.weapons
+        weaponsViewModel.items = newList.toSet().toList()
+        weaponsViewModel.searchList = weaponsViewModel.items
     }
 
     fun setMaterials(materials: List<Material>) {
@@ -134,8 +133,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         materials.map {
             newList.add(it.setDrawable(this))
         }
-        materialViewModel.materials = newList.toSet().toList()
-        materialViewModel.searchList = materialViewModel.materials
+        materialViewModel.items = newList.toSet().toList()
+        materialViewModel.searchList = materialViewModel.items
     }
 
     fun setBows(bows: List<Bow>) {
@@ -143,8 +142,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         bows.map {
             newList.add(it.setDrawable(this))
         }
-        bowViewModel.bows = newList.toSet().toList()
-        bowViewModel.searchList = bowViewModel.bows
+        bowViewModel.items = newList.toSet().toList()
+        bowViewModel.searchList = bowViewModel.items
     }
 
     fun setShields(shields: List<Shield>) {
@@ -152,8 +151,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         shields.map {
             newList.add(it.setDrawable(this))
         }
-        shieldViewModel.shields = newList.toSet().toList()
-        shieldViewModel.searchList = shieldViewModel.shields
+        shieldViewModel.items = newList.toSet().toList()
+        shieldViewModel.searchList = shieldViewModel.items
     }
 
     fun setRoastedFood(roastedFood: List<RoastedFood>) {
@@ -161,8 +160,8 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         roastedFood.map {
             newList.add(it.setDrawable(this))
         }
-        roastedFoodViewModel.roastedFood = newList.toSet().toList()
-        roastedFoodViewModel.searchList = roastedFoodViewModel.roastedFood
+        roastedFoodViewModel.items = newList.toSet().toList()
+        roastedFoodViewModel.searchList = roastedFoodViewModel.items
     }
 
     fun setMeals(meals: List<Meal>) {
@@ -170,9 +169,19 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         meals.map {
             newList.add(it.setDrawable(this))
         }
-        mealsViewModel.meals = newList.toSet().toList()
-        mealsViewModel.searchList = mealsViewModel.meals
+        mealsViewModel.items = newList.toSet().toList()
+        mealsViewModel.searchList = mealsViewModel.items
     }
+
+    fun setArmor(armor: List<Armor>) {
+        val newList = mutableListOf<Armor>()
+        armor.map {
+            newList.add(it.setDrawable(this))
+        }
+        armorViewModel.items = newList.toSet().toList()
+        armorViewModel.searchList = armorViewModel.items
+    }
+
 
     fun updateWeapons(wpns: List<Weapon>) {
         weaponsViewModel.searchList = wpns
@@ -198,53 +207,64 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
         mealsViewModel.searchList = mls
     }
 
+    fun updateArmor(arm: List<Armor>) {
+        armorViewModel.searchList = arm
+    }
+
     private fun buildRecyclerView(){
         setContent {
             TearsTheme {
                 CreateDrawer(
                     nav = viewModel.navItem,
-                    weapons = weaponsViewModel.searchList?:weaponsViewModel.weapons,
-                    materials = materialViewModel.searchList?:materialViewModel.materials,
-                    bows = bowViewModel.searchList?:bowViewModel.bows,
-                    shields = shieldViewModel.searchList?:shieldViewModel.shields,
-                    roastedFoods = roastedFoodViewModel.searchList?:roastedFoodViewModel.roastedFood,
-                    meals = mealsViewModel.searchList?:mealsViewModel.meals,
+                    weapons = weaponsViewModel.getCurrent(),
+                    materials = materialViewModel.getCurrent(),
+                    bows = bowViewModel.getCurrent(),
+                    shields = shieldViewModel.getCurrent(),
+                    roastedFoods = roastedFoodViewModel.getCurrent(),
+                    meals = mealsViewModel.getCurrent(),
+                    armor = armorViewModel.getCurrent(),
                     onSetNav = { setNav(it) },
                     onQueryWeapon = {
-                        queryWeaponSearch(it, weaponsViewModel, { updateWeapons(it) })
+                        queryItems(it, weaponsViewModel, { updateWeapons(it) })
                     },
                     onWeaponMenuItemSelected = {
-                        onWeaponMenuItemSelected(it, weaponsViewModel, { updateWeapons(it) })
+                        onSortMenuItemSelected(it, weaponsViewModel, { updateWeapons(it) })
                     },
                     onQueryMaterial = {
-                        queryMaterialSearch(it, materialViewModel, { updateMaterials(it) })
+                        queryItems(it, materialViewModel, { updateMaterials(it) })
                     },
                     onMaterialMenuItemSelected = {
-                        onMaterialMenuItemSelected(it, materialViewModel, { updateMaterials(it) })
+                        onSortMenuItemSelected(it, materialViewModel, { updateMaterials(it) })
                     },
                     onQueryBow = {
-                        queryBowSearch(it, bowViewModel, { updateBows(it) })
+                        queryItems(it, bowViewModel, { updateBows(it) })
                     },
                     onBowMenuItemSelected = {
-                        onBowMenuItemSelected(it, bowViewModel, { updateBows(it) })
+                        onSortMenuItemSelected(it, bowViewModel, { updateBows(it) })
                     },
                     onQueryShield = {
-                        queryShieldSearch(it, shieldViewModel, { updateShields(it) })
+                        queryItems(it, shieldViewModel, { updateShields(it) })
                     },
                     onShieldMenuItemSelected = {
-                        onShieldMenuItemSelected(it, shieldViewModel, { updateShields(it) })
+                        onSortMenuItemSelected(it, shieldViewModel, { updateShields(it) })
                     },
                     onQueryRoastedFood = {
-                        queryRoastedFoodSearch(it, roastedFoodViewModel, { updateRoastedFood(it) })
+                        queryItems(it, roastedFoodViewModel, { updateRoastedFood(it) })
                     },
                     onRoastedFoodMenuItemSelected = {
-                        onRoastedFoodItemSelected(it, roastedFoodViewModel, { updateRoastedFood(it) })
+                        onSortMenuItemSelected(it, roastedFoodViewModel, { updateRoastedFood(it) })
                     },
                     onQueryMeal = {
-                        queryMealSearch(it, mealsViewModel, { updateMeals(it) })
+                        queryItems(it, mealsViewModel, { updateMeals(it) })
                     },
                     onMealMenuItemSelected = {
-                        onMealItemSelected(it, mealsViewModel, { updateMeals(it) })
+                        onSortMenuItemSelected(it, mealsViewModel, { updateMeals(it) })
+                    },
+                    onQueryArmor = {
+                        queryItems(it, armorViewModel, { updateArmor(it) })
+                    },
+                    onArmorMenuItemSelected = {
+                        onSortMenuItemSelected(it, armorViewModel, { updateArmor(it) })
                     }
                 )
             }

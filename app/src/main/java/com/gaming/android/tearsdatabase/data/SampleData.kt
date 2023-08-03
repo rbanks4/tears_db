@@ -103,4 +103,32 @@ object SampleData {
         Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, "CookMushroom and CookMushroom", 3, 3, 3)
             .setDrawable(R.drawable.mushroom_skewer)
     )
+
+    val armor = listOf(
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+            3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees",
+            "Royal Hidden Passage (entrance location -0253,0764,0087), break rocks near electric Like-Like. Enter prison cell and move boulder to climb to tunnel to cell on the other side.", "-0267, 0638, -0035").setDrawable(R.drawable.hylian_hood),
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+            3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+            3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+            3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+            3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+            3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
+            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+    )
 }

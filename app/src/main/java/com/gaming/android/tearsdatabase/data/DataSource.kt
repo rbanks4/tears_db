@@ -69,14 +69,14 @@ class DataSource {
             return jsonString
         }
 
-//        fun armorBackup(context: Context): List<Armor> {
-//            val response = Gson().fromJson(
-//                readJsonBackup(context, ARMOR_JSON),
-//                ArmorResponse::class.java
-//            )
-//
-//            return response.documents
-//        }
+        fun armorBackup(context: Context): List<Armor> {
+            val response = Gson().fromJson(
+                readJsonBackup(context, ARMOR_JSON),
+                ArmorResponse::class.java
+            )
+
+            return response.documents
+        }
         fun bowsBackup(context: Context): List<Bow> {
             val response = Gson().fromJson(
                 readJsonBackup(context, BOWS_JSON),

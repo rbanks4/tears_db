@@ -130,5 +130,16 @@ class MenuLists {
                 action = SORT_ID_INC
             )
         )
+
+        val armorMenuList = listOf(
+            MenuItem(
+                text = R.string.sort_def_low_high,
+                action = SORT_DEF_INC
+            ),
+            MenuItem(
+                text = R.string.sort_def_high_low,
+                action = SORT_DEF_DEC
+            )
+        )
     }
 }
