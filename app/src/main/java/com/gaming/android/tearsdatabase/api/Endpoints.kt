@@ -13,6 +13,7 @@ const val BOWS = "bows"
 const val SHIELDS = "shields"
 const val ROASTED_FOOD = "roasted"
 const val MEALS = "meals"
+const val ARMOR = "armors"
 class Endpoints {
     companion object {
         fun fetchWeapons(updateWeapons: (List<Weapon>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit) {
@@ -219,6 +220,41 @@ class Endpoints {
                 }
 
                 override fun onFailure(call: Call<MealsResponse>, t: Throwable) {
+                    Log.w(label, "failed call: " + t.message)
+                    onFailure()
+                    buildView()
+                }
+
+            })
+        }
+
+        fun fetchArmor(update: (List<Armor>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
+            val apiService = ApiClient.apiService
+            val dataRequest = DataRequest(collection = ARMOR)
+            val call = apiService.getArmor(dataRequest)
+            val label = "$TAG.$ARMOR"
+
+            call.enqueue(object: Callback<ArmorResponse> {
+                override fun onResponse(
+                    call: Call<ArmorResponse>,
+                    response: Response<ArmorResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.w(label, "response successful")
+                        response.body()?.documents?.let { meals ->
+                            update(meals)
+                            buildView()
+                            Log.w(label, "meal response list size is ${meals.size}")
+                        }
+
+                    } else {
+                        Log.w(label, "response failed")
+                        Log.w(label, response.code().toString())
+                        Log.w(label, response.errorBody().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<ArmorResponse>, t: Throwable) {
                     Log.w(label, "failed call: " + t.message)
                     onFailure()
                     buildView()

@@ -1,4 +1,4 @@
-package com.gaming.android.tearsdatabase
+package com.gaming.android.tearsdatabase.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

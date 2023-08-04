@@ -33,4 +33,8 @@ interface ApiService {
     @Headers(API_KEY_TAG + KEY)
     @POST(FIND_ALL)
     fun getMeals(@Body request: DataRequest): Call<MealsResponse>
+
+    @Headers(API_KEY_TAG + KEY)
+    @POST(FIND_ALL)
+    fun getArmor(@Body request: DataRequest): Call<ArmorResponse>
 }
