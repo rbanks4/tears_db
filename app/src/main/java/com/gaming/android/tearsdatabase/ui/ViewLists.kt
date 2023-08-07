@@ -33,6 +33,8 @@ import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.MealDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.RoastedFoodDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.ShieldDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.WeaponDetails
+import com.gaming.android.tearsdatabase.viewmodels.ItemViewModel
+import com.gaming.android.tearsdatabase.viewmodels.WeaponsViewModel
 
 class ViewLists {
     companion object {

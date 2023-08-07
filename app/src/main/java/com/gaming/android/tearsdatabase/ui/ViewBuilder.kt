@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.data.MenuLists
-import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.navigation.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.ArmorList
@@ -28,6 +27,13 @@ import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.MealList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.RoastedFoodList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.WeaponList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.ShieldList
+import com.gaming.android.tearsdatabase.viewmodels.ArmorViewModel
+import com.gaming.android.tearsdatabase.viewmodels.BowsViewModel
+import com.gaming.android.tearsdatabase.viewmodels.MaterialsViewModel
+import com.gaming.android.tearsdatabase.viewmodels.MealsViewModel
+import com.gaming.android.tearsdatabase.viewmodels.RoastedFoodViewModel
+import com.gaming.android.tearsdatabase.viewmodels.ShieldsViewModel
+import com.gaming.android.tearsdatabase.viewmodels.WeaponsViewModel
 import kotlinx.coroutines.launch
 
 class ViewBuilder {
@@ -155,28 +161,14 @@ class ViewBuilder {
         @Composable
         fun CreateDrawer(
             nav: String?,
-            weapons: List<Weapon>?,
-            materials: List<Material>?,
-            bows: List<Bow>?,
-            shields: List<Shield>?,
-            roastedFoods: List<RoastedFood>?,
-            meals: List<Meal>?,
-            armor: List<Armor>?,
-            onSetNav: (String) -> Unit,
-            onQueryWeapon: (String) -> List<Weapon>?,
-            onWeaponMenuItemSelected: (Int) -> List<Weapon>?,
-            onQueryMaterial: (String) -> List<Material>?,
-            onMaterialMenuItemSelected: (Int) -> List<Material>?,
-            onQueryBow: (String) -> List<Bow>?,
-            onBowMenuItemSelected: (Int) -> List<Bow>?,
-            onQueryShield: (String) -> List<Shield>?,
-            onShieldMenuItemSelected: (Int) -> List<Shield>?,
-            onQueryRoastedFood: (String) -> List<RoastedFood>?,
-            onRoastedFoodMenuItemSelected: (Int) -> List<RoastedFood>?,
-            onQueryMeal: (String) -> List<Meal>?,
-            onMealMenuItemSelected: (Int) -> List<Meal>?,
-            onQueryArmor: (String) -> List<Armor>?,
-            onArmorMenuItemSelected: (Int) -> List<Armor>?
+            weapons: WeaponsViewModel,
+            materials: MaterialsViewModel,
+            bows: BowsViewModel,
+            shields: ShieldsViewModel,
+            roastedFoods: RoastedFoodViewModel,
+            meals: MealsViewModel,
+            armor: ArmorViewModel,
+            onSetNav: (String) -> Unit
         ) {
             val drawerState = rememberDrawerState(DrawerValue.Open)
             val scope = rememberCoroutineScope()
@@ -214,48 +206,49 @@ class ViewBuilder {
                     }
                 },
                 content = {
+                    val openDrawer = { scope.launch { drawerState.open() } }
                     when (selectedItem) {
                         WEAPONS_KEY -> WeaponList(
-                            weapons = weapons,
-                            openDrawer = { scope.launch { drawerState.open() } },
-                            onQuery = { onQueryWeapon(it) },
-                            onWeaponMenuItemSelected = onWeaponMenuItemSelected
+                            weapons = weapons.getCurrent(),
+                            openDrawer = { openDrawer() },
+                            onQuery = { weapons.query(it) },
+                            onWeaponMenuItemSelected = { weapons.onItemSelected(it) }
                         )
                         BOWS_KEY -> BowList(
-                            bows = bows,
-                            openDrawer = { scope.launch { drawerState.open() } },
-                            onQuery = { onQueryBow(it) },
-                            onMenuItemSelected = onBowMenuItemSelected
+                            bows = bows.getCurrent(),
+                            openDrawer = { openDrawer() },
+                            onQuery = { bows.query(it) },
+                            onMenuItemSelected = { bows.onItemSelected(it) }
                         )
                         SHIELDS_KEY -> ShieldList(
-                            shields = shields,
-                            openDrawer = { scope.launch { drawerState.open() } },
-                            onQuery = { onQueryShield(it) },
-                            onMenuItemSelected = onShieldMenuItemSelected
+                            shields = shields.getCurrent(),
+                            openDrawer = { openDrawer() },
+                            onQuery = { shields.query(it) },
+                            onMenuItemSelected = { shields.onItemSelected(it) }
                         )
                         MATERIALS_KEY -> MaterialList(
-                            materials = materials,
-                            openDrawer = { scope.launch { drawerState.open() } },
-                            onQuery = { onQueryMaterial(it) },
-                            onMenuItemSelected = { onMaterialMenuItemSelected(it) }
+                            materials = materials.getCurrent(),
+                            openDrawer = { openDrawer() },
+                            onQuery = { materials.query(it) },
+                            onMenuItemSelected = { materials.onItemSelected(it) }
                         )
                         ROASTED_CHILLED_KEY -> RoastedFoodList(
-                            roastedFoods = roastedFoods,
-                            openDrawer = { scope.launch { drawerState.open() } },
-                            onQuery = { onQueryRoastedFood(it) },
-                            onMenuItemSelected = { onRoastedFoodMenuItemSelected(it) }
+                            roastedFoods = roastedFoods.getCurrent(),
+                            openDrawer = { openDrawer() },
+                            onQuery = { roastedFoods.query(it) },
+                            onMenuItemSelected = { roastedFoods.onItemSelected(it) }
                         )
                         RECIPES_KEY -> MealList(
-                            meals = meals,
-                            openDrawer = { scope.launch { drawerState.open() } },
-                            onQuery = { onQueryMeal(it) },
-                            onMenuItemSelected = { onMealMenuItemSelected(it) }
+                            meals = meals.getCurrent(),
+                            openDrawer = { openDrawer() },
+                            onQuery = { meals.query(it) },
+                            onMenuItemSelected = { meals.onItemSelected(it) }
                         )
                         ARMOR_KEY -> ArmorList(
-                            armor = armor,
-                            openDrawer = { scope.launch { drawerState.open() } },
-                            onQuery = { onQueryArmor(it) },
-                            onMenuItemSelected = { onArmorMenuItemSelected(it) }
+                            armor = armor.getCurrent(),
+                            openDrawer = { openDrawer() },
+                            onQuery = { armor.query(it) },
+                            onMenuItemSelected = { armor.onItemSelected(it) }
                         )
                     }
                 }
