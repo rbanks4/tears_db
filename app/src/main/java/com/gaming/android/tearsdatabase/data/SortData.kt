@@ -6,7 +6,7 @@ import com.gaming.android.tearsdatabase.viewmodels.*
 
 class SortData {
     companion object {
-        fun <T> onSortMenuItemSelected(choice: Int, viewModel: ItemViewModel<T>, updateList: (List<T>) -> Unit): List<T>? {
+        fun <T> onSortMenuItemSelected(choice: Int, viewModel: ItemViewModel<T>): List<T>? {
             val listUpdate: List<T>?
             val list =
                 if(!viewModel.searchList.isNullOrEmpty())
@@ -15,7 +15,7 @@ class SortData {
 
             listUpdate = viewModel.sort(choice, list)
             return if (!listUpdate.isNullOrEmpty()) {
-                updateList(listUpdate)
+                viewModel.update(listUpdate)
                 listUpdate
             } else {
                 viewModel.items
