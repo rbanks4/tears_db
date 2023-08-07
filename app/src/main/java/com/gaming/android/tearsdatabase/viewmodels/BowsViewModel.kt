@@ -1,5 +1,6 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
+import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.gaming.android.tearsdatabase.*
@@ -20,6 +21,14 @@ class BowsViewModel(private val savedStateHandle: SavedStateHandle): ViewModel()
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
+    override fun setup(list: List<Bow>, ctx: Context) {
+        val newList = mutableListOf<Bow>()
+        list.map {
+            newList.add(it.setDrawable(ctx))
+        }
+        items = newList.toSet().toList()
+        searchList = items
+    }
     override fun sort(choice: Int, list: List<Bow>?): List<Bow>? {
         return when (choice) {
             SORT_DAMAGE_DEC ->
