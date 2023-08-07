@@ -1,9 +1,21 @@
 package com.gaming.android.tearsdatabase.models
 
+import android.content.Context
 import androidx.annotation.DrawableRes
+import com.gaming.android.tearsdatabase.data.DataSource
 
-data class Item (
-    val name: String,
-    val weapon: Weapon,
-    @DrawableRes val imageResId: Int
-        )
+interface Item<T> {
+    val name: String
+
+    @get:DrawableRes
+    var image: Int
+
+
+    fun setDrawable(@DrawableRes int: Int): T
+
+    fun setDrawable(ctx: Context): T
+
+    fun findDrawable(ctx: Context) {
+        image = DataSource.loadWeaponImage(name, ctx)
+    }
+}

@@ -7,7 +7,7 @@ import com.gaming.android.tearsdatabase.data.DataSource
 
 data class Armor(
     val actor_name: String,
-    val name: String,
+    override val name: String,
     val set_name: String,
     val effect: String,
     val set_bonus: String,
@@ -30,22 +30,19 @@ data class Armor(
     val total_upgrades: String,
     val location: String,
     val coordinates: String
-) {
+): Item<Armor> {
     @DrawableRes
-    var image: Int = R.drawable.mushroom_skewer
+    override var image: Int = R.drawable.mushroom_skewer
 
 
-    fun setDrawable(@DrawableRes int: Int): Armor {
+    override fun setDrawable(@DrawableRes int: Int): Armor {
         image = int
         return this
     }
 
-    fun setDrawable(ctx: Context): Armor {
+    override fun setDrawable(ctx: Context): Armor {
         findDrawable(ctx)
         return this
     }
 
-    fun findDrawable(ctx: Context) {
-        image = DataSource.loadWeaponImage(name, ctx)
-    }
 }

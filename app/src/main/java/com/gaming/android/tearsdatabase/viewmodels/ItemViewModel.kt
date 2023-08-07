@@ -16,7 +16,16 @@ interface ItemViewModel<T> {
         return searchList?:items
     }
 
-    fun setup(list: List<T>, ctx: Context)
+    fun setup(list: List<T>, ctx: Context) {
+        val newList = mutableListOf<T>()
+        list.map {
+            newList.add(getImage(it,ctx))
+        }
+        items = newList.toSet().toList()
+        searchList = items
+    }
+
+    fun getImage(item: T, ctx: Context): T
 
     fun update(list: List<T>) {
         searchList = list

@@ -38,13 +38,8 @@ class ShieldsViewModel(private val savedStateHandle: SavedStateHandle): ViewMode
         }
     }
 
-    override fun setup(list: List<Shield>, ctx: Context) {
-        val newList = mutableListOf<Shield>()
-        list.map {
-            newList.add(it.setDrawable(ctx))
-        }
-        items = newList.toSet().toList()
-        searchList = items
+    override fun getImage(item: Shield, ctx: Context): Shield {
+        return item.setDrawable(ctx)
     }
     override fun search(regex: Regex, viewModel: ItemViewModel<Shield>): List<Shield> {
         var finalList: List<Shield>?

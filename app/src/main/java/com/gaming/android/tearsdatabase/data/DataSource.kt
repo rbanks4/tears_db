@@ -20,9 +20,6 @@ const val WEAPONS_JSON = "weapons.json"
 class DataSource {
 
     companion object {
-        fun loadWeaponImages(weapons: List<Weapon>, context: Context): List<Item> {
-            return weapons.map { Item(it.name, it, it.getDrawable(context)) }
-        }
 
         @DrawableRes
         fun loadWeaponImage(name: String, context: Context): Int {
