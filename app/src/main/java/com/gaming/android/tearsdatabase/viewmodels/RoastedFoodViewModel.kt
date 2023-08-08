@@ -21,13 +21,8 @@ class RoastedFoodViewModel(private val savedStateHandle: SavedStateHandle): View
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
-    override fun setup(list: List<RoastedFood>, ctx: Context) {
-        val newList = mutableListOf<RoastedFood>()
-        list.map {
-            newList.add(it.setDrawable(ctx))
-        }
-        items = newList.toSet().toList()
-        searchList = items
+    override fun getImage(item: RoastedFood, ctx: Context): RoastedFood {
+        return item.setDrawable(ctx)
     }
     override fun sort(choice: Int, list: List<RoastedFood>?): List<RoastedFood>? {
         return when (choice) {

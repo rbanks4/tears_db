@@ -23,13 +23,8 @@ class MaterialsViewModel(private val savedStateHandle: SavedStateHandle): ViewMo
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
-    override fun setup(list: List<Material>, ctx: Context) {
-        val newList = mutableListOf<Material>()
-        list.map {
-            newList.add(it.setDrawable(ctx))
-        }
-        items = newList.toSet().toList()
-        searchList = items
+    override fun getImage(item: Material, ctx: Context): Material {
+        return item.setDrawable(ctx)
     }
 
     override fun sort(choice: Int, list: List<Material>?): List<Material>? {

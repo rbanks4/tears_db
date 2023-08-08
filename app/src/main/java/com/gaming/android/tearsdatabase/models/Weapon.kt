@@ -7,7 +7,7 @@ import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.R
 
 data class Weapon (
-    val name: String,
+    override val name: String,
     val compendium_no: Int,
     val base_attack: Int,
     val shown_attack: Int,
@@ -19,28 +19,17 @@ data class Weapon (
     val sub_type2: String,
     val attach_zoani_attk: Int?,
     val shield_bash_damage: Int
-        ) {
-    @DrawableRes var image: Int = R.drawable.wooden_stick
-
-
+        ): Item<Weapon> {
     @DrawableRes
-    fun getDrawable(context: Context): Int {
-        if(image == 0)
-            image = DataSource.loadWeaponImage(name, context)
-        return image
-    }
+    override var image: Int = R.drawable.wooden_stick
 
-    fun setDrawable(@DrawableRes int: Int): Weapon {
+    override fun setDrawable(@DrawableRes int: Int): Weapon {
         image = int
         return this
     }
 
-    fun setDrawable(ctx: Context): Weapon {
+    override fun setDrawable(ctx: Context): Weapon {
         findDrawable(ctx)
         return this
-    }
-
-    fun findDrawable(ctx: Context) {
-        image = DataSource.loadWeaponImage(name, ctx)
     }
 }

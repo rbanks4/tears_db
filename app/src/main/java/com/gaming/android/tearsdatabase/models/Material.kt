@@ -7,7 +7,7 @@ import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.data.DataSource
 
 data class Material(
-    val name: String,
+    override val name: String,
     val additional_damage: Int?,
     val selling_price: Int?,
     val buying_price: String?,
@@ -24,29 +24,17 @@ data class Material(
     val boost_max_heart: Int?,
     val boost_max_stamina: Int?,
     val boost_critical_cook: Int?
-    ) {
+    ): Item<Material> {
     @DrawableRes
-    var image: Int = R.drawable.hot_footed_frog
+    override var image: Int = R.drawable.hot_footed_frog
 
-
-    @DrawableRes
-    fun getDrawable(context: Context): Int {
-        if(image == 0)
-            image = DataSource.loadWeaponImage(name, context)
-        return image
-    }
-
-    fun setDrawable(@DrawableRes int: Int): Material {
+    override fun setDrawable(@DrawableRes int: Int): Material {
         image = int
         return this
     }
 
-    fun setDrawable(ctx: Context): Material {
+    override fun setDrawable(ctx: Context): Material {
         findDrawable(ctx)
         return this
-    }
-
-    fun findDrawable(ctx: Context) {
-        image = DataSource.loadWeaponImage(name, ctx)
     }
 }

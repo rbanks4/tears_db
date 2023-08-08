@@ -6,7 +6,7 @@ import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.data.DataSource
 
 data class Shield(
-    val name: String,
+    override val name: String,
     val compendium_no: Int,
     val guard_power: Int,
     val durability: Int,
@@ -15,22 +15,18 @@ data class Shield(
     val sub_type: String,
     val additional_damage: Int?,
     val sub_type2: String
-) {
+): Item<Shield> {
     @DrawableRes
-    var image: Int = R.drawable.travelers_shield
+    override var image: Int = R.drawable.travelers_shield
 
 
-    fun setDrawable(@DrawableRes int: Int): Shield {
+    override fun setDrawable(@DrawableRes int: Int): Shield {
         image = int
         return this
     }
 
-    fun setDrawable(ctx: Context): Shield {
+    override fun setDrawable(ctx: Context): Shield {
         findDrawable(ctx)
         return this
-    }
-
-    fun findDrawable(ctx: Context) {
-        image = DataSource.loadWeaponImage(name, ctx)
     }
 }
