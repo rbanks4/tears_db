@@ -17,6 +17,7 @@ const val RECIPES_JSON = "recipe.json"
 const val ROASTED_JSON = "roasted.json"
 const val SHIELDS_JSON = "shields.json"
 const val WEAPONS_JSON = "weapons.json"
+const val EFFECTS_JSON = "effects.json"
 class DataSource {
 
     companion object {
@@ -118,6 +119,15 @@ class DataSource {
             val response = Gson().fromJson(
                 readJsonBackup(context, WEAPONS_JSON),
                 WeaponsResponse::class.java
+            )
+
+            return response.documents
+        }
+
+        fun effectsBackup(context: Context): List<Effect> {
+            val response = Gson().fromJson(
+                readJsonBackup(context, EFFECTS_JSON),
+                EffectResponse::class.java
             )
 
             return response.documents
