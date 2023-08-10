@@ -131,4 +131,14 @@ object SampleData {
             "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
             "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
     )
+
+    val effects = listOf(
+        Effect("AttackUp", "Attack Up", 1, null, "1-27 yellow hearts", 1, 108, 0, true).setDrawable(R.drawable.attackup),
+        Effect("LifeMaxUp", "Extra Hearts", 4, 108, "1-27 yellow hearts", 1, 108, 0, false).setDrawable(R.drawable.lifemaxup)
+    )
+
+    val effectMap = mapOf(
+        Pair("AttackUp", Effect("AttackUp", "Attack Up", 1, null, "1-27 yellow hearts", 1, 108, 0, true).setDrawable(R.drawable.attackup)),
+        Pair("LifeMaxUp", Effect("LifeMaxUp", "Extra Hearts", 4, 108, "1-27 yellow hearts", 1, 108, 0, false).setDrawable(R.drawable.lifemaxup))
+    )
 }
