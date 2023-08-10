@@ -6,7 +6,6 @@ import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.api.*
 import com.gaming.android.tearsdatabase.models.*
 import com.google.gson.Gson
-import java.io.File
 import java.io.IOException
 import java.io.InputStream
 
@@ -18,6 +17,7 @@ const val ROASTED_JSON = "roasted.json"
 const val SHIELDS_JSON = "shields.json"
 const val WEAPONS_JSON = "weapons.json"
 const val EFFECTS_JSON = "effects.json"
+const val DRAWABLE = "drawable"
 class DataSource {
 
     companion object {
@@ -28,7 +28,19 @@ class DataSource {
         }
 
         private fun getDrawable(context: Context, name: String): Int {
-            return context.resources.getIdentifier(name, "drawable", context.packageName)
+            return context.resources.getIdentifier(name, DRAWABLE, context.packageName)
+        }
+
+        fun splitEffectNames(name: String): List<String> {
+            val names = name.split("\n")
+            return names
+        }
+
+        fun getEffectsByName(map: Map<String, Effect>?, name: String): List<Effect> {
+            val names = splitEffectNames(name)
+            return names.mapNotNull {
+                map?.get(it)
+            }
         }
 
         fun camelToSnakeCase(name: String): String {
