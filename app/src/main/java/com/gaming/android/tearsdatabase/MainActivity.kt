@@ -12,6 +12,7 @@ import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
 import com.gaming.android.tearsdatabase.viewmodels.*
+import io.reactivex.rxjava3.kotlin.toObservable
 
 private const val TAG = "MainActivity"
 const val SORT_DAMAGE_INC = 1
@@ -63,71 +64,56 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
 
         Log.d(TAG, "onCreate(Bundle?) called")
 
-        if(weaponsViewModel.items.isNullOrEmpty()) {
-            Endpoints.fetchWeapons(
-                updateWeapons = { weapons -> weaponsViewModel.setup(weapons, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { weaponsViewModel.setup(DataSource.weaponBackup(this), this) }
-            )
+        Endpoints.fetchWeapons(
+            update = { weapons -> weaponsViewModel.setup(weapons, this) },
+            build = { buildRecyclerView() },
+            onFailure = { weaponsViewModel.setup(DataSource.weaponBackup(this), this) }
+        )
 
-            Endpoints.fetchMaterials(
-                updateMaterials = { materialViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { materialViewModel.setup(DataSource.materialsBackup(this), this) }
-            )
+        Endpoints.fetchMaterials(
+            update = { materialViewModel.setup(it, this) },
+            onFailure = { materialViewModel.setup(DataSource.materialsBackup(this), this) }
+        )
 
-            Endpoints.fetchBows(
-                updateBows = { bowViewModel.setup(it,this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { bowViewModel.setup(DataSource.bowsBackup(this), this) }
-            )
+        Endpoints.fetchBows(
+            update = { bowViewModel.setup(it,this) },
+            onFailure = { bowViewModel.setup(DataSource.bowsBackup(this), this) }
+        )
 
-            Endpoints.fetchShields(
-                updateShields = { shieldViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { shieldViewModel.setup(DataSource.shieldsBackup(this), this) }
-            )
-            Endpoints.fetchRoastedFood(
-                update = { roastedFoodViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { roastedFoodViewModel.setup(DataSource.roastedBackup(this), this) }
-            )
-            Endpoints.fetchMeals(
-                update = { mealsViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { mealsViewModel.setup(DataSource.recipeBackup(this), this) }
-            )
+        Endpoints.fetchShields(
+            update = { shieldViewModel.setup(it, this) },
+            onFailure = { shieldViewModel.setup(DataSource.shieldsBackup(this), this) }
+        )
+        Endpoints.fetchRoastedFood(
+            update = { roastedFoodViewModel.setup(it, this) },
+            onFailure = { roastedFoodViewModel.setup(DataSource.roastedBackup(this), this) }
+        )
+        Endpoints.fetchMeals(
+            update = { mealsViewModel.setup(it, this) },
+            onFailure = { mealsViewModel.setup(DataSource.recipeBackup(this), this) }
+        )
 
-            Endpoints.fetchArmor(
-                update = { armorViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { armorViewModel.setup(DataSource.armorBackup(this), this) }
-            )
+        Endpoints.fetchArmor(
+            update = { armorViewModel.setup(it, this) },
+            onFailure = { armorViewModel.setup(DataSource.armorBackup(this), this) }
+        )
 
-            Endpoints.fetchEffects(
-                update = { effectViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { effectViewModel.setup(DataSource.effectsBackup(this), this) }
-            )
-        }
+        Endpoints.fetchEffects(
+            update = { effectViewModel.setup(it, this) },
+            onFailure = { effectViewModel.setup(DataSource.effectsBackup(this), this) }
+        )
     }
 
     override fun onStart() {
         super.onStart()
         buildRecyclerView()
-        Log.d(TAG, "onStart() called")
-        DataSource.weaponBackup(this)
-    }
-
-    fun setNav(nav: String) {
-        viewModel.navItem = nav
     }
 
     private fun buildRecyclerView(){
         setContent {
             TearsTheme {
                 CreateDrawer(
-                    nav = viewModel.navItem,
+                    nav = viewModel,
                     weapons = weaponsViewModel,
                     materials = materialViewModel,
                     bows = bowViewModel,
@@ -135,8 +121,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     roastedFoods = roastedFoodViewModel,
                     meals = mealsViewModel,
                     armor = armorViewModel,
-                    effects = effectViewModel,
-                    onSetNav = { setNav(it) }
+                    effects = effectViewModel
                 )
             }
         }
