@@ -512,41 +512,41 @@ class ViewDetails {
         }
     }
 
-//    @Preview(name = "Light Mode")
-//    @Preview(
-//        uiMode = Configuration.UI_MODE_NIGHT_YES,
-//        showBackground = true,
-//        name = "Dark Mode"
-//    )
-//
-//    @Composable
-//    fun PreviewDetailsView() {
-//        TearsTheme {
-//            WeaponDetails(weapon = SampleData.weapons[1])
-//        }
-//    }
-//    @Preview
-//    @Composable
-//    fun PreviewMaterialDetailsView() {
-//        TearsTheme {
-//            MaterialDetails(material = SampleData.materials[1])
-//        }
-//    }
-//    @Preview
-//    @Composable
-//    fun PreviewBowDetailsView() {
-//        TearsTheme {
-//            BowDetails(bow = SampleData.bows[1])
-//        }
-//    }
-//
-//    @Preview
-//    @Composable
-//    fun PreviewShieldDetailsView() {
-//        TearsTheme {
-//            ShieldDetails(shield = SampleData.shields[1])
-//        }
-//    }
+    @Preview(name = "Light Mode")
+    @Preview(
+        uiMode = Configuration.UI_MODE_NIGHT_YES,
+        showBackground = true,
+        name = "Dark Mode"
+    )
+
+    @Composable
+    fun PreviewDetailsView() {
+        TearsTheme {
+            WeaponDetails(weapon = SampleData.weapons[1])
+        }
+    }
+    @Preview
+    @Composable
+    fun PreviewMaterialDetailsView() {
+        TearsTheme {
+            MaterialDetails(material = SampleData.materials[1])
+        }
+    }
+    @Preview
+    @Composable
+    fun PreviewBowDetailsView() {
+        TearsTheme {
+            BowDetails(bow = SampleData.bows[1])
+        }
+    }
+
+    @Preview
+    @Composable
+    fun PreviewShieldDetailsView() {
+        TearsTheme {
+            ShieldDetails(shield = SampleData.shields[1])
+        }
+    }
 
     @Preview
     @Composable
