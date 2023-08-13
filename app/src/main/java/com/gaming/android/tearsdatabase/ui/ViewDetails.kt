@@ -126,13 +126,13 @@ class ViewDetails {
                     if (material.dye_color.isNotEmpty()) {
                         DetailRow(
                             name = "Dye Color:",
-                            value = material.dye_color.toString()
+                            value = material.dye_color
                         )
                     }
                     if (material.effect_type.isNotEmpty() && !material.effect_type.equals("None")) {
                         DetailRow(
                             name = "Effect type:",
-                            value = material.effect_type.toString()
+                            value = material.effect_type
                         )
                     }
                     if (material.effect_level != null) {
@@ -564,7 +564,12 @@ class ViewDetails {
         }
     }
 
-    @Preview
+    @Preview(name = "Light Mode")
+    @Preview(
+        uiMode = Configuration.UI_MODE_NIGHT_YES,
+        showBackground = true,
+        name = "Dark Mode"
+    )
     @Composable
     fun PreviewArmorDetailsView() {
         TearsTheme {
