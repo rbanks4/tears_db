@@ -1,6 +1,5 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.gaming.android.tearsdatabase.*
@@ -21,9 +20,6 @@ class RoastedFoodViewModel(private val savedStateHandle: SavedStateHandle): View
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
-    override fun getImage(item: RoastedFood, ctx: Context): RoastedFood {
-        return item.setDrawable(ctx)
-    }
     override fun sort(choice: Int, list: List<RoastedFood>?): List<RoastedFood>? {
         return when (choice) {
             SORT_BUYING_INC ->

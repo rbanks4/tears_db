@@ -1,6 +1,5 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.gaming.android.tearsdatabase.*
@@ -21,9 +20,6 @@ class BowsViewModel(private val savedStateHandle: SavedStateHandle): ViewModel()
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
-    override fun getImage(item: Bow, ctx: Context): Bow {
-        return item.setDrawable(ctx)
-    }
     override fun sort(choice: Int, list: List<Bow>?): List<Bow>? {
         return when (choice) {
             SORT_DAMAGE_DEC ->

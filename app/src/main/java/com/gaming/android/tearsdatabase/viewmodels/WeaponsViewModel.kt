@@ -1,6 +1,5 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -30,9 +29,6 @@ class WeaponsViewModel(private val savedStateHandle: SavedStateHandle): ViewMode
         Log.d(TAG, "WeaponsViewModel instance about to be destroyed")
     }
 
-    override fun getImage(item: Weapon, ctx: Context): Weapon {
-        return item.setDrawable(ctx)
-    }
     override fun sort(choice: Int, list: List<Weapon>?): List<Weapon>? {
         return when (choice) {
             SORT_DAMAGE_DEC ->

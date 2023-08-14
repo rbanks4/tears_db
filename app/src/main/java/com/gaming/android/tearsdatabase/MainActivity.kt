@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
+import com.gaming.android.tearsdatabase.models.Item
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
 import com.gaming.android.tearsdatabase.viewmodels.*
@@ -54,6 +55,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private val mealsViewModel: MealsViewModel by viewModels()
     private val armorViewModel: ArmorViewModel by viewModels()
     private val effectViewModel: EffectViewModel by viewModels()
+    private val dataSource = DataSource(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,71 +65,61 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
 
         Log.d(TAG, "onCreate(Bundle?) called")
 
-        if(weaponsViewModel.items.isNullOrEmpty()) {
-            Endpoints.fetchWeapons(
-                updateWeapons = { weapons -> weaponsViewModel.setup(weapons, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { weaponsViewModel.setup(DataSource.weaponBackup(this), this) }
-            )
+        Endpoints.fetchWeapons(
+            update = { weapons -> weaponsViewModel.setup(weapons) { findDrawable(it)} },
+            build = { buildRecyclerView() },
+            onFailure = { weaponsViewModel.setup(dataSource.weaponBackup()) { findDrawable(it)} }
+        )
 
-            Endpoints.fetchMaterials(
-                updateMaterials = { materialViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { materialViewModel.setup(DataSource.materialsBackup(this), this) }
-            )
+        Endpoints.fetchMaterials(
+            update = { materialViewModel.setup(it) { findDrawable(it)} },
+            onFailure = { materialViewModel.setup(dataSource.materialsBackup()) { findDrawable(it)} }
+        )
 
-            Endpoints.fetchBows(
-                updateBows = { bowViewModel.setup(it,this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { bowViewModel.setup(DataSource.bowsBackup(this), this) }
-            )
+        Endpoints.fetchBows(
+            update = { bowViewModel.setup(it) { findDrawable(it)} },
+            onFailure = { bowViewModel.setup(dataSource.bowsBackup()) { findDrawable(it)} }
+        )
 
-            Endpoints.fetchShields(
-                updateShields = { shieldViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { shieldViewModel.setup(DataSource.shieldsBackup(this), this) }
-            )
-            Endpoints.fetchRoastedFood(
-                update = { roastedFoodViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { roastedFoodViewModel.setup(DataSource.roastedBackup(this), this) }
-            )
-            Endpoints.fetchMeals(
-                update = { mealsViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { mealsViewModel.setup(DataSource.recipeBackup(this), this) }
-            )
+        Endpoints.fetchShields(
+            update = { shieldViewModel.setup(it) { findDrawable(it)} },
+            onFailure = { shieldViewModel.setup(dataSource.shieldsBackup()) { findDrawable(it)} }
+        )
+        Endpoints.fetchRoastedFood(
+            update = { roastedFoodViewModel.setup(it) { findDrawable(it)} },
+            onFailure = { roastedFoodViewModel.setup(dataSource.roastedBackup()) { findDrawable(it)} }
+        )
+        Endpoints.fetchMeals(
+            update = { mealsViewModel.setup(it) { findDrawable(it)} },
+            onFailure = { mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it)} }
+        )
 
-            Endpoints.fetchArmor(
-                update = { armorViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { armorViewModel.setup(DataSource.armorBackup(this), this) }
-            )
+        Endpoints.fetchArmor(
+            update = { armorViewModel.setup(it) { findDrawable(it)} },
+            onFailure = { armorViewModel.setup(dataSource.armorBackup()) { findDrawable(it)} }
+        )
 
-            Endpoints.fetchEffects(
-                update = { effectViewModel.setup(it, this) },
-                buildView = { buildRecyclerView() },
-                onFailure = { effectViewModel.setup(DataSource.effectsBackup(this), this) }
-            )
-        }
+        Endpoints.fetchEffects(
+            update = { effectViewModel.setup(it) { findDrawable(it)} },
+            onFailure = { effectViewModel.setup(dataSource.effectsBackup()) { findDrawable(it)} }
+        )
+    }
+
+    fun <T> findDrawable(item: Item<T>): T {
+        item.findDrawable(this)
+        return item.get()
     }
 
     override fun onStart() {
         super.onStart()
         buildRecyclerView()
-        Log.d(TAG, "onStart() called")
-        DataSource.weaponBackup(this)
-    }
-
-    fun setNav(nav: String) {
-        viewModel.navItem = nav
     }
 
     private fun buildRecyclerView(){
         setContent {
             TearsTheme {
                 CreateDrawer(
-                    nav = viewModel.navItem,
+                    nav = viewModel,
                     weapons = weaponsViewModel,
                     materials = materialViewModel,
                     bows = bowViewModel,
@@ -135,8 +127,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     roastedFoods = roastedFoodViewModel,
                     meals = mealsViewModel,
                     armor = armorViewModel,
-                    effects = effectViewModel,
-                    onSetNav = { setNav(it) }
+                    effects = effectViewModel
                 )
             }
         }

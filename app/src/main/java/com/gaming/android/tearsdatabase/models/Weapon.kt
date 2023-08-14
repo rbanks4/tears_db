@@ -1,9 +1,7 @@
 package com.gaming.android.tearsdatabase.models
 
 import android.content.Context
-import android.util.Log
 import androidx.annotation.DrawableRes
-import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.R
 
 data class Weapon (
@@ -22,6 +20,10 @@ data class Weapon (
         ): Item<Weapon> {
     @DrawableRes
     override var image: Int = R.drawable.wooden_stick
+
+    override fun get(): Weapon {
+        return this
+    }
 
     override fun setDrawable(@DrawableRes int: Int): Weapon {
         image = int

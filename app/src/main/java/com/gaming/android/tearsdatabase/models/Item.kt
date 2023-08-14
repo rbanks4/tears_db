@@ -10,6 +10,7 @@ interface Item<T> {
     @get:DrawableRes
     var image: Int
 
+    fun get(): T
 
     fun setDrawable(@DrawableRes int: Int): T
 
