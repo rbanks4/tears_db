@@ -29,6 +29,7 @@ import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.WeaponList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.ShieldList
 import com.gaming.android.tearsdatabase.viewmodels.ArmorViewModel
 import com.gaming.android.tearsdatabase.viewmodels.BowsViewModel
+import com.gaming.android.tearsdatabase.viewmodels.EffectViewModel
 import com.gaming.android.tearsdatabase.viewmodels.MaterialsViewModel
 import com.gaming.android.tearsdatabase.viewmodels.MealsViewModel
 import com.gaming.android.tearsdatabase.viewmodels.RoastedFoodViewModel
@@ -168,6 +169,7 @@ class ViewBuilder {
             roastedFoods: RoastedFoodViewModel,
             meals: MealsViewModel,
             armor: ArmorViewModel,
+            effects: EffectViewModel,
             onSetNav: (String) -> Unit
         ) {
             val drawerState = rememberDrawerState(DrawerValue.Open)
@@ -228,12 +230,14 @@ class ViewBuilder {
                         )
                         MATERIALS_KEY -> MaterialList(
                             materials = materials.getCurrent(),
+                            effect = effects.map,
                             openDrawer = { openDrawer() },
                             onQuery = { materials.query(it) },
                             onMenuItemSelected = { materials.onItemSelected(it) }
                         )
                         ROASTED_CHILLED_KEY -> RoastedFoodList(
                             roastedFoods = roastedFoods.getCurrent(),
+                            effect = effects.map,
                             openDrawer = { openDrawer() },
                             onQuery = { roastedFoods.query(it) },
                             onMenuItemSelected = { roastedFoods.onItemSelected(it) }
@@ -246,6 +250,7 @@ class ViewBuilder {
                         )
                         ARMOR_KEY -> ArmorList(
                             armor = armor.getCurrent(),
+                            effect = effects.map,
                             openDrawer = { openDrawer() },
                             onQuery = { armor.query(it) },
                             onMenuItemSelected = { armor.onItemSelected(it) }

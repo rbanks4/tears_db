@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.gaming.android.tearsdatabase.*
+import com.gaming.android.tearsdatabase.data.DataSource.Companion.getEffectsByName
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
@@ -33,8 +34,6 @@ import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.MealDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.RoastedFoodDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.ShieldDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.WeaponDetails
-import com.gaming.android.tearsdatabase.viewmodels.ItemViewModel
-import com.gaming.android.tearsdatabase.viewmodels.WeaponsViewModel
 
 class ViewLists {
     companion object {
@@ -59,7 +58,7 @@ class ViewLists {
             }
 
             if (weapons != null) {
-                if (displayedWeapons.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                if (displayedWeapons.isEmpty() && currentQuery.value.isEmpty()) {
                     displayedWeapons.clear()
                     weapons.map {
                         displayedWeapons.add(it)
@@ -106,6 +105,7 @@ class ViewLists {
         @Composable
         fun MaterialList(
             materials: List<Material>?,
+            effect: Map<String, Effect>?,
             openDrawer: () -> Unit,
             onQuery: (String) -> List<Material>?,
             onMenuItemSelected: (Int) -> List<Material>?
@@ -124,7 +124,7 @@ class ViewLists {
             }
 
             if (materials != null) {
-                if (displayedMaterials.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                if (displayedMaterials.isEmpty() && currentQuery.value.isEmpty()) {
                     displayedMaterials.clear()
                     materials.map {
                         displayedMaterials.add(it)
@@ -152,14 +152,14 @@ class ViewLists {
                             )
                         }
                     ) { contentPadding ->
-                        LazyVerticalGrid(columns = GridCells.Adaptive(150.dp),
+                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
                             modifier = Modifier.padding(contentPadding),
                             content = {
                                 items(displayedMaterials.size) { index ->
                                     MaterialCard(mat = displayedMaterials[index], onClick = {
                                         selectedMaterial.value = it
                                         open.value = true
-                                    })
+                                    }, effect = getEffectsByName(effect, displayedMaterials[index].effect_type))
                                 }
                             })
 
@@ -189,7 +189,7 @@ class ViewLists {
             }
 
             if (bows != null) {
-                if (displayedBows.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                if (displayedBows.isEmpty() && currentQuery.value.isEmpty()) {
                     displayedBows.clear()
                     bows.map {
                         displayedBows.add(it)
@@ -254,7 +254,7 @@ class ViewLists {
             }
 
             if (shields != null) {
-                if (displayedShields.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                if (displayedShields.isEmpty() && currentQuery.value.isEmpty()) {
                     displayedShields.clear()
                     shields.map {
                         displayedShields.add(it)
@@ -301,6 +301,7 @@ class ViewLists {
         @Composable
         fun RoastedFoodList(
             roastedFoods: List<RoastedFood>?,
+            effect: Map<String, Effect>?,
             openDrawer: () -> Unit,
             onQuery: (String) -> List<RoastedFood>?,
             onMenuItemSelected: (Int) -> List<RoastedFood>?
@@ -319,7 +320,7 @@ class ViewLists {
             }
 
             if (roastedFoods != null) {
-                if (displayed.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                if (displayed.isEmpty() && currentQuery.value.isEmpty()) {
                     displayed.clear()
                     roastedFoods.map {
                         displayed.add(it)
@@ -354,7 +355,7 @@ class ViewLists {
                                     RoastedFoodCard(item = displayed[index], onClick = {
                                         selected.value = it
                                         open.value = true
-                                    })
+                                    }, getEffectsByName(effect, displayed[index].effect_type))
                                 }
                             })
 
@@ -384,7 +385,7 @@ class ViewLists {
             }
 
             if (meals != null) {
-                if (displayed.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                if (displayed.isEmpty() && currentQuery.value.isEmpty()) {
                     displayed.clear()
                     meals.map {
                         displayed.add(it)
@@ -431,6 +432,7 @@ class ViewLists {
         @Composable
         fun ArmorList(
             armor: List<Armor>?,
+            effect: Map<String, Effect>?,
             openDrawer: () -> Unit,
             onQuery: (String) -> List<Armor>?,
             onMenuItemSelected: (Int) -> List<Armor>?
@@ -449,7 +451,7 @@ class ViewLists {
             }
 
             if (armor != null) {
-                if (displayed.isNullOrEmpty() && currentQuery.value.isEmpty()) {
+                if (displayed.isEmpty() && currentQuery.value.isEmpty()) {
                     displayed.clear()
                     armor.map {
                         displayed.add(it)
@@ -481,10 +483,13 @@ class ViewLists {
                             modifier = Modifier.padding(contentPadding),
                             content = {
                                 items(displayed.size) { index ->
-                                    ArmorCard(item = displayed[index], onClick = {
+                                    ArmorCard(
+                                        item = displayed[index],
+                                        onClick = {
                                         selected.value = it
                                         open.value = true
-                                    })
+                                    },
+                                        effect = getEffectsByName(effect, displayed[index].effect))
                                 }
                             })
 
@@ -511,7 +516,7 @@ class ViewLists {
     @Composable
     fun PreviewMaterialList() {
         TearsTheme {
-            MaterialList(materials = SampleData.materials, openDrawer = {}, onQuery = { SampleData.materials }, onMenuItemSelected = { SampleData. materials })
+            MaterialList(materials = SampleData.materials, openDrawer = {}, onQuery = { SampleData.materials }, onMenuItemSelected = { SampleData. materials }, effect = SampleData.effectMap)
         }
     }
 
@@ -535,7 +540,7 @@ class ViewLists {
     @Composable
     fun PreviewRoastedFoodList() {
         TearsTheme {
-            RoastedFoodList(roastedFoods = SampleData.roastedFood, openDrawer = {}, onQuery = { SampleData.roastedFood }, onMenuItemSelected = { SampleData. roastedFood })
+            RoastedFoodList(roastedFoods = SampleData.roastedFood, openDrawer = {}, onQuery = { SampleData.roastedFood }, onMenuItemSelected = { SampleData. roastedFood }, effect = SampleData.effectMap)
         }
     }
 
@@ -551,7 +556,7 @@ class ViewLists {
     @Composable
     fun PreviewArmorList() {
         TearsTheme {
-            ArmorList(armor = SampleData.armor, openDrawer = {}, onQuery = { SampleData.armor }, onMenuItemSelected = { SampleData. armor })
+            ArmorList(armor = SampleData.armor, openDrawer = {}, onQuery = { SampleData.armor }, onMenuItemSelected = { SampleData. armor }, effect = SampleData.effectMap)
         }
     }
 }

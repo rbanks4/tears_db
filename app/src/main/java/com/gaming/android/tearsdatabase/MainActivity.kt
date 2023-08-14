@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
     private val roastedFoodViewModel: RoastedFoodViewModel by viewModels()
     private val mealsViewModel: MealsViewModel by viewModels()
     private val armorViewModel: ArmorViewModel by viewModels()
+    private val effectViewModel: EffectViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,6 +103,12 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                 buildView = { buildRecyclerView() },
                 onFailure = { armorViewModel.setup(DataSource.armorBackup(this), this) }
             )
+
+            Endpoints.fetchEffects(
+                update = { effectViewModel.setup(it, this) },
+                buildView = { buildRecyclerView() },
+                onFailure = { effectViewModel.setup(DataSource.effectsBackup(this), this) }
+            )
         }
     }
 
@@ -128,6 +135,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
                     roastedFoods = roastedFoodViewModel,
                     meals = mealsViewModel,
                     armor = armorViewModel,
+                    effects = effectViewModel,
                     onSetNav = { setNav(it) }
                 )
             }
