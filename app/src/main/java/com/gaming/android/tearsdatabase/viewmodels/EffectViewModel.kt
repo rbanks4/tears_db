@@ -1,6 +1,5 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.gaming.android.tearsdatabase.models.Effect
@@ -25,8 +24,8 @@ class EffectViewModel(private val savedStateHandle: SavedStateHandle): ViewModel
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
-    override fun setup(list: List<Effect>, ctx: Context) {
-        super.setup(list, ctx)
+    override fun setup(list: List<Effect>, findDrawable: (Effect) -> Effect) {
+        super.setup(list) { findDrawable(it) }
         val newMap = mutableMapOf<String, Effect>()
         list.map {
             newMap[it.name] = it
@@ -40,9 +39,5 @@ class EffectViewModel(private val savedStateHandle: SavedStateHandle): ViewModel
 
     override fun sort(choice: Int, list: List<Effect>?): List<Effect>? {
         return list
-    }
-
-    override fun getImage(item: Effect, ctx: Context): Effect {
-        return item.setDrawable(ctx)
     }
 }

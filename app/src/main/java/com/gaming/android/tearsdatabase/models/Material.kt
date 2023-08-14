@@ -1,10 +1,8 @@
 package com.gaming.android.tearsdatabase.models
 
 import android.content.Context
-import android.util.Log
 import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
-import com.gaming.android.tearsdatabase.data.DataSource
 
 data class Material(
     override val name: String,
@@ -27,6 +25,10 @@ data class Material(
     ): Item<Material> {
     @DrawableRes
     override var image: Int = R.drawable.hot_footed_frog
+
+    override fun get(): Material {
+        return this
+    }
 
     override fun setDrawable(@DrawableRes int: Int): Material {
         image = int

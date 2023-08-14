@@ -1,6 +1,5 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryItems
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onSortMenuItemSelected
 
@@ -16,16 +15,14 @@ interface ItemViewModel<T> {
         return searchList?:items
     }
 
-    fun setup(list: List<T>, ctx: Context) {
+    fun setup(list: List<T>, findDrawable: (T) -> T) {
         val newList = mutableListOf<T>()
         list.map {
-            newList.add(getImage(it,ctx))
+            newList.add(findDrawable(it))
         }
         items = newList.toSet().toList()
         searchList = items
     }
-
-    fun getImage(item: T, ctx: Context): T
 
     fun update(list: List<T>) {
         searchList = list

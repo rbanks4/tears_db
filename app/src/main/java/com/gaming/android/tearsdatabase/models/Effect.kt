@@ -17,6 +17,11 @@ data class Effect(
 ) : Item<Effect> {
     @DrawableRes
     override var image: Int = R.drawable.lifemaxup
+
+    override fun get(): Effect {
+        return this
+    }
+
     override fun setDrawable(@DrawableRes int: Int): Effect {
         image = int
         return this

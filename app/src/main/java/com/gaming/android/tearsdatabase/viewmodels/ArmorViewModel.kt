@@ -1,12 +1,10 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.gaming.android.tearsdatabase.SORT_DEF_DEC
 import com.gaming.android.tearsdatabase.SORT_DEF_INC
 import com.gaming.android.tearsdatabase.models.Armor
-import com.gaming.android.tearsdatabase.models.Item
 
 private const val ARMOR_ITEM = "armor"
 
@@ -24,17 +22,13 @@ class ArmorViewModel(private val savedStateHandle: SavedStateHandle): ViewModel(
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
-    override fun setup(list: List<Armor>, ctx: Context) {
+    override fun setup(list: List<Armor>, findDrawable: (Armor) -> Armor) {
         val newList = mutableListOf<Armor>()
         list.map {
-            newList.add(it.setDrawable(ctx))
+            newList.add(findDrawable(it))
         }
         items = newList.toSet().toList()
         searchList = items
-    }
-
-    override fun getImage(item: Armor, ctx: Context): Armor {
-        return item.setDrawable(ctx)
     }
 
     override fun sort(choice: Int, list: List<Armor>?): List<Armor>? {

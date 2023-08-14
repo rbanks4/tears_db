@@ -1,6 +1,7 @@
 package com.gaming.android.tearsdatabase.data
 
 import android.content.Context
+import android.content.ContextWrapper
 import android.util.Log
 import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.api.*
@@ -18,7 +19,7 @@ const val SHIELDS_JSON = "shields.json"
 const val WEAPONS_JSON = "weapons.json"
 const val EFFECTS_JSON = "effects.json"
 const val DRAWABLE = "drawable"
-class DataSource {
+data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
 
     companion object {
 
@@ -78,71 +79,71 @@ class DataSource {
 
             return jsonString
         }
+    }
 
-        fun armorBackup(context: Context): List<Armor> {
-            val response = Gson().fromJson(
-                readJsonBackup(context, ARMOR_JSON),
-                ArmorResponse::class.java
-            )
+    fun armorBackup(): List<Armor> {
+        val response = Gson().fromJson(
+            readJsonBackup(ctx, ARMOR_JSON),
+            ArmorResponse::class.java
+        )
 
-            return response.documents
-        }
-        fun bowsBackup(context: Context): List<Bow> {
-            val response = Gson().fromJson(
-                readJsonBackup(context, BOWS_JSON),
-                BowsResponse::class.java
-            )
+        return response.documents
+    }
+    fun bowsBackup(): List<Bow> {
+        val response = Gson().fromJson(
+            readJsonBackup(ctx, BOWS_JSON),
+            BowsResponse::class.java
+        )
 
-            return response.documents
-        }
-        fun materialsBackup(context: Context): List<Material> {
-            val response = Gson().fromJson(
-                readJsonBackup(context, MATERIALS_JSON),
-                MaterialsResponse::class.java
-            )
+        return response.documents
+    }
+    fun materialsBackup(): List<Material> {
+        val response = Gson().fromJson(
+            readJsonBackup(ctx, MATERIALS_JSON),
+            MaterialsResponse::class.java
+        )
 
-            return response.documents
-        }
-        fun recipeBackup(context: Context): List<Meal> {
-            val response = Gson().fromJson(
-                readJsonBackup(context, RECIPES_JSON),
-                MealsResponse::class.java
-            )
+        return response.documents
+    }
+    fun recipeBackup(): List<Meal> {
+        val response = Gson().fromJson(
+            readJsonBackup(ctx, RECIPES_JSON),
+            MealsResponse::class.java
+        )
 
-            return response.documents
-        }
-        fun roastedBackup(context: Context): List<RoastedFood> {
-            val response = Gson().fromJson(
-                readJsonBackup(context, ROASTED_JSON),
-                RoastedFoodResponse::class.java
-            )
+        return response.documents
+    }
+    fun roastedBackup(): List<RoastedFood> {
+        val response = Gson().fromJson(
+            readJsonBackup(ctx, ROASTED_JSON),
+            RoastedFoodResponse::class.java
+        )
 
-            return response.documents
-        }
-        fun shieldsBackup(context: Context): List<Shield> {
-            val response = Gson().fromJson(
-                readJsonBackup(context, SHIELDS_JSON),
-                ShieldsResponse::class.java
-            )
+        return response.documents
+    }
+    fun shieldsBackup(): List<Shield> {
+        val response = Gson().fromJson(
+            readJsonBackup(ctx, SHIELDS_JSON),
+            ShieldsResponse::class.java
+        )
 
-            return response.documents
-        }
-        fun weaponBackup(context: Context): List<Weapon> {
-            val response = Gson().fromJson(
-                readJsonBackup(context, WEAPONS_JSON),
-                WeaponsResponse::class.java
-            )
+        return response.documents
+    }
+    fun weaponBackup(): List<Weapon> {
+        val response = Gson().fromJson(
+            readJsonBackup(ctx, WEAPONS_JSON),
+            WeaponsResponse::class.java
+        )
 
-            return response.documents
-        }
+        return response.documents
+    }
 
-        fun effectsBackup(context: Context): List<Effect> {
-            val response = Gson().fromJson(
-                readJsonBackup(context, EFFECTS_JSON),
-                EffectResponse::class.java
-            )
+    fun effectsBackup(): List<Effect> {
+        val response = Gson().fromJson(
+            readJsonBackup(ctx, EFFECTS_JSON),
+            EffectResponse::class.java
+        )
 
-            return response.documents
-        }
+        return response.documents
     }
 }
