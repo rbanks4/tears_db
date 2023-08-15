@@ -28,7 +28,15 @@ class EffectViewModel(private val savedStateHandle: SavedStateHandle): ViewModel
         super.setup(list) { findDrawable(it) }
         val newMap = mutableMapOf<String, Effect>()
         list.map {
-            newMap[it.name] = it
+            if(newMap.containsKey(it.name)) {
+                when(it.level) {
+                    1 -> newMap[it.name]?.effect_level1 = it
+                    2 -> newMap[it.name]?.effect_level2 = it
+                    3 -> newMap[it.name]?.effect_level3 = it
+                }
+            } else {
+                newMap[it.name] = it
+            }
         }
         map = newMap
     }

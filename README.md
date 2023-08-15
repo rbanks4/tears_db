@@ -28,9 +28,9 @@ Task List:
 - [x] add armor listings
 - [x] add armor images
 - [x] add armor view
-- [ ] add effects listings
-- [ ] add effects images
-- [ ] add effects view
+- [x] add effects listings
+- [x] add effects images
+- [x] add effects view
 - [ ] add enemies
 - [ ] add zonai listings
 - [ ] add zonai images

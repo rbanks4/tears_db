@@ -11,7 +11,7 @@ data class Effect(
     val level_highest: Int?,
     val value: String,
     val required_potency: Int?,
-    val highst_potency: Int?,
+    val highest_potency: Int?,
     val base_time: Int?,
     val monochrome: Boolean
 ) : Item<Effect> {

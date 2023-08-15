@@ -117,7 +117,7 @@ class ViewLists {
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { MaterialDetails(selectedMaterial.value) }
+                    content = { MaterialDetails(selectedMaterial.value, getEffectsByName(effect, selectedMaterial.value.effect_type)) }
                 )
             }
 
@@ -309,7 +309,7 @@ class ViewLists {
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { RoastedFoodDetails(selected.value) }
+                    content = { RoastedFoodDetails(selected.value, getEffectsByName(effect, selected.value.effect_type)) }
                 )
             }
 
@@ -437,7 +437,7 @@ class ViewLists {
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { ArmorDetails(selected.value) }
+                    content = { ArmorDetails(selected.value, getEffectsByName(effect, selected.value.effect)) }
                 )
             }
 

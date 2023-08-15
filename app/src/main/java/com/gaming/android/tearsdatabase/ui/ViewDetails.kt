@@ -1,20 +1,29 @@
 package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
-import androidx.annotation.Dimension
+import android.util.Log
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gaming.android.tearsdatabase.data.DataSource
@@ -79,124 +88,139 @@ class ViewDetails {
         }
 
         @Composable
-        fun MaterialDetails(material: Material) {
+        fun MaterialDetails(item: Material, effects: List<Effect>) {
             Surface(
                 Modifier
-                    .requiredWidth(IntrinsicSize.Min)
-                    .requiredHeight(IntrinsicSize.Min)
+                    .requiredWidth(300.dp)
+                    .fillMaxHeight(0.7f)
                     .clip(RoundedCornerShape(20.dp))
             ) {
-                Column(modifier = Modifier.padding(all = 8.dp)) {
-                    Image(
-                        painter = painterResource(id = material.image),
-                        contentDescription = material.name,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
+                Column(modifier = Modifier
+                    .padding(all = 8.dp)
+                    .verticalScroll(rememberScrollState())) {
+                    Box (modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                        Image(
+                            painter = painterResource(id = item.image),
+                            contentDescription = item.name,
+                            modifier = Modifier
+                                .size(100.dp)
+                        )
+                        if (effects.isNotEmpty()) {
+                            Log.d("ViewCards.ArmorCard", "Showing: ${effects[0].name}")
+                            Icon(
+                                painter = painterResource(effects[0].image),
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .align(Alignment.TopEnd),
+                                tint = if (effects[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
+                            )
+                        }
+                    }
 
-                    TitleRow(material.name)
-                    if (material.effect_type.isNotEmpty() && !material.effect_type.equals("None"))
-                        SubtitleRow(name = "Effect Type: ${material.effect_type}")
-                    else if (material.hp_recover != 0 && material.hp_recover != null)
-                        SubtitleRow(name = "Hp Recover: ${material.hp_recover}")
-                    else if (material.additional_damage != -1)
-                        SubtitleRow(name = "Additional Damage: ${material.additional_damage}")
+                    TitleRow(item.name)
+                    if (item.effect_type.isNotEmpty() && !item.effect_type.equals("None"))
+                        SubtitleRow(name = "Effect Type: ${item.effect_type}")
+                    else if (item.hp_recover != 0 && item.hp_recover != null)
+                        SubtitleRow(name = "Hp Recover: ${item.hp_recover}")
+                    else if (item.additional_damage != -1)
+                        SubtitleRow(name = "Additional Damage: ${item.additional_damage}")
 
                     Spacer(Modifier.padding(all = 8.dp))
 
-                    if (material.additional_damage != -1) {
+                    if (item.additional_damage != -1) {
                         DetailRow(
                             name = "Additional Damage:",
-                            value = material.additional_damage.toString()
+                            value = item.additional_damage.toString()
                         )
                     }
-                    if (material.selling_price != null) {
+                    if (item.selling_price != null) {
                         DetailRow(
                             name = "Selling Price:",
-                            value = material.selling_price.toString()
+                            value = "${item.selling_price} rupees"
                         )
                     }
-                    if (material.buying_price != null) {
+                    if (item.buying_price != null) {
                         DetailRow(
                             name = "Buying Price:",
-                            value = material.buying_price.toString()
+                            value = "${item.buying_price} rupees"
                         )
                     }
-                    if (material.dye_color.isNotEmpty()) {
+                    if (item.dye_color.isNotEmpty()) {
                         DetailRow(
                             name = "Dye Color:",
-                            value = material.dye_color
+                            value = item.dye_color
                         )
                     }
-                    if (material.effect_type.isNotEmpty() && !material.effect_type.equals("None")) {
+                    if (item.effect_type.isNotEmpty() && !item.effect_type.equals("None")) {
+                        if(effects.isNotEmpty()) {
+                            DetailRowExpandable("Effect:", item.effect_type, effects[0], true)
+                        } else {
+                            DetailRow("Effect:", item.effect_type)
+                        }
+                    }
+                    if (item.effect_level != null) {
                         DetailRow(
-                            name = "Effect type:",
-                            value = material.effect_type
+                            name = "Effect Potency:",
+                            value = item.effect_level.toString()
                         )
                     }
-                    if (material.effect_level != null) {
+                    if (item.effect_time != 0 && item.effect_time != null) {
                         DetailRow(
-                            name = "Effect level:",
-                            value = material.effect_level.toString()
+                            name = "Effect Time:",
+                            value = item.effect_time.toString()
                         )
                     }
-                    if (material.effect_time != 0 && material.effect_time != null) {
-                        DetailRow(
-                            name = "Effect time:",
-                            value = material.effect_time.toString()
-                        )
-                    }
-                    if (material.hp_recover != 0 && material.hp_recover != null) {
+                    if (item.hp_recover != 0 && item.hp_recover != null) {
                         DetailRow(
                             name = "HP Recover:",
-                            value = material.hp_recover.toString()
+                            value = item.hp_recover.toString()
                         )
                     }
-                    if (material.additional_damage_rate_arrow != null) {
+                    if (item.additional_damage_rate_arrow != null) {
                         DetailRow(
                             name = "Additional Damage Rate Arrow:",
-                            value = material.additional_damage_rate_arrow.toString()
+                            value = item.additional_damage_rate_arrow.toString()
                         )
                     }
-                    if (material.sheild_bash_damage != null) {
+                    if (item.sheild_bash_damage != null) {
                         DetailRow(
                             name = "Sheild Bash Damage:",
-                            value = material.sheild_bash_damage.toString()
+                            value = item.sheild_bash_damage.toString()
                         )
                     }
-                    if (material.boost_effective_time != 0 && material.boost_effective_time != null) {
+                    if (item.boost_effective_time != 0 && item.boost_effective_time != null) {
                         DetailRow(
-                            name = "Boost effect time:",
-                            value = material.boost_effective_time.toString()
+                            name = "Boost Effect Time:",
+                            value = item.boost_effective_time.toString()
                         )
                     }
-                    if (material.boost_hp_recover != 0 && material.boost_hp_recover != null) {
+                    if (item.boost_hp_recover != 0 && item.boost_hp_recover != null) {
                         DetailRow(
-                            name = "Boost HP recover:",
-                            value = material.boost_hp_recover.toString()
+                            name = "Boost HP Recover:",
+                            value = item.boost_hp_recover.toString()
                         )
                     }
-                    if (material.boost_max_heart != 0 && material.boost_max_heart != null) {
+                    if (item.boost_max_heart != 0 && item.boost_max_heart != null) {
                         DetailRow(
-                            name = "Boost max heart:",
-                            value = material.boost_max_heart.toString()
+                            name = "Boost Max Heart:",
+                            value = item.boost_max_heart.toString()
                         )
                     }
-                    if (material.boost_max_stamina != 0 && material.boost_max_stamina != null) {
+                    if (item.boost_max_stamina != 0 && item.boost_max_stamina != null) {
                         DetailRow(
-                            name = "Boost max stamina:",
-                            value = material.boost_max_stamina.toString()
+                            name = "Boost Max Stamina:",
+                            value = item.boost_max_stamina.toString()
                         )
                     }
-                    if (material.boost_critical_cook != 0 && material.boost_critical_cook != null) {
+                    if (item.boost_critical_cook != 0 && item.boost_critical_cook != null) {
                         DetailRow(
-                            name = "Boost critical cook:",
-                            value = material.boost_critical_cook.toString() + "%"
+                            name = "Boost Critical Cook:",
+                            value = "+${item.boost_critical_cook} %"
                         )
                     }
-                    if (material.sub_type.isNotEmpty()) {
-                        DetailRow(name = "Sub Type:", value = material.sub_type)
+                    if (item.sub_type.isNotEmpty()) {
+                        DetailRow(name = "Sub Type:", value = item.sub_type)
                     }
 
                 }
@@ -333,30 +357,48 @@ class ViewDetails {
         }
 
         @Composable
-        fun RoastedFoodDetails(item: RoastedFood) {
+        fun RoastedFoodDetails(item: RoastedFood, effects: List<Effect>) {
             Surface(
                 Modifier
-                    .requiredWidth(IntrinsicSize.Min)
-                    .requiredHeight(IntrinsicSize.Min)
+                    .requiredWidth(300.dp)
+                    .fillMaxHeight(0.7f)
                     .clip(RoundedCornerShape(20.dp))
             ) {
-                Column(modifier = Modifier.padding(all = 8.dp)) {
-                    Image(
-                        painter = painterResource(id = item.image),
-                        contentDescription = item.name,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
+                Column(modifier = Modifier
+                    .padding(all = 8.dp)
+                    .verticalScroll(rememberScrollState())) {
+                    Box (modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                        Image(
+                            painter = painterResource(id = item.image),
+                            contentDescription = item.name,
+                            modifier = Modifier
+                                .size(100.dp)
+                        )
+                        if (effects.isNotEmpty()) {
+                            Log.d("ViewCards.ArmorCard", "Showing: ${effects[0].name}")
+                            Icon(
+                                painter = painterResource(effects[0].image),
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .align(Alignment.TopEnd),
+                                tint = if (effects[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
+                            )
+                        }
+                    }
 
                     TitleRow(item.name)
                     SubtitleRow(name = "Recipe no. ${item.recipe_no}")
                     Spacer(Modifier.padding(all = 8.dp))
 
-                    DetailRow("Buying Price:", item.buying_price.toString())
-                    DetailRow("Selling Price:", item.selling_price.toString())
-                    DetailRow("Effect Type:", item.effect_type)
-                    DetailRow("Effect Level:", item.effect_level.toString())
+                    DetailRow("Buying Price:", "${item.buying_price} rupees")
+                    DetailRow("Selling Price:", "${item.selling_price} rupees")
+                    if(effects.isNotEmpty()) {
+                        DetailRowExpandable("Effect:", item.effect_type, effects[0], false)
+                    } else {
+                        DetailRow("Effect:", item.effect_type)
+                    }
+                    DetailRow("Effect Potency:", item.effect_level.toString())
                     DetailRow("Effect Time:", item.effect_time.toString())
                     DetailRow("HP:", item.hit_point_counter.toString())
                     DetailRow("Color:", item.color)
@@ -404,7 +446,7 @@ class ViewDetails {
         }
 
         @Composable
-        fun ArmorDetails(item: Armor) {
+        fun ArmorDetails(item: Armor, effects: List<Effect>) {
             Surface(
                 Modifier
                     .requiredWidth(300.dp)
@@ -423,14 +465,28 @@ class ViewDetails {
                 item.selling_price_s3?.let { sellPrice += " | $it" }
                 item.selling_price_s4?.let { sellPrice += " | $it" }
 
-                Column(modifier = Modifier.padding(all = 8.dp).verticalScroll(rememberScrollState())) {
-                    Image(
-                        painter = painterResource(id = item.image),
-                        contentDescription = item.name,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
+                Column(modifier = Modifier
+                    .padding(all = 8.dp)
+                    .verticalScroll(rememberScrollState())) {
+                    Box (modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                        Image(
+                            painter = painterResource(id = item.image),
+                            contentDescription = item.name,
+                            modifier = Modifier
+                                .size(100.dp)
+                        )
+                        if (effects.isNotEmpty()) {
+                            Log.d("ViewCards.ArmorCard", "Showing: ${effects[0].name}")
+                            Icon(
+                                painter = painterResource(effects[0].image),
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .align(Alignment.TopEnd),
+                                tint = if (effects[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
+                            )
+                        }
+                    }
 
                     TitleRow(item.name)
                     SubtitleRow(name = item.location)
@@ -443,7 +499,11 @@ class ViewDetails {
                     DetailRow("Actor Name:", item.actor_name)
 
                     if(item.effect.isNotEmpty() && !item.effect.equals("none")) {
-                        DetailRow("Effect:", item.effect)
+                        if(effects.isNotEmpty()) {
+                            DetailRowExpandable("Effect:", item.effect, effects[0], false)
+                        } else {
+                            DetailRow("Effect:", item.effect)
+                        }
                     }
 
                     if(item.set_name.isNotEmpty() && !item.set_name.equals("none")) {
@@ -455,7 +515,7 @@ class ViewDetails {
                     }
 
                     DetailRow("Defense:", defense)
-                    DetailRow("Buying Price:", item.buying_price.toString())
+                    DetailRow("Buying Price:", "${item.buying_price} rupees")
                     DetailRow("Selling Price:",sellPrice)
                     if(item.upgrade_s1.isNotEmpty()) {
                         DetailRow("Upgrade 1:", item.upgrade_s1)
@@ -486,7 +546,7 @@ class ViewDetails {
                 Text(
                     text = name,
                     color = MaterialTheme.colorScheme.secondary,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleLarge
                 )
             }
         }
@@ -510,50 +570,87 @@ class ViewDetails {
                 Text(text = value, style = MaterialTheme.typography.bodySmall)
             }
         }
-    }
 
-    @Preview(name = "Light Mode")
-    @Preview(
-        uiMode = Configuration.UI_MODE_NIGHT_YES,
-        showBackground = true,
-        name = "Dark Mode"
-    )
+        @Composable
+        fun DetailRowExpandable(name: String, value: String, effect: Effect, showPotency: Boolean) {
+            var isExpanded by remember { mutableStateOf(false) }
+            Row(modifier = Modifier.padding(vertical = 4.dp)) {
+                Text(
+                    text = name,
+                    color = MaterialTheme.colorScheme.secondary,
+                    style = MaterialTheme.typography.titleSmall
+                )
+                Spacer(Modifier.padding(horizontal = 4.dp))
+                Text(
+                    text = value,
+                    color = MaterialTheme.colorScheme.secondary,
+                    style = MaterialTheme.typography.bodySmall,
+                    textDecoration = TextDecoration.Underline,
+                    //do we pass in an effect to make this take action based on that?
+                    modifier = Modifier.clickable { isExpanded = !isExpanded }
+                )
+            }
 
-    @Composable
-    fun PreviewDetailsView() {
-        TearsTheme {
-            WeaponDetails(weapon = SampleData.weapons[1])
+            AnimatedVisibility(visible = isExpanded) {
+                Column {
+                    ShowEffectRow(effect = effect, showPotency)
+                    if (effect.effect_level2 != null) {
+                        ShowEffectRow(effect = effect.effect_level2!!, showPotency)
+                    }
+                    if (effect.effect_level3 != null) {
+                        ShowEffectRow(effect = effect.effect_level3!!, showPotency)
+                    }
+                }
+            }
         }
-    }
-    @Preview
-    @Composable
-    fun PreviewMaterialDetailsView() {
-        TearsTheme {
-            MaterialDetails(material = SampleData.materials[1])
-        }
-    }
-    @Preview
-    @Composable
-    fun PreviewBowDetailsView() {
-        TearsTheme {
-            BowDetails(bow = SampleData.bows[1])
-        }
-    }
 
-    @Preview
-    @Composable
-    fun PreviewShieldDetailsView() {
-        TearsTheme {
-            ShieldDetails(shield = SampleData.shields[1])
+        @Composable
+        fun ShowEffectRow(effect: Effect, showPotency: Boolean) {
+            val level = if(effect.level != null) "Level ${effect.level}" else ""
+            val title = "${effect.name} $level"
+            Row(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)) {
+                    Text(
+                        text = title,
+                        color = MaterialTheme.colorScheme.tertiary,
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                }
+            Row(
+                Modifier
+                    .width(280.dp)
+                    .padding(horizontal = 16.dp)
+            ) {
+                Text(
+                    text = effect.value,
+                    style = MaterialTheme.typography.titleSmall,
+                    softWrap = true
+                )
+            }
+            //potency
+            if(showPotency && effect.required_potency != null){
+                EffectRow("Potency: ", effect.required_potency.toString())
+                if(effect.highest_potency != null) {
+                    EffectRow("Highest Potency:", effect.highest_potency.toString())
+                }
+            }
         }
-    }
 
-    @Preview
-    @Composable
-    fun PreviewRoastedFoodDetailsView() {
-        TearsTheme {
-            RoastedFoodDetails(item = SampleData.roastedFood[1])
+        @Composable
+        fun EffectRow(title: String, detail: String){
+            Row(modifier = Modifier.padding(vertical = 4.dp, horizontal = 16.dp)) {
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.tertiary,
+                    style = MaterialTheme.typography.titleSmall
+                )
+                Spacer(Modifier.padding(horizontal = 4.dp))
+                Text(
+                    text = detail,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
         }
+
     }
 
     @Preview
@@ -573,7 +670,7 @@ class ViewDetails {
     @Composable
     fun PreviewArmorDetailsView() {
         TearsTheme {
-            ArmorDetails(item = SampleData.armor[0])
+            ArmorDetails(item = SampleData.armor[0], effects = SampleData.effects)
         }
     }
 }

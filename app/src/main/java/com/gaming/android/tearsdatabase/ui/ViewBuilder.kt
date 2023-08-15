@@ -178,7 +178,7 @@ class ViewBuilder {
             // icons to mimic drawer destinations
             val items = NavigationItems.getNavItems()
             var selectedItem by remember { mutableStateOf(nav.navItem) }
-            selectedItem = WEAPONS_KEY
+            selectedItem = selectedItem?: WEAPONS_KEY
 
             ModalNavigationDrawer(
                 drawerState = drawerState,
