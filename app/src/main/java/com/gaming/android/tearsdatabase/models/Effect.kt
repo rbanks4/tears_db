@@ -18,6 +18,10 @@ data class Effect(
     @DrawableRes
     override var image: Int = R.drawable.lifemaxup
 
+    var effect_level1: Effect? = null
+    var effect_level2: Effect? = null
+    var effect_level3: Effect? = null
+
     override fun get(): Effect {
         return this
     }
