@@ -2,10 +2,10 @@
 Currently coding a ver_0.01 that has the bare bones that can be added upon later.
 This project uses MongoDB (free version) so the data I pull I limited -- most of it is local because I'm not paying for this to be full backend when most data won't ever change.
 
-See <a href="https://github.com/rbanks4/tears_db/tree/version_0-02">Version 0.02</a> for latest changes from below
+See <a href="https://github.com/rbanks4/tears_db/releases/tag/release_0.04">Version 0.04</a> for latest changes from below
 
-<img src="https://github.com/rbanks4/tears_db/assets/8659702/fef139a8-6f6e-4158-bd39-6503cc1e2e62">
 
+https://github.com/rbanks4/tears_db/assets/8659702/9c56744f-8121-443f-b744-d9810152b558
 
 
 
