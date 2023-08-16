@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.gaming.android.tearsdatabase.*
+import com.gaming.android.tearsdatabase.data.DataSource.Companion.getEffectsByName
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
@@ -33,8 +34,6 @@ import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.MealDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.RoastedFoodDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.ShieldDetails
 import com.gaming.android.tearsdatabase.ui.ViewDetails.Companion.WeaponDetails
-import com.gaming.android.tearsdatabase.viewmodels.ItemViewModel
-import com.gaming.android.tearsdatabase.viewmodels.WeaponsViewModel
 
 class ViewLists {
     companion object {
@@ -58,47 +57,45 @@ class ViewLists {
                 )
             }
 
-            if (weapons != null) {
-                if (displayedWeapons.isNullOrEmpty() && currentQuery.value.isEmpty()) {
-                    displayedWeapons.clear()
-                    weapons.map {
-                        displayedWeapons.add(it)
-                    }
+            if (displayedWeapons.isEmpty() && currentQuery.value.isEmpty()) {
+                displayedWeapons.clear()
+                weapons?.map {
+                    displayedWeapons.add(it)
                 }
-                Row(modifier = Modifier.padding(all = 8.dp)) {
-                    Scaffold(
-                        topBar = {
-                            TopBar(
-                                onQuerySearch = {
-                                    currentQuery.value = it
-                                    displayedWeapons.clear()
-                                    onQuery(it)?.map { weapon ->
-                                        displayedWeapons.add(weapon)
-                                    }
-                                },
-                                onListEdit = {
-                                    displayedWeapons.clear()
-                                    onWeaponMenuItemSelected(it)?.map { weapon ->
-                                        displayedWeapons.add(weapon)
-                                    }
-                                },
-                                onOpenDrawer = { openDrawer() },
-                                menuType = MENU_TYPE_WEAPONS
-                            )
-                        }
-                    ) { contentPadding ->
-                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
-                            modifier = Modifier.padding(contentPadding),
-                            content = {
-                                items(displayedWeapons.size) { index ->
-                                    WeaponCard(wpn = displayedWeapons[index], onClick = {
-                                        selectedWeapon.value = it
-                                        open.value = true
-                                    })
-                                }
-                            })
+            }
 
+            Row(modifier = Modifier.padding(all = 8.dp)) {
+                Scaffold(
+                    topBar = {
+                        TopBar(
+                            onQuerySearch = {
+                                currentQuery.value = it
+                                displayedWeapons.clear()
+                                onQuery(it)?.map { weapon ->
+                                    displayedWeapons.add(weapon)
+                                }
+                            },
+                            onListEdit = {
+                                displayedWeapons.clear()
+                                onWeaponMenuItemSelected(it)?.map { weapon ->
+                                    displayedWeapons.add(weapon)
+                                }
+                            },
+                            onOpenDrawer = { openDrawer() },
+                            menuType = MENU_TYPE_WEAPONS
+                        )
                     }
+                ) { contentPadding ->
+                    LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                        modifier = Modifier.padding(contentPadding),
+                        content = {
+                            items(displayedWeapons.size) { index ->
+                                WeaponCard(wpn = displayedWeapons[index], onClick = {
+                                    selectedWeapon.value = it
+                                    open.value = true
+                                })
+                            }
+                        })
                 }
             }
         }
@@ -106,6 +103,7 @@ class ViewLists {
         @Composable
         fun MaterialList(
             materials: List<Material>?,
+            effect: Map<String, Effect>?,
             openDrawer: () -> Unit,
             onQuery: (String) -> List<Material>?,
             onMenuItemSelected: (Int) -> List<Material>?
@@ -119,51 +117,49 @@ class ViewLists {
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { MaterialDetails(selectedMaterial.value) }
+                    content = { MaterialDetails(selectedMaterial.value, getEffectsByName(effect, selectedMaterial.value.effect_type)) }
                 )
             }
 
-            if (materials != null) {
-                if (displayedMaterials.isNullOrEmpty() && currentQuery.value.isEmpty()) {
-                    displayedMaterials.clear()
-                    materials.map {
-                        displayedMaterials.add(it)
-                    }
+            if (displayedMaterials.isEmpty() && currentQuery.value.isEmpty()) {
+                displayedMaterials.clear()
+                materials?.map {
+                    displayedMaterials.add(it)
                 }
-                Row(modifier = Modifier.padding(all = 8.dp)) {
-                    Scaffold(
-                        topBar = {
-                            TopBar(
-                                onQuerySearch = {
-                                    currentQuery.value = it
-                                    displayedMaterials.clear()
-                                    onQuery(it)?.map { material ->
-                                        displayedMaterials.add(material)
-                                    }
-                                },
-                                onListEdit = {
-                                    displayedMaterials.clear()
-                                    onMenuItemSelected(it)?.map { material ->
-                                        displayedMaterials.add(material)
-                                    }
-                                },
-                                onOpenDrawer = { openDrawer() },
-                                menuType = MENU_TYPE_MATERIALS
-                            )
-                        }
-                    ) { contentPadding ->
-                        LazyVerticalGrid(columns = GridCells.Adaptive(150.dp),
-                            modifier = Modifier.padding(contentPadding),
-                            content = {
-                                items(displayedMaterials.size) { index ->
-                                    MaterialCard(mat = displayedMaterials[index], onClick = {
-                                        selectedMaterial.value = it
-                                        open.value = true
-                                    })
+            }
+            Row(modifier = Modifier.padding(all = 8.dp)) {
+                Scaffold(
+                    topBar = {
+                        TopBar(
+                            onQuerySearch = {
+                                currentQuery.value = it
+                                displayedMaterials.clear()
+                                onQuery(it)?.map { material ->
+                                    displayedMaterials.add(material)
                                 }
-                            })
-
+                            },
+                            onListEdit = {
+                                displayedMaterials.clear()
+                                onMenuItemSelected(it)?.map { material ->
+                                    displayedMaterials.add(material)
+                                }
+                            },
+                            onOpenDrawer = { openDrawer() },
+                            menuType = MENU_TYPE_MATERIALS
+                        )
                     }
+                ) { contentPadding ->
+                    LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                        modifier = Modifier.padding(contentPadding),
+                        content = {
+                            items(displayedMaterials.size) { index ->
+                                MaterialCard(mat = displayedMaterials[index], onClick = {
+                                    selectedMaterial.value = it
+                                    open.value = true
+                                }, effect = getEffectsByName(effect, displayedMaterials[index].effect_type))
+                            }
+                        })
+
                 }
             }
         }
@@ -188,47 +184,45 @@ class ViewLists {
                 )
             }
 
-            if (bows != null) {
-                if (displayedBows.isNullOrEmpty() && currentQuery.value.isEmpty()) {
-                    displayedBows.clear()
-                    bows.map {
-                        displayedBows.add(it)
-                    }
+            if (displayedBows.isEmpty() && currentQuery.value.isEmpty()) {
+                displayedBows.clear()
+                bows?.map {
+                    displayedBows.add(it)
                 }
-                Row(modifier = Modifier.padding(all = 8.dp)) {
-                    Scaffold(
-                        topBar = {
-                            TopBar(
-                                onQuerySearch = {
-                                    currentQuery.value = it
-                                    displayedBows.clear()
-                                    onQuery(it)?.map { material ->
-                                        displayedBows.add(material)
-                                    }
-                                },
-                                onListEdit = {
-                                    displayedBows.clear()
-                                    onMenuItemSelected(it)?.map { bow ->
-                                        displayedBows.add(bow)
-                                    }
-                                },
-                                onOpenDrawer = { openDrawer() },
-                                menuType = MENU_TYPE_BOWS
-                            )
-                        }
-                    ) { contentPadding ->
-                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
-                            modifier = Modifier.padding(contentPadding),
-                            content = {
-                                items(displayedBows.size) { index ->
-                                    BowCard(bow = displayedBows[index], onClick = {
-                                        selectedBow.value = it
-                                        open.value = true
-                                    })
+            }
+            Row(modifier = Modifier.padding(all = 8.dp)) {
+                Scaffold(
+                    topBar = {
+                        TopBar(
+                            onQuerySearch = {
+                                currentQuery.value = it
+                                displayedBows.clear()
+                                onQuery(it)?.map { material ->
+                                    displayedBows.add(material)
                                 }
-                            })
-
+                            },
+                            onListEdit = {
+                                displayedBows.clear()
+                                onMenuItemSelected(it)?.map { bow ->
+                                    displayedBows.add(bow)
+                                }
+                            },
+                            onOpenDrawer = { openDrawer() },
+                            menuType = MENU_TYPE_BOWS
+                        )
                     }
+                ) { contentPadding ->
+                    LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                        modifier = Modifier.padding(contentPadding),
+                        content = {
+                            items(displayedBows.size) { index ->
+                                BowCard(bow = displayedBows[index], onClick = {
+                                    selectedBow.value = it
+                                    open.value = true
+                                })
+                            }
+                        })
+
                 }
             }
         }
@@ -253,54 +247,55 @@ class ViewLists {
                 )
             }
 
-            if (shields != null) {
-                if (displayedShields.isNullOrEmpty() && currentQuery.value.isEmpty()) {
-                    displayedShields.clear()
-                    shields.map {
-                        displayedShields.add(it)
-                    }
-                }
-                Row(modifier = Modifier.padding(all = 8.dp)) {
-                    Scaffold(
-                        topBar = {
-                            TopBar(
-                                onQuerySearch = {
-                                    currentQuery.value = it
-                                    displayedShields.clear()
-                                    onQuery(it)?.map { material ->
-                                        displayedShields.add(material)
-                                    }
-                                },
-                                onListEdit = {
-                                    displayedShields.clear()
-                                    onMenuItemSelected(it)?.map { shield ->
-                                        displayedShields.add(shield)
-                                    }
-                                },
-                                onOpenDrawer = { openDrawer() },
-                                menuType = MENU_TYPE_SHIELDS
-                            )
-                        }
-                    ) { contentPadding ->
-                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
-                            modifier = Modifier.padding(contentPadding),
-                            content = {
-                                items(displayedShields.size) { index ->
-                                    ShieldCard(shield = displayedShields[index], onClick = {
-                                        selectedShield.value = it
-                                        open.value = true
-                                    })
-                                }
-                            })
 
-                    }
+            if (displayedShields.isEmpty() && currentQuery.value.isEmpty()) {
+                displayedShields.clear()
+                shields?.map {
+                    displayedShields.add(it)
                 }
             }
+            Row(modifier = Modifier.padding(all = 8.dp)) {
+                Scaffold(
+                    topBar = {
+                        TopBar(
+                            onQuerySearch = {
+                                currentQuery.value = it
+                                displayedShields.clear()
+                                onQuery(it)?.map { material ->
+                                    displayedShields.add(material)
+                                }
+                            },
+                            onListEdit = {
+                                displayedShields.clear()
+                                onMenuItemSelected(it)?.map { shield ->
+                                    displayedShields.add(shield)
+                                }
+                            },
+                            onOpenDrawer = { openDrawer() },
+                            menuType = MENU_TYPE_SHIELDS
+                        )
+                    }
+                ) { contentPadding ->
+                    LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                        modifier = Modifier.padding(contentPadding),
+                        content = {
+                            items(displayedShields.size) { index ->
+                                ShieldCard(shield = displayedShields[index], onClick = {
+                                    selectedShield.value = it
+                                    open.value = true
+                                })
+                            }
+                        })
+
+                }
+            }
+
         }
 
         @Composable
         fun RoastedFoodList(
             roastedFoods: List<RoastedFood>?,
+            effect: Map<String, Effect>?,
             openDrawer: () -> Unit,
             onQuery: (String) -> List<RoastedFood>?,
             onMenuItemSelected: (Int) -> List<RoastedFood>?
@@ -314,51 +309,49 @@ class ViewLists {
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { RoastedFoodDetails(selected.value) }
+                    content = { RoastedFoodDetails(selected.value, getEffectsByName(effect, selected.value.effect_type)) }
                 )
             }
 
-            if (roastedFoods != null) {
-                if (displayed.isNullOrEmpty() && currentQuery.value.isEmpty()) {
-                    displayed.clear()
-                    roastedFoods.map {
-                        displayed.add(it)
-                    }
+            if (displayed.isEmpty() && currentQuery.value.isEmpty()) {
+                displayed.clear()
+                roastedFoods?.map {
+                    displayed.add(it)
                 }
-                Row(modifier = Modifier.padding(all = 8.dp)) {
-                    Scaffold(
-                        topBar = {
-                            TopBar(
-                                onQuerySearch = {
-                                    currentQuery.value = it
-                                    displayed.clear()
-                                    onQuery(it)?.map { material ->
-                                        displayed.add(material)
-                                    }
-                                },
-                                onListEdit = {
-                                    displayed.clear()
-                                    onMenuItemSelected(it)?.map { shield ->
-                                        displayed.add(shield)
-                                    }
-                                },
-                                onOpenDrawer = { openDrawer() },
-                                menuType = MENU_TYPE_ROASTED_FOOD
-                            )
-                        }
-                    ) { contentPadding ->
-                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
-                            modifier = Modifier.padding(contentPadding),
-                            content = {
-                                items(displayed.size) { index ->
-                                    RoastedFoodCard(item = displayed[index], onClick = {
-                                        selected.value = it
-                                        open.value = true
-                                    })
+            }
+            Row(modifier = Modifier.padding(all = 8.dp)) {
+                Scaffold(
+                    topBar = {
+                        TopBar(
+                            onQuerySearch = {
+                                currentQuery.value = it
+                                displayed.clear()
+                                onQuery(it)?.map { material ->
+                                    displayed.add(material)
                                 }
-                            })
-
+                            },
+                            onListEdit = {
+                                displayed.clear()
+                                onMenuItemSelected(it)?.map { shield ->
+                                    displayed.add(shield)
+                                }
+                            },
+                            onOpenDrawer = { openDrawer() },
+                            menuType = MENU_TYPE_ROASTED_FOOD
+                        )
                     }
+                ) { contentPadding ->
+                    LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                        modifier = Modifier.padding(contentPadding),
+                        content = {
+                            items(displayed.size) { index ->
+                                RoastedFoodCard(item = displayed[index], onClick = {
+                                    selected.value = it
+                                    open.value = true
+                                }, getEffectsByName(effect, displayed[index].effect_type))
+                            }
+                        })
+
                 }
             }
         }
@@ -383,47 +376,46 @@ class ViewLists {
                 )
             }
 
-            if (meals != null) {
-                if (displayed.isNullOrEmpty() && currentQuery.value.isEmpty()) {
-                    displayed.clear()
-                    meals.map {
-                        displayed.add(it)
-                    }
-                }
-                Row(modifier = Modifier.padding(all = 8.dp)) {
-                    Scaffold(
-                        topBar = {
-                            TopBar(
-                                onQuerySearch = {
-                                    currentQuery.value = it
-                                    displayed.clear()
-                                    onQuery(it)?.map { material ->
-                                        displayed.add(material)
-                                    }
-                                },
-                                onListEdit = {
-                                    displayed.clear()
-                                    onMenuItemSelected(it)?.map { shield ->
-                                        displayed.add(shield)
-                                    }
-                                },
-                                onOpenDrawer = { openDrawer() },
-                                menuType = MENU_TYPE_ROASTED_FOOD
-                            )
-                        }
-                    ) { contentPadding ->
-                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
-                            modifier = Modifier.padding(contentPadding),
-                            content = {
-                                items(displayed.size) { index ->
-                                    MealCard(item = displayed[index], onClick = {
-                                        selected.value = it
-                                        open.value = true
-                                    })
-                                }
-                            })
 
+            if (displayed.isEmpty() && currentQuery.value.isEmpty()) {
+                displayed.clear()
+                meals?.map {
+                    displayed.add(it)
+                }
+            }
+            Row(modifier = Modifier.padding(all = 8.dp)) {
+                Scaffold(
+                    topBar = {
+                        TopBar(
+                            onQuerySearch = {
+                                currentQuery.value = it
+                                displayed.clear()
+                                onQuery(it)?.map { material ->
+                                    displayed.add(material)
+                                }
+                            },
+                            onListEdit = {
+                                displayed.clear()
+                                onMenuItemSelected(it)?.map { shield ->
+                                    displayed.add(shield)
+                                }
+                            },
+                            onOpenDrawer = { openDrawer() },
+                            menuType = MENU_TYPE_ROASTED_FOOD
+                        )
                     }
+                ) { contentPadding ->
+                    LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                        modifier = Modifier.padding(contentPadding),
+                        content = {
+                            items(displayed.size) { index ->
+                                MealCard(item = displayed[index], onClick = {
+                                    selected.value = it
+                                    open.value = true
+                                })
+                            }
+                        })
+
                 }
             }
         }
@@ -431,6 +423,7 @@ class ViewLists {
         @Composable
         fun ArmorList(
             armor: List<Armor>?,
+            effect: Map<String, Effect>?,
             openDrawer: () -> Unit,
             onQuery: (String) -> List<Armor>?,
             onMenuItemSelected: (Int) -> List<Armor>?
@@ -444,51 +437,51 @@ class ViewLists {
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { ArmorDetails(selected.value) }
+                    content = { ArmorDetails(selected.value, getEffectsByName(effect, selected.value.effect)) }
                 )
             }
 
-            if (armor != null) {
-                if (displayed.isNullOrEmpty() && currentQuery.value.isEmpty()) {
-                    displayed.clear()
-                    armor.map {
-                        displayed.add(it)
-                    }
+            if (displayed.isEmpty() && currentQuery.value.isEmpty()) {
+                displayed.clear()
+                armor?.map {
+                    displayed.add(it)
                 }
-                Row(modifier = Modifier.padding(all = 8.dp)) {
-                    Scaffold(
-                        topBar = {
-                            TopBar(
-                                onQuerySearch = {
-                                    currentQuery.value = it
-                                    displayed.clear()
-                                    onQuery(it)?.map { material ->
-                                        displayed.add(material)
-                                    }
-                                },
-                                onListEdit = {
-                                    displayed.clear()
-                                    onMenuItemSelected(it)?.map { shield ->
-                                        displayed.add(shield)
-                                    }
-                                },
-                                onOpenDrawer = { openDrawer() },
-                                menuType = MENU_TYPE_ARMOR
-                            )
-                        }
-                    ) { contentPadding ->
-                        LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
-                            modifier = Modifier.padding(contentPadding),
-                            content = {
-                                items(displayed.size) { index ->
-                                    ArmorCard(item = displayed[index], onClick = {
-                                        selected.value = it
-                                        open.value = true
-                                    })
+            }
+            Row(modifier = Modifier.padding(all = 8.dp)) {
+                Scaffold(
+                    topBar = {
+                        TopBar(
+                            onQuerySearch = {
+                                currentQuery.value = it
+                                displayed.clear()
+                                onQuery(it)?.map { material ->
+                                    displayed.add(material)
                                 }
-                            })
-
+                            },
+                            onListEdit = {
+                                displayed.clear()
+                                onMenuItemSelected(it)?.map { shield ->
+                                    displayed.add(shield)
+                                }
+                            },
+                            onOpenDrawer = { openDrawer() },
+                            menuType = MENU_TYPE_ARMOR
+                        )
                     }
+                ) { contentPadding ->
+                    LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
+                        modifier = Modifier.padding(contentPadding),
+                        content = {
+                            items(displayed.size) { index ->
+                                ArmorCard(
+                                    item = displayed[index],
+                                    onClick = {
+                                    selected.value = it
+                                    open.value = true
+                                },
+                                    effect = getEffectsByName(effect, displayed[index].effect))
+                            }
+                        })
                 }
             }
         }
@@ -511,7 +504,7 @@ class ViewLists {
     @Composable
     fun PreviewMaterialList() {
         TearsTheme {
-            MaterialList(materials = SampleData.materials, openDrawer = {}, onQuery = { SampleData.materials }, onMenuItemSelected = { SampleData. materials })
+            MaterialList(materials = SampleData.materials, openDrawer = {}, onQuery = { SampleData.materials }, onMenuItemSelected = { SampleData. materials }, effect = SampleData.effectMap)
         }
     }
 
@@ -535,7 +528,7 @@ class ViewLists {
     @Composable
     fun PreviewRoastedFoodList() {
         TearsTheme {
-            RoastedFoodList(roastedFoods = SampleData.roastedFood, openDrawer = {}, onQuery = { SampleData.roastedFood }, onMenuItemSelected = { SampleData. roastedFood })
+            RoastedFoodList(roastedFoods = SampleData.roastedFood, openDrawer = {}, onQuery = { SampleData.roastedFood }, onMenuItemSelected = { SampleData. roastedFood }, effect = SampleData.effectMap)
         }
     }
 
@@ -551,7 +544,7 @@ class ViewLists {
     @Composable
     fun PreviewArmorList() {
         TearsTheme {
-            ArmorList(armor = SampleData.armor, openDrawer = {}, onQuery = { SampleData.armor }, onMenuItemSelected = { SampleData. armor })
+            ArmorList(armor = SampleData.armor, openDrawer = {}, onQuery = { SampleData.armor }, onMenuItemSelected = { SampleData. armor }, effect = SampleData.effectMap)
         }
     }
 }

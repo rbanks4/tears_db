@@ -1,6 +1,5 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.gaming.android.tearsdatabase.*
@@ -22,15 +21,6 @@ class MaterialsViewModel(private val savedStateHandle: SavedStateHandle): ViewMo
     override var searchString: String?
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
-
-    override fun setup(list: List<Material>, ctx: Context) {
-        val newList = mutableListOf<Material>()
-        list.map {
-            newList.add(it.setDrawable(ctx))
-        }
-        items = newList.toSet().toList()
-        searchList = items
-    }
 
     override fun sort(choice: Int, list: List<Material>?): List<Material>? {
         return when (choice) {

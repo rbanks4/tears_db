@@ -105,11 +105,11 @@ object SampleData {
     )
 
     val armor = listOf(
-        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+        Armor("Armor_001_Head", "Barbarian Helm", "Barbarian", "AttackUp", "none",
             3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
             "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
             "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees",
-            "Royal Hidden Passage (entrance location -0253,0764,0087), break rocks near electric Like-Like. Enter prison cell and move boulder to climb to tunnel to cell on the other side.", "-0267, 0638, -0035").setDrawable(R.drawable.hylian_hood),
+            "Royal Hidden Passage (entrance location -0253,0764,0087), break rocks near electric Like-Like. Enter prison cell and move boulder to climb to tunnel to cell on the other side.", "-0267, 0638, -0035").setDrawable(R.drawable.barbarian_helm),
         Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
             3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
             "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
@@ -130,5 +130,15 @@ object SampleData {
             3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
             "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
             "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+    )
+
+    val effects = listOf(
+        Effect("AttackUp", "Attack Up", 1, null, "1-27 yellow hearts", 1, 108, 0, true).setDrawable(R.drawable.attackup),
+        Effect("LifeMaxUp", "Extra Hearts", 4, 108, "1-27 yellow hearts", 1, 108, 0, false).setDrawable(R.drawable.lifemaxup)
+    )
+
+    val effectMap = mapOf(
+        Pair("AttackUp", Effect("AttackUp", "Attack Up", 1, null, "1-27 yellow hearts", 1, 108, 0, true).setDrawable(R.drawable.attackup)),
+        Pair("LifeMaxUp", Effect("LifeMaxUp", "Extra Hearts", 4, 108, "1-27 yellow hearts", 1, 108, 0, false).setDrawable(R.drawable.lifemaxup))
     )
 }

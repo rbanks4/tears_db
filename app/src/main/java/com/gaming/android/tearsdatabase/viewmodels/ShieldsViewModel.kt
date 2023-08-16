@@ -1,6 +1,5 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.gaming.android.tearsdatabase.SORT_DURABILITY_DEC
@@ -38,14 +37,6 @@ class ShieldsViewModel(private val savedStateHandle: SavedStateHandle): ViewMode
         }
     }
 
-    override fun setup(list: List<Shield>, ctx: Context) {
-        val newList = mutableListOf<Shield>()
-        list.map {
-            newList.add(it.setDrawable(ctx))
-        }
-        items = newList.toSet().toList()
-        searchList = items
-    }
     override fun search(regex: Regex, viewModel: ItemViewModel<Shield>): List<Shield> {
         var finalList: List<Shield>?
         viewModel.items.let { list ->
