@@ -3,7 +3,6 @@ package com.gaming.android.tearsdatabase.models
 import android.content.Context
 import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
-import com.gaming.android.tearsdatabase.data.DataSource
 
 data class Meal(
     val actor_name: String,
@@ -16,6 +15,10 @@ data class Meal(
         ): Item<Meal> {
     @DrawableRes
     override var image: Int = R.drawable.mushroom_skewer
+
+    override fun get(): Meal {
+        return this
+    }
 
 
     override fun setDrawable(@DrawableRes int: Int): Meal {

@@ -3,7 +3,6 @@ package com.gaming.android.tearsdatabase.models
 import android.content.Context
 import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
-import com.gaming.android.tearsdatabase.data.DataSource
 
 data class Shield(
     override val name: String,
@@ -18,6 +17,10 @@ data class Shield(
 ): Item<Shield> {
     @DrawableRes
     override var image: Int = R.drawable.travelers_shield
+
+    override fun get(): Shield {
+        return this
+    }
 
 
     override fun setDrawable(@DrawableRes int: Int): Shield {

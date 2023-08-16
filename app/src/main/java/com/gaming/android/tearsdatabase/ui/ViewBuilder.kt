@@ -29,6 +29,8 @@ import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.WeaponList
 import com.gaming.android.tearsdatabase.ui.ViewLists.Companion.ShieldList
 import com.gaming.android.tearsdatabase.viewmodels.ArmorViewModel
 import com.gaming.android.tearsdatabase.viewmodels.BowsViewModel
+import com.gaming.android.tearsdatabase.viewmodels.EffectViewModel
+import com.gaming.android.tearsdatabase.viewmodels.MainViewModel
 import com.gaming.android.tearsdatabase.viewmodels.MaterialsViewModel
 import com.gaming.android.tearsdatabase.viewmodels.MealsViewModel
 import com.gaming.android.tearsdatabase.viewmodels.RoastedFoodViewModel
@@ -160,7 +162,7 @@ class ViewBuilder {
 
         @Composable
         fun CreateDrawer(
-            nav: String?,
+            nav: MainViewModel,
             weapons: WeaponsViewModel,
             materials: MaterialsViewModel,
             bows: BowsViewModel,
@@ -168,17 +170,15 @@ class ViewBuilder {
             roastedFoods: RoastedFoodViewModel,
             meals: MealsViewModel,
             armor: ArmorViewModel,
-            onSetNav: (String) -> Unit
+            effects: EffectViewModel
         ) {
             val drawerState = rememberDrawerState(DrawerValue.Open)
             val scope = rememberCoroutineScope()
 
             // icons to mimic drawer destinations
             val items = NavigationItems.getNavItems()
-            var selectedItem by remember { mutableStateOf(nav) }
-            if(nav == null){
-                selectedItem = WEAPONS_KEY
-            }
+            var selectedItem by remember { mutableStateOf(nav.navItem) }
+            selectedItem = selectedItem?: WEAPONS_KEY
 
             ModalNavigationDrawer(
                 drawerState = drawerState,
@@ -192,7 +192,7 @@ class ViewBuilder {
                                 onClick = {
                                     scope.launch { drawerState.close() }
                                     selectedItem = item.key
-                                    onSetNav(item.key)
+                                    nav.navItem = item.key
                                 },
                                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding),
                                 icon = { Icon(
@@ -228,12 +228,14 @@ class ViewBuilder {
                         )
                         MATERIALS_KEY -> MaterialList(
                             materials = materials.getCurrent(),
+                            effect = effects.map,
                             openDrawer = { openDrawer() },
                             onQuery = { materials.query(it) },
                             onMenuItemSelected = { materials.onItemSelected(it) }
                         )
                         ROASTED_CHILLED_KEY -> RoastedFoodList(
                             roastedFoods = roastedFoods.getCurrent(),
+                            effect = effects.map,
                             openDrawer = { openDrawer() },
                             onQuery = { roastedFoods.query(it) },
                             onMenuItemSelected = { roastedFoods.onItemSelected(it) }
@@ -246,6 +248,7 @@ class ViewBuilder {
                         )
                         ARMOR_KEY -> ArmorList(
                             armor = armor.getCurrent(),
+                            effect = effects.map,
                             openDrawer = { openDrawer() },
                             onQuery = { armor.query(it) },
                             onMenuItemSelected = { armor.onItemSelected(it) }

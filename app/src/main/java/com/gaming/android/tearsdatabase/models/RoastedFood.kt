@@ -3,7 +3,6 @@ package com.gaming.android.tearsdatabase.models
 import android.content.Context
 import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
-import com.gaming.android.tearsdatabase.data.DataSource
 
 data class RoastedFood(
     val actor_name: String,
@@ -21,6 +20,10 @@ data class RoastedFood(
 ): Item<RoastedFood> {
     @DrawableRes
     override var image: Int = R.drawable.hard_boiled_egg
+
+    override fun get(): RoastedFood {
+        return this
+    }
 
 
     override fun setDrawable(@DrawableRes int: Int): RoastedFood {

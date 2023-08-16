@@ -14,12 +14,12 @@ const val SHIELDS = "shields"
 const val ROASTED_FOOD = "roasted"
 const val MEALS = "meals"
 const val ARMOR = "armors"
+const val EFFECTS = "effects"
 class Endpoints {
     companion object {
-        fun fetchWeapons(updateWeapons: (List<Weapon>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit) {
-            val apiService = ApiClient.apiService
+        fun fetchWeapons(update: (List<Weapon>) -> Unit, build: () -> Unit, onFailure: () -> Unit) {
             val dataRequest = DataRequest(collection = WEAPONS)
-            val call = apiService.getWeapons(dataRequest)
+            val call = ApiClient.apiService.getWeapons(dataRequest)
             val label = "$TAG.$WEAPONS"
 
             call.enqueue(object : Callback<WeaponsResponse> {
@@ -28,34 +28,25 @@ class Endpoints {
                     response: Response<WeaponsResponse>
                 ) {
                     if (response.isSuccessful) {
-                        Log.w(label,"response successful")
-                        if (response.body() != null) {
-                            val weapons = response.body()?.documents
-                            weapons?.let {
-                                updateWeapons(weapons)
-                                buildView()
-                                Log.w(label,"response list size is ${weapons.size}")
-                            }
+                        response.body()?.documents?.let {
+                            update(it)
+                            build()
                         }
                     } else {
-                        Log.w(label,"response failed")
-                        Log.w(label,response.code().toString())
-                        Log.w(label,response.errorBody().toString())
+                        notSuccessful(label, response)
                     }
                 }
 
                 override fun onFailure(call: Call<WeaponsResponse>, t: Throwable) {
-                    Log.w(label,"failed call: " + t.message)
                     onFailure()
-                    buildView()
+                    build()
                 }
             })
         }
 
-        fun fetchMaterials(updateMaterials: (List<Material>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
-            val apiService = ApiClient.apiService
+        fun fetchMaterials(update: (List<Material>) -> Unit, onFailure: () -> Unit){
             val dataRequest = DataRequest(collection = MATERIALS)
-            val call = apiService.getMaterials(dataRequest)
+            val call = ApiClient.apiService.getMaterials(dataRequest)
             val label = "$TAG.$MATERIALS"
 
             call.enqueue(object: Callback<MaterialsResponse> {
@@ -64,30 +55,22 @@ class Endpoints {
                     response: Response<MaterialsResponse>
                 ) {
                     if (response.isSuccessful) {
-                        Log.w(label,"response successful")
                         response.body()?.documents?.let { materials ->
-                            updateMaterials(materials)
-                            buildView()
-                            Log.w(label, "materials response list size is ${materials.size}")
+                            update(materials)
                         }
-
                     } else {
-                        Log.w(label, "response failed")
-                        Log.w(label, response.code().toString())
-                        Log.w(label, response.errorBody().toString())
+                        notSuccessful(label, response)
                     }
                 }
 
                 override fun onFailure(call: Call<MaterialsResponse>, t: Throwable) {
-                    Log.w(label,"failed call: " + t.message)
                     onFailure()
-                    buildView()
                 }
 
             })
         }
 
-        fun fetchBows(updateBows: (List<Bow>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
+        fun fetchBows(update: (List<Bow>) -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = BOWS)
             val call = apiService.getBows(dataRequest)
@@ -99,30 +82,23 @@ class Endpoints {
                     response: Response<BowsResponse>
                 ) {
                     if (response.isSuccessful) {
-                        Log.w(label,"response successful")
                         response.body()?.documents?.let { bows ->
-                            updateBows(bows)
-                            buildView()
-                            Log.w(label, "bows response list size is ${bows.size}")
+                            update(bows)
                         }
 
                     } else {
-                        Log.w(label, "response failed")
-                        Log.w(label, response.code().toString())
-                        Log.w(label, response.errorBody().toString())
+                        notSuccessful(label, response)
                     }
                 }
 
                 override fun onFailure(call: Call<BowsResponse>, t: Throwable) {
-                    Log.w(label, "failed call: " + t.message)
                     onFailure()
-                    buildView()
                 }
 
             })
         }
 
-        fun fetchShields(updateShields: (List<Shield>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
+        fun fetchShields(update: (List<Shield>) -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = SHIELDS)
             val call = apiService.getShields(dataRequest)
@@ -134,30 +110,23 @@ class Endpoints {
                     response: Response<ShieldsResponse>
                 ) {
                     if (response.isSuccessful) {
-                        Log.w(label, "response successful")
                         response.body()?.documents?.let { shields ->
-                            updateShields(shields)
-                            buildView()
-                            Log.w(label, "shield response list size is ${shields.size}")
+                            update(shields)
                         }
 
                     } else {
-                        Log.w(label, "response failed")
-                        Log.w(label, response.code().toString())
-                        Log.w(label, response.errorBody().toString())
+                        notSuccessful(label, response)
                     }
                 }
 
                 override fun onFailure(call: Call<ShieldsResponse>, t: Throwable) {
-                    Log.w(label, "failed call: " + t.message)
                     onFailure()
-                    buildView()
                 }
 
             })
         }
 
-        fun fetchRoastedFood(update: (List<RoastedFood>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
+        fun fetchRoastedFood(update: (List<RoastedFood>) -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = ROASTED_FOOD)
             val call = apiService.getRoastedFood(dataRequest)
@@ -169,31 +138,23 @@ class Endpoints {
                     response: Response<RoastedFoodResponse>
                 ) {
                     if (response.isSuccessful) {
-                        Log.w(label, "response successful")
                         response.body()?.documents?.let { roastedFood ->
                             update(roastedFood)
-                            buildView()
-                            Log.w(label, "roasted food response list size is " +
-                                    "${roastedFood.size}")
                         }
 
                     } else {
-                        Log.w(label, "response failed")
-                        Log.w(label, response.code().toString())
-                        Log.w(label, response.errorBody().toString())
+                        notSuccessful(label, response)
                     }
                 }
 
                 override fun onFailure(call: Call<RoastedFoodResponse>, t: Throwable) {
-                    Log.w(label, "failed call: " + t.message)
                     onFailure()
-                    buildView()
                 }
 
             })
         }
 
-        fun fetchMeals(update: (List<Meal>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
+        fun fetchMeals(update: (List<Meal>) -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = MEALS)
             val call = apiService.getMeals(dataRequest)
@@ -205,30 +166,23 @@ class Endpoints {
                     response: Response<MealsResponse>
                 ) {
                     if (response.isSuccessful) {
-                        Log.w(label, "response successful")
                         response.body()?.documents?.let { meals ->
                             update(meals)
-                            buildView()
-                            Log.w(label, "meal response list size is ${meals.size}")
                         }
 
                     } else {
-                        Log.w(label, "response failed")
-                        Log.w(label, response.code().toString())
-                        Log.w(label, response.errorBody().toString())
+                        notSuccessful(label, response)
                     }
                 }
 
                 override fun onFailure(call: Call<MealsResponse>, t: Throwable) {
-                    Log.w(label, "failed call: " + t.message)
                     onFailure()
-                    buildView()
                 }
 
             })
         }
 
-        fun fetchArmor(update: (List<Armor>) -> Unit, buildView: () -> Unit, onFailure: () -> Unit){
+        fun fetchArmor(update: (List<Armor>) -> Unit, onFailure: () -> Unit){
             val apiService = ApiClient.apiService
             val dataRequest = DataRequest(collection = ARMOR)
             val call = apiService.getArmor(dataRequest)
@@ -240,27 +194,52 @@ class Endpoints {
                     response: Response<ArmorResponse>
                 ) {
                     if (response.isSuccessful) {
-                        Log.w(label, "response successful")
                         response.body()?.documents?.let { meals ->
                             update(meals)
-                            buildView()
-                            Log.w(label, "meal response list size is ${meals.size}")
                         }
-
                     } else {
-                        Log.w(label, "response failed")
-                        Log.w(label, response.code().toString())
-                        Log.w(label, response.errorBody().toString())
+                        notSuccessful(label, response)
                     }
                 }
 
                 override fun onFailure(call: Call<ArmorResponse>, t: Throwable) {
-                    Log.w(label, "failed call: " + t.message)
                     onFailure()
-                    buildView()
                 }
 
             })
+        }
+
+        fun fetchEffects(update: (List<Effect>) -> Unit, onFailure: () -> Unit){
+            val apiService = ApiClient.apiService
+            val dataRequest = DataRequest(collection = EFFECTS)
+            val call = apiService.getEffects(dataRequest)
+            val label = "$TAG.$EFFECTS"
+
+            call.enqueue(object: Callback<EffectResponse> {
+                override fun onResponse(
+                    call: Call<EffectResponse>,
+                    response: Response<EffectResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        response.body()?.documents?.let {
+                            update(it)
+                        }
+
+                    } else {
+                        notSuccessful(label, response)
+                    }
+                }
+
+                override fun onFailure(call: Call<EffectResponse>, t: Throwable) {
+                    onFailure()
+                }
+
+            })
+        }
+        private fun notSuccessful(label: String, response: Response<*>) {
+            Log.w(label,"response failed")
+            Log.w(label,response.code().toString())
+            Log.w(label,response.errorBody().toString())
         }
     }
 }
