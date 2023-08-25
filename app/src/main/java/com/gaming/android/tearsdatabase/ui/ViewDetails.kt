@@ -593,12 +593,16 @@ class ViewDetails {
 
             AnimatedVisibility(visible = isExpanded) {
                 Column {
-                    ShowEffectRow(effect = effect, showPotency)
-                    if (effect.effect_level2 != null) {
-                        ShowEffectRow(effect = effect.effect_level2!!, showPotency)
+                    if(effect.effect_level1 != null) {
+                        ShowEffectRow(effect = effect.effect_level1!!, showPotency)
+                    } else {
+                        ShowEffectRow(effect = effect, showPotency)
                     }
-                    if (effect.effect_level3 != null) {
-                        ShowEffectRow(effect = effect.effect_level3!!, showPotency)
+                    effect.effect_level2?.let {
+                        ShowEffectRow(effect = it, showPotency)
+                    }
+                    effect.effect_level3?.let {
+                        ShowEffectRow(effect = it, showPotency)
                     }
                 }
             }
