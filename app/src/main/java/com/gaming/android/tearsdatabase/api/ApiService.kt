@@ -2,17 +2,21 @@ package com.gaming.android.tearsdatabase.api
 
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
 const val API_KEY_TAG = "api-key: "
 const val KEY = "xzEOCq63EkHsw8PIh9CAbDPuERVTOuNKJSQSivxYvZBcv8hmuwk6FfaZhuGXztoJ"
-const val FIND_ALL = "action/find"
+const val FIND_ALL = "data/v1/action/find"
 interface ApiService {
 
     @Headers(API_KEY_TAG + KEY)
     @POST(FIND_ALL)
     fun getWeapons(@Body request: DataRequest): Call<WeaponsResponse>
+
+    @GET("allWeapons")
+    suspend fun getWeapons(): WeaponsResponse
 
     @Headers(API_KEY_TAG + KEY)
     @POST(FIND_ALL)

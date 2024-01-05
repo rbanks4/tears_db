@@ -75,7 +75,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
                 return null
             }
 
-            Log.d("DataSource", jsonString)
+            Log.d("DataSource", "Size of $name json: ${jsonString.length}")
 
             return jsonString
         }
@@ -135,7 +135,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             WeaponsResponse::class.java
         )
 
-        return response.documents
+        return response.weapons
     }
 
     fun effectsBackup(): List<Effect> {

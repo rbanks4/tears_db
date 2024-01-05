@@ -37,17 +37,17 @@ class RoastedFoodViewModel(private val savedStateHandle: SavedStateHandle): View
     }
 
     override fun search(regex: Regex, viewModel: ItemViewModel<RoastedFood>): List<RoastedFood> {
-        var finalList: List<RoastedFood>?
-        viewModel.items.let { list ->
-            val nameList = list!!.filter {
+        var finalList: List<RoastedFood>? = listOf()
+        viewModel.items?.let { list ->
+            val nameList = list.filter {
                 it.name.lowercase().matches(".*$regex.*".toRegex())
             }
-            val subList = list!!.filter {
+            val subList = list.filter {
                 if (it.sub_type.isNotEmpty())
                     it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
                 else false
             }
-            val subList2 = list!!.filter {
+            val subList2 = list.filter {
                 if (it.effect_type.isNotEmpty())
                     it.effect_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
                 else false

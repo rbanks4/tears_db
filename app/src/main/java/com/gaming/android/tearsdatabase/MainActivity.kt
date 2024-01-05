@@ -5,7 +5,20 @@ import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.Button
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.fragment.app.FragmentController
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelStoreOwner
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navigation
 import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
@@ -13,6 +26,7 @@ import com.gaming.android.tearsdatabase.models.Item
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
 import com.gaming.android.tearsdatabase.viewmodels.*
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "MainActivity"
 const val SORT_DAMAGE_INC = 1
@@ -43,19 +57,11 @@ const val MENU_TYPE_MATERIALS = 4
 const val MENU_TYPE_ROASTED_FOOD = 5
 const val MENU_TYPE_MEALS = 6
 const val MENU_TYPE_ARMOR = 7
-class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
-    private lateinit var bind: ActivityMainBinding
 
-    private val viewModel: MainViewModel by viewModels()
-    private val weaponsViewModel: WeaponsViewModel by viewModels()
-    private val materialViewModel: MaterialsViewModel by viewModels()
-    private val bowViewModel: BowsViewModel by viewModels()
-    private val shieldViewModel: ShieldsViewModel by viewModels()
-    private val roastedFoodViewModel: RoastedFoodViewModel by viewModels()
-    private val mealsViewModel: MealsViewModel by viewModels()
-    private val armorViewModel: ArmorViewModel by viewModels()
-    private val effectViewModel: EffectViewModel by viewModels()
-    private val dataSource = DataSource(this)
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
+
+    private lateinit var bind: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,71 +71,21 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
 
         Log.d(TAG, "onCreate(Bundle?) called")
 
-        Endpoints.fetchWeapons(
-            update = { weapons -> weaponsViewModel.setup(weapons) { findDrawable(it)} },
-            build = { buildRecyclerView() },
-            onFailure = { weaponsViewModel.setup(dataSource.weaponBackup()) { findDrawable(it)} }
-        )
 
-        Endpoints.fetchMaterials(
-            update = { materialViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { materialViewModel.setup(dataSource.materialsBackup()) { findDrawable(it)} }
-        )
-
-        Endpoints.fetchBows(
-            update = { bowViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { bowViewModel.setup(dataSource.bowsBackup()) { findDrawable(it)} }
-        )
-
-        Endpoints.fetchShields(
-            update = { shieldViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { shieldViewModel.setup(dataSource.shieldsBackup()) { findDrawable(it)} }
-        )
-        Endpoints.fetchRoastedFood(
-            update = { roastedFoodViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { roastedFoodViewModel.setup(dataSource.roastedBackup()) { findDrawable(it)} }
-        )
-        Endpoints.fetchMeals(
-            update = { mealsViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it)} }
-        )
-
-        Endpoints.fetchArmor(
-            update = { armorViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { armorViewModel.setup(dataSource.armorBackup()) { findDrawable(it)} }
-        )
-
-        Endpoints.fetchEffects(
-            update = { effectViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { effectViewModel.setup(dataSource.effectsBackup()) { findDrawable(it)} }
-        )
-    }
-
-    fun <T> findDrawable(item: Item<T>): T {
-        item.findDrawable(this)
-        return item.get()
     }
 
     override fun onStart() {
         super.onStart()
-        buildRecyclerView()
     }
 
-    private fun buildRecyclerView(){
-        setContent {
-            TearsTheme {
-                CreateDrawer(
-                    nav = viewModel,
-                    weapons = weaponsViewModel,
-                    materials = materialViewModel,
-                    bows = bowViewModel,
-                    shields = shieldViewModel,
-                    roastedFoods = roastedFoodViewModel,
-                    meals = mealsViewModel,
-                    armor = armorViewModel,
-                    effects = effectViewModel
-                )
-            }
-        }
+
+}
+
+@Composable
+inline fun <reified T: ViewModel> NavBackStackEntry.sharedViewModel(navController: NavController): T {
+    val navGraphRoute = destination.parent?.route?:return viewModel()
+    val parentEntry = remember(this) {
+        navController.getBackStackEntry(navGraphRoute)
     }
+    return viewModel(parentEntry)
 }

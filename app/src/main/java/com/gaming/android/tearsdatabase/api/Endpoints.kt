@@ -17,33 +17,6 @@ const val ARMOR = "armors"
 const val EFFECTS = "effects"
 class Endpoints {
     companion object {
-        fun fetchWeapons(update: (List<Weapon>) -> Unit, build: () -> Unit, onFailure: () -> Unit) {
-            val dataRequest = DataRequest(collection = WEAPONS)
-            val call = ApiClient.apiService.getWeapons(dataRequest)
-            val label = "$TAG.$WEAPONS"
-
-            call.enqueue(object : Callback<WeaponsResponse> {
-                override fun onResponse(
-                    call: Call<WeaponsResponse>,
-                    response: Response<WeaponsResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        response.body()?.documents?.let {
-                            update(it)
-                            build()
-                        }
-                    } else {
-                        notSuccessful(label, response)
-                    }
-                }
-
-                override fun onFailure(call: Call<WeaponsResponse>, t: Throwable) {
-                    onFailure()
-                    build()
-                }
-            })
-        }
-
         fun fetchMaterials(update: (List<Material>) -> Unit, onFailure: () -> Unit){
             val dataRequest = DataRequest(collection = MATERIALS)
             val call = ApiClient.apiService.getMaterials(dataRequest)
