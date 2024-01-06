@@ -2,11 +2,23 @@ package com.gaming.android.tearsdatabase.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.gaming.android.tearsdatabase.api.ItemRepository
 import com.gaming.android.tearsdatabase.models.Effect
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val EFFECT_ITEM = "effect"
 private const val MAP = "eff_map"
-class EffectViewModel(private val savedStateHandle: SavedStateHandle): ViewModel(),
+@HiltViewModel
+class EffectViewModel @Inject constructor(
+    private val repo: ItemRepository,
+    private val savedStateHandle: SavedStateHandle
+): ViewModel(),
     ItemViewModel<Effect> {
     override var items: List<Effect>?
         get() = savedStateHandle.get<List<Effect>>(EFFECT_ITEM)
@@ -23,6 +35,21 @@ class EffectViewModel(private val savedStateHandle: SavedStateHandle): ViewModel
     override var searchString: String?
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
+
+    private val _effects: MutableStateFlow<List<Effect>> = MutableStateFlow(emptyList())
+    val effects: StateFlow<List<Effect>>
+        get() = _effects.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            try {
+                val fetchedItems = repo.fetchEffects()
+                _effects.value = fetchedItems
+            } catch (e: Exception) {
+                println("Failed to fetch items ${e.message}")
+            }
+        }
+    }
 
     override fun setup(list: List<Effect>, findDrawable: (Effect) -> Effect) {
         super.setup(list) { findDrawable(it) }

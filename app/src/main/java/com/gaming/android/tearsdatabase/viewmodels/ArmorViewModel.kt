@@ -1,14 +1,27 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.SORT_DEF_DEC
 import com.gaming.android.tearsdatabase.SORT_DEF_INC
+import com.gaming.android.tearsdatabase.api.ItemRepository
 import com.gaming.android.tearsdatabase.models.Armor
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val ARMOR_ITEM = "armor"
 
-class ArmorViewModel(private val savedStateHandle: SavedStateHandle): ViewModel(),
+@HiltViewModel
+class ArmorViewModel @Inject constructor(
+    private val repo: ItemRepository,
+    private val savedStateHandle: SavedStateHandle
+): ViewModel(),
     ItemViewModel<Armor> {
     override var items: List<Armor>?
         get() = savedStateHandle.get<List<Armor>>(ARMOR_ITEM)
@@ -22,13 +35,18 @@ class ArmorViewModel(private val savedStateHandle: SavedStateHandle): ViewModel(
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
-    override fun setup(list: List<Armor>, findDrawable: (Armor) -> Armor) {
-        val newList = mutableListOf<Armor>()
-        list.map {
-            newList.add(findDrawable(it))
+    private val _armor: MutableStateFlow<List<Armor>> = MutableStateFlow(emptyList())
+    val armor: StateFlow<List<Armor>>
+        get() = _armor.asStateFlow()
+    init {
+        viewModelScope.launch {
+            try {
+                val fetchedItems = repo.fetchArmor()
+                _armor.value = fetchedItems
+            } catch (e: Exception) {
+                println("Failed to fetch items ${e.message}")
+            }
         }
-        items = newList.toSet().toList()
-        searchList = items
     }
 
     override fun sort(choice: Int, list: List<Armor>?): List<Armor>? {

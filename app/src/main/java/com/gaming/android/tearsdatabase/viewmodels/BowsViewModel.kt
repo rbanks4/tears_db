@@ -2,11 +2,23 @@ package com.gaming.android.tearsdatabase.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.*
+import com.gaming.android.tearsdatabase.api.ItemRepository
 import com.gaming.android.tearsdatabase.models.Bow
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val BOWS_ITEM = "bows"
-class BowsViewModel(private val savedStateHandle: SavedStateHandle): ViewModel(),
+@HiltViewModel
+class BowsViewModel @Inject constructor(
+    private val repo: ItemRepository,
+    private val savedStateHandle: SavedStateHandle
+): ViewModel(),
     ItemViewModel<Bow> {
     override var items: List<Bow>?
         get() = savedStateHandle.get<List<Bow>>(BOWS_ITEM)
@@ -19,6 +31,21 @@ class BowsViewModel(private val savedStateHandle: SavedStateHandle): ViewModel()
     override var searchString: String?
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
+
+    private val _bows: MutableStateFlow<List<Bow>> = MutableStateFlow(emptyList())
+    val bows: StateFlow<List<Bow>>
+        get() = _bows.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            try {
+                val fetchedItems = repo.fetchBows()
+                _bows.value = fetchedItems
+            } catch (e: Exception) {
+                println("Failed to fetch items ${e.message}")
+            }
+        }
+    }
 
     override fun sort(choice: Int, list: List<Bow>?): List<Bow>? {
         return when (choice) {

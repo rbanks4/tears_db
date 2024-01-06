@@ -4,7 +4,14 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.util.Log
 import androidx.annotation.DrawableRes
-import com.gaming.android.tearsdatabase.api.*
+import com.gaming.android.tearsdatabase.api.response.ArmorResponse
+import com.gaming.android.tearsdatabase.api.response.BowsResponse
+import com.gaming.android.tearsdatabase.api.response.EffectResponse
+import com.gaming.android.tearsdatabase.api.response.MaterialsResponse
+import com.gaming.android.tearsdatabase.api.response.MealsResponse
+import com.gaming.android.tearsdatabase.api.response.RoastedFoodResponse
+import com.gaming.android.tearsdatabase.api.response.ShieldsResponse
+import com.gaming.android.tearsdatabase.api.response.WeaponsResponse
 import com.gaming.android.tearsdatabase.models.*
 import com.google.gson.Gson
 import java.io.IOException
@@ -75,7 +82,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
                 return null
             }
 
-            Log.d("DataSource", jsonString)
+            Log.d("DataSource", "Size of $name json: ${jsonString.length}")
 
             return jsonString
         }
@@ -87,7 +94,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             ArmorResponse::class.java
         )
 
-        return response.documents
+        return response.armor
     }
     fun bowsBackup(): List<Bow> {
         val response = Gson().fromJson(
@@ -95,7 +102,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             BowsResponse::class.java
         )
 
-        return response.documents
+        return response.bows
     }
     fun materialsBackup(): List<Material> {
         val response = Gson().fromJson(
@@ -103,7 +110,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             MaterialsResponse::class.java
         )
 
-        return response.documents
+        return response.materials
     }
     fun recipeBackup(): List<Meal> {
         val response = Gson().fromJson(
@@ -111,7 +118,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             MealsResponse::class.java
         )
 
-        return response.documents
+        return response.meals
     }
     fun roastedBackup(): List<RoastedFood> {
         val response = Gson().fromJson(
@@ -119,7 +126,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             RoastedFoodResponse::class.java
         )
 
-        return response.documents
+        return response.roasted
     }
     fun shieldsBackup(): List<Shield> {
         val response = Gson().fromJson(
@@ -127,7 +134,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             ShieldsResponse::class.java
         )
 
-        return response.documents
+        return response.shields
     }
     fun weaponBackup(): List<Weapon> {
         val response = Gson().fromJson(
@@ -135,7 +142,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             WeaponsResponse::class.java
         )
 
-        return response.documents
+        return response.weapons
     }
 
     fun effectsBackup(): List<Effect> {
@@ -144,6 +151,6 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             EffectResponse::class.java
         )
 
-        return response.documents
+        return response.effects
     }
 }
