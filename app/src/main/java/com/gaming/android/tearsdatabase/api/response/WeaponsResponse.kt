@@ -1,4 +1,4 @@
-package com.gaming.android.tearsdatabase.api
+package com.gaming.android.tearsdatabase.api.response
 
 import com.gaming.android.tearsdatabase.models.Weapon
 import com.squareup.moshi.Json

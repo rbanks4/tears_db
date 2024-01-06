@@ -2,13 +2,26 @@ package com.gaming.android.tearsdatabase.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.*
+import com.gaming.android.tearsdatabase.api.ItemRepository
+import com.gaming.android.tearsdatabase.models.Effect
 import com.gaming.android.tearsdatabase.models.Material
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val TAG = "MaterialsViewModel"
 private const val MATERIALS_ITEM = "materials"
 
-class MaterialsViewModel(private val savedStateHandle: SavedStateHandle): ViewModel(),
+@HiltViewModel
+class MaterialsViewModel @Inject constructor(
+    private val repo: ItemRepository,
+    private val savedStateHandle: SavedStateHandle
+): ViewModel(),
     ItemViewModel<Material> {
     override var items: List<Material>?
         get() = savedStateHandle.get<List<Material>>(MATERIALS_ITEM)
@@ -21,6 +34,21 @@ class MaterialsViewModel(private val savedStateHandle: SavedStateHandle): ViewMo
     override var searchString: String?
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
+
+    private val _materials: MutableStateFlow<List<Material>> = MutableStateFlow(emptyList())
+    val materials: StateFlow<List<Material>>
+        get() = _materials.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            try {
+                val fetchedItems = repo.fetchMaterials()
+                _materials.value = fetchedItems
+            } catch (e: Exception) {
+                println("Failed to fetch items ${e.message}")
+            }
+        }
+    }
 
     override fun sort(choice: Int, list: List<Material>?): List<Material>? {
         return when (choice) {

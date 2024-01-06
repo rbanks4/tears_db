@@ -2,30 +2,15 @@ package com.gaming.android.tearsdatabase
 
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.fragment.app.FragmentController
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
-import androidx.navigation.NavHost
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navigation
-import com.gaming.android.tearsdatabase.api.Endpoints
-import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.databinding.ActivityMainBinding
-import com.gaming.android.tearsdatabase.models.Item
-import com.gaming.android.tearsdatabase.theme.TearsTheme
-import com.gaming.android.tearsdatabase.ui.ViewBuilder.Companion.CreateDrawer
-import com.gaming.android.tearsdatabase.viewmodels.*
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "MainActivity"

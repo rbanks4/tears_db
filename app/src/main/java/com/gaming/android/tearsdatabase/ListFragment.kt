@@ -6,13 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.gaming.android.tearsdatabase.api.Endpoints
 import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.databinding.FragmentListBinding
 import com.gaming.android.tearsdatabase.models.Item
@@ -29,7 +27,6 @@ import com.gaming.android.tearsdatabase.viewmodels.ShieldsViewModel
 import com.gaming.android.tearsdatabase.viewmodels.WeaponsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
@@ -60,40 +57,6 @@ class ListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         dataSource = DataSource(requireContext())
-
-        Endpoints.fetchMaterials(
-            update = { materialViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { materialViewModel.setup(dataSource.materialsBackup()) { findDrawable(it)} }
-        )
-
-        Endpoints.fetchBows(
-            update = { bowViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { bowViewModel.setup(dataSource.bowsBackup()) { findDrawable(it)} }
-        )
-
-        Endpoints.fetchShields(
-            update = { shieldViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { shieldViewModel.setup(dataSource.shieldsBackup()) { findDrawable(it)} }
-        )
-
-        Endpoints.fetchRoastedFood(
-            update = { roastedFoodViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { roastedFoodViewModel.setup(dataSource.roastedBackup()) { findDrawable(it)} }
-        )
-        Endpoints.fetchMeals(
-            update = { mealsViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it)} }
-        )
-
-        Endpoints.fetchArmor(
-            update = { armorViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { armorViewModel.setup(dataSource.armorBackup()) { findDrawable(it)} }
-        )
-
-        Endpoints.fetchEffects(
-            update = { effectViewModel.setup(it) { findDrawable(it)} },
-            onFailure = { effectViewModel.setup(dataSource.effectsBackup()) { findDrawable(it)} }
-        )
     }
 
     override fun onCreateView(
@@ -103,13 +66,122 @@ class ListFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                weaponsViewModel.weapons.collect { items ->
-                    if(items.isEmpty()) {
-                        Log.i("lifecycle", "models empty; size: ${items.size}")
-                        weaponsViewModel.setup(dataSource.weaponBackup()) { findDrawable(it) }
-                    } else {
-                        Log.i("lifecycle", "models not empty; size: ${items.size}")
-                        weaponsViewModel.setup(items) { findDrawable(it) }
+
+                /**
+                 * ~~~~~ PERSONAL NOTES ~~~~~
+                 * might be best to separate each list view into their own fragment but this will require:
+                 * 1. todo a deconstruction of compose elements like "CreateDrawer"
+                 * 2. todo a DetailViewFragment along with a fragment for each Item {weapons, materials, bows, ...}
+                 * 3. todo navi logic to navigate to each view
+                 * 4. optional graphical improvements to the drawer and themes that are more appealing
+                 * 5. todo proper persistent storage -- let's use Room since I plan to work with LiveData and View Models
+                 *    Realm:
+                 *      Pros
+                 *        a) serverless architecture
+                 *        b) flexible data modeling
+                 *      Cons
+                 *        a) learning curve - difficult to setup
+                 *        b) expensive - cost money if you want to get serious
+                 *
+                 *    Room:
+                 *      Pros
+                 *        a) LiveData + ViewModel integration
+                 *        b) conventional structure -- simple readable code
+                 *      Cons
+                 *        a) no encryption built in for user data (we aren't using user data tho -- don't plan to)
+                 *        b) not cross platform friendly with MongoDB and other services
+                 *
+                 *    Conclusion: Using ROOM. This is a small project that won't be using user data and is for learning purposes only.
+                 *    The main goal of this project is to follow conventional standards and Room has that down.
+                 *    Next app I make will use Realm just to see how it works with MongoDB tools and analytics.
+                 *
+                 */
+
+                //weapons
+                launch {
+                    weaponsViewModel.weapons.collect { items ->
+                        if (items.isEmpty()) {
+                            weaponsViewModel.setup(dataSource.weaponBackup()) { findDrawable(it) }
+                        } else {
+                            weaponsViewModel.setup(items) { findDrawable(it) }
+                        }
+                    }
+                }
+
+                //materials
+                launch {
+                    materialViewModel.materials.collect { items ->
+                        if(items.isEmpty()) {
+                            materialViewModel.setup(dataSource.materialsBackup()) { findDrawable(it) }
+                        } else {
+                            materialViewModel.setup(items) { findDrawable(it) }
+                        }
+                    }
+                }
+
+                //bows
+                launch {
+                    bowViewModel.bows.collect { items ->
+                        if(items.isEmpty()) {
+                            bowViewModel.setup(dataSource.bowsBackup()) { findDrawable(it) }
+                        } else {
+                            bowViewModel.setup(items) { findDrawable(it) }
+                        }
+                    }
+                }
+
+                //roasted food
+                launch {
+                    roastedFoodViewModel.roastedFood.collect { items ->
+                        if(items.isEmpty()) {
+                            roastedFoodViewModel.setup(dataSource.roastedBackup()) { findDrawable(it) }
+                        } else {
+                            roastedFoodViewModel.setup(items) { findDrawable(it) }
+                        }
+                    }
+                }
+
+                //meals
+                launch {
+                    mealsViewModel.meals.collect { items ->
+                        if(items.isEmpty()) {
+                            mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it) }
+                        } else {
+                            mealsViewModel.setup(items) { findDrawable(it) }
+                        }
+                    }
+                }
+
+                //shields
+                launch {
+                    shieldViewModel.shields.collect { items ->
+                        if(items.isEmpty()) {
+                            shieldViewModel.setup(dataSource.shieldsBackup()) { findDrawable(it) }
+                        } else {
+                            shieldViewModel.setup(items) { findDrawable(it) }
+                        }
+                    }
+                }
+
+                //effects
+                launch {
+                    effectViewModel.effects.collect { items ->
+                        if(items.isEmpty()) {
+                            effectViewModel.setup(dataSource.effectsBackup()) { findDrawable(it) }
+                        } else {
+                            effectViewModel.setup(items) { findDrawable(it) }
+                        }
+                    }
+                }
+
+                //armor
+                launch {
+                    armorViewModel.armor.collect { items ->
+                        if(items.isEmpty()) {
+                            armorViewModel.setup(dataSource.armorBackup()) { findDrawable(it) }
+                        } else {
+                            armorViewModel.setup(items) { findDrawable(it) }
+                        }
                     }
                 }
             }

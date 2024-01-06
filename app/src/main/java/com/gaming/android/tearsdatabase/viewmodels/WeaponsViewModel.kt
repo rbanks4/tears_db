@@ -10,6 +10,7 @@ import com.gaming.android.tearsdatabase.SORT_DAMAGE_DEC
 import com.gaming.android.tearsdatabase.SORT_DAMAGE_INC
 import com.gaming.android.tearsdatabase.SORT_DURABILITY_DEC
 import com.gaming.android.tearsdatabase.SORT_DURABILITY_INC
+import com.gaming.android.tearsdatabase.api.ItemRepository
 import com.gaming.android.tearsdatabase.api.ItemRepositoryImpl
 import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.models.Weapon
@@ -24,7 +25,10 @@ private const val TAG = "WeaponsViewModel"
 private const val WEAPONS_ITEM = "weapons"
 
 @HiltViewModel
-class WeaponsViewModel @Inject constructor(private val repo: ItemRepositoryImpl, private val savedStateHandle: SavedStateHandle): ViewModel(),
+class WeaponsViewModel @Inject constructor(
+    private val repo: ItemRepository,
+    private val savedStateHandle: SavedStateHandle
+): ViewModel(),
     ItemViewModel<Weapon> {
     override var items: List<Weapon>?
         get() = savedStateHandle.get<List<Weapon>>(WEAPONS_ITEM)
@@ -51,10 +55,9 @@ class WeaponsViewModel @Inject constructor(private val repo: ItemRepositoryImpl,
         viewModelScope.launch {
             try {
                 val fetchedItems = repo.fetchWeapons()
-                Log.d(TAG, "Number of items received: ${fetchedItems.size}")
                 _weapons.value = fetchedItems
             } catch (e: Exception) {
-                Log.e(TAG, "Failed to fetch weapon items", e)
+                println("Failed to fetch items ${e.message}")
             }
         }
     }

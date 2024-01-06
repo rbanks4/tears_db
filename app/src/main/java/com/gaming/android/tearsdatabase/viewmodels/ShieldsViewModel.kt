@@ -2,14 +2,26 @@ package com.gaming.android.tearsdatabase.viewmodels
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.SORT_DURABILITY_DEC
 import com.gaming.android.tearsdatabase.SORT_DURABILITY_INC
 import com.gaming.android.tearsdatabase.SORT_SLIPPERINESS_DEC
 import com.gaming.android.tearsdatabase.SORT_SLIPPERINESS_INC
+import com.gaming.android.tearsdatabase.api.ItemRepository
 import com.gaming.android.tearsdatabase.models.Shield
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val SHIELDS_ITEM = "shields"
-class ShieldsViewModel(private val savedStateHandle: SavedStateHandle): ViewModel(),
+
+@HiltViewModel
+class ShieldsViewModel @Inject constructor(
+    private val repo: ItemRepository,
+    private val savedStateHandle: SavedStateHandle): ViewModel(),
     ItemViewModel<Shield> {
     override var items: List<Shield>?
         get() = savedStateHandle.get<List<Shield>>(SHIELDS_ITEM)
@@ -22,6 +34,21 @@ class ShieldsViewModel(private val savedStateHandle: SavedStateHandle): ViewMode
     override var searchString: String?
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
+
+    private val _shields: MutableStateFlow<List<Shield>> = MutableStateFlow(emptyList())
+    val shields: StateFlow<List<Shield>>
+        get() = _shields.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            try {
+                val fetchedItems = repo.fetchShields()
+                _shields.value = fetchedItems
+            } catch (e: Exception) {
+                println("Failed to fetch items ${e.message}")
+            }
+        }
+    }
 
     override fun sort(choice: Int, list: List<Shield>?): List<Shield>? {
         return when (choice) {
