@@ -73,14 +73,28 @@ class ArmorViewModel @Inject constructor(
                 else false
             }
             val subList2 = list.filter {
-                if (it.set_bonus.isNotEmpty())
-                    it.set_bonus.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
+                var found = false
+                if(it.set_bonus.isEmpty()) {
+                    false
+                } else {
+                    for (i in it.set_bonus) {
+                        found = i.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                        if (found) found
+                    }
+                    found
+                }
             }
             val subList3 = list.filter {
-                if (it.effect.isNotEmpty())
-                    it.effect.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
+                var found = false
+                if(it.effect.isEmpty()) {
+                    false
+                } else {
+                    for (i in it.effect) {
+                        found = i.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                        if (found) found
+                    }
+                    found
+                }
             }
             finalList = nameList + subList + subList2 + subList3
         }

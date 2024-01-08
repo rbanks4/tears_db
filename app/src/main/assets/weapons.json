@@ -8,10 +8,20 @@
             "shown_attack": 38,
             "durability": 40,
             "guard_break_power": 72,
-            "sub_type": "ShatterLevelUp\nBlunt",
+            "sub_type": [
+                "Blunt",
+                "ShatterLevelUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 38,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShatterWeapon",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShatterWeapon"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 38
         },
@@ -23,10 +33,18 @@
             "shown_attack": 24,
             "durability": 30,
             "guard_break_power": 38,
-            "sub_type": "HystericalStrength\nUnlikeBat",
+            "sub_type": [
+                "HystericalStrength",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 24,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 24
         },
@@ -38,10 +56,18 @@
             "shown_attack": 9,
             "durability": 20,
             "guard_break_power": 10,
-            "sub_type": "UnlikeBat",
+            "sub_type": [
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 9,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShieldBash",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 9
         },
@@ -53,10 +79,18 @@
             "shown_attack": 23,
             "durability": 25,
             "guard_break_power": 32,
-            "sub_type": "Katana\nUnlikeBat",
+            "sub_type": [
+                "Katana",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 23,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 23
         },
@@ -68,10 +102,18 @@
             "shown_attack": 39,
             "durability": 12,
             "guard_break_power": 72,
-            "sub_type": "RicketyDamageUp\nUnlikeBat",
+            "sub_type": [
+                "RicketyDamageUp",
+                "UnlikeBat"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 39,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 39
         },
@@ -83,10 +125,19 @@
             "shown_attack": 7,
             "durability": 26,
             "guard_break_power": 6,
-            "sub_type": "Blunt\nHighDurability",
+            "sub_type": [
+                "Blunt",
+                "HighDurability"
+            ],
             "fuse_durability": null,
             "fuse_damage": 7,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 7
         },
@@ -98,10 +149,20 @@
             "shown_attack": 9,
             "durability": 18,
             "guard_break_power": 15,
-            "sub_type": "ShatterLevelUp\nBlunt",
+            "sub_type": [
+                "ShatterLevelUp",
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 9,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShatterWeapon",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShatterWeapon"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 9
         },
@@ -113,10 +174,21 @@
             "shown_attack": 50,
             "durability": 14,
             "guard_break_power": 52,
-            "sub_type": "Miasma\nShatterWeapon\nBlunt",
+            "sub_type": [
+                "Miasma",
+                "ShatterWeapon",
+                "Blunt"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 50,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShatterWeapon",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShatterWeapon"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 50
         },
@@ -128,10 +200,17 @@
             "shown_attack": 12,
             "durability": 20,
             "guard_break_power": 15,
-            "sub_type": "AttachmentDamageUp",
+            "sub_type": [
+                "AttachmentDamageUp"
+            ],
             "fuse_durability": 5,
             "fuse_damage": 12,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 12
         },
@@ -143,10 +222,17 @@
             "shown_attack": 8,
             "durability": 26,
             "guard_break_power": 4,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 8,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 8
         },
@@ -158,10 +244,17 @@
             "shown_attack": 6,
             "durability": 26,
             "guard_break_power": 8,
-            "sub_type": "WaterDamageUp",
+            "sub_type": [
+                "WaterDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -173,10 +266,20 @@
             "shown_attack": 6,
             "durability": 24,
             "guard_break_power": 8,
-            "sub_type": "ZonauDamageUp\nZonauEnergyEfficiencyUp\nBluntWithAnyAttachment",
+            "sub_type": [
+                "ZonauDamageUp",
+                "ZonauEnergyEfficiencyUp",
+                "BluntWithAnyAttachment"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nZonau",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Zonau"
+            ],
             "attach_zoani_attk": 5,
             "shield_bash_damage": 6
         },
@@ -188,10 +291,16 @@
             "shown_attack": 12,
             "durability": 27,
             "guard_break_power": 10,
-            "sub_type": "WaterDamageUp",
+            "sub_type": [
+                "WaterDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 12,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 12
         },
@@ -203,10 +312,16 @@
             "shown_attack": 10,
             "durability": 20,
             "guard_break_power": 36,
-            "sub_type": "RushDamageUp",
+            "sub_type": [
+                "RushDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 10,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 10
         },
@@ -218,10 +333,20 @@
             "shown_attack": 28,
             "durability": 5,
             "guard_break_power": 8,
-            "sub_type": "Blunt\nBone",
+            "sub_type": [
+                "Blunt",
+                "Bone"
+            ],
             "fuse_durability": 3,
             "fuse_damage": 28,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nBone",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Bone"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 28
         },
@@ -233,10 +358,21 @@
             "shown_attack": 4,
             "durability": 8,
             "guard_break_power": 3,
-            "sub_type": "Blunt\nImpressiveGrip",
+            "sub_type": [
+                "Blunt",
+                "ImpressiveGrip"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 4,
-            "sub_type2": "Blunt\nShieldBash\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nAtExpandLarge",
+            "sub_type2": [
+                "Blunt",
+                "ShieldBash",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -248,10 +384,20 @@
             "shown_attack": 8,
             "durability": 20,
             "guard_break_power": 8,
-            "sub_type": "WaterDamageUp\nUnlikeBat",
+            "sub_type": [
+                "WaterDamageUp",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 8,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShieldBash\nAtExpandLarge",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 8
         },
@@ -263,10 +409,17 @@
             "shown_attack": 5,
             "durability": 6,
             "guard_break_power": 5,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": 10,
             "fuse_damage": 5,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nShieldBash",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 5
         },
@@ -278,10 +431,16 @@
             "shown_attack": 17,
             "durability": 14,
             "guard_break_power": 12,
-            "sub_type": "AttachmentDamageUp",
+            "sub_type": [
+                "AttachmentDamageUp"
+            ],
             "fuse_durability": 5,
             "fuse_damage": 17,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 17
         },
@@ -293,10 +452,19 @@
             "shown_attack": 6,
             "durability": 15,
             "guard_break_power": 12,
-            "sub_type": "ZonauDamageUp\nZonauEnergyEfficiencyUp\nBluntWithAnyAttachment",
+            "sub_type": [
+                "ZonauDamageUp",
+                "ZonauEnergyEfficiencyUp",
+                "BluntWithAnyAttachment"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nZonau",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Zonau"
+            ],
             "attach_zoani_attk": 3,
             "shield_bash_damage": 6
         },
@@ -308,10 +476,16 @@
             "shown_attack": 22,
             "durability": 10,
             "guard_break_power": 48,
-            "sub_type": "RicketyDamageUp",
+            "sub_type": [
+                "RicketyDamageUp"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 22,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 22
         },
@@ -323,10 +497,19 @@
             "shown_attack": 10,
             "durability": 18,
             "guard_break_power": 12,
-            "sub_type": "ZonauDamageUp\nZonauEnergyEfficiencyUp\nBluntWithAnyAttachment",
+            "sub_type": [
+                "ZonauDamageUp",
+                "ZonauEnergyEfficiencyUp",
+                "BluntWithAnyAttachment"
+            ],
             "fuse_durability": null,
             "fuse_damage": 10,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nZonau",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Zonau"
+            ],
             "attach_zoani_attk": 10,
             "shield_bash_damage": 10
         },
@@ -338,10 +521,16 @@
             "shown_attack": 41,
             "durability": 15,
             "guard_break_power": 48,
-            "sub_type": "Miasma",
+            "sub_type": [
+                "Miasma"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 41,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 41
         },
@@ -353,10 +542,19 @@
             "shown_attack": 5,
             "durability": 14,
             "guard_break_power": 6,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 5,
-            "sub_type2": "Blunt\nShieldBash\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldBash",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 5
         },
@@ -368,10 +566,19 @@
             "shown_attack": 6,
             "durability": 6,
             "guard_break_power": 3,
-            "sub_type": "Blunt\nImpressiveGrip",
+            "sub_type": [
+                "Blunt",
+                "ImpressiveGrip"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 6,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -383,10 +590,18 @@
             "shown_attack": 4,
             "durability": 34,
             "guard_break_power": 2,
-            "sub_type": "HighDurability",
+            "sub_type": [
+                "HighDurability"
+            ],
             "fuse_durability": null,
             "fuse_damage": 4,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -398,10 +613,18 @@
             "shown_attack": 4,
             "durability": 5,
             "guard_break_power": 5,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 4,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nShieldBash",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -413,10 +636,17 @@
             "shown_attack": 32,
             "durability": 50,
             "guard_break_power": 10,
-            "sub_type": "UnlikeBat",
+            "sub_type": [
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 32,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 32
         },
@@ -428,10 +658,16 @@
             "shown_attack": 13,
             "durability": 27,
             "guard_break_power": 8,
-            "sub_type": "CreateWind",
+            "sub_type": [
+                "CreateWind"
+            ],
             "fuse_durability": null,
             "fuse_damage": 13,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 13
         },
@@ -443,10 +679,20 @@
             "shown_attack": 11,
             "durability": 18,
             "guard_break_power": 38,
-            "sub_type": "HystericalStrength\nUnlikeBat",
+            "sub_type": [
+                "HystericalStrength",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 11,
-            "sub_type2": "ShieldBash\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nAtExpandLarge",
+            "sub_type2": [
+                "ShieldBash",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 11
         },
@@ -458,10 +704,16 @@
             "shown_attack": 30,
             "durability": 12,
             "guard_break_power": 48,
-            "sub_type": "RicketyDamageUp",
+            "sub_type": [
+                "RicketyDamageUp"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 30,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 30
         },
@@ -473,10 +725,20 @@
             "shown_attack": 2,
             "durability": 18,
             "guard_break_power": 2,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 2,
-            "sub_type2": "Blunt\nShieldBash\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nAtExpandLarge",
+            "sub_type2": [
+                "Blunt",
+                "ShieldBash",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 2
         },
@@ -488,10 +750,16 @@
             "shown_attack": 18,
             "durability": 27,
             "guard_break_power": 26,
-            "sub_type": "HystericalStrength",
+            "sub_type": [
+                "HystericalStrength"
+            ],
             "fuse_durability": null,
             "fuse_damage": 18,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 18
         },
@@ -503,10 +771,16 @@
             "shown_attack": 24,
             "durability": 45,
             "guard_break_power": 5,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 24,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 24
         },
@@ -518,10 +792,16 @@
             "shown_attack": 15,
             "durability": 26,
             "guard_break_power": 15,
-            "sub_type": "StealthAttackUp",
+            "sub_type": [
+                "StealthAttackUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 15,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 15
         },
@@ -533,10 +813,17 @@
             "shown_attack": 6,
             "durability": 14,
             "guard_break_power": 2,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -548,10 +835,16 @@
             "shown_attack": 17,
             "durability": 27,
             "guard_break_power": 5,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 17,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 17
         },
@@ -563,10 +856,16 @@
             "shown_attack": 6,
             "durability": 16,
             "guard_break_power": 15,
-            "sub_type": "StealthAttackUp",
+            "sub_type": [
+                "StealthAttackUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -578,10 +877,20 @@
             "shown_attack": 8,
             "durability": 15,
             "guard_break_power": 18,
-            "sub_type": "ZonauDamageUp\nZonauEnergyEfficiencyUp\nBluntWithAnyAttachment",
+            "sub_type": [
+                "ZonauDamageUp",
+                "ZonauEnergyEfficiencyUp",
+                "BluntWithAnyAttachment"
+            ],
             "fuse_durability": null,
             "fuse_damage": 8,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nZonau",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Zonau"
+            ],
             "attach_zoani_attk": 3,
             "shield_bash_damage": 8
         },
@@ -593,10 +902,17 @@
             "shown_attack": 22,
             "durability": 70,
             "guard_break_power": 18,
-            "sub_type": "WaterDamageUp",
+            "sub_type": [
+                "WaterDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 22,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 22
         },
@@ -608,10 +924,19 @@
             "shown_attack": 2,
             "durability": 8,
             "guard_break_power": 2,
-            "sub_type": "Blunt\nTorch",
+            "sub_type": [
+                "Blunt",
+                "Torch"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 2,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nTorch",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Torch"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 2
         },
@@ -623,10 +948,18 @@
             "shown_attack": 14,
             "durability": 14,
             "guard_break_power": 4,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 14,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nShieldBash",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 14
         },
@@ -638,10 +971,17 @@
             "shown_attack": 38,
             "durability": 35,
             "guard_break_power": 10,
-            "sub_type": "UnlikeBat",
+            "sub_type": [
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 38,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 38
         },
@@ -653,10 +993,17 @@
             "shown_attack": 10,
             "durability": 35,
             "guard_break_power": 8,
-            "sub_type": "ChargeSpeedUp",
+            "sub_type": [
+                "ChargeSpeedUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 10,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 10
         },
@@ -668,10 +1015,21 @@
             "shown_attack": 22,
             "durability": 5,
             "guard_break_power": 3,
-            "sub_type": "Boomerang\nBlunt\nBone\nBoomerangZRotate",
+            "sub_type": [
+                "Boomerang",
+                "Blunt",
+                "Bone",
+                "BoomerangZRotate"
+            ],
             "fuse_durability": 3,
             "fuse_damage": 22,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nBone",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Bone"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 22
         },
@@ -683,10 +1041,16 @@
             "shown_attack": 7,
             "durability": 17,
             "guard_break_power": 8,
-            "sub_type": "Reuse",
+            "sub_type": [
+                "Reuse"
+            ],
             "fuse_durability": null,
             "fuse_damage": 7,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 7
         },
@@ -698,10 +1062,20 @@
             "shown_attack": 8,
             "durability": 17,
             "guard_break_power": 20,
-            "sub_type": "DecreaseChargeAttackStamina\nUnlikeBat",
+            "sub_type": [
+                "DecreaseChargeAttackStamina",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 8,
-            "sub_type2": "ShieldBash\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nAtExpandLarge",
+            "sub_type2": [
+                "ShieldBash",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 8
         },
@@ -713,10 +1087,20 @@
             "shown_attack": 15,
             "durability": 18,
             "guard_break_power": 18,
-            "sub_type": "ZonauDamageUp\nZonauEnergyEfficiencyUp\nBluntWithAnyAttachment",
+            "sub_type": [
+                "ZonauDamageUp",
+                "ZonauEnergyEfficiencyUp",
+                "BluntWithAnyAttachment"
+            ],
             "fuse_durability": null,
             "fuse_damage": 15,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nZonau",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Zonau"
+            ],
             "attach_zoani_attk": 10,
             "shield_bash_damage": 15
         },
@@ -728,10 +1112,18 @@
             "shown_attack": 22,
             "durability": 14,
             "guard_break_power": 28,
-            "sub_type": "AttachmentDamageUp\nUnlikeBat",
+            "sub_type": [
+                "AttachmentDamageUp",
+                "UnlikeBat"
+            ],
             "fuse_durability": 5,
             "fuse_damage": 22,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 22
         },
@@ -743,10 +1135,18 @@
             "shown_attack": 34,
             "durability": 40,
             "guard_break_power": 55,
-            "sub_type": "RushDamageUp\nUnlikeBat",
+            "sub_type": [
+                "RushDamageUp",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 34,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 34
         },
@@ -758,10 +1158,20 @@
             "shown_attack": 14,
             "durability": 30,
             "guard_break_power": 15,
-            "sub_type": "ShatterLevelUp\nBlunt",
+            "sub_type": [
+                "ShatterLevelUp",
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 14,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShatterWeapon",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShatterWeapon"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 14
         },
@@ -773,10 +1183,20 @@
             "shown_attack": 19,
             "durability": 16,
             "guard_break_power": 6,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 19,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShieldBash\nAtExpandLarge",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 19
         },
@@ -788,10 +1208,20 @@
             "shown_attack": 10,
             "durability": 10,
             "guard_break_power": 28,
-            "sub_type": "AttachmentDamageUp\nUnlikeBat",
+            "sub_type": [
+                "AttachmentDamageUp",
+                "UnlikeBat"
+            ],
             "fuse_durability": 5,
             "fuse_damage": 10,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShieldBash\nAtExpandLarge",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 10
         },
@@ -803,10 +1233,17 @@
             "shown_attack": 24,
             "durability": 15,
             "guard_break_power": 24,
-            "sub_type": "RicketyDamageUp",
+            "sub_type": [
+                "RicketyDamageUp"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 24,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 24
         },
@@ -818,10 +1255,16 @@
             "shown_attack": 7,
             "durability": 20,
             "guard_break_power": 5,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 7,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 7
         },
@@ -833,10 +1276,16 @@
             "shown_attack": 24,
             "durability": 35,
             "guard_break_power": 36,
-            "sub_type": "RushDamageUp",
+            "sub_type": [
+                "RushDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 24,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 24
         },
@@ -848,10 +1297,16 @@
             "shown_attack": 6,
             "durability": 17,
             "guard_break_power": 14,
-            "sub_type": "ChargeSpeedUp",
+            "sub_type": [
+                "ChargeSpeedUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -863,10 +1318,16 @@
             "shown_attack": 8,
             "durability": 10,
             "guard_break_power": 12,
-            "sub_type": "AttachmentDamageUp",
+            "sub_type": [
+                "AttachmentDamageUp"
+            ],
             "fuse_durability": 5,
             "fuse_damage": 8,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 8
         },
@@ -878,10 +1339,20 @@
             "shown_attack": 32,
             "durability": 11,
             "guard_break_power": 72,
-            "sub_type": "RicketyDamageUp\nUnlikeBat",
+            "sub_type": [
+                "RicketyDamageUp",
+                "UnlikeBat"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 32,
-            "sub_type2": "ShieldBash\nAtExpandLarge\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldBash",
+                "AtExpandLarge",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 32
         },
@@ -893,10 +1364,18 @@
             "shown_attack": 17,
             "durability": 30,
             "guard_break_power": 8,
-            "sub_type": "WaterDamageUp\nUnlikeBat",
+            "sub_type": [
+                "WaterDamageUp",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 17,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 17
         },
@@ -908,10 +1387,18 @@
             "shown_attack": 8,
             "durability": 18,
             "guard_break_power": 32,
-            "sub_type": "Katana\nUnlikeBat",
+            "sub_type": [
+                "Katana",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 8,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 8
         },
@@ -923,10 +1410,18 @@
             "shown_attack": 4,
             "durability": 12,
             "guard_break_power": 4,
-            "sub_type": "ImpressiveGrip",
+            "sub_type": [
+                "ImpressiveGrip"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 4,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -938,10 +1433,17 @@
             "shown_attack": 18,
             "durability": 50,
             "guard_break_power": 32,
-            "sub_type": "RushDamageUp",
+            "sub_type": [
+                "RushDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 18,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 18
         },
@@ -953,10 +1455,17 @@
             "shown_attack": 14,
             "durability": 35,
             "guard_break_power": 6,
-            "sub_type": "Reuse",
+            "sub_type": [
+                "Reuse"
+            ],
             "fuse_durability": null,
             "fuse_damage": 14,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 14
         },
@@ -968,10 +1477,20 @@
             "shown_attack": 10,
             "durability": 22,
             "guard_break_power": 2,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 10,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShieldBash\nAtExpandLarge",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 10
         },
@@ -983,10 +1502,14 @@
             "shown_attack": 1,
             "durability": 6,
             "guard_break_power": 40,
-            "sub_type": "MasterSword",
+            "sub_type": [
+                "MasterSword"
+            ],
             "fuse_durability": null,
             "fuse_damage": null,
-            "sub_type2": "",
+            "sub_type2": [
+                ""
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": null
         },
@@ -998,10 +1521,16 @@
             "shown_attack": 5,
             "durability": 16,
             "guard_break_power": 5,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 5,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 5
         },
@@ -1013,10 +1542,19 @@
             "shown_attack": 7,
             "durability": 16,
             "guard_break_power": 12,
-            "sub_type": "ZonauDamageUp\nZonauEnergyEfficiencyUp\nBluntWithAnyAttachment",
+            "sub_type": [
+                "ZonauDamageUp",
+                "ZonauEnergyEfficiencyUp",
+                "BluntWithAnyAttachment"
+            ],
             "fuse_durability": null,
             "fuse_damage": 7,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nZonau",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Zonau"
+            ],
             "attach_zoani_attk": 5,
             "shield_bash_damage": 7
         },
@@ -1028,10 +1566,17 @@
             "shown_attack": 10,
             "durability": 35,
             "guard_break_power": 14,
-            "sub_type": "CreateWind",
+            "sub_type": [
+                "CreateWind"
+            ],
             "fuse_durability": null,
             "fuse_damage": 10,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 10
         },
@@ -1043,10 +1588,21 @@
             "shown_attack": 3,
             "durability": 8,
             "guard_break_power": 2,
-            "sub_type": "Blunt\nImpressiveGrip",
+            "sub_type": [
+                "Blunt",
+                "ImpressiveGrip"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 3,
-            "sub_type2": "Blunt\nShieldBash\nAtExpandLarge\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldBash",
+                "AtExpandLarge",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 3
         },
@@ -1058,10 +1614,16 @@
             "shown_attack": 8,
             "durability": 18,
             "guard_break_power": 8,
-            "sub_type": "Boomerang",
+            "sub_type": [
+                "Boomerang"
+            ],
             "fuse_durability": null,
             "fuse_damage": 8,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 8
         },
@@ -1073,10 +1635,16 @@
             "shown_attack": 28,
             "durability": 60,
             "guard_break_power": 30,
-            "sub_type": "AttachmentDamageUp",
+            "sub_type": [
+                "AttachmentDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 28,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 28
         },
@@ -1088,10 +1656,16 @@
             "shown_attack": 8,
             "durability": 17,
             "guard_break_power": 16,
-            "sub_type": "Boomerang",
+            "sub_type": [
+                "Boomerang"
+            ],
             "fuse_durability": null,
             "fuse_damage": 8,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 8
         },
@@ -1103,10 +1677,18 @@
             "shown_attack": 2,
             "durability": 4,
             "guard_break_power": 2,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 2,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nShieldBash",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 2
         },
@@ -1118,10 +1700,17 @@
             "shown_attack": 36,
             "durability": 60,
             "guard_break_power": 10,
-            "sub_type": "UnlikeBat",
+            "sub_type": [
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 36,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 36
         },
@@ -1133,10 +1722,20 @@
             "shown_attack": 10,
             "durability": 16,
             "guard_break_power": 18,
-            "sub_type": "ZonauDamageUp\nZonauEnergyEfficiencyUp\nBluntWithAnyAttachment",
+            "sub_type": [
+                "ZonauDamageUp",
+                "ZonauEnergyEfficiencyUp",
+                "BluntWithAnyAttachment"
+            ],
             "fuse_durability": null,
             "fuse_damage": 10,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nZonau",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Zonau"
+            ],
             "attach_zoani_attk": 5,
             "shield_bash_damage": 10
         },
@@ -1148,10 +1747,17 @@
             "shown_attack": 4,
             "durability": 25,
             "guard_break_power": 8,
-            "sub_type": "ChargeSpeedUp",
+            "sub_type": [
+                "ChargeSpeedUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 4,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -1163,10 +1769,17 @@
             "shown_attack": 6,
             "durability": 26,
             "guard_break_power": 15,
-            "sub_type": "HystericalStrength",
+            "sub_type": [
+                "HystericalStrength"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -1178,10 +1791,17 @@
             "shown_attack": 11,
             "durability": 18,
             "guard_break_power": 12,
-            "sub_type": "Boomerang",
+            "sub_type": [
+                "Boomerang"
+            ],
             "fuse_durability": null,
             "fuse_damage": 11,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 11
         },
@@ -1193,10 +1813,17 @@
             "shown_attack": 4,
             "durability": 30,
             "guard_break_power": 4,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 4,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -1208,10 +1835,17 @@
             "shown_attack": 6,
             "durability": 24,
             "guard_break_power": 6,
-            "sub_type": "Reuse",
+            "sub_type": [
+                "Reuse"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -1223,10 +1857,20 @@
             "shown_attack": 8,
             "durability": 27,
             "guard_break_power": 8,
-            "sub_type": "ZonauDamageUp\nZonauEnergyEfficiencyUp\nBluntWithAnyAttachment",
+            "sub_type": [
+                "ZonauDamageUp",
+                "ZonauEnergyEfficiencyUp",
+                "BluntWithAnyAttachment"
+            ],
             "fuse_durability": null,
             "fuse_damage": 8,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nZonau",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Zonau"
+            ],
             "attach_zoani_attk": 10,
             "shield_bash_damage": 8
         },
@@ -1238,10 +1882,16 @@
             "shown_attack": 16,
             "durability": 20,
             "guard_break_power": 8,
-            "sub_type": "Boomerang",
+            "sub_type": [
+                "Boomerang"
+            ],
             "fuse_durability": null,
             "fuse_damage": 16,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 16
         },
@@ -1253,10 +1903,18 @@
             "shown_attack": 4,
             "durability": 12,
             "guard_break_power": 4,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 4,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nShieldBash",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -1268,10 +1926,16 @@
             "shown_attack": 7,
             "durability": 18,
             "guard_break_power": 26,
-            "sub_type": "HystericalStrength",
+            "sub_type": [
+                "HystericalStrength"
+            ],
             "fuse_durability": null,
             "fuse_damage": 7,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 7
         },
@@ -1283,10 +1947,17 @@
             "shown_attack": 14,
             "durability": 40,
             "guard_break_power": 15,
-            "sub_type": "HystericalStrength",
+            "sub_type": [
+                "HystericalStrength"
+            ],
             "fuse_durability": null,
             "fuse_damage": 14,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 14
         },
@@ -1298,10 +1969,17 @@
             "shown_attack": 4,
             "durability": 12,
             "guard_break_power": 4,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": 10,
             "fuse_damage": 4,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -1313,10 +1991,17 @@
             "shown_attack": 40,
             "durability": 16,
             "guard_break_power": 24,
-            "sub_type": "Miasma",
+            "sub_type": [
+                "Miasma"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 40,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 40
         },
@@ -1328,10 +2013,17 @@
             "shown_attack": 3,
             "durability": 20,
             "guard_break_power": 4,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 3,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 3
         },
@@ -1343,10 +2035,19 @@
             "shown_attack": 20,
             "durability": 5,
             "guard_break_power": 3,
-            "sub_type": "Blunt\nBone",
+            "sub_type": [
+                "Blunt",
+                "Bone"
+            ],
             "fuse_durability": 3,
             "fuse_damage": 20,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nBone",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Bone"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 20
         },
@@ -1358,10 +2059,16 @@
             "shown_attack": 16,
             "durability": 27,
             "guard_break_power": 8,
-            "sub_type": "Reuse",
+            "sub_type": [
+                "Reuse"
+            ],
             "fuse_durability": null,
             "fuse_damage": 16,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 16
         },
@@ -1373,10 +2080,16 @@
             "shown_attack": 6,
             "durability": 20,
             "guard_break_power": 10,
-            "sub_type": "WaterDamageUp",
+            "sub_type": [
+                "WaterDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -1388,10 +2101,16 @@
             "shown_attack": 6,
             "durability": 18,
             "guard_break_power": 8,
-            "sub_type": "CreateWind",
+            "sub_type": [
+                "CreateWind"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -1403,10 +2122,17 @@
             "shown_attack": 23,
             "durability": 40,
             "guard_break_power": 12,
-            "sub_type": "Boomerang",
+            "sub_type": [
+                "Boomerang"
+            ],
             "fuse_durability": null,
             "fuse_damage": 23,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 23
         },
@@ -1418,10 +2144,17 @@
             "shown_attack": 11,
             "durability": 40,
             "guard_break_power": 8,
-            "sub_type": "WaterDamageUp",
+            "sub_type": [
+                "WaterDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 11,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 11
         },
@@ -1433,10 +2166,17 @@
             "shown_attack": 3,
             "durability": 24,
             "guard_break_power": 4,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 3,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 3
         },
@@ -1448,10 +2188,17 @@
             "shown_attack": 7,
             "durability": 30,
             "guard_break_power": 32,
-            "sub_type": "RushDamageUp",
+            "sub_type": [
+                "RushDamageUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 7,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 7
         },
@@ -1463,10 +2210,16 @@
             "shown_attack": 6,
             "durability": 16,
             "guard_break_power": 8,
-            "sub_type": "Boomerang",
+            "sub_type": [
+                "Boomerang"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -1478,10 +2231,18 @@
             "shown_attack": 16,
             "durability": 25,
             "guard_break_power": 20,
-            "sub_type": "DecreaseChargeAttackStamina\nUnlikeBat",
+            "sub_type": [
+                "DecreaseChargeAttackStamina",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 16,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 16
         },
@@ -1493,10 +2254,19 @@
             "shown_attack": 6,
             "durability": 8,
             "guard_break_power": 8,
-            "sub_type": "UnlikeBat",
+            "sub_type": [
+                "UnlikeBat"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShieldBash\nAtExpandLarge",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -1508,10 +2278,20 @@
             "shown_attack": 5,
             "durability": 14,
             "guard_break_power": 6,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 5,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShieldBash\nAtExpandLarge",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 5
         },
@@ -1523,10 +2303,19 @@
             "shown_attack": 6,
             "durability": 16,
             "guard_break_power": 10,
-            "sub_type": "UnlikeBat",
+            "sub_type": [
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShieldBash\nAtExpandLarge",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -1538,10 +2327,20 @@
             "shown_attack": 14,
             "durability": 20,
             "guard_break_power": 55,
-            "sub_type": "RushDamageUp\nUnlikeBat",
+            "sub_type": [
+                "RushDamageUp",
+                "UnlikeBat"
+            ],
             "fuse_durability": null,
             "fuse_damage": 14,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nShieldBash\nAtExpandLarge",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 14
         },
@@ -1553,10 +2352,18 @@
             "shown_attack": 7,
             "durability": 14,
             "guard_break_power": 6,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 7,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 7
         },
@@ -1568,10 +2375,20 @@
             "shown_attack": 4,
             "durability": 22,
             "guard_break_power": 8,
-            "sub_type": "ZonauDamageUp\nZonauEnergyEfficiencyUp\nBluntWithAnyAttachment",
+            "sub_type": [
+                "ZonauDamageUp",
+                "ZonauEnergyEfficiencyUp",
+                "BluntWithAnyAttachment"
+            ],
             "fuse_durability": null,
             "fuse_damage": 4,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nZonau",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "Zonau"
+            ],
             "attach_zoani_attk": 3,
             "shield_bash_damage": 4
         },
@@ -1583,10 +2400,20 @@
             "shown_attack": 2,
             "durability": 18,
             "guard_break_power": 2,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 2,
-            "sub_type2": "Blunt\nShieldBash\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange\nAtExpandLarge",
+            "sub_type2": [
+                "Blunt",
+                "ShieldBash",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "AtExpandLarge"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 2
         },
@@ -1598,10 +2425,17 @@
             "shown_attack": 6,
             "durability": 15,
             "guard_break_power": 15,
-            "sub_type": "AttachmentDamageUp",
+            "sub_type": [
+                "AttachmentDamageUp"
+            ],
             "fuse_durability": 5,
             "fuse_damage": 6,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 6
         },
@@ -1613,10 +2447,18 @@
             "shown_attack": 4,
             "durability": 14,
             "guard_break_power": 2,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": null,
             "fuse_damage": 4,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -1628,10 +2470,15 @@
             "shown_attack": 30,
             "durability": 40,
             "guard_break_power": 40,
-            "sub_type": "MasterSword\nDefeatMiasma",
+            "sub_type": [
+                "MasterSword",
+                "DefeatMiasma"
+            ],
             "fuse_durability": null,
             "fuse_damage": null,
-            "sub_type2": "",
+            "sub_type2": [
+                ""
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": null
         },
@@ -1643,10 +2490,18 @@
             "shown_attack": 5,
             "durability": 24,
             "guard_break_power": 4,
-            "sub_type": "Blunt\nHighDurability",
+            "sub_type": [
+                "Blunt",
+                "HighDurability"
+            ],
             "fuse_durability": null,
             "fuse_damage": 5,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 5
         },
@@ -1658,10 +2513,18 @@
             "shown_attack": 4,
             "durability": 12,
             "guard_break_power": 4,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": null,
             "fuse_damage": 4,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nShieldBash",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -1673,10 +2536,17 @@
             "shown_attack": 3,
             "durability": 12,
             "guard_break_power": 4,
-            "sub_type": "",
+            "sub_type": [
+                ""
+            ],
             "fuse_durability": 10,
             "fuse_damage": 3,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 3
         },
@@ -1688,10 +2558,17 @@
             "shown_attack": 4,
             "durability": 25,
             "guard_break_power": 14,
-            "sub_type": "CreateWind",
+            "sub_type": [
+                "CreateWind"
+            ],
             "fuse_durability": null,
             "fuse_damage": 4,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 4
         },
@@ -1703,10 +2580,17 @@
             "shown_attack": 15,
             "durability": 14,
             "guard_break_power": 24,
-            "sub_type": "RicketyDamageUp",
+            "sub_type": [
+                "RicketyDamageUp"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 15,
-            "sub_type2": "ShieldSurfingslipperinessDown\nAtExpandLarge\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "AtExpandLarge",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 15
         },
@@ -1718,10 +2602,16 @@
             "shown_attack": 12,
             "durability": 23,
             "guard_break_power": 14,
-            "sub_type": "ChargeSpeedUp",
+            "sub_type": [
+                "ChargeSpeedUp"
+            ],
             "fuse_durability": null,
             "fuse_damage": 12,
-            "sub_type2": "ShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange",
+            "sub_type2": [
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 12
         },
@@ -1733,10 +2623,18 @@
             "shown_attack": 2,
             "durability": 4,
             "guard_break_power": 2,
-            "sub_type": "Blunt",
+            "sub_type": [
+                "Blunt"
+            ],
             "fuse_durability": 10,
             "fuse_damage": 2,
-            "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBash\nShieldBashAnmChange\nShieldBash",
+            "sub_type2": [
+                "Blunt",
+                "ShieldSurfingslipperinessDown",
+                "ShieldBash",
+                "ShieldBashAnmChange",
+                "ShieldBash"
+            ],
             "attach_zoani_attk": null,
             "shield_bash_damage": 2
         }

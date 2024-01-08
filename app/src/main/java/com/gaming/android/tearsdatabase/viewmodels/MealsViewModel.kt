@@ -63,12 +63,12 @@ class MealsViewModel @Inject constructor(
             val nameList = list!!.filter {
                 it.name.lowercase().matches(".*$regex.*".toRegex())
             }
-            val subList = list!!.filter {
-                if (it.recipe.isNotEmpty())
-                    it.recipe.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            finalList = nameList + subList
+//            val subList = list!!.filter {
+//                if (it.recipe.isNotEmpty())
+//                    it.recipe.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+//                else false
+//            }
+            finalList = nameList //+ subList
         }
         return finalList?:listOf()
     }

@@ -8,7 +8,7 @@ data class Meal(
     val actor_name: String,
     override val name: String,
     val recipe_no: Int,
-    val recipe: String,
+    val recipe: List<List<String>>,
     val bonus_heart: Int?,
     val bonus_level: Int?,
     val bonus_time: Int?

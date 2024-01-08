@@ -117,7 +117,7 @@ class ViewLists {
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { MaterialDetails(selectedMaterial.value, getEffectsByName(effect, selectedMaterial.value.effect_type)) }
+                    content = { MaterialDetails(selectedMaterial.value, getEffectsByName(effect, listOf(selectedMaterial.value.effect_type))) }
                 )
             }
 
@@ -156,7 +156,7 @@ class ViewLists {
                                 MaterialCard(mat = displayedMaterials[index], onClick = {
                                     selectedMaterial.value = it
                                     open.value = true
-                                }, effect = getEffectsByName(effect, displayedMaterials[index].effect_type))
+                                }, effect = getEffectsByName(effect, listOf(displayedMaterials[index].effect_type)))
                             }
                         })
 
@@ -309,7 +309,7 @@ class ViewLists {
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { RoastedFoodDetails(selected.value, getEffectsByName(effect, selected.value.effect_type)) }
+                    content = { RoastedFoodDetails(selected.value, getEffectsByName(effect, listOf(selected.value.effect_type))) }
                 )
             }
 
@@ -348,7 +348,7 @@ class ViewLists {
                                 RoastedFoodCard(item = displayed[index], onClick = {
                                     selected.value = it
                                     open.value = true
-                                }, getEffectsByName(effect, displayed[index].effect_type))
+                                }, getEffectsByName(effect, listOf(displayed[index].effect_type)))
                             }
                         })
 

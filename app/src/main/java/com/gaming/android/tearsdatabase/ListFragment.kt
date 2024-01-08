@@ -1,7 +1,6 @@
 package com.gaming.android.tearsdatabase
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +36,8 @@ import kotlinx.coroutines.launch
 class ListFragment : Fragment() {
 
     private var _binding: FragmentListBinding? = null
-    private val binding get() = checkNotNull(_binding) {
+    private val binding
+        get() = checkNotNull(_binding) {
         "Cannot access ListFragment binding. Is the view visible?"
     }
 

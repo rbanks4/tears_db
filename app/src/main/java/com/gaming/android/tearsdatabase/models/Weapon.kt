@@ -11,10 +11,10 @@ data class Weapon (
     val shown_attack: Int,
     val durability: Int,
     val guard_break_power: Int,
-    val sub_type: String,
+    val sub_type: List<String>,
     val fuse_durability: Int?,
     val fuse_damage: Int,
-    val sub_type2: String,
+    val sub_type2: List<String>,
     val attach_zoani_attk: Int?,
     val shield_bash_damage: Int
         ): Item<Weapon> {

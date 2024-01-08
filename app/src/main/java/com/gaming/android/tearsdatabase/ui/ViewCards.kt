@@ -106,7 +106,7 @@ class ViewCards {
                 var isExpanded by remember { mutableStateOf(false) }
                 val surfaceColor by animateColorAsState(
                     if (isExpanded) MaterialTheme.colorScheme.primary
-                    else MaterialTheme.colorScheme.surface
+                    else MaterialTheme.colorScheme.surface, label = "surfaceColor"
                 )
 
                 Column(modifier = Modifier
@@ -349,7 +349,7 @@ class ViewCards {
             val text = if(item.set_name.isNotEmpty()) {
                 item.set_name
             } else if(item.effect.isNotEmpty()) {
-                 item.effect
+                 item.effect.toString()
             } else "none"
 
 

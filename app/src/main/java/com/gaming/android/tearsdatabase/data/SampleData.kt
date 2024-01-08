@@ -5,17 +5,17 @@ import com.gaming.android.tearsdatabase.models.*
 
 object SampleData {
     val weapons = listOf(
-        Weapon("Boat Oar", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.boat_oar),
-        Weapon("Bokoblin Arm", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.bokoblin_arm),
-        Weapon("Boomerang", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.boomerang),
-        Weapon("Cobble Crusher (Intact)", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.cobble_crusher_intact),
-        Weapon("Feathered Edge", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.feathered_edge),
-        Weapon("Forest Dweller's Spear", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.forest_dwellers_spear),
-        Weapon("Gloom Sword", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.gloom_sword),
-        Weapon("Knight's Claymore", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.knights_claymore),
-        Weapon("Lizal Boomerang", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.lizal_boomerang),
-        Weapon("Gnarled Wooden Stick", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.gnarled_wooden_stick),
-        Weapon("Gerudo Spear (Intact)", 3, 3, 3, 3, 3,"", 3, 3, "", 3, 3).setDrawable(R.drawable.gerudo_spear_intact)
+        Weapon("Boat Oar", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.boat_oar),
+        Weapon("Bokoblin Arm", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.bokoblin_arm),
+        Weapon("Boomerang", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.boomerang),
+        Weapon("Cobble Crusher (Intact)", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.cobble_crusher_intact),
+        Weapon("Feathered Edge", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.feathered_edge),
+        Weapon("Forest Dweller's Spear", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.forest_dwellers_spear),
+        Weapon("Gloom Sword", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.gloom_sword),
+        Weapon("Knight's Claymore", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.knights_claymore),
+        Weapon("Lizal Boomerang", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.lizal_boomerang),
+        Weapon("Gnarled Wooden Stick", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.gnarled_wooden_stick),
+        Weapon("Gerudo Spear (Intact)", 3, 3, 3, 3, 3,listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(R.drawable.gerudo_spear_intact)
     )
 
     val materials = listOf(
@@ -94,42 +94,38 @@ object SampleData {
     )
 
     val meals = listOf(
-        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, "CookMushroom and CookMushroom", 3, 3, 3)
+        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom", "CookFish"), listOf("CookMushroom"), listOf("CookFish", "CookTomato", "CookCrab")), 3, 3, 3)
             .setDrawable(R.drawable.mushroom_skewer),
-        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, "CookMushroom and CookMushroom", 3, 3, 3)
+        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom"), listOf("CookMushroom")), 3, 3, 3)
             .setDrawable(R.drawable.mushroom_skewer),
-        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, "CookMushroom and CookMushroom", 3, 3, 3)
+        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom"), listOf("CookMushroom")), 3, 3, 3)
             .setDrawable(R.drawable.mushroom_skewer),
-        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, "CookMushroom and CookMushroom", 3, 3, 3)
+        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom"), listOf("CookMushroom")), 3, 3, 3)
             .setDrawable(R.drawable.mushroom_skewer)
     )
 
     val armor = listOf(
-        Armor("Armor_001_Head", "Barbarian Helm", "Barbarian", "AttackUp", "none",
+        Armor("Armor_001_Head", "Barbarian Helm", "Barbarian", listOf("AttackUp"), emptyList(),
             3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees",
+            listOf("5 Bokoblin Horns", "3 Bokoblin Fangs"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 50 rupees"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 200 rupees"),
+            listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 500 rupees"), listOf("20 Bokoblin Horns, 30 Bokoblin Fangs, 1500 rupees"),
             "Royal Hidden Passage (entrance location -0253,0764,0087), break rocks near electric Like-Like. Enter prison cell and move boulder to climb to tunnel to cell on the other side.", "-0267, 0638, -0035").setDrawable(R.drawable.barbarian_helm),
-        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", emptyList(), emptyList(),
             3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
-        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+            listOf("5 Bokoblin Horns", "3 Bokoblin Fangs"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 50 rupees"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 200 rupees"),
+            listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 500 rupees"), listOf("20 Bokoblin Horns, 30 Bokoblin Fangs, 1500 rupees"), "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", emptyList(), emptyList(),
             3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
-        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+            listOf("5 Bokoblin Horns", "3 Bokoblin Fangs"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 50 rupees"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 200 rupees"),
+            listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 500 rupees"), listOf("20 Bokoblin Horns, 30 Bokoblin Fangs, 1500 rupees"), "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", emptyList(), emptyList(),
             3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
-        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
+            listOf("5 Bokoblin Horns", "3 Bokoblin Fangs"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 50 rupees"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 200 rupees"),
+            listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 500 rupees"), listOf("20 Bokoblin Horns, 30 Bokoblin Fangs, 1500 rupees"), "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+        Armor("Armor_001_Head", "Hylian Hood", "Hylia", emptyList(), emptyList(),
             3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
-        Armor("Armor_001_Head", "Hylian Hood", "Hylia", "none", "none",
-            3, 0, 3, 6, 9, 12, 15, 15, 65, 165, 365, 865,
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 50 rupees", "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 200 rupees",
-            "5 Bokoblin Horns\n 3 Bokoblin Fangs\n 500 rupees", "20 Bokoblin Horns\n 30 Bokoblin Fangs\n 1500 rupees", "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
+            listOf("5 Bokoblin Horns", "3 Bokoblin Fangs"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 50 rupees"), listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 200 rupees"),
+            listOf("5 Bokoblin Horns, 3 Bokoblin Fangs, 500 rupees"), listOf("20 Bokoblin Horns, 30 Bokoblin Fangs, 1500 rupees"), "Lookout Landing (Shop)", "").setDrawable(R.drawable.hylian_hood),
     )
 
     val effects = listOf(

@@ -1,18 +1,14 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gaming.android.tearsdatabase.App
 import com.gaming.android.tearsdatabase.SORT_DAMAGE_DEC
 import com.gaming.android.tearsdatabase.SORT_DAMAGE_INC
 import com.gaming.android.tearsdatabase.SORT_DURABILITY_DEC
 import com.gaming.android.tearsdatabase.SORT_DURABILITY_INC
 import com.gaming.android.tearsdatabase.api.ItemRepository
-import com.gaming.android.tearsdatabase.api.ItemRepositoryImpl
-import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.models.Weapon
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -83,14 +79,28 @@ class WeaponsViewModel @Inject constructor(
                 it.name.lowercase().matches(".*$regex.*".toRegex())
             }
             val subList = list.filter {
-                if (it.sub_type.isNotEmpty())
-                    it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
+                var found = false
+                if(it.sub_type.isEmpty()) {
+                    false
+                } else {
+                    for (i in it.sub_type) {
+                        found = i.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                        if (found) found
+                    }
+                    found
+                }
             }
             val subList2 = list.filter {
-                if (it.sub_type2.isNotEmpty())
-                    it.sub_type2.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
+                var found = false
+                if(it.sub_type2.isEmpty()) {
+                    false
+                } else {
+                    for (i in it.sub_type2) {
+                        found = i.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
+                        if (found) found
+                    }
+                    found
+                }
             }
 
             finalList = nameList + subList + subList2
