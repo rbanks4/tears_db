@@ -8,6 +8,7 @@ import com.gaming.android.tearsdatabase.models.Meal
 import com.gaming.android.tearsdatabase.models.RoastedFood
 import com.gaming.android.tearsdatabase.models.Shield
 import com.gaming.android.tearsdatabase.models.Weapon
+import kotlinx.coroutines.flow.Flow
 
 interface ItemRepository {
 
@@ -19,5 +20,8 @@ interface ItemRepository {
     suspend fun fetchRoasted(): List<RoastedFood>
     suspend fun fetchShields(): List<Shield>
     suspend fun fetchWeapons(): List<Weapon>
+    suspend fun getMeal(name: String): Meal
+    suspend fun saveMeals(meals: List<Meal>)
+    fun searchMeal(name: String): Flow<List<Meal>>
 
 }

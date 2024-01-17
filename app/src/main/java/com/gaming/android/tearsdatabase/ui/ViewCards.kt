@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.*
 import com.gaming.android.tearsdatabase.theme.TearsTheme
@@ -297,12 +298,12 @@ class ViewCards {
 
         @Composable
         fun MealCard(item: Meal, onClick: (Meal) -> Unit) {
-            Log.d("ViewCards.MealCard", "Showing: ${item.name}")
             val text = "Recipe No: ${item.recipe_no}"
+            var imageId = if(item.image == 0) R.drawable.mushroom_skewer else item.image
 
             Column(modifier = Modifier.padding(all = 8.dp)) {
                 Image(
-                    painter = painterResource(id = item.image),
+                    painter = painterResource(id = imageId),
                     contentDescription = item.name,
                     modifier = Modifier
                         .size(100.dp)

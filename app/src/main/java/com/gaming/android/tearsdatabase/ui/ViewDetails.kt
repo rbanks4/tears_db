@@ -398,7 +398,7 @@ class ViewDetails {
             Surface(
                 Modifier
                     .requiredWidth(IntrinsicSize.Min)
-                    .requiredHeight(IntrinsicSize.Min)
+                    .requiredHeight(IntrinsicSize.Max)
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
@@ -436,7 +436,7 @@ class ViewDetails {
             Surface(
                 Modifier
                     .requiredWidth(IntrinsicSize.Min)
-                    .requiredHeight(IntrinsicSize.Min)
+                    .requiredHeight(IntrinsicSize.Max)
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
@@ -674,7 +674,6 @@ class ViewDetails {
 
         @Composable
         fun ShowSubRow(title: String, list: List<String>) {
-            // level = if(effect.level != null) "Level ${effect.level}" else ""
 
             Row(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)) {
                 Text(
@@ -688,6 +687,7 @@ class ViewDetails {
                     Row(
                         Modifier
                             .width(280.dp)
+                            .height(IntrinsicSize.Max)
                             .padding(horizontal = 16.dp)
                     ) {
                         Text(

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
@@ -360,7 +361,7 @@ class ViewLists {
         fun MealList(
             meals: List<Meal>?,
             openDrawer: () -> Unit,
-            onQuery: (String) -> List<Meal>?,
+            onQuery: (String) -> Unit,
             onMenuItemSelected: (Int) -> List<Meal>?
         ) {
             val displayed = remember { mutableStateListOf<Meal>() }
@@ -390,14 +391,15 @@ class ViewLists {
                             onQuerySearch = {
                                 currentQuery.value = it
                                 displayed.clear()
-                                onQuery(it)?.map { material ->
-                                    displayed.add(material)
+                                meals?.map { meal ->
+                                    displayed.add(meal)
                                 }
+                                onQuery(it)
                             },
                             onListEdit = {
                                 displayed.clear()
-                                onMenuItemSelected(it)?.map { shield ->
-                                    displayed.add(shield)
+                                onMenuItemSelected(it)?.map { meals ->
+                                    displayed.add(meals)
                                 }
                             },
                             onOpenDrawer = { openDrawer() },
@@ -408,11 +410,16 @@ class ViewLists {
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
                         modifier = Modifier.padding(contentPadding),
                         content = {
-                            items(displayed.size) { index ->
-                                MealCard(item = displayed[index], onClick = {
+                            meals?.let {m ->
+                                items(
+                                    items = m,
+                                    key = { it.actor_name }
+                                ) {meal ->
+                                MealCard(item = meal, onClick = {
                                     selected.value = it
                                     open.value = true
                                 })
+                                }
                             }
                         })
 
