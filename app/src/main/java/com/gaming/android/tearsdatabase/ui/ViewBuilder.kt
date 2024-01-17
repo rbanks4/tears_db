@@ -1,6 +1,7 @@
 package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -8,6 +9,7 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -15,6 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.data.MenuLists
@@ -42,12 +45,13 @@ class ViewBuilder {
     companion object {
         @Composable
         fun TopBar(
+            currentSearch: String = "",
             onQuerySearch: (String) -> Unit,
             onListEdit: (Int) -> Unit,
             onOpenDrawer: () -> Unit,
             menuType: Int
         ) {
-            var textState by remember { mutableStateOf("") }
+            //var textState by remember { mutableStateOf("") }
             val ctx = LocalContext.current
             Row(modifier = Modifier.padding(end = 8.dp)) {
                 IconButton(
@@ -62,10 +66,9 @@ class ViewBuilder {
                     )
                 }
                 TextField(
-                    value = textState,
+                    value = currentSearch,
                     enabled = true,
                     onValueChange = { query ->
-                        textState = query
                         onQuerySearch(query)
                     },
                     modifier = Modifier.width(1000.dp),
@@ -180,6 +183,8 @@ class ViewBuilder {
             var selectedItem by remember { mutableStateOf(nav.navItem) }
             selectedItem = selectedItem?: WEAPONS_KEY
 
+            val liveMeals by meals.liveMeals.observeAsState(initial = emptyList())
+
             ModalNavigationDrawer(
                 drawerState = drawerState,
                 drawerContent = {
@@ -241,9 +246,9 @@ class ViewBuilder {
                             onMenuItemSelected = { roastedFoods.onItemSelected(it) }
                         )
                         RECIPES_KEY -> MealList(
-                            meals = meals.getCurrent(),
+                            meals = liveMeals,
                             openDrawer = { openDrawer() },
-                            onQuery = { meals.query(it) },
+                            onQuery = { meals.setSearch(it) },
                             onMenuItemSelected = { meals.onItemSelected(it) }
                         )
                         ARMOR_KEY -> ArmorList(

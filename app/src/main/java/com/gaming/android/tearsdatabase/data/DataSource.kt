@@ -31,7 +31,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
     companion object {
 
         @DrawableRes
-        fun loadWeaponImage(name: String, context: Context): Int {
+        fun loadItemImage(name: String, context: Context): Int {
             return getDrawable(context, camelToSnakeCase(name))
         }
 

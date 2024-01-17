@@ -32,7 +32,7 @@ interface ItemViewModel<T> {
 
     fun search(regex: Regex, viewModel: ItemViewModel<T>): List<T>
 
-    fun query(query: String): List<T>? {
+    fun query(query: String, callback: () -> Unit = {}): List<T>? {
         return queryItems(query, this)
     }
     fun onItemSelected(item: Int): List<T>? {

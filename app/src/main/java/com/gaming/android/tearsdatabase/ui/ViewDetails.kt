@@ -2,6 +2,8 @@ package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -398,7 +400,7 @@ class ViewDetails {
             Surface(
                 Modifier
                     .requiredWidth(IntrinsicSize.Min)
-                    .requiredHeight(IntrinsicSize.Min)
+                    .requiredHeight(IntrinsicSize.Max)
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
@@ -436,7 +438,7 @@ class ViewDetails {
             Surface(
                 Modifier
                     .requiredWidth(IntrinsicSize.Min)
-                    .requiredHeight(IntrinsicSize.Min)
+                    .requiredHeight(IntrinsicSize.Max)
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
@@ -567,7 +569,9 @@ class ViewDetails {
                 }
             }
 
-            AnimatedVisibility(visible = isExpanded) {
+            AnimatedVisibility(
+                visible = isExpanded
+            ) {
                 Column {
                     ShowEffectRow(effect = effect, showPotency)
                     if (effect.effect_level2 != null) {
@@ -674,7 +678,6 @@ class ViewDetails {
 
         @Composable
         fun ShowSubRow(title: String, list: List<String>) {
-            // level = if(effect.level != null) "Level ${effect.level}" else ""
 
             Row(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)) {
                 Text(
@@ -688,6 +691,7 @@ class ViewDetails {
                     Row(
                         Modifier
                             .width(280.dp)
+                            .height(IntrinsicSize.Max)
                             .padding(horizontal = 16.dp)
                     ) {
                         Text(
