@@ -94,7 +94,7 @@ object SampleData {
     )
 
     val meals = listOf(
-        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom", "CookFish"), listOf("CookMushroom"), listOf("CookFish", "CookTomato", "CookCrab")), 3, 3, 3)
+        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom", "CookFish")), 3, 3, 3)
             .setDrawable(R.drawable.mushroom_skewer),
         Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom"), listOf("CookMushroom")), 3, 3, 3)
             .setDrawable(R.drawable.mushroom_skewer),

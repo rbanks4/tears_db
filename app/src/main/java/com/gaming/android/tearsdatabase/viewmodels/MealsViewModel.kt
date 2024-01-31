@@ -1,16 +1,22 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.SORT_ID_INC
 import com.gaming.android.tearsdatabase.api.ItemRepository
-import com.gaming.android.tearsdatabase.models.Effect
 import com.gaming.android.tearsdatabase.models.Meal
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -38,11 +44,19 @@ class MealsViewModel @Inject constructor(
     val meals: StateFlow<List<Meal>>
         get() = _meals.asStateFlow()
 
+    private val search = MutableStateFlow(savedStateHandle.get<String>(SEARCH_STRING) ?: "")
+
+    val liveMeals: LiveData<List<Meal>> = search.flatMapLatest {
+        repo.searchMeal("%$it%")
+    }.asLiveData()
+
+
     init {
         viewModelScope.launch {
             try {
                 val fetchedItems = repo.fetchMeals()
                 _meals.value = fetchedItems
+                search.value = "%"
             } catch (e: Exception) {
                 println("Failed to fetch items ${e.message}")
             }
@@ -57,19 +71,19 @@ class MealsViewModel @Inject constructor(
         }
     }
 
-    override fun search(regex: Regex, viewModel: ItemViewModel<Meal>): List<Meal> {
-        var finalList: List<Meal>?
-        viewModel.items.let { list ->
-            val nameList = list!!.filter {
-                it.name.lowercase().matches(".*$regex.*".toRegex())
-            }
-//            val subList = list!!.filter {
-//                if (it.recipe.isNotEmpty())
-//                    it.recipe.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-//                else false
-//            }
-            finalList = nameList //+ subList
+    fun setSearch(query: String) {
+        search.value = "%$query%"
+    }
+
+    override fun setup(list: List<Meal>, findDrawable: (Meal) -> Meal) {
+        super.setup(list, findDrawable)
+        viewModelScope.launch {
+            repo.saveMeals(searchList?: emptyList())
         }
-        return finalList?:listOf()
+    }
+
+    override fun search(regex: Regex, viewModel: ItemViewModel<Meal>): List<Meal> {
+        setSearch("%$regex%")
+        return emptyList()
     }
 }

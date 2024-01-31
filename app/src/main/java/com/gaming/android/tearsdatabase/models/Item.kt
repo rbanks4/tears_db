@@ -17,6 +17,6 @@ interface Item<T> {
     fun setDrawable(ctx: Context): T
 
     fun findDrawable(ctx: Context) {
-        image = DataSource.loadWeaponImage(name, ctx)
+        image = DataSource.loadItemImage(name, ctx)
     }
 }
