@@ -1,1824 +1,4038 @@
 {
   "meals": [
     {
-      "_id": "64bd55aff752c7e35d832130",
+      "_id": 900,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_05",
       "name": "Fish Skewer",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "recipe_no": 5,
-      "recipe": [["CookFish"], ["CookFish"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83212c",
+      "_id": 901,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_08",
       "name": "Fish and Mushroom Skewer",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "recipe_no": 3,
-      "recipe": [["CookMushroom"], ["CookFish"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832133",
+      "_id": 902,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_23",
       "name": "Seafood Skewer",
+      "recipe": [
+        [
+          4,
+          224
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "recipe_no": 6,
-      "recipe": [["Sneaky River Snail"], ["CookCrab"], ["CookFish"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832128",
+      "_id": 903,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_01",
       "name": "Mushroom Skewer",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
       "recipe_no": 1,
-      "recipe": [["CookMushroom"], ["CookMushroom"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832137",
+      "_id": 904,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_15",
       "name": "Copious Seafood Skewers",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "recipe_no": 8,
-      "recipe": [["CookFish"], ["CookFish"], ["CookFish"], ["CookFish"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832139",
+      "_id": 905,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_Q_03",
       "name": "Steamed Tomatoes",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          239
+        ]
+      ],
       "recipe_no": 10,
-      "recipe": [["CookPlant"], ["Hylian Tomato"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d832141",
+      "_id": 906,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_B_01",
       "name": "Fried Wild Greens",
+      "recipe": [
+        [
+          12,
+          426
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          226
+        ]
+      ],
       "recipe_no": 16,
-      "recipe": [["Stambulb"], ["Goat Butter"], ["Dark Clump"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d83213c",
+      "_id": 907,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_04",
       "name": "Steamed Fish",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "recipe_no": 13,
-      "recipe": [["CookPlant"], ["CookFish"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832144",
+      "_id": 908,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_11",
       "name": "Copious Fried Wild Greens",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          0
+        ]
+      ],
       "recipe_no": 17,
-      "recipe": [["CookPlant"], ["CookPlant"], ["CookPlant"], ["CookPlant"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832162",
+      "_id": 909,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_02",
       "name": "Simmered Fruits",
+      "recipe": [
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          0
+        ]
+      ],
       "recipe_no": 47,
-      "recipe": [["CookFruit"], ["CookFruit"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83216e",
+      "_id": 910,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_F_01",
       "name": "Creamy Meat Soup",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          374
+        ]
+      ],
       "recipe_no": 56,
-      "recipe": [["CookMeat"], ["CookPlant"], ["Rock Salt"], ["Fresh Milk"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83213f",
+      "_id": 911,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_22",
       "name": "Sautéed Nuts",
+      "recipe": [
+        [
+          12,
+          265
+        ],
+        [
+          12,
+          345
+        ]
+      ],
       "recipe_no": 15,
-      "recipe": [["Acorn"], ["Chickaloo Tree Nut"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83217e",
+      "_id": 912,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_J_03",
       "name": "Seafood Curry",
+      "recipe": [
+        [
+          12,
+          263
+        ],
+        [
+          12,
+          301
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ]
+      ],
       "recipe_no": 72,
-      "recipe": [["Mighty Porgy"], ["Armored Porgy"], ["Hylian Rice"], ["Goron Spice"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832191",
+      "_id": 913,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_Q_08",
       "name": "Crunchy Fried Rice",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          12,
+          375
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          241
+        ]
+      ],
       "recipe_no": 91,
-      "recipe": [["CookMeat"], ["Oil Jar"], ["Hylian Rice"], ["Bird Egg"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d83214b",
+      "_id": 914,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_D_10",
       "name": "Crab Stir-Fry",
+      "recipe": [
+        [
+          3,
+          0
+        ],
+        [
+          12,
+          266
+        ]
+      ],
       "recipe_no": 24,
-      "recipe": [["Razorclaw Crab", "Ironshell Crab", "Bright-Eyed Crab"], ["Goron Spice"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832194",
+      "_id": 915,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_G_05",
       "name": "Meat and Rice Bowl",
+      "recipe": [
+        [
+          12,
+          268
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 94,
-      "recipe": [["Raw Meat"], ["Hylian Rice"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83214c",
+      "_id": 916,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_17",
       "name": "Meat and Seafood Fry",
+      "recipe": [
+        [
+          12,
+          268,
+          12,
+          358
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "recipe_no": 25,
-      "recipe": [["Raw Meat", "Raw Bird Drumstick"], ["CookFish"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832198",
+      "_id": 917,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_S_03",
       "name": "Prime Cheesy Meat Bowl",
+      "recipe": [
+        [
+          12,
+          314
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          330
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 98,
-      "recipe": [["Raw Prime Meat"], ["Hylian Rice"], ["Hateno Cheese"], ["Rock Salt"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d832156",
+      "_id": 918,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_P_02",
       "name": "Herb Sauté",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          266
+        ]
+      ],
       "recipe_no": 35,
-      "recipe": [["CookPlant"], ["Goron Spice"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83219e",
+      "_id": 919,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_R_02",
       "name": "Veggie Porridge",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          374
+        ]
+      ],
       "recipe_no": 104,
-      "recipe": [["CookPlant"], ["Hylian Rice"], ["Fresh Milk"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d83215f",
+      "_id": 920,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_H_02",
       "name": "Porgy Meunière",
+      "recipe": [
+        [
+          12,
+          263,
+          12,
+          301
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          225
+        ]
+      ],
       "recipe_no": 44,
-      "recipe": [["Mighty Porgy", "Armored Porgy"], ["Goat Butter"], ["Tabantha Wheat"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321a4",
+      "_id": 921,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_S_10",
       "name": "Cheesy Tomato",
+      "recipe": [
+        [
+          12,
+          239
+        ],
+        [
+          12,
+          330
+        ]
+      ],
       "recipe_no": 110,
-      "recipe": [["Hylian Tomato"], ["Hateno Cheese"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d83216a",
+      "_id": 922,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_Q_05",
       "name": "Tomato Seafood Soup",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          239
+        ]
+      ],
       "recipe_no": 52,
-      "recipe": [["CookFish"], ["Hylian Tomato"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d8321a6",
+      "_id": 923,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_10",
       "name": "Omelet",
+      "recipe": [
+        [
+          12,
+          241
+        ]
+      ],
       "recipe_no": 112,
-      "recipe": [["Bird Egg"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832175",
+      "_id": 924,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_13",
       "name": "Glazed Seafood",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          408
+        ]
+      ],
       "recipe_no": 63,
-      "recipe": [["CookFish"], ["Courser Bee Honey"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321ab",
+      "_id": 925,
+      "bonus_heart": 4,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_I_07",
       "name": "Hot Buttered Apple",
+      "recipe": [
+        [
+          12,
+          356,
+          12,
+          254
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 116,
-      "recipe": [["Apple", "Golden Apple"], ["Goat Butter"]],
-      "bonus_heart": 4,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832177",
+      "_id": 926,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_J_02",
       "name": "Vegetable Curry",
+      "recipe": [
+        [
+          12,
+          372,
+          12,
+          283,
+          12,
+          406,
+          12,
+          424
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ]
+      ],
       "recipe_no": 65,
-      "recipe": [["Fortified Pumpkin", "Sun Pumpkin", "Swift Carrot", "Endura Carrot"], ["Hylian Rice"], ["Goron Spice"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83217b",
+      "_id": 927,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_J_04",
       "name": "Poultry Curry",
+      "recipe": [
+        [
+          12,
+          358
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ]
+      ],
       "recipe_no": 69,
-      "recipe": [["Raw Bird Drumstick"], ["Hylian Rice"], ["Goron Spice"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321b7",
+      "_id": 928,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_I_06",
       "name": "Pumpkin Pie",
+      "recipe": [
+        [
+          12,
+          372,
+          12,
+          283
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          387
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 128,
-      "recipe": [["Fortified Pumpkin", "Sun Pumpkin"], ["Tabantha Wheat"], ["Cane Sugar"], ["Goat Butter"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83217c",
+      "_id": 929,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_J_05",
       "name": "Prime Poultry Curry",
+      "recipe": [
+        [
+          12,
+          269
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ]
+      ],
       "recipe_no": 70,
-      "recipe": [["Raw Bird Thigh"], ["Hylian Rice"], ["Goron Spice"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321bc",
-      "actor_name": "Item_Cook_K_09",
-      "name": "Milk",
-      "recipe_no": 133,
-      "recipe": [["Fresh Milk"]],
+      "_id": 930,
       "bonus_heart": 2,
       "bonus_level": 0,
+      "actor_name": "Item_Cook_K_09",
+      "name": "Milk",
+      "recipe": [
+        [
+          12,
+          374
+        ]
+      ],
+      "recipe_no": 133,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83218a",
+      "_id": 931,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_Q_10",
       "name": "Cheesy Risotto",
+      "recipe": [
+        [
+          1,
+          0,
+          2,
+          0,
+          5,
+          0
+        ],
+        [
+          12,
+          330
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 84,
-      "recipe": [["CookFish", "CookMushroom", "CookPlant"], ["Hateno Cheese"], ["Hylian Rice"], ["Rock Salt"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d83218b",
+      "_id": 932,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_E_01",
       "name": "Poultry Pilaf",
+      "recipe": [
+        [
+          12,
+          358
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 85,
-      "recipe": [["Raw Bird Drumstick"], ["Bird Egg"], ["Hylian Rice"], ["Goat Butter"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321c4",
+      "_id": 933,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_S_07",
       "name": "Dark Soup",
+      "recipe": [
+        [
+          12,
+          226
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          374
+        ]
+      ],
       "recipe_no": 141,
-      "recipe": [["Dark Clump"], ["Tabantha Wheat"], ["Goat Butter"], ["Fresh Milk"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d8321cb",
+      "_id": 934,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_O_02",
       "name": "Rock-Hard Food",
+      "recipe": [
+        [
+          8,
+          0
+        ]
+      ],
       "recipe_no": 146,
-      "recipe": [["CookOre"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83218e",
+      "_id": 935,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_N_01",
       "name": "Seafood Paella",
+      "recipe": [
+        [
+          12,
+          263,
+          12,
+          301
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 88,
-      "recipe": [["Mighty Porgy", "Armored Porgy"], ["Razorclaw Crab", "Ironshell Crab"], ["Hylian Rice"], ["Goat Butter"], ["Rock Salt"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d832193",
+      "_id": 936,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_G_16",
       "name": "Crab Omelet with Rice",
+      "recipe": [
+        [
+          3,
+          0
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 93,
-      "recipe": [["Razorclaw Crab", "Ironshell Crab", "Bright-Eyed Crab"], ["Bird Egg"], ["Hylian Rice"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321d7",
+      "_id": 937,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_C_17_ExStaminaMaxUp",
       "name": "Enduring Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          1
+        ]
+      ],
       "recipe_no": 226,
-      "recipe": [["CookEnemy"], ["CookInsect (Enduring)"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321a3",
+      "_id": 938,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_I_15",
       "name": "Fish Pie",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 109,
-      "recipe": [["CookFish"], ["Tabantha Wheat"], ["Goat Butter"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321a5",
+      "_id": 939,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_R_10",
       "name": "Cheesy Baked Fish",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          330
+        ],
+        [
+          12,
+          375
+        ]
+      ],
       "recipe_no": 111,
-      "recipe": [["CookFish"], ["Hateno Cheese"], ["Oil Jar"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d8321aa",
+      "_id": 940,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_R_01",
       "name": "Cheesy Omelette",
+      "recipe": [
+        [
+          2,
+          0,
+          5,
+          0
+        ],
+        [
+          12,
+          330
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 115,
-      "recipe": [["CookMushroom", "CookPlant"], ["Hateno Cheese"], ["Bird Egg"], ["Rock Salt"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d8321ac",
+      "_id": 941,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_I_09",
       "name": "Honeyed Fruits",
+      "recipe": [
+        [
+          6,
+          0
+        ],
+        [
+          12,
+          408
+        ]
+      ],
       "recipe_no": 117,
-      "recipe": [["Cook Fruit"], ["Courser Bee Honey"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321b5",
+      "_id": 942,
+      "bonus_heart": 4,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_N_02",
       "name": "Fruitcake",
+      "recipe": [
+        [
+          12,
+          356,
+          12,
+          371,
+          12,
+          254
+        ],
+        [
+          12,
+          356,
+          12,
+          371,
+          12,
+          327,
+          12,
+          281,
+          12,
+          282,
+          12,
+          400,
+          12,
+          254
+        ],
+        [
+          12,
+          387
+        ],
+        [
+          12,
+          225
+        ]
+      ],
       "recipe_no": 126,
-      "recipe": [["Apple"], ["Wildberry"], ["Golden Apple], [Apple"], ["Wildberry"], ["Voltfruit"], ["Hydromelon"], ["Palm Fruit"], ["Mighty Bananas"], ["Golden Apple"], ["Cane Sugar"], ["Tabantha Wheat"]],
-      "bonus_heart": 4,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321c2",
+      "_id": 943,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_L_03",
       "name": "Monster Cake",
+      "recipe": [
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          387
+        ],
+        [
+          12,
+          422
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 139,
-      "recipe": [["Tabantha Wheat"], ["Cane Sugar"], ["Monster Extract"], ["Goat Butter"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321ce",
+      "_id": 944,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_C_17_ResistCold",
       "name": "Spicy Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          2
+        ]
+      ],
       "recipe_no": 217,
-      "recipe": [["CookEnemy"], ["CookInsect (Spicy)"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321d0",
+      "_id": 945,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_C_17_ResistElectric",
       "name": "Electro Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          3
+        ]
+      ],
       "recipe_no": 219,
-      "recipe": [["CookEnemy"], ["CookInsect (Electro)"]],
+      "bonus_time": 0
+    },
+    {
+      "_id": 946,
+      "bonus_heart": -12,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_16",
+      "name": "Fairy Tonic",
+      "recipe": [
+        [
+          12,
+          206
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "recipe_no": 228,
+      "bonus_time": 0
+    },
+    {
+      "_id": 947,
+      "bonus_heart": -12,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_16",
+      "name": "Fairy Tonic",
+      "recipe": [
+        [
+          12,
+          206
+        ]
+      ],
+      "recipe_no": 228,
+      "bonus_time": 0
+    },
+    {
+      "_id": 948,
       "bonus_heart": 0,
       "bonus_level": 0,
-      "bonus_time": 0
-    },
-    {
-      "_id": "64bd55aff752c7e35d8321da",
-      "actor_name": "Item_Cook_C_16",
-      "name": "Fairy Tonic",
-      "recipe_no": 228,
-      "recipe": [["Fairy"], ["CookOre"], ["CookInsect"], ["CookEnemy"]],
-      "bonus_heart": -12,
-      "bonus_level": 0,
-      "bonus_time": 0
-    },
-    {
-      "_id": "64bd55aff752c7e35d8321dd",
-      "actor_name": "Item_Cook_C_16",
-      "name": "Fairy Tonic",
-      "recipe_no": 228,
-      "recipe": [["Fairy"]],
-      "bonus_heart": -12,
-      "bonus_level": 0,
-      "bonus_time": 0
-    },
-    {
-      "_id": "64bd55aff752c7e35d83212a",
       "actor_name": "Item_Cook_A_01",
       "name": "Mushroom Skewer",
+      "recipe": [
+        [
+          2,
+          0
+        ]
+      ],
       "recipe_no": 1,
-      "recipe": [["CookMushroom"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83212b",
+      "_id": 949,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_09",
       "name": "Meat and Mushroom Skewer",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          7,
+          0
+        ]
+      ],
       "recipe_no": 2,
-      "recipe": [["CookMushroom"], ["CookMeat"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83213b",
+      "_id": 950,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_05",
       "name": "Steamed Meat",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          5,
+          0
+        ]
+      ],
       "recipe_no": 12,
-      "recipe": [["CookMeat"], ["CookPlant"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832142",
+      "_id": 951,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_01",
       "name": "Fried Wild Greens",
+      "recipe": [
+        [
+          5,
+          0
+        ]
+      ],
       "recipe_no": 16,
-      "recipe": [["CookPlant"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83214a",
+      "_id": 952,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_P_05",
       "name": "Gourmet Spiced Meat Skewer",
+      "recipe": [
+        [
+          12,
+          388
+        ],
+        [
+          12,
+          266
+        ]
+      ],
       "recipe_no": 23,
-      "recipe": [["Raw Gourmet Meat"], ["Goron Spice"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832152",
+      "_id": 953,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_D_05",
       "name": "Salt-Grilled Prime Meat",
+      "recipe": [
+        [
+          12,
+          314
+        ],
+        [
+          12,
+          269
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 31,
-      "recipe": [["Raw Prime Meat"], ["Raw Bird Thigh"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832153",
+      "_id": 954,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_D_06",
       "name": "Salt-Grilled Gourmet Meat",
+      "recipe": [
+        [
+          12,
+          388
+        ],
+        [
+          12,
+          302
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 32,
-      "recipe": [["Raw Gourmet Meat"], ["Raw Whole Meat"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832166",
+      "_id": 955,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_Q_01",
       "name": "Simmered Tomato",
+      "recipe": [
+        [
+          12,
+          239
+        ]
+      ],
       "recipe_no": 49,
-      "recipe": [["Hylian Tomato"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832176",
+      "_id": 956,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_J_01",
       "name": "Curry Rice",
+      "recipe": [
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ]
+      ],
       "recipe_no": 64,
-      "recipe": [["Hylian Rice"], ["Goron Spice"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832186",
+      "_id": 957,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_G_13",
       "name": "Vegetable Risotto",
+      "recipe": [
+        [
+          12,
+          372,
+          12,
+          283,
+          12,
+          406,
+          12,
+          424
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 80,
-      "recipe": [["Fortified Pumpkin"], ["Sun Pumpkin"], ["Swift Carrot"], ["Endura Carrot"], ["Hylian Rice"], ["Rock Salt"], ["Goat Butter"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832187",
+      "_id": 958,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_G_12",
       "name": "Mushroom Risotto",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 81,
-      "recipe": [["CookMushroom"], ["Hylian Rice"], ["Rock Salt"], ["Goat Butter"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832192",
+      "_id": 959,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_G_10",
       "name": "Seafood Fried Rice",
+      "recipe": [
+        [
+          12,
+          263
+        ],
+        [
+          12,
+          301
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 92,
-      "recipe": [["Mighty Porgy"], ["Armored Porgy"], ["Hylian Rice"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321b3",
-      "actor_name": "Item_Cook_I_17",
-      "name": "Honey Crepe",
-      "recipe_no": 124,
-      "recipe": [["Tabantha Wheat Fresh Milk"], ["Bird Egg"], ["Cane Sugar"], ["Courser Bee Honey"]],
+      "_id": 960,
       "bonus_heart": 4,
       "bonus_level": 0,
+      "actor_name": "Item_Cook_I_17",
+      "name": "Honey Crepe",
+      "recipe": [
+        [
+          12,
+          225,
+          12,
+          374
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          387
+        ],
+        [
+          12,
+          408
+        ]
+      ],
+      "recipe_no": 124,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321bb",
+      "_id": 961,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_I_03",
       "name": "Egg Tart",
+      "recipe": [
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          387
+        ]
+      ],
       "recipe_no": 132,
-      "recipe": [["Bird Egg"], ["Tabantha Wheat"], ["Goat Butter"], ["Cane Sugar"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321c8",
-      "actor_name": "Item_Cook_O_01",
-      "name": "Dubious Food",
-      "recipe_no": 145,
-      "recipe": [["CookForeign"]],
+      "_id": 962,
       "bonus_heart": null,
       "bonus_level": null,
+      "actor_name": "Item_Cook_O_01",
+      "name": "Dubious Food",
+      "recipe": [
+        [
+          0,
+          0
+        ]
+      ],
+      "recipe_no": 145,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d8321ca",
-      "actor_name": "Item_Cook_O_01",
-      "name": "Dubious Food",
-      "recipe_no": 145,
-      "recipe": [["CookEnemy"], ["CookInsect"]],
+      "_id": 963,
       "bonus_heart": 0,
       "bonus_level": 0,
+      "actor_name": "Item_Cook_O_01",
+      "name": "Dubious Food",
+      "recipe": [
+        [
+          12,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "recipe_no": 145,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321cd",
+      "_id": 964,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_C_17_AllSpeed",
       "name": "Hasty Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          4
+        ]
+      ],
       "recipe_no": 216,
-      "recipe": [["CookEnemy"], ["CookInsect (Hasty)"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321d4",
+      "_id": 965,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_C_17_QuietnessUp",
       "name": "Sneaky Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          5
+        ]
+      ],
       "recipe_no": 223,
-      "recipe": [["CookEnemy"], ["CookInsect (Sneaky)"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83212f",
+      "_id": 966,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_06",
       "name": "Meat Skewer",
+      "recipe": [
+        [
+          7,
+          0
+        ]
+      ],
       "recipe_no": 4,
-      "recipe": [["CookMeat"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83212d",
+      "_id": 967,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_06",
       "name": "Meat Skewer",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          0
+        ]
+      ],
       "recipe_no": 4,
-      "recipe": [["CookMeat"], ["CookMeat"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832129",
+      "_id": 968,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_01",
       "name": "Mushroom Skewer",
+      "recipe": [
+        [
+          2,
+          0
+        ]
+      ],
       "recipe_no": 1,
-      "recipe": [["CookMushroom"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832135",
+      "_id": 969,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_23",
       "name": "Seafood Skewer",
+      "recipe": [
+        [
+          4,
+          224,
+          3,
+          0
+        ]
+      ],
       "recipe_no": 6,
-      "recipe": [["Sneaky River Snail"], ["Razorclaw Crab"], ["Armored Crab"], ["Bright-Eyed Crab"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832138",
+      "_id": 970,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_03",
       "name": "Steamed Fruit",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ]
+      ],
       "recipe_no": 9,
-      "recipe": [["CookPlant"], ["CookFruit"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83213a",
+      "_id": 971,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_A_02",
       "name": "Steamed Mushrooms",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
       "recipe_no": 11,
-      "recipe": [["CookPlant"], ["CookMushroom"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832143",
+      "_id": 972,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_B_01",
       "name": "Fried Wild Greens",
+      "recipe": [
+        [
+          5,
+          0
+        ]
+      ],
       "recipe_no": 16,
-      "recipe": [["CookPlant"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832149",
+      "_id": 973,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_P_04",
       "name": "Prime Spiced Meat Skewer",
+      "recipe": [
+        [
+          12,
+          314
+        ],
+        [
+          12,
+          266
+        ]
+      ],
       "recipe_no": 22,
-      "recipe": [["Raw Prime Meat"], ["Goron Spice"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83214f",
+      "_id": 974,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_D_02",
       "name": "Salt-Grilled Greens",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 28,
-      "recipe": [["CookPlant"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832154",
+      "_id": 975,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_D_03",
       "name": "Salt-Grilled Fish",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 33,
-      "recipe": [["CookFish"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832158",
+      "_id": 976,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_D_07",
       "name": "Pepper Steak",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          12,
+          32
+        ]
+      ],
       "recipe_no": 37,
-      "recipe": [["CookMeat"], ["Spicy Pepper"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83215c",
+      "_id": 977,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_R_07",
       "name": "Deep-Fried Thigh",
+      "recipe": [
+        [
+          12,
+          269
+        ],
+        [
+          12,
+          375
+        ]
+      ],
       "recipe_no": 41,
-      "recipe": [["Raw Bird Thigh"], ["Oil Jar"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d832167",
+      "_id": 978,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_Q_02",
       "name": "Fruity Tomato Stew",
+      "recipe": [
+        [
+          12,
+          239
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 50,
-      "recipe": [["Hylian Tomato"], ["Fresh Milk"], ["Rock Salt"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d832168",
+      "_id": 979,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_Q_02",
       "name": "Fruity Tomato Stew",
+      "recipe": [
+        [
+          12,
+          239
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 50,
-      "recipe": [["Hylian Tomato"], ["Fresh Milk"], ["Rock Salt"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d832180",
+      "_id": 980,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_K_08",
       "name": "Carrot Stew",
+      "recipe": [
+        [
+          12,
+          406
+        ],
+        [
+          12,
+          424
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          225
+        ]
+      ],
       "recipe_no": 74,
-      "recipe": [["Swift Carrot"], ["Endura Carrot"], ["Goat Butter"], ["Fresh Milk"], ["Tabantha Wheat"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832181",
+      "_id": 981,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_K_03",
       "name": "Pumpkin Stew",
+      "recipe": [
+        [
+          12,
+          372
+        ],
+        [
+          12,
+          283
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 75,
-      "recipe": [["Fortified Pumpkin"], ["Sun Pumpkin"], ["Tabantha Wheat"], ["Fresh Milk"], ["Goat Butter"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832188",
+      "_id": 982,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_G_14",
       "name": "Salmon Risotto",
+      "recipe": [
+        [
+          12,
+          445
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 82,
-      "recipe": [["Hearty Salmon"], ["Hylian Rice"], ["Rock Salt"], ["Goat Butter"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83218c",
+      "_id": 983,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_E_02",
       "name": "Prime Poultry Pilaf",
+      "recipe": [
+        [
+          12,
+          269
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 86,
-      "recipe": [["Raw Bird Thigh"], ["Bird Egg"], ["Hylian Rice"], ["Goat Butter"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83218f",
+      "_id": 984,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_G_11",
       "name": "Curry Pilaf",
+      "recipe": [
+        [
+          12,
+          266
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 89,
-      "recipe": [["Goron Spice"], ["Hylian Rice"], ["Goat Butter"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832195",
+      "_id": 985,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_G_06",
       "name": "Prime Meat and Rice Bowl",
+      "recipe": [
+        [
+          12,
+          314
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 95,
-      "recipe": [["Raw Prime Meat"], ["Hylian Rice"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d832196",
+      "_id": 986,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_G_09",
       "name": "Gourmet Meat and Rice Bowl",
+      "recipe": [
+        [
+          12,
+          388
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 96,
-      "recipe": [["Raw Gourmet Meat"], ["Hylian Rice"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d83219f",
+      "_id": 987,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_M_01",
       "name": "Wheat Bread",
+      "recipe": [
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          401
+        ]
+      ],
       "recipe_no": 105,
-      "recipe": [["Tabantha Wheat"], ["Rock Salt"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321a0",
+      "_id": 988,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_R_09",
       "name": "Melty Cheesy Bread",
+      "recipe": [
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          375
+        ],
+        [
+          12,
+          330
+        ]
+      ],
       "recipe_no": 106,
-      "recipe": [["Tabantha Wheat"], ["Oil Jar"], ["Hateno Cheese"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d8321af",
+      "_id": 989,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_I_13",
       "name": "Fried Bananas",
+      "recipe": [
+        [
+          12,
+          400
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          387
+        ]
+      ],
       "recipe_no": 120,
-      "recipe": [["Mighty Bananas"], ["Tabantha Wheat"], ["Cane Sugar"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321b1",
+      "_id": 990,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_I_10",
       "name": "Plain Crepe",
+      "recipe": [
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          387
+        ]
+      ],
       "recipe_no": 122,
-      "recipe": [["Tabantha Wheat"], ["Fresh Milk"], ["Bird Egg"], ["Cane Sugar"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321b4",
+      "_id": 991,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_I_12",
       "name": "Nutcake",
+      "recipe": [
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          387
+        ],
+        [
+          12,
+          345,
+          12,
+          265
+        ]
+      ],
       "recipe_no": 125,
-      "recipe": [["Tabantha Wheat"], ["Goat Butter"], ["Cane Sugar"], ["Chickaloo Tree Nut", "Acorn"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321ba",
+      "_id": 992,
+      "bonus_heart": 0,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_I_02",
       "name": "Apple Pie",
+      "recipe": [
+        [
+          12,
+          356,
+          12,
+          254
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          387
+        ]
+      ],
       "recipe_no": 131,
-      "recipe": [["Apple", "Golden Apple"], ["Tabantha Wheat"], ["Goat Butter"], ["Cane Sugar"]],
-      "bonus_heart": 0,
-      "bonus_level": 0,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321c6",
+      "_id": 993,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_S_06",
       "name": "Dark Rice Ball",
+      "recipe": [
+        [
+          12,
+          226
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          267
+        ]
+      ],
       "recipe_no": 143,
-      "recipe": [["Dark Clump"], ["Rock Salt"], ["Hylian Rice"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d8321c7",
+      "_id": 994,
+      "bonus_heart": null,
+      "bonus_level": null,
       "actor_name": "Item_Cook_S_09",
       "name": "Dark Cake",
+      "recipe": [
+        [
+          12,
+          226
+        ],
+        [
+          12,
+          387
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          242
+        ]
+      ],
       "recipe_no": 144,
-      "recipe": [["Dark Clump"], ["Cane Sugar"], ["Tabantha Wheat"], ["Goat Butter"]],
-      "bonus_heart": null,
-      "bonus_level": null,
       "bonus_time": null
     },
     {
-      "_id": "64bd55aff752c7e35d8321d1",
-      "actor_name": "Item_Cook_C_17_ResistBurn",
-      "name": "Fireproof Elixir",
-      "recipe_no": 220,
-      "recipe": [["CookEnemy"], ["CookInsect (Fireproof)"]],
+      "_id": 995,
       "bonus_heart": 0,
       "bonus_level": 0,
+      "actor_name": "Item_Cook_C_17_ResistBurn",
+      "name": "Fireproof Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          6
+        ]
+      ],
+      "recipe_no": 220,
       "bonus_time": 0
     },
     {
-      "_id": "64bd55aff752c7e35d8321dc",
+      "_id": 996,
+      "bonus_heart": -12,
+      "bonus_level": 0,
       "actor_name": "Item_Cook_C_16",
       "name": "Fairy Tonic",
+      "recipe": [
+        [
+          12,
+          206
+        ],
+        [
+          8,
+          0,
+          12,
+          0,
+          10,
+          0
+        ]
+      ],
       "recipe_no": 228,
-      "recipe": [["Fairy"], ["CookOre", "CookEnemy", "CookInsect"]],
-        "bonus_heart": -12,
-        "bonus_level": 0,
-        "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832132",
-          "actor_name": "Item_Cook_B_05",
-          "name": "Fish Skewer",
-          "recipe_no": 5,
-          "recipe": [["CookFish"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832134",
-          "actor_name": "Item_Cook_B_23",
-          "name": "Seafood Skewer",
-          "recipe_no": 6,
-          "recipe": [["Sneaky River Snail", "Razorclaw Crab", "Armored Crab", "Bright-Eyed Crab"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832136",
-          "actor_name": "Item_Cook_B_16",
-          "name": "Copious Meat Skewers",
-          "recipe_no": 7,
-          "recipe": [["CookMeat"], ["CookMeat"], ["CookMeat"], ["CookMeat"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832147",
-          "actor_name": "Item_Cook_B_13",
-          "name": "Copious Mushroom Skewers",
-          "recipe_no": 20,
-          "recipe": [["CookMushroom"], ["CookMushroom"], ["CookMushroom"], ["CookMushroom"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832157",
-          "actor_name": "Item_Cook_P_01",
-          "name": "Fragrant Mushroom Sauté",
-          "recipe_no": 36,
-          "recipe": [["CookMushroom"], ["Goron Spice"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832159",
-          "actor_name": "Item_Cook_D_08",
-          "name": "Pepper Seafood",
-          "recipe_no": 38,
-          "recipe": [["CookFish"], ["Spicy Pepper"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83215a",
-          "actor_name": "Item_Cook_R_05",
-          "name": "Fragrant Seafood Stew",
-          "recipe_no": 39,
-          "recipe": [["CookFish"], ["Stambulb"], ["Oil Jar"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d83215e",
-          "actor_name": "Item_Cook_H_01",
-          "name": "Seafood Meunière",
-          "recipe_no": 43,
-          "recipe": [["CookFish"], ["Goat Butter"], ["Tabantha Wheat"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832164",
-          "actor_name": "Item_Cook_B_02",
-          "name": "Simmered Fruits",
-          "recipe_no": 47,
-          "recipe": [["CookFruit"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83216b",
-          "actor_name": "Item_Cook_K_07",
-          "name": "Cream of Vegetable Soup",
-          "recipe_no": 53,
-          "recipe": [["CookPlant"], ["Rock Salt"], ["Fresh Milk"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83216c",
-          "actor_name": "Item_Cook_F_03",
-          "name": "Veggie Cream Soup",
-          "recipe_no": 54,
-          "recipe": [["Fortified Pumpkin", "Sun Pumpkin", "Swift Carrot", "Endura Carrot"], ["Rock Salt"], ["Fresh Milk"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83216f",
-          "actor_name": "Item_Cook_F_02",
-          "name": "Creamy Seafood Soup",
-          "recipe_no": 57,
-          "recipe": [["CookFish"], ["CookPlant"], ["Rock Salt"], ["Fresh Milk"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832171",
-          "actor_name": "Item_Cook_F_04",
-          "name": "Creamy Heart Soup",
-          "recipe_no": 59,
-          "recipe": [["Hearty Radish", "Big Hearty Radish"], ["Voltfruit"], ["Hydromelon"], ["Fresh Milk"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83217f",
-          "actor_name": "Item_Cook_S_01",
-          "name": "Cheesy Curry",
-          "recipe_no": 73,
-          "recipe": [["Hylian Rice"], ["Hateno Cheese"], ["Goron Spice"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d832185",
-          "actor_name": "Item_Cook_B_20",
-          "name": "Meat-Stuffed Pumpkin",
-          "recipe_no": 79,
-          "recipe": [["Fortified Pumpkin", "Sun Pumpkin"], ["CookMeat"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832190",
-          "actor_name": "Item_Cook_E_04",
-          "name": "Fried Egg and Rice",
-          "recipe_no": 90,
-          "recipe": [["Hylian Rice"], ["Bird Egg"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832199",
-          "actor_name": "Item_Cook_S_04",
-          "name": "Gourmet Cheesy Meat Bowl",
-          "recipe_no": 99,
-          "recipe": [["Raw Gourmet Meat"], ["Hylian Rice"], ["Hateno Cheese"], ["Rock Salt"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d83219a",
-          "actor_name": "Item_Cook_G_03",
-          "name": "Veggie Rice Balls",
-          "recipe_no": 100,
-          "recipe": [["CookPlant"], ["Hylian Rice"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83219d",
-          "actor_name": "Item_Cook_G_02",
-          "name": "Seafood Rice Balls",
-          "recipe_no": 103,
-          "recipe": [["CookFish"], ["Hylian Rice"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321a1",
-          "actor_name": "Item_Cook_R_04",
-          "name": "Hylian Tomato Pizza",
-          "recipe_no": 107,
-          "recipe": [["Hylian Tomato"], ["Tabantha Wheat"], ["Hateno Cheese"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321b0",
-          "actor_name": "Item_Cook_I_14",
-          "name": "Egg Pudding",
-          "recipe_no": 121,
-          "recipe": [["Bird Egg"], ["Fresh Milk"], ["Cane Sugar"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321b8",
-          "actor_name": "Item_Cook_Q_09",
-          "name": "Cheesecake",
-          "recipe_no": 129,
-          "recipe": [["Hateno Cheese"], ["Tabantha Wheat"], ["Cane Sugar"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321c1",
-          "actor_name": "Item_Cook_L_04",
-          "name": "Monster Rice Ball",
-          "recipe_no": 138,
-          "recipe": [["Hylian Rice"], ["Rock Salt"], ["Monster Extract"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321d3",
-          "actor_name": "Item_Cook_C_17_DefenseUp",
-          "name": "Tough Elixir",
-          "recipe_no": 222,
-          "recipe": [["CookEnemy"], ["CookInsect (Tough)"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321d6",
-          "actor_name": "Item_Cook_C_17_LightEmission",
-          "name": "Bright Elixir",
-          "recipe_no": 225,
-          "recipe": [["CookEnemy"], ["CookInsect (Bright)"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321db",
-          "actor_name": "Item_Cook_C_16",
-          "name": "Fairy Tonic",
-          "recipe_no": 228,
-          "recipe": [["Fairy"], ["CookInsect"], ["CookEnemy"]],
-          "bonus_heart": -12,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83212e",
-          "actor_name": "Item_Cook_B_06",
-          "name": "Meat Skewer",
-          "recipe_no": 4,
-          "recipe": [["CookMeat"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832140",
-          "actor_name": "Item_Cook_B_01",
-          "name": "Fried Wild Greens",
-          "recipe_no": 16,
-          "recipe": [["CookPlant"], ["CookPlant"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832145",
-          "actor_name": "Item_Cook_Q_06",
-          "name": "Cooked Stambulb",
-          "recipe_no": 18,
-          "recipe": [["Stambulb"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d832146",
-          "actor_name": "Item_Cook_Q_07",
-          "name": "Buttered Stambulb",
-          "recipe_no": 19,
-          "recipe": [["Stambulb"], ["Goat Butter"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d832151",
-          "actor_name": "Item_Cook_D_04",
-          "name": "Salt-Grilled Meat",
-          "recipe_no": 30,
-          "recipe": [["Raw Meat", "Raw Bird Drumstick"], ["Rock Salt"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83215b",
-          "actor_name": "Item_Cook_R_06",
-          "name": "Deep-Fried Drumstick",
-          "recipe_no": 40,
-          "recipe": [["Raw Bird Drumstick"], ["Oil Jar"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d832160",
-          "actor_name": "Item_Cook_H_03",
-          "name": "Salmon Meunière",
-          "recipe_no": 45,
-          "recipe": [["Hearty Salmon"], ["Goat Butter"], ["Tabantha Wheat"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832165",
-          "actor_name": "Item_Cook_B_12",
-          "name": "Copious Simmered Fruits",
-          "recipe_no": 48,
-          "recipe": [["CookFruit"], ["CookFruit"], ["CookFruit"], ["CookFruit"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832173",
-          "actor_name": "Item_Cook_A_11",
-          "name": "Glazed Mushrooms",
-          "recipe_no": 61,
-          "recipe": [["CookMushroom"], ["Courser Bee Honey"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832178",
-          "actor_name": "Item_Cook_J_06",
-          "name": "Meat Curry",
-          "recipe_no": 66,
-          "recipe": [["Raw Meat"], ["Hylian Rice"], ["Goron Spice"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832184",
-          "actor_name": "Item_Cook_K_05",
-          "name": "Gourmet Meat Stew",
-          "recipe_no": 78,
-          "recipe": [["Raw Gourmet Meat", "Raw Whole Bird"], ["Tabantha Wheat"], ["Fresh Milk"], ["Goat Butter"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832189",
-          "actor_name": "Item_Cook_G_17",
-          "name": "Crab Risotto",
-          "recipe_no": 83,
-          "recipe": [["Razorclaw Crab", "Ironshell Crab", "Bright-Eyed Crab"], ["Hylian Rice"], ["Rock Salt"], ["Goat Butter"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83219b",
-          "actor_name": "Item_Cook_G_04",
-          "name": "Mushroom Rice Balls",
-          "recipe_no": 101,
-          "recipe": [["CookMushroom"], ["Hylian Rice"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321a2",
-          "actor_name": "Item_Cook_I_04",
-          "name": "Meat Pie",
-          "recipe_no": 108,
-          "recipe": [["CookMeat"], ["Tabantha Wheat"], ["Goat Butter"], ["Rock Salt"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321a7",
-          "actor_name": "Item_Cook_A_10",
-          "name": "Omelet",
-          "recipe_no": 112,
-          "recipe": [["Bird Egg"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321bf",
-          "actor_name": "Item_Cook_L_02",
-          "name": "Monster Soup",
-          "recipe_no": 136,
-          "recipe": [["Tabantha Wheat"], ["Goat Butter"], ["Fresh Milk"], ["Monster Extract"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321c9",
-          "actor_name": "Item_Cook_O_01",
-          "name": "Dubious Food",
-          "recipe_no": 145,
-          "recipe": [["CookGolem"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d83213e",
-          "actor_name": "Item_Cook_B_22",
-          "name": "Sautéed Nuts",
-          "recipe_no": 15,
-          "recipe": [["Acorn"], ["Chickaloo Tree Nut"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832148",
-          "actor_name": "Item_Cook_P_03",
-          "name": "Spiced Meat Skewer",
-          "recipe_no": 21,
-          "recipe": [["Raw Meat"], ["Goron Spice"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83214d",
-          "actor_name": "Item_Cook_B_18",
-          "name": "Prime Meat and Seafood Fry",
-          "recipe_no": 26,
-          "recipe": [["Raw Prime Meat", "Raw Bird Thigh"], ["CookFish"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832150",
-          "actor_name": "Item_Cook_D_01",
-          "name": "Salt-Grilled Mushrooms",
-          "recipe_no": 29,
-          "recipe": [["CookMushroom"], ["Rock Salt"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832155",
-          "actor_name": "Item_Cook_D_09",
-          "name": "Salt-Grilled Crab",
-          "recipe_no": 34,
-          "recipe": [["Razorclaw Crab", "Ironshell Crab", "Bright-Eyed Crab"], ["Rock Salt"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83215d",
-          "actor_name": "Item_Cook_R_08",
-          "name": "Deep-Fried Bird Roast",
-          "recipe_no": 42,
-          "recipe": [["Raw Whole Bird"], ["Oil Jar"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d832169",
-          "actor_name": "Item_Cook_Q_04",
-          "name": "Tomato Mushroom Stew",
-          "recipe_no": 51,
-          "recipe": [["CookMushroom"], ["Hylian Tomato"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d83216d",
-          "actor_name": "Item_Cook_K_06",
-          "name": "Cream of Mushroom Soup",
-          "recipe_no": 55,
-          "recipe": [["CookMushroom"], ["CookPlant"], ["Rock Salt"], ["Fresh Milk"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d832172",
-          "actor_name": "Item_Cook_A_14",
-          "name": "Glazed Veggies",
-          "recipe_no": 60,
-          "recipe": [["CookPlant"], ["Courser Bee Honey"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d83217d",
-          "actor_name": "Item_Cook_J_08",
-          "name": "Gourmet Poultry Curry",
-          "recipe_no": 71,
-          "recipe": [["Raw Whole Bird"], ["Hylian Rice"], ["Goron Spice"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321a8",
-          "actor_name": "Item_Cook_N_03",
-          "name": "Vegetable Omelet",
-          "recipe_no": 113,
-          "recipe": [["CookPlant"], ["Bird Egg"], ["Goat Butter"], ["Rock Salt"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321ae",
-          "actor_name": "Item_Cook_I_16",
-          "name": "Honey Candy",
-          "recipe_no": 119,
-          "recipe": [["Courser Bee Honey"]],
-          "bonus_heart": -8,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321b2",
-          "actor_name": "Item_Cook_I_11",
-          "name": "Wildberry Crepe",
-          "recipe_no": 123,
-          "recipe": [["Tabantha Wheat Fresh Milk"], ["Bird Egg"], ["Cane Sugar"], ["Wildberry"]],
-          "bonus_heart": 16,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321b9",
-          "actor_name": "Item_Cook_I_01",
-          "name": "Fruit Pie",
-          "recipe_no": 130,
-          "recipe": [["CookFruit"], ["Tabantha Wheat"], ["Goat Butter"], ["Cane Sugar"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321c0",
-          "actor_name": "Item_Cook_L_05",
-          "name": "Monster Curry",
-          "recipe_no": 137,
-          "recipe": [["Hylian Rice"], ["Goron Spice"], ["Monster Extract"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321c5",
-          "actor_name": "Item_Cook_S_08",
-          "name": "Dark Curry",
-          "recipe_no": 142,
-          "recipe": [["Dark Clump"], ["Goron Spice"], ["Hylian Rice"]],
-          "bonus_heart": null,
-          "bonus_level": null,
-          "bonus_time": null
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321cc",
-          "actor_name": "Item_Cook_C_17_StaminaRecover",
-          "name": "Energizing Elixir",
-          "recipe_no": 215,
-          "recipe": [["CookEnemy"], ["CookInsect (Energizing)"]],
-          "bonus_heart": 0,
-          "bonus_level": 0,
-          "bonus_time": 0
-        },
-        {
-          "_id": "64bd55aff752c7e35d8321d9",
-          "actor_name": "Item_Cook_C_16",
-          "name": "Fairy Tonic",
-          "recipe_no": 228,
-          "recipe": [["Fairy"], ["CookGolem", "CookForeign"]],
-            "bonus_heart": -12,
-            "bonus_level": null,
-            "bonus_time": null
-            },
-            {
-              "_id": "64bd55aff752c7e35d832131",
-              "actor_name": "Item_Cook_B_05",
-              "name": "Fish Skewer",
-              "recipe_no": 5,
-              "recipe": [["CookFish"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d83213d",
-              "actor_name": "Item_Cook_B_21",
-              "name": "Sautéed Peppers",
-              "recipe_no": 14,
-              "recipe": [["Spicy Pepper"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d83214e",
-              "actor_name": "Item_Cook_B_19",
-              "name": "Gourmet Meat and Seafood Fry",
-              "recipe_no": 27,
-              "recipe": [["Raw Gourmet Meat", "Raw Whole Bird"], ["CookFish"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d832161",
-              "actor_name": "Item_Cook_A_07",
-              "name": "Fruit and Mushroom Mix",
-              "recipe_no": 46,
-              "recipe": [["CookMushroom"], ["CookFruit"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d832163",
-              "actor_name": "Item_Cook_B_02",
-              "name": "Simmered Fruits",
-              "recipe_no": 47,
-              "recipe": [["CookFruit"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d832170",
-              "actor_name": "Item_Cook_K_04",
-              "name": "Snail Chowder",
-              "recipe_no": 58,
-              "recipe": [["Sneaky River Snail"], ["Tabantha Wheat"], ["Fresh Milk"], ["Goat Butter"]],
-              "bonus_heart": null,
-              "bonus_level": null,
-              "bonus_time": null
-            },
-            {
-              "_id": "64bd55aff752c7e35d832174",
-              "actor_name": "Item_Cook_A_12",
-              "name": "Glazed Meat",
-              "recipe_no": 62,
-              "recipe": [["CookMeat"], ["Courser Bee Honey"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d832179",
-              "actor_name": "Item_Cook_J_07",
-              "name": "Prime Meat Curry",
-              "recipe_no": 67,
-              "recipe": [["Raw Prime Meat"], ["Hylian Rice"], ["Goron Spice"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d83217a",
-              "actor_name": "Item_Cook_J_09",
-              "name": "Gourmet Meat Curry",
-              "recipe_no": 68,
-              "recipe": [["Raw Gourmet Meat"], ["Hylian Rice"], ["Goron Spice"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d832182",
-              "actor_name": "Item_Cook_K_01",
-              "name": "Meat Stew",
-              "recipe_no": 76,
-              "recipe": [["Raw Meat", "Raw Bird Drumstick"], ["Tabantha Wheat"], ["Fresh Milk"], ["Goat Butter"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d832183",
-              "actor_name": "Item_Cook_K_02",
-              "name": "Prime Meat Stew",
-              "recipe_no": 77,
-              "recipe": [["Raw Prime Meat"], ["Raw Bird Thigh"], ["Tabantha Wheat"], ["Fresh Milk"], ["Goat Butter"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d83218d",
-              "actor_name": "Item_Cook_E_03",
-              "name": "Gourmet Poultry Pilaf",
-              "recipe_no": 87,
-              "recipe": [["Raw Whole Bird"], ["Bird Egg"], ["Hylian Rice"], ["Goat Butter"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d832197",
-              "actor_name": "Item_Cook_S_02",
-              "name": "Cheesy Meat Bowl",
-              "recipe_no": 97,
-              "recipe": [["Raw Meat"], ["Hylian Rice"], ["Hateno Cheese"], ["Rock Salt"]],
-              "bonus_heart": null,
-              "bonus_level": null,
-              "bonus_time": null
-            },
-            {
-              "_id": "64bd55aff752c7e35d83219c",
-              "actor_name": "Item_Cook_G_15",
-              "name": "Meaty Rice Balls",
-              "recipe_no": 102,
-              "recipe": [["CookMeat"], ["Hylian Rice"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321a9",
-              "actor_name": "Item_Cook_N_04",
-              "name": "Mushroom Omelet",
-              "recipe_no": 114,
-              "recipe": [["CookMushroom"], ["Bird Egg"], ["Rock Salt"], ["Goat Butter"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321ad",
-              "actor_name": "Item_Cook_I_08",
-              "name": "Honeyed Apple",
-              "recipe_no": 118,
-              "recipe": [["Apple", "Golden Apple"], ["Courser Bee Honey"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321b6",
-              "actor_name": "Item_Cook_I_05",
-              "name": "Carrot Cake",
-              "recipe_no": 127,
-              "recipe": [["Swift Carrot", "Endura Carrot"], ["Tabantha Wheat"], ["Cane Sugar"], ["Goat Butter"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321bd",
-              "actor_name": "Item_Cook_R_03",
-              "name": "Noble Pursuit",
-              "recipe_no": 134,
-              "recipe": [["Palm Fruit"], ["Hydromelon"], ["Voltfruit"], ["Rock Salt"]],
-              "bonus_heart": null,
-              "bonus_level": null,
-              "bonus_time": null
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321be",
-              "actor_name": "Item_Cook_L_01",
-              "name": "Monster Stew",
-              "recipe_no": 135,
-              "recipe": [["CookMeat"], ["CookFish"], ["Monster Extract"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321c3",
-              "actor_name": "Item_Cook_S_05",
-              "name": "Dark Stew",
-              "recipe_no": 140,
-              "recipe": [["Dark Clump"], ["CookMeat"], ["CookFish"]],
-              "bonus_heart": null,
-              "bonus_level": null,
-              "bonus_time": null
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321cf",
-              "actor_name": "Item_Cook_C_17_ResistHot",
-              "name": "Chilly Elixir",
-              "recipe_no": 218,
-              "recipe": [["CookEnemy"], ["CookInsect (Chilly)"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321d2",
-              "actor_name": "Item_Cook_C_17_AttackUp",
-              "name": "Mighty Elixir",
-              "recipe_no": 221,
-              "recipe": [["CookEnemy"], ["CookInsect (Mighty)"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321d5",
-              "actor_name": "Item_Cook_C_17_NotSlippy",
-              "name": "Sticky Elixir",
-              "recipe_no": 224,
-              "recipe": [["CookEnemy"], ["CookInsect (Sticky)"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            },
-            {
-              "_id": "64bd55aff752c7e35d8321d8",
-              "actor_name": "Item_Cook_C_17_LifeMaxUp",
-              "name": "Hearty Elixir",
-              "recipe_no": 227,
-              "recipe": [["CookEnemy"], ["CookInsect (Hearty)"]],
-              "bonus_heart": 0,
-              "bonus_level": 0,
-              "bonus_time": 0
-            }
-          ]
-          }
+      "bonus_time": 0
+    },
+    {
+      "_id": 997,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_05",
+      "name": "Fish Skewer",
+      "recipe": [
+        [
+          1,
+          0
+        ]
+      ],
+      "recipe_no": 5,
+      "bonus_time": 0
+    },
+    {
+      "_id": 998,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_23",
+      "name": "Seafood Skewer",
+      "recipe": [
+        [
+          4,
+          224,
+          3,
+          0
+        ]
+      ],
+      "recipe_no": 6,
+      "bonus_time": 0
+    },
+    {
+      "_id": 999,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_16",
+      "name": "Copious Meat Skewers",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "recipe_no": 7,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1000,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_13",
+      "name": "Copious Mushroom Skewers",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "recipe_no": 20,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1001,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_P_01",
+      "name": "Fragrant Mushroom Sauté",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          12,
+          266
+        ]
+      ],
+      "recipe_no": 36,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1002,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_D_08",
+      "name": "Pepper Seafood",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          32
+        ]
+      ],
+      "recipe_no": 38,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1003,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_R_05",
+      "name": "Fragrant Seafood Stew",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          426
+        ],
+        [
+          12,
+          375
+        ]
+      ],
+      "recipe_no": 39,
+      "bonus_time": null
+    },
+    {
+      "_id": 1004,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_H_01",
+      "name": "Seafood Meuni�re",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          225
+        ]
+      ],
+      "recipe_no": 43,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1005,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_02",
+      "name": "Simmered Fruits",
+      "recipe": [
+        [
+          6,
+          0
+        ]
+      ],
+      "recipe_no": 47,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1006,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_K_07",
+      "name": "Cream of Vegetable Soup",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          374
+        ]
+      ],
+      "recipe_no": 53,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1007,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_F_03",
+      "name": "Veggie Cream Soup",
+      "recipe": [
+        [
+          12,
+          372,
+          12,
+          283,
+          12,
+          406,
+          12,
+          424
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          374
+        ]
+      ],
+      "recipe_no": 54,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1008,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_F_02",
+      "name": "Creamy Seafood Soup",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          374
+        ]
+      ],
+      "recipe_no": 57,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1009,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_F_04",
+      "name": "Creamy Heart Soup",
+      "recipe": [
+        [
+          12,
+          424,
+          12,
+          271
+        ],
+        [
+          12,
+          327
+        ],
+        [
+          12,
+          281
+        ],
+        [
+          12,
+          374
+        ]
+      ],
+      "recipe_no": 59,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1010,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_S_01",
+      "name": "Cheesy Curry",
+      "recipe": [
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          330
+        ],
+        [
+          12,
+          266
+        ]
+      ],
+      "recipe_no": 73,
+      "bonus_time": null
+    },
+    {
+      "_id": 1011,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_20",
+      "name": "Meat-Stuffed Pumpkin",
+      "recipe": [
+        [
+          12,
+          372,
+          12,
+          283
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "recipe_no": 79,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1012,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_E_04",
+      "name": "Fried Egg and Rice",
+      "recipe": [
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          241
+        ]
+      ],
+      "recipe_no": 90,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1013,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_S_04",
+      "name": "Gourmet Cheesy Meat Bowl",
+      "recipe": [
+        [
+          12,
+          388
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          330
+        ],
+        [
+          12,
+          401
+        ]
+      ],
+      "recipe_no": 99,
+      "bonus_time": null
+    },
+    {
+      "_id": 1014,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_G_03",
+      "name": "Veggie Rice Balls",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          267
+        ]
+      ],
+      "recipe_no": 100,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1015,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_G_02",
+      "name": "Seafood Rice Balls",
+      "recipe": [
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          267
+        ]
+      ],
+      "recipe_no": 103,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1016,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_R_04",
+      "name": "Hylian Tomato Pizza",
+      "recipe": [
+        [
+          12,
+          239
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          330
+        ]
+      ],
+      "recipe_no": 107,
+      "bonus_time": null
+    },
+    {
+      "_id": 1017,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_I_14",
+      "name": "Egg Pudding",
+      "recipe": [
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          387
+        ]
+      ],
+      "recipe_no": 121,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1018,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_Q_09",
+      "name": "Cheesecake",
+      "recipe": [
+        [
+          12,
+          330
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          387
+        ]
+      ],
+      "recipe_no": 129,
+      "bonus_time": null
+    },
+    {
+      "_id": 1019,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_L_04",
+      "name": "Monster Rice Ball",
+      "recipe": [
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          422
+        ]
+      ],
+      "recipe_no": 138,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1020,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_17_DefenseUp",
+      "name": "Tough Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          7
+        ]
+      ],
+      "recipe_no": 222,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1021,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_17_LightEmission",
+      "name": "Bright Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          8
+        ]
+      ],
+      "recipe_no": 225,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1022,
+      "bonus_heart": -12,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_16",
+      "name": "Fairy Tonic",
+      "recipe": [
+        [
+          12,
+          206
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      "recipe_no": 228,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1023,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_06",
+      "name": "Meat Skewer",
+      "recipe": [
+        [
+          7,
+          0
+        ]
+      ],
+      "recipe_no": 4,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1024,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_01",
+      "name": "Fried Wild Greens",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "recipe_no": 16,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1025,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_Q_06",
+      "name": "Cooked Stambulb",
+      "recipe": [
+        [
+          12,
+          426
+        ]
+      ],
+      "recipe_no": 18,
+      "bonus_time": null
+    },
+    {
+      "_id": 1026,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_Q_07",
+      "name": "Buttered Stambulb",
+      "recipe": [
+        [
+          12,
+          426
+        ],
+        [
+          12,
+          242
+        ]
+      ],
+      "recipe_no": 19,
+      "bonus_time": null
+    },
+    {
+      "_id": 1027,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_D_04",
+      "name": "Salt-Grilled Meat",
+      "recipe": [
+        [
+          12,
+          268,
+          12,
+          358
+        ],
+        [
+          12,
+          401
+        ]
+      ],
+      "recipe_no": 30,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1028,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_R_06",
+      "name": "Deep-Fried Drumstick",
+      "recipe": [
+        [
+          12,
+          358
+        ],
+        [
+          12,
+          375
+        ]
+      ],
+      "recipe_no": 40,
+      "bonus_time": null
+    },
+    {
+      "_id": 1029,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_H_03",
+      "name": "Salmon Meuni�re",
+      "recipe": [
+        [
+          12,
+          445
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          225
+        ]
+      ],
+      "recipe_no": 45,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1030,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_12",
+      "name": "Copious Simmered Fruits",
+      "recipe": [
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "recipe_no": 48,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1031,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_A_11",
+      "name": "Glazed Mushrooms",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          12,
+          408
+        ]
+      ],
+      "recipe_no": 61,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1032,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_J_06",
+      "name": "Meat Curry",
+      "recipe": [
+        [
+          12,
+          268
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ]
+      ],
+      "recipe_no": 66,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1033,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_K_05",
+      "name": "Gourmet Meat Stew",
+      "recipe": [
+        [
+          12,
+          388,
+          12,
+          302
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          242
+        ]
+      ],
+      "recipe_no": 78,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1034,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_G_17",
+      "name": "Crab Risotto",
+      "recipe": [
+        [
+          3,
+          0
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          242
+        ]
+      ],
+      "recipe_no": 83,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1035,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_G_04",
+      "name": "Mushroom Rice Balls",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          12,
+          267
+        ]
+      ],
+      "recipe_no": 101,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1036,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_I_04",
+      "name": "Meat Pie",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          401
+        ]
+      ],
+      "recipe_no": 108,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1037,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_A_10",
+      "name": "Omelet",
+      "recipe": [
+        [
+          12,
+          241
+        ]
+      ],
+      "recipe_no": 112,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1038,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_L_02",
+      "name": "Monster Soup",
+      "recipe": [
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          422
+        ]
+      ],
+      "recipe_no": 136,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1039,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_O_01",
+      "name": "Dubious Food",
+      "recipe": [
+        [
+          0,
+          0
+        ]
+      ],
+      "recipe_no": 145,
+      "bonus_time": null
+    },
+    {
+      "_id": 1040,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_22",
+      "name": "Sautéed Nuts",
+      "recipe": [
+        [
+          12,
+          265
+        ],
+        [
+          12,
+          345
+        ]
+      ],
+      "recipe_no": 15,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1041,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_P_03",
+      "name": "Spiced Meat Skewer",
+      "recipe": [
+        [
+          12,
+          268
+        ],
+        [
+          12,
+          266
+        ]
+      ],
+      "recipe_no": 21,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1042,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_18",
+      "name": "Prime Meat and Seafood Fry",
+      "recipe": [
+        [
+          12,
+          314,
+          12,
+          269
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "recipe_no": 26,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1043,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_D_01",
+      "name": "Salt-Grilled Mushrooms",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          12,
+          401
+        ]
+      ],
+      "recipe_no": 29,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1044,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_D_09",
+      "name": "Salt-Grilled Crab",
+      "recipe": [
+        [
+          3,
+          0
+        ],
+        [
+          12,
+          401
+        ]
+      ],
+      "recipe_no": 34,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1045,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_R_08",
+      "name": "Deep-Fried Bird Roast",
+      "recipe": [
+        [
+          12,
+          302
+        ],
+        [
+          12,
+          375
+        ]
+      ],
+      "recipe_no": 42,
+      "bonus_time": null
+    },
+    {
+      "_id": 1046,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_Q_04",
+      "name": "Tomato Mushroom Stew",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          12,
+          239
+        ]
+      ],
+      "recipe_no": 51,
+      "bonus_time": null
+    },
+    {
+      "_id": 1047,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_K_06",
+      "name": "Cream of Mushroom Soup",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          374
+        ]
+      ],
+      "recipe_no": 55,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1048,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_A_14",
+      "name": "Glazed Veggies",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          408
+        ]
+      ],
+      "recipe_no": 60,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1049,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_J_08",
+      "name": "Gourmet Poultry Curry",
+      "recipe": [
+        [
+          12,
+          302
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ]
+      ],
+      "recipe_no": 71,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1050,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_N_03",
+      "name": "Vegetable Omelet",
+      "recipe": [
+        [
+          5,
+          0
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          401
+        ]
+      ],
+      "recipe_no": 113,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1051,
+      "bonus_heart": -8,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_I_16",
+      "name": "Honey Candy",
+      "recipe": [
+        [
+          12,
+          408
+        ]
+      ],
+      "recipe_no": 119,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1052,
+      "bonus_heart": 16,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_I_11",
+      "name": "Wildberry Crepe",
+      "recipe": [
+        [
+          12,
+          225,
+          12,
+          374
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          387
+        ],
+        [
+          12,
+          371
+        ]
+      ],
+      "recipe_no": 123,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1053,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_I_01",
+      "name": "Fruit Pie",
+      "recipe": [
+        [
+          6,
+          0
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          242
+        ],
+        [
+          12,
+          387
+        ]
+      ],
+      "recipe_no": 130,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1054,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_L_05",
+      "name": "Monster Curry",
+      "recipe": [
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ],
+        [
+          12,
+          422
+        ]
+      ],
+      "recipe_no": 137,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1055,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_S_08",
+      "name": "Dark Curry",
+      "recipe": [
+        [
+          12,
+          226
+        ],
+        [
+          12,
+          266
+        ],
+        [
+          12,
+          267
+        ]
+      ],
+      "recipe_no": 142,
+      "bonus_time": null
+    },
+    {
+      "_id": 1056,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_17_StaminaRecover",
+      "name": "Energizing Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          9
+        ]
+      ],
+      "recipe_no": 215,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1057,
+      "bonus_heart": -12,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_C_16",
+      "name": "Fairy Tonic",
+      "recipe": [
+        [
+          12,
+          206
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "recipe_no": 228,
+      "bonus_time": null
+    },
+    {
+      "_id": 1058,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_05",
+      "name": "Fish Skewer",
+      "recipe": [
+        [
+          1,
+          0
+        ]
+      ],
+      "recipe_no": 5,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1059,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_21",
+      "name": "Sautéed Peppers",
+      "recipe": [
+        [
+          12,
+          32
+        ]
+      ],
+      "recipe_no": 14,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1060,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_19",
+      "name": "Gourmet Meat and Seafood Fry",
+      "recipe": [
+        [
+          12,
+          388,
+          12,
+          302
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "recipe_no": 27,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1061,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_A_07",
+      "name": "Fruit and Mushroom Mix",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "recipe_no": 46,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1062,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_B_02",
+      "name": "Simmered Fruits",
+      "recipe": [
+        [
+          6,
+          0
+        ]
+      ],
+      "recipe_no": 47,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1063,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_K_04",
+      "name": "Snail Chowder",
+      "recipe": [
+        [
+          4,
+          224
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          242
+        ]
+      ],
+      "recipe_no": 58,
+      "bonus_time": null
+    },
+    {
+      "_id": 1064,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_A_12",
+      "name": "Glazed Meat",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          12,
+          408
+        ]
+      ],
+      "recipe_no": 62,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1065,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_J_07",
+      "name": "Prime Meat Curry",
+      "recipe": [
+        [
+          12,
+          314
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ]
+      ],
+      "recipe_no": 67,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1066,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_J_09",
+      "name": "Gourmet Meat Curry",
+      "recipe": [
+        [
+          12,
+          388
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          266
+        ]
+      ],
+      "recipe_no": 68,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1067,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_K_01",
+      "name": "Meat Stew",
+      "recipe": [
+        [
+          12,
+          268,
+          12,
+          358
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          242
+        ]
+      ],
+      "recipe_no": 76,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1068,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_K_02",
+      "name": "Prime Meat Stew",
+      "recipe": [
+        [
+          12,
+          314
+        ],
+        [
+          12,
+          269
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          374
+        ],
+        [
+          12,
+          242
+        ]
+      ],
+      "recipe_no": 77,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1069,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_E_03",
+      "name": "Gourmet Poultry Pilaf",
+      "recipe": [
+        [
+          12,
+          302
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          242
+        ]
+      ],
+      "recipe_no": 87,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1070,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_S_02",
+      "name": "Cheesy Meat Bowl",
+      "recipe": [
+        [
+          12,
+          268
+        ],
+        [
+          12,
+          267
+        ],
+        [
+          12,
+          330
+        ],
+        [
+          12,
+          401
+        ]
+      ],
+      "recipe_no": 97,
+      "bonus_time": null
+    },
+    {
+      "_id": 1071,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_G_15",
+      "name": "Meaty Rice Balls",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          12,
+          267
+        ]
+      ],
+      "recipe_no": 102,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1072,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_N_04",
+      "name": "Mushroom Omelet",
+      "recipe": [
+        [
+          2,
+          0
+        ],
+        [
+          12,
+          241
+        ],
+        [
+          12,
+          401
+        ],
+        [
+          12,
+          242
+        ]
+      ],
+      "recipe_no": 114,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1073,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_I_08",
+      "name": "Honeyed Apple",
+      "recipe": [
+        [
+          12,
+          356,
+          12,
+          254
+        ],
+        [
+          12,
+          408
+        ]
+      ],
+      "recipe_no": 118,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1074,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_I_05",
+      "name": "Carrot Cake",
+      "recipe": [
+        [
+          12,
+          406,
+          12,
+          424
+        ],
+        [
+          12,
+          225
+        ],
+        [
+          12,
+          387
+        ],
+        [
+          12,
+          242
+        ]
+      ],
+      "recipe_no": 127,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1075,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_R_03",
+      "name": "Noble Pursuit",
+      "recipe": [
+        [
+          12,
+          282
+        ],
+        [
+          12,
+          281
+        ],
+        [
+          12,
+          327
+        ],
+        [
+          12,
+          401
+        ]
+      ],
+      "recipe_no": 134,
+      "bonus_time": null
+    },
+    {
+      "_id": 1076,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_L_01",
+      "name": "Monster Stew",
+      "recipe": [
+        [
+          7,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          12,
+          422
+        ]
+      ],
+      "recipe_no": 135,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1077,
+      "bonus_heart": null,
+      "bonus_level": null,
+      "actor_name": "Item_Cook_S_05",
+      "name": "Dark Stew",
+      "recipe": [
+        [
+          12,
+          226
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "recipe_no": 140,
+      "bonus_time": null
+    },
+    {
+      "_id": 1078,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_17_ResistHot",
+      "name": "Chilly Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          10
+        ]
+      ],
+      "recipe_no": 218,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1079,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_17_AttackUp",
+      "name": "Mighty Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          12
+        ]
+      ],
+      "recipe_no": 221,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1080,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_17_NotSlippy",
+      "name": "Sticky Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "recipe_no": 224,
+      "bonus_time": 0
+    },
+    {
+      "_id": 1081,
+      "bonus_heart": 0,
+      "bonus_level": 0,
+      "actor_name": "Item_Cook_C_17_LifeMaxUp",
+      "name": "Hearty Elixir",
+      "recipe": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          13
+        ]
+      ],
+      "recipe_no": 227,
+      "bonus_time": 0
+    }
+  ]
+}

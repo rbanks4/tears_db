@@ -2,6 +2,8 @@ package com.gaming.android.tearsdatabase.data
 
 import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.models.*
+import com.gaming.android.tearsdatabase.models.submodels.CookId.*
+import com.gaming.android.tearsdatabase.models.submodels.EffectId.*
 
 object SampleData {
     val weapons = listOf(
@@ -19,23 +21,23 @@ object SampleData {
     )
 
     val materials = listOf(
-        Material("Hot Footed Frog", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+        Material(1,"Hot Footed Frog", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3, Insect.id, Hasty.id)
             .setDrawable(R.drawable.hot_footed_frog),
-        Material("Energetic Rino Beetle", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+        Material(2,"Energetic Rino Beetle", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3, Insect.id, Hasty.id)
             .setDrawable(R.drawable.energetic_rhino_beetle),
-        Material("Smotherwing Butterfly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+        Material(3,"Smotherwing Butterfly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3, Insect.id, Fireproof.id)
             .setDrawable(R.drawable.smotherwing_butterfly),
-        Material("Sticky Frog", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+        Material(4,"Sticky Frog", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3, Insect.id, Sticky.id)
             .setDrawable(R.drawable.sticky_frog),
-        Material("Sticky Lizard", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+        Material(5,"Sticky Lizard", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3, Insect.id, Sticky.id)
             .setDrawable(R.drawable.sticky_lizard),
-        Material("Deep Firefly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+        Material(6,"Deep Firefly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3, Insect.id, Bright.id)
             .setDrawable(R.drawable.deep_firefly),
-        Material("Tireless Frog", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+        Material(7,"Tireless Frog", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3, Insect.id, Enduring.id)
             .setDrawable(R.drawable.tireless_frog),
-        Material("Cold Darner", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+        Material(8,"Cold Darner", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3, Insect.id, Chilly.id)
             .setDrawable(R.drawable.cold_darner),
-        Material("Sunset Firefly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3)
+        Material(9,"Sunset Firefly", 3, 3, "3", "blue", "fire",7, 3, 3, "", 3, 3, 3,3,3,3,3, Insect.id, Spicy.id)
             .setDrawable(R.drawable.sunset_firefly)
 
     )
@@ -94,14 +96,14 @@ object SampleData {
     )
 
     val meals = listOf(
-        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom", "CookFish"), listOf("CookMushroom"), listOf("CookFish", "CookTomato", "CookCrab")), 3, 3, 3)
+        Meal(12,"Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf(12, 424), listOf(3,0), listOf(2,0, 4,0, 12, 425), listOf(12, 488), listOf(12, 501)), 3, 3, 3)
             .setDrawable(R.drawable.mushroom_skewer),
-        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom"), listOf("CookMushroom")), 3, 3, 3)
-            .setDrawable(R.drawable.mushroom_skewer),
-        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom"), listOf("CookMushroom")), 3, 3, 3)
-            .setDrawable(R.drawable.mushroom_skewer),
-        Meal("Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf("CookMushroom"), listOf("CookMushroom")), 3, 3, 3)
-            .setDrawable(R.drawable.mushroom_skewer)
+        Meal(13,"Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf(2, 0), listOf(2, 0)), 3, 3, 3)
+            .setDrawable(R.drawable.carrot_cake),
+        Meal(14,"Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf(2, 0), listOf(2, 0)), 3, 3, 3)
+            .setDrawable(R.drawable.omelet),
+        Meal(15,"Item_Cooked_A_01", "Mushroom Skewer", 1, listOf(listOf(2, 0), listOf(2, 0)), 3, 3, 3)
+            .setDrawable(R.drawable.creamy_heart_soup)
     )
 
     val armor = listOf(

@@ -110,11 +110,20 @@ class ListFragment : Fragment() {
 
                 //materials
                 launch {
-                    materialViewModel.materials.collect { items ->
-                        if(items.isEmpty()) {
+                    materialViewModel.materials.collect { materials ->
+                        if(materials.isEmpty()) {
                             materialViewModel.setup(dataSource.materialsBackup()) { findDrawable(it) }
                         } else {
-                            materialViewModel.setup(items) { findDrawable(it) }
+                            materialViewModel.setup(materials) { findDrawable(it) }
+                        }
+
+                        mealsViewModel.meals.collect { meals ->
+                            if(meals.isEmpty()) {
+                                mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it) }
+                            } else {
+                                mealsViewModel.setup(meals) { findDrawable(it) }
+                            }
+                            mealsViewModel.updateWithMaterials(materialViewModel.items?: emptyList())
                         }
                     }
                 }
@@ -141,16 +150,16 @@ class ListFragment : Fragment() {
                     }
                 }
 
-                //meals
-                launch {
-                    mealsViewModel.meals.collect { items ->
-                        if(items.isEmpty()) {
-                            mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it) }
-                        } else {
-                            mealsViewModel.setup(items) { findDrawable(it) }
-                        }
-                    }
-                }
+//                //meals
+//                launch {
+//                    mealsViewModel.meals.collect { items ->
+//                        if(items.isEmpty()) {
+//                            mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it) }
+//                        } else {
+//                            mealsViewModel.setup(items) { findDrawable(it) }
+//                        }
+//                    }
+//                }
 
                 //shields
                 launch {

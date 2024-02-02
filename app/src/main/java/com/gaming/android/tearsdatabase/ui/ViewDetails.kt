@@ -2,9 +2,15 @@ package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -22,16 +28,20 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.*
+import com.gaming.android.tearsdatabase.models.submodels.EffectId
 import com.gaming.android.tearsdatabase.theme.TearsTheme
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 class ViewDetails {
     companion object {
@@ -119,6 +129,13 @@ class ViewDetails {
                     )
 
                     Spacer(Modifier.padding(all = 8.dp))
+
+                    val effectTest = EffectId.entries.filter { it.id == item.effect_id }.first()
+                    val effectName = stringResource(id = effectTest.effectName)
+                    DetailRow(
+                        name = "Cooking Details:",
+                        value = "${item.cook_id} and ${item.effect_id} so that ${effectName}"
+                    )
 
                     if (item.additional_damage != -1) {
                         DetailRow(
@@ -394,11 +411,11 @@ class ViewDetails {
         }
 
         @Composable
-        fun MealDetails(meal: Meal) {
+        fun MealDetails(meal: Meal, findList: (Pair<Int,Int>) -> List<Material>) {
             Surface(
                 Modifier
                     .requiredWidth(IntrinsicSize.Min)
-                    .requiredHeight(IntrinsicSize.Min)
+                    .requiredHeight(IntrinsicSize.Max)
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
@@ -417,7 +434,22 @@ class ViewDetails {
                     meal.bonus_heart?.let { DetailRow("Bonus Heart:", it.toString()) }
                     meal.bonus_level?.let { DetailRow("Bonus Level:", it.toString()) }
                     meal.bonus_time?.let {DetailRow("Bonus Time:", it.toString()) }
-                    ShowSubRow("Recipe:", DataSource.recipeFormat(meal.recipe))
+                    //todo show the materials instead
+                    //ShowSubRow("Recipe:", DataSource.recipeFormat(meal.recipe))
+
+                    var recipeList = mutableListOf<List<Material>>()
+                    for(ingredients in meal.recipe.indices){
+                        var countLabel = ingredients + 1
+                        recipeList.add(emptyList())
+                        for(pair in meal.recipe[ingredients].zipWithNext()){
+                            val newIngredients = findList(pair)
+                            if(newIngredients.isNotEmpty()) {
+                                recipeList[ingredients] += findList(pair)
+                            }
+                        }
+                    }
+
+                    IngredientRow(materials = recipeList)
 
                 }
             }
@@ -436,7 +468,7 @@ class ViewDetails {
             Surface(
                 Modifier
                     .requiredWidth(IntrinsicSize.Min)
-                    .requiredHeight(IntrinsicSize.Min)
+                    .requiredHeight(IntrinsicSize.Max)
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
@@ -567,7 +599,9 @@ class ViewDetails {
                 }
             }
 
-            AnimatedVisibility(visible = isExpanded) {
+            AnimatedVisibility(
+                visible = isExpanded
+            ) {
                 Column {
                     ShowEffectRow(effect = effect, showPotency)
                     if (effect.effect_level2 != null) {
@@ -674,7 +708,6 @@ class ViewDetails {
 
         @Composable
         fun ShowSubRow(title: String, list: List<String>) {
-            // level = if(effect.level != null) "Level ${effect.level}" else ""
 
             Row(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)) {
                 Text(
@@ -688,6 +721,7 @@ class ViewDetails {
                     Row(
                         Modifier
                             .width(280.dp)
+                            .height(IntrinsicSize.Max)
                             .padding(horizontal = 16.dp)
                     ) {
                         Text(
@@ -747,6 +781,35 @@ class ViewDetails {
             }
         }
 
+        @Composable
+        fun IngredientRow(materials: List<List<Material>>) {
+            Box(modifier = Modifier
+                .width(300.dp)
+                .padding(horizontal = 1.dp), contentAlignment = Alignment.Center) {
+                Column(modifier = Modifier.horizontalScroll(rememberScrollState()), horizontalAlignment = Alignment.Start) {
+                    for (mats in materials) {
+                        Row(
+                            modifier = Modifier
+                                .padding(vertical = 4.dp)
+                                .height(30.dp)
+                                .wrapContentWidth(unbounded = true)
+                        ) {
+                            mats.forEach {
+                                Image(
+                                    painter = painterResource(id = it.image),
+                                    contentDescription = it.name,
+                                    modifier = Modifier
+                                        .size(30.dp)
+                                        .scale(1f)
+                                        .padding(1.dp)
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
     }
 
@@ -762,7 +825,7 @@ class ViewDetails {
     @Composable
     fun PreviewMealDetailsView() {
         TearsTheme {
-            MealDetails(meal = SampleData.meals[0])
+            MealDetails(meal = SampleData.meals[0], findList = { SampleData.materials } )
         }
     }
 
