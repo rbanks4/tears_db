@@ -457,7 +457,7 @@
           12,
           263,
           12,
-          301
+          399
         ],
         [
           12,
@@ -1350,7 +1350,7 @@
         ],
         [
           12,
-          301
+          399
         ],
         [
           12,
@@ -2331,7 +2331,7 @@
       "bonus_heart": 0,
       "bonus_level": 0,
       "actor_name": "Item_Cook_H_01",
-      "name": "Seafood Meuni�re",
+      "name": "Seafood Meunière",
       "recipe": [
         [
           1,
@@ -2866,7 +2866,7 @@
       "bonus_heart": 0,
       "bonus_level": 0,
       "actor_name": "Item_Cook_H_03",
-      "name": "Salmon Meuni�re",
+      "name": "Salmon Meunière",
       "recipe": [
         [
           12,

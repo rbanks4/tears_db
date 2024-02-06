@@ -39,19 +39,19 @@
 
     <!-- cooking strings for enums -->
     <!-- cook id names -->
-    <string name="c_foreign">CookForeign</string>
-    <string name="c_fish">CookFish</string>
-    <string name="c_mushroom">CookMushroom</string>
-    <string name="c_crab">CookCrab</string>
-    <string name="c_snail">CookSnail</string>
-    <string name="c_plant">CookPlant</string>
-    <string name="c_fruit">CookFruit</string>
-    <string name="c_meat">CookMeat</string>
-    <string name="c_ore">CookOre</string>
-    <string name="c_enemy">CookEnemy</string>
-    <string name="c_insect">CookInsect</string>
-    <string name="c_other">CookOther</string>
-    <string name="c_dragon">CookDragon</string>
+    <string name="c_foreign">Cook Foreign</string>
+    <string name="c_fish">Cook Fish</string>
+    <string name="c_mushroom">Cook Mushroom</string>
+    <string name="c_crab">Cook Crab</string>
+    <string name="c_snail">Cook Snail</string>
+    <string name="c_plant">Cook Plant</string>
+    <string name="c_fruit">Cook Fruit</string>
+    <string name="c_meat">Cook Meat</string>
+    <string name="c_ore">Cook Ore</string>
+    <string name="c_enemy">Cook Enemy</string>
+    <string name="c_insect">Cook Insect</string>
+    <string name="c_other">Cook Other</string>
+    <string name="c_dragon">Cook Dragon</string>
 
     <!-- effect id names -->
     <string name="e_none">None</string>

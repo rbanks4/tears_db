@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.*
+import com.gaming.android.tearsdatabase.models.submodels.CookId
 import com.gaming.android.tearsdatabase.models.submodels.EffectId
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
@@ -54,9 +55,11 @@ class ViewDetails {
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
-                Column(modifier = Modifier
-                    .padding(all = 8.dp)
-                    .verticalScroll(rememberScrollState())) {
+                Column(
+                    modifier = Modifier
+                        .padding(all = 8.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
 
                     DetailHeader(
                         weapon.image,
@@ -108,17 +111,20 @@ class ViewDetails {
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
-                Column(modifier = Modifier
-                    .padding(all = 8.dp)
-                    .verticalScroll(rememberScrollState())) {
+                Column(
+                    modifier = Modifier
+                        .padding(all = 8.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
 
-                    val subTitlePair = if (item.effect_type.isNotEmpty() && !item.effect_type.equals("None"))
-                        Pair("Effect Type:", item.effect_type)
-                    else if (item.hp_recover != 0 && item.hp_recover != null)
-                        Pair("Hp Recover:", item.hp_recover.toString())
-                    else if (item.additional_damage != -1)
-                        Pair("Additional Damage:", item.additional_damage.toString())
-                    else Pair(null, null)
+                    val subTitlePair =
+                        if (item.effect_type.isNotEmpty() && !item.effect_type.equals("None"))
+                            Pair("Effect Type:", item.effect_type)
+                        else if (item.hp_recover != 0 && item.hp_recover != null)
+                            Pair("Hp Recover:", item.hp_recover.toString())
+                        else if (item.additional_damage != -1)
+                            Pair("Additional Damage:", item.additional_damage.toString())
+                        else Pair(null, null)
 
                     DetailHeaderWithEffects(
                         image = item.image,
@@ -162,8 +168,13 @@ class ViewDetails {
                         )
                     }
                     if (item.effect_type.isNotEmpty() && !item.effect_type.equals("None")) {
-                        if(effects.isNotEmpty()) {
-                            DetailRowExpandable("Effect:", listOf(item.effect_type), effects[0], true)
+                        if (effects.isNotEmpty()) {
+                            DetailRowExpandable(
+                                "Effect:",
+                                listOf(item.effect_type),
+                                effects[0],
+                                true
+                            )
                         } else {
                             DetailRow("Effect:", item.effect_type)
                         }
@@ -245,9 +256,11 @@ class ViewDetails {
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
-                Column(modifier = Modifier
-                    .padding(all = 8.dp)
-                    .verticalScroll(rememberScrollState())) {
+                Column(
+                    modifier = Modifier
+                        .padding(all = 8.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
                     DetailHeader(
                         image = bow.image,
                         title = bow.name,
@@ -323,9 +336,11 @@ class ViewDetails {
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
-                Column(modifier = Modifier
-                    .padding(all = 8.dp)
-                    .verticalScroll(rememberScrollState())) {
+                Column(
+                    modifier = Modifier
+                        .padding(all = 8.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
                     DetailHeader(
                         image = shield.image,
                         title = shield.name,
@@ -351,11 +366,11 @@ class ViewDetails {
                         )
                     }
 
-                    if(shield.sub_type.isNotEmpty()) {
+                    if (shield.sub_type.isNotEmpty()) {
                         DetailRow(name = "Sub Type:", value = shield.sub_type)
                     }
 
-                    if(shield.sub_type2.isNotEmpty()) {
+                    if (shield.sub_type2.isNotEmpty()) {
                         DetailRow(name = "Subtype2:", value = shield.sub_type2)
                     }
 
@@ -373,9 +388,11 @@ class ViewDetails {
                     .clip(RoundedCornerShape(20.dp))
             ) {
 
-                Column(modifier = Modifier
-                    .padding(all = 8.dp)
-                    .verticalScroll(rememberScrollState())) {
+                Column(
+                    modifier = Modifier
+                        .padding(all = 8.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
 
                     DetailHeaderWithEffects(
                         image = item.image,
@@ -388,7 +405,7 @@ class ViewDetails {
 
                     DetailRow("Buying Price:", "${item.buying_price} rupees")
                     DetailRow("Selling Price:", "${item.selling_price} rupees")
-                    if(effects.isNotEmpty()) {
+                    if (effects.isNotEmpty()) {
                         DetailRowExpandable("Effect:", listOf(item.effect_type), effects[0], false)
                     } else {
                         DetailRow("Effect:", item.effect_type)
@@ -402,7 +419,7 @@ class ViewDetails {
                         DetailRow("Shield Bash Damage:", item.shield_bash_damage.toString())
                     }
 
-                    if(item.sub_type.isNotEmpty()) {
+                    if (item.sub_type.isNotEmpty()) {
                         DetailRow("Sub Type:", item.sub_type)
                     }
 
@@ -411,7 +428,7 @@ class ViewDetails {
         }
 
         @Composable
-        fun MealDetails(meal: Meal, findList: (Pair<Int,Int>) -> List<Material>) {
+        fun MealDetails(meal: Meal, findList: (Pair<Int, Int>) -> RecipePair) {
             Surface(
                 Modifier
                     .requiredWidth(IntrinsicSize.Min)
@@ -419,9 +436,11 @@ class ViewDetails {
                     .sizeIn(maxHeight = LocalConfiguration.current.screenHeightDp.times(0.7f).dp)
                     .clip(RoundedCornerShape(20.dp))
             ) {
-                Column(modifier = Modifier
-                    .padding(all = 8.dp)
-                    .verticalScroll(rememberScrollState())) {
+                Column(
+                    modifier = Modifier
+                        .padding(all = 8.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
                     DetailHeader(
                         image = meal.image,
                         title = meal.name,
@@ -433,23 +452,40 @@ class ViewDetails {
 
                     meal.bonus_heart?.let { DetailRow("Bonus Heart:", it.toString()) }
                     meal.bonus_level?.let { DetailRow("Bonus Level:", it.toString()) }
-                    meal.bonus_time?.let {DetailRow("Bonus Time:", it.toString()) }
+                    meal.bonus_time?.let { DetailRow("Bonus Time:", it.toString()) }
                     //todo show the materials instead
                     //ShowSubRow("Recipe:", DataSource.recipeFormat(meal.recipe))
 
                     var recipeList = mutableListOf<List<Material>>()
-                    for(ingredients in meal.recipe.indices){
-                        var countLabel = ingredients + 1
+                    var labelList = mutableListOf<String>()
+
+                    for (ingredients in meal.recipe.indices) {
+
                         recipeList.add(emptyList())
-                        for(pair in meal.recipe[ingredients].zipWithNext()){
-                            val newIngredients = findList(pair)
-                            if(newIngredients.isNotEmpty()) {
-                                recipeList[ingredients] += findList(pair)
+                        labelList.add("")
+
+                        var count = 0
+                        val chunkedGroup = meal.recipe[ingredients].chunked(2)
+
+                        for (pair in chunkedGroup) {
+
+                            val newIngredients = findList(Pair(pair[0], pair[1]))
+
+                            if (newIngredients.list.isNotEmpty()) {
+                                if(labelList[ingredients].isEmpty()) {
+                                    labelList[ingredients] += newIngredients.name
+                                } else if (chunkedGroup.size - 1 == count) {
+                                    labelList[ingredients] += ", or ${newIngredients.name}"
+                                } else {
+                                    labelList[ingredients] += ", ${newIngredients.name}"
+                                }
+                                recipeList[ingredients] += newIngredients.list
+                                count++
                             }
                         }
                     }
 
-                    IngredientRow(materials = recipeList)
+                    IngredientRow(materials = recipeList, labelList = labelList)
 
                 }
             }
@@ -559,7 +595,7 @@ class ViewDetails {
 
         @Composable
         fun SubtitleRow(name: String) {
-            Row (Modifier.width(280.dp)){
+            Row(Modifier.width(280.dp)) {
                 Text(text = name, style = MaterialTheme.typography.titleSmall, softWrap = true)
             }
         }
@@ -578,7 +614,12 @@ class ViewDetails {
         }
 
         @Composable
-        fun DetailRowExpandable(name: String, value: List<String>, effect: Effect, showPotency: Boolean) {
+        fun DetailRowExpandable(
+            name: String,
+            value: List<String>,
+            effect: Effect,
+            showPotency: Boolean
+        ) {
             var isExpanded by remember { mutableStateOf(false) }
             Row(modifier = Modifier.padding(vertical = 4.dp)) {
                 Text(
@@ -616,8 +657,9 @@ class ViewDetails {
 
         private @Composable
         fun DetailHeader(
-            image: Int, title: String, subLabel: String? = null, subtitle: String? = null) {
-            Card (
+            image: Int, title: String, subLabel: String? = null, subtitle: String? = null
+        ) {
+            Card(
                 Modifier
                     .fillMaxWidth(0.9f)
                     .requiredHeight(IntrinsicSize.Min)
@@ -639,10 +681,11 @@ class ViewDetails {
                 Column(
                     Modifier
                         .padding(8.dp)
-                        .width(280.dp)) {
+                        .width(280.dp)
+                ) {
                     TitleRow(title)
 
-                    if(subLabel != null) {
+                    if (subLabel != null) {
                         SubtitleRow(name = "$subLabel $subtitle")
                     }
                 }
@@ -657,9 +700,8 @@ class ViewDetails {
             effects: List<Effect>,
             subLabel: String? = null,
             subtitle: String? = null
-        )
-        {
-            Card (
+        ) {
+            Card(
                 Modifier
                     .fillMaxWidth(0.9f)
                     .requiredHeight(IntrinsicSize.Min)
@@ -669,9 +711,11 @@ class ViewDetails {
                     containerColor = MaterialTheme.colorScheme.surfaceVariant
                 )
             ) {
-                Box(modifier = Modifier
-                    .padding(8.dp)
-                    .align(Alignment.CenterHorizontally)) {
+                Box(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .align(Alignment.CenterHorizontally)
+                ) {
                     Image(
                         painter = painterResource(id = image),
                         contentDescription = title,
@@ -717,7 +761,7 @@ class ViewDetails {
                 )
             }
             list.toSet().forEach {
-                if(it.isNotEmpty()) {
+                if (it.isNotEmpty()) {
                     Row(
                         Modifier
                             .width(280.dp)
@@ -736,15 +780,15 @@ class ViewDetails {
 
         @Composable
         fun ShowEffectRow(effect: Effect, showPotency: Boolean) {
-            val level = if(effect.level != null) "Level ${effect.level}" else ""
+            val level = if (effect.level != null) "Level ${effect.level}" else ""
             val title = "${effect.name} $level"
             Row(modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)) {
-                    Text(
-                        text = title,
-                        color = MaterialTheme.colorScheme.tertiary,
-                        style = MaterialTheme.typography.titleMedium,
-                    )
-                }
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.tertiary,
+                    style = MaterialTheme.typography.titleMedium,
+                )
+            }
             Row(
                 Modifier
                     .width(280.dp)
@@ -757,16 +801,16 @@ class ViewDetails {
                 )
             }
             //potency
-            if(showPotency && effect.required_potency != null){
+            if (showPotency && effect.required_potency != null) {
                 EffectRow("Potency: ", effect.required_potency.toString())
-                if(effect.highest_potency != null) {
+                if (effect.highest_potency != null) {
                     EffectRow("Highest Potency:", effect.highest_potency.toString())
                 }
             }
         }
 
         @Composable
-        fun EffectRow(title: String, detail: String){
+        fun EffectRow(title: String, detail: String) {
             Row(modifier = Modifier.padding(vertical = 4.dp, horizontal = 16.dp)) {
                 Text(
                     text = title,
@@ -782,12 +826,19 @@ class ViewDetails {
         }
 
         @Composable
-        fun IngredientRow(materials: List<List<Material>>) {
-            Box(modifier = Modifier
-                .width(300.dp)
-                .padding(horizontal = 1.dp), contentAlignment = Alignment.Center) {
-                Column(modifier = Modifier.horizontalScroll(rememberScrollState()), horizontalAlignment = Alignment.Start) {
-                    for (mats in materials) {
+        fun IngredientRow(materials: List<List<Material>>, labelList: List<String>) {
+            Box(
+                modifier = Modifier
+                    .width(300.dp)
+                    .padding(horizontal = 1.dp), contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    modifier = Modifier.horizontalScroll(rememberScrollState()),
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    for (index in materials.indices) {
+                        val mats = materials[index]
+                        if(labelList.size > 0) Text(text = labelList[index])
                         Row(
                             modifier = Modifier
                                 .padding(vertical = 4.dp)
@@ -825,7 +876,9 @@ class ViewDetails {
     @Composable
     fun PreviewMealDetailsView() {
         TearsTheme {
-            MealDetails(meal = SampleData.meals[0], findList = { SampleData.materials } )
+            MealDetails(
+                meal = SampleData.meals[0],
+                findList = { RecipePair("Insect", SampleData.materials.subList(0, 4)) })
         }
     }
 

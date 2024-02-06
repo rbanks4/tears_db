@@ -16,7 +16,7 @@ enum class EffectId(
     Fireproof(6, R.string.e_fireproof),
     Tough(7, R.string.e_tough),
     Bright(8, R.string.e_bright),
-    Energing(9, R.string.e_energizing),
+    Energizing(9, R.string.e_energizing),
     Chilly(10, R.string.e_chilly),
     Sticky(11, R.string.e_sticky),
     Mighty(12, R.string.e_mighty),

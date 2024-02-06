@@ -1,5 +1,6 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.SavedStateHandle
@@ -9,6 +10,7 @@ import com.gaming.android.tearsdatabase.SORT_ID_INC
 import com.gaming.android.tearsdatabase.api.ItemRepository
 import com.gaming.android.tearsdatabase.models.Material
 import com.gaming.android.tearsdatabase.models.Meal
+import com.gaming.android.tearsdatabase.models.RecipePair
 import com.gaming.android.tearsdatabase.models.submodels.CookId
 import com.gaming.android.tearsdatabase.models.submodels.CookId.*
 import com.gaming.android.tearsdatabase.models.submodels.EffectId
@@ -91,28 +93,36 @@ class MealsViewModel @Inject constructor(
         return cookIdMap[cookId]
     }
 
-    fun findMaterialsForRecipe(pair: Pair<Int, Int>): List<Material> {
+    fun findMaterialsForRecipe(pair: Pair<Int, Int>): RecipePair {
         var materials = listOf<Material>()
+        var text = ""
         pair.let { (cookId, id) ->
             when(cookId) {
                 Other.id -> {
                     find(id)?.let {
+                        text = it.name
                         materials = listOf(it)
                     }
                 }
                 Insect.id -> {
+
                     if (id == EffectId.None.id) {
+                        text = Insect.name
                         materials = findByCookId(cookId)?: emptyList()
                     } else {
+                        EffectId.fromInt(id)?.let {effect ->
+                            text = "${effect.name} ${Insect.name}"
+                        }
                         materials = findByCookId(cookId)?.filter { it.effect_id == id }?: emptyList()
                     }
                 }
                 else -> {
+                    text = CookId.fromInt(cookId)?.name?:""
                     materials = findByCookId(cookId)?: emptyList()
                 }
             }
         }
-        return materials
+        return RecipePair(text, materials)
     }
 
 //    override fun setup(list: List<Meal>, findDrawable: (Meal) -> Meal) {

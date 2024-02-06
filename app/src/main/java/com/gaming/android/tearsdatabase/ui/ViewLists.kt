@@ -408,7 +408,7 @@ class ViewLists {
             openDrawer: () -> Unit,
             onQuery: (String) -> Unit,
             onMenuItemSelected: (Int) -> List<Meal>?,
-            findList: (Pair<Int,Int>) -> List<Material>
+            findList: (Pair<Int,Int>) -> RecipePair
         ) {
             val displayed = remember { mutableStateListOf<Meal>() }
 
@@ -599,7 +599,7 @@ class ViewLists {
     @Composable
     fun PreviewMealList() {
         TearsTheme {
-            MealList(meals = SampleData.meals, materials = SampleData.materials, openDrawer = {}, onQuery = { SampleData.meals }, onMenuItemSelected = { SampleData. meals }, findList = { SampleData.materials })
+            MealList(meals = SampleData.meals, materials = SampleData.materials, openDrawer = {}, onQuery = { SampleData.meals }, onMenuItemSelected = { SampleData. meals }, findList = { RecipePair("Insects", SampleData.materials) })
         }
     }
 

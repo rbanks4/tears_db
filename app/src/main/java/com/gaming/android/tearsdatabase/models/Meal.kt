@@ -16,7 +16,7 @@ data class Meal(
         ): Item<Meal> {
     @DrawableRes
     override var image: Int = R.drawable.mushroom_skewer
-    var recipeIds: List<Pair<Int, Int>>? = mutableListOf()
+    var recipeIds: MutableList<Pair<Int, Int>>? = mutableListOf()
 
     override fun get(): Meal {
         return this
