@@ -5,6 +5,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
@@ -602,11 +603,13 @@ class ViewDetails {
 
         @Composable
         fun DetailRow(name: String, value: String) {
-            Row(modifier = Modifier.padding(vertical = 4.dp)) {
+            Row(
+                modifier = Modifier.padding(vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = name,
                     color = MaterialTheme.colorScheme.secondary,
-                    style = MaterialTheme.typography.titleSmall
+                    style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(Modifier.padding(horizontal = 4.dp))
                 Text(text = value, style = MaterialTheme.typography.bodySmall)
@@ -757,7 +760,7 @@ class ViewDetails {
                 Text(
                     text = title,
                     color = MaterialTheme.colorScheme.tertiary,
-                    style = MaterialTheme.typography.titleMedium,
+                    style = MaterialTheme.typography.titleSmall,
                 )
             }
             list.toSet().forEach {
@@ -770,7 +773,7 @@ class ViewDetails {
                     ) {
                         Text(
                             text = it,
-                            style = MaterialTheme.typography.titleSmall,
+                            style = MaterialTheme.typography.bodySmall,
                             softWrap = true
                         )
                     }
@@ -829,35 +832,51 @@ class ViewDetails {
         fun IngredientRow(materials: List<List<Material>>, labelList: List<String>) {
             Box(
                 modifier = Modifier
-                    .width(300.dp)
-                    .padding(horizontal = 1.dp), contentAlignment = Alignment.Center
+                    .background(MaterialTheme.colorScheme.background)
+                    .width(320.dp)
+                    .padding(horizontal = 4.dp),
+                contentAlignment = Alignment.Center
             ) {
-                Column(
-                    modifier = Modifier.horizontalScroll(rememberScrollState()),
-                    horizontalAlignment = Alignment.Start
-                ) {
-                    for (index in materials.indices) {
-                        val mats = materials[index]
-                        if(labelList.size > 0) Text(text = labelList[index])
-                        Row(
-                            modifier = Modifier
-                                .padding(vertical = 4.dp)
-                                .height(30.dp)
-                                .wrapContentWidth(unbounded = true)
-                        ) {
-                            mats.forEach {
-                                Image(
-                                    painter = painterResource(id = it.image),
-                                    contentDescription = it.name,
-                                    modifier = Modifier
-                                        .size(30.dp)
-                                        .scale(1f)
-                                        .padding(1.dp)
-                                )
+                Surface(
+                        shape = MaterialTheme.shapes.medium,
+                        shadowElevation = 1.dp,
+                        color = MaterialTheme.colorScheme.tertiaryContainer,
+                        modifier = Modifier
+                            .padding(1.dp)
+                    ) {
+                    Column(
+                        modifier = Modifier. padding(8.dp).horizontalScroll(rememberScrollState()),
+                        horizontalAlignment = Alignment.Start
+                    ) {
+                        for (index in materials.indices) {
+                            val mats = materials[index]
+                            if(labelList.size > 0) Text(
+                                text = labelList[index],
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                style = MaterialTheme.typography.bodySmall
+                            )
+                            Row(
+                                modifier = Modifier
+                                    .padding(vertical = 4.dp)
+                                    .height(30.dp)
+                                    .wrapContentWidth(unbounded = true)
+                            ) {
+                                mats.forEach {
+                                    Image(
+                                        painter = painterResource(id = it.image),
+                                        contentDescription = it.name,
+                                        modifier = Modifier
+                                            .size(30.dp)
+                                            .scale(1f)
+                                            .padding(1.dp)
+                                    )
+                                }
                             }
                         }
                     }
+
                 }
+
             }
         }
 

@@ -1,5 +1,6 @@
 package com.gaming.android.tearsdatabase.ui
 
+import android.content.ClipData
 import android.content.res.Configuration
 import android.util.Log
 import androidx.compose.animation.animateColorAsState
@@ -43,10 +44,6 @@ class ViewCards {
                     Spacer(modifier = Modifier.width(8.dp))
 
                     var isExpanded by remember { mutableStateOf(false) }
-                    val surfaceColor by animateColorAsState(
-                        if (isExpanded) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.surface
-                    )
 
                     Column(modifier = Modifier
                         .clickable { isExpanded = !isExpanded }
@@ -54,21 +51,21 @@ class ViewCards {
                         ItemTitle(title = wpn.name)
 
                         Spacer(modifier = Modifier.height(4.dp))
-                        Surface(
-                            shape = MaterialTheme.shapes.medium,
-                            shadowElevation = 1.dp,
-                            color = surfaceColor,
-                            modifier = Modifier
-                                .animateContentSize()
-                                .padding(1.dp)
-                        ) {
-                            Text(
-                                text = "Damage: ${wpn.shown_attack} \nDurability: ${wpn.durability}",
-                                modifier = Modifier.padding(all = 4.dp),
-                                maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+                        ItemSubtitle(
+                            subtitle= "Damage: ${wpn.shown_attack} \nDurability: ${wpn.durability}",
+                            isExpanded = isExpanded
+                        )
+
+//                        Surface(
+//                            shape = MaterialTheme.shapes.medium,
+//                            shadowElevation = 1.dp,
+//                            color = surfaceColor,
+//                            modifier = Modifier
+//                                .animateContentSize()
+//                                .padding(1.dp)
+//                        ) {
+//
+//                        }
                     }
                 }
             }
@@ -100,7 +97,9 @@ class ViewCards {
                             Icon(
                                 painter = painterResource(effect[0].image),
                                 contentDescription = "",
-                                modifier = Modifier.size(30.dp).align(Alignment.TopEnd),
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .align(Alignment.TopEnd),
                                 tint = if (effect[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
                             )
                         }
@@ -109,10 +108,6 @@ class ViewCards {
                     Spacer(modifier = Modifier.width(8.dp))
 
                     var isExpanded by remember { mutableStateOf(false) }
-                    val surfaceColor by animateColorAsState(
-                        if (isExpanded) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.surface, label = "surfaceColor"
-                    )
 
                     Column(modifier = Modifier
                         .clickable { isExpanded = !isExpanded }
@@ -125,21 +120,7 @@ class ViewCards {
                         )
                         if (text.isNotEmpty()) {
                             Spacer(modifier = Modifier.height(4.dp))
-                            Surface(
-                                shape = MaterialTheme.shapes.medium,
-                                shadowElevation = 1.dp,
-                                color = surfaceColor,
-                                modifier = Modifier
-                                    .animateContentSize()
-                                    .padding(1.dp)
-                            ) {
-                                Text(
-                                    text = text,
-                                    modifier = Modifier.padding(all = 4.dp),
-                                    maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                                    style = MaterialTheme.typography.bodyMedium
-                                )
-                            }
+                            ItemSubtitle(subtitle = text, isExpanded = isExpanded)
                         }
                     }
                 }
@@ -165,10 +146,6 @@ class ViewCards {
                     Spacer(modifier = Modifier.width(8.dp))
 
                     var isExpanded by remember { mutableStateOf(false) }
-                    val surfaceColor by animateColorAsState(
-                        if (isExpanded) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.surface
-                    )
 
                     Column(modifier = Modifier
                         .clickable { isExpanded = !isExpanded }
@@ -176,21 +153,7 @@ class ViewCards {
                         ItemTitle(bow.name)
 
                         Spacer(modifier = Modifier.height(4.dp))
-                        Surface(
-                            shape = MaterialTheme.shapes.medium,
-                            shadowElevation = 1.dp,
-                            color = surfaceColor,
-                            modifier = Modifier
-                                .animateContentSize()
-                                .padding(1.dp)
-                        ) {
-                            Text(
-                                text = text,
-                                modifier = Modifier.padding(all = 4.dp),
-                                maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+                        ItemSubtitle(subtitle = text, isExpanded = isExpanded)
                     }
                 }
             }
@@ -215,10 +178,6 @@ class ViewCards {
                     Spacer(modifier = Modifier.width(8.dp))
 
                     var isExpanded by remember { mutableStateOf(false) }
-                    val surfaceColor by animateColorAsState(
-                        if (isExpanded) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.surface
-                    )
 
                     Column(modifier = Modifier
                         .clickable { isExpanded = !isExpanded }
@@ -226,21 +185,7 @@ class ViewCards {
                         ItemTitle(shield.name)
 
                         Spacer(modifier = Modifier.height(4.dp))
-                        Surface(
-                            shape = MaterialTheme.shapes.medium,
-                            shadowElevation = 1.dp,
-                            color = surfaceColor,
-                            modifier = Modifier
-                                .animateContentSize()
-                                .padding(1.dp)
-                        ) {
-                            Text(
-                                text = text,
-                                modifier = Modifier.padding(all = 4.dp),
-                                maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+                        ItemSubtitle(subtitle = text, isExpanded = isExpanded)
                     }
                 }
             }
@@ -267,7 +212,9 @@ class ViewCards {
                             Icon(
                                 painter = painterResource(effect[0].image),
                                 contentDescription = "",
-                                modifier = Modifier.size(30.dp).align(Alignment.TopEnd),
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .align(Alignment.TopEnd),
                                 tint = if (effect[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
                             )
                         }
@@ -276,10 +223,6 @@ class ViewCards {
                     Spacer(modifier = Modifier.width(8.dp))
 
                     var isExpanded by remember { mutableStateOf(false) }
-                    val surfaceColor by animateColorAsState(
-                        if (isExpanded) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.surface
-                    )
 
                     Column(modifier = Modifier
                         .clickable { isExpanded = !isExpanded }
@@ -287,21 +230,7 @@ class ViewCards {
                         ItemTitle(item.name)
 
                         Spacer(modifier = Modifier.height(4.dp))
-                        Surface(
-                            shape = MaterialTheme.shapes.medium,
-                            shadowElevation = 1.dp,
-                            color = surfaceColor,
-                            modifier = Modifier
-                                .animateContentSize()
-                                .padding(1.dp)
-                        ) {
-                            Text(
-                                text = text,
-                                modifier = Modifier.padding(all = 4.dp),
-                                maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+                        ItemSubtitle(subtitle = text, isExpanded = isExpanded)
                     }
                 }
             }
@@ -309,7 +238,7 @@ class ViewCards {
 
         @Composable
         fun MealCard(item: Meal, materials: List<Material>, onClick: (Meal) -> Unit, modifier: Modifier = Modifier) {
-            val text = "Recipe No: ${item.recipe_no}"
+            val text = "ID: ${item.recipe_no}"
             var imageId = if(item.image == 0) R.drawable.mushroom_skewer else item.image
 
             var recipes: List<List<Material>> = mutableListOf()
@@ -331,10 +260,6 @@ class ViewCards {
                     Spacer(modifier = Modifier.width(8.dp))
 
                     var isExpanded by remember { mutableStateOf(false) }
-                    val surfaceColor by animateColorAsState(
-                        if (isExpanded) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.surface
-                    )
 
                     Column(modifier = Modifier
                         .clickable { isExpanded = !isExpanded }
@@ -342,21 +267,7 @@ class ViewCards {
                         ItemTitle(item.name)
 
                         Spacer(modifier = Modifier.height(4.dp))
-                        Surface(
-                            shape = MaterialTheme.shapes.medium,
-                            shadowElevation = 1.dp,
-                            color = surfaceColor,
-                            modifier = Modifier
-                                .animateContentSize()
-                                .padding(1.dp)
-                        ) {
-                            Text(
-                                text = text,
-                                modifier = Modifier.padding(all = 4.dp),
-                                maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+                        ItemSubtitle(subtitle = text, isExpanded = isExpanded)
                     }
                 }
             }
@@ -388,7 +299,9 @@ class ViewCards {
                             Icon(
                                 painter = painterResource(effect[0].image),
                                 contentDescription = "",
-                                modifier = Modifier.size(30.dp).align(Alignment.TopEnd),
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .align(Alignment.TopEnd),
                                 tint = if (effect[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
                             )
                         }
@@ -397,10 +310,6 @@ class ViewCards {
                     Spacer(modifier = Modifier.width(8.dp))
 
                     var isExpanded by remember { mutableStateOf(false) }
-                    val surfaceColor by animateColorAsState(
-                        if (isExpanded) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.surface
-                    )
 
                     Column(modifier = Modifier
                         .clickable { isExpanded = !isExpanded }
@@ -408,34 +317,29 @@ class ViewCards {
                         ItemTitle(item.name)
 
                         Spacer(modifier = Modifier.height(4.dp))
-                        Surface(
-                            shape = MaterialTheme.shapes.medium,
-                            shadowElevation = 1.dp,
-                            color = surfaceColor,
-                            modifier = Modifier
-                                .animateContentSize()
-                                .padding(1.dp)
-                        ) {
-                            Text(
-                                text = text,
-                                modifier = Modifier.padding(all = 4.dp),
-                                maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                                style = MaterialTheme.typography.bodyMedium,
-                                softWrap = true
-                            )
-                        }
+                        ItemSubtitle(subtitle = text, isExpanded = isExpanded)
                     }
                 }
             }
         }
 
-        @Composable
+        private @Composable
         fun ItemTitle(title: String){
             Text(
                 text = title,
                 color = MaterialTheme.colorScheme.secondary,
                 style = MaterialTheme.typography.titleSmall
             )
+        }
+
+        private @Composable
+        fun ItemSubtitle(subtitle: String, isExpanded: Boolean) {
+            Text(
+                text = subtitle,
+                maxLines = if (isExpanded) Int.MAX_VALUE else 1,
+                style = MaterialTheme.typography.bodyMedium
+            )
+
         }
     }
 
