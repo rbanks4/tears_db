@@ -1,5 +1,6 @@
 package com.gaming.android.tearsdatabase.api
 
+import com.gaming.android.tearsdatabase.api.response.MaterialsAndMealsResponse
 import com.gaming.android.tearsdatabase.models.Armor
 import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Effect
@@ -19,5 +20,6 @@ interface ItemRepository {
     suspend fun fetchRoasted(): List<RoastedFood>
     suspend fun fetchShields(): List<Shield>
     suspend fun fetchWeapons(): List<Weapon>
+    suspend fun fetchMaterialsAndMeals(): MaterialsAndMealsResponse
 
 }

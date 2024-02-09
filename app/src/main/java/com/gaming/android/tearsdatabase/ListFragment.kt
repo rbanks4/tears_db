@@ -110,21 +110,21 @@ class ListFragment : Fragment() {
 
                 //materials
                 launch {
-                    materialViewModel.materials.collect { materials ->
+                    materialViewModel.response.collect { pair ->
+                        val materials = pair.materials
+                        val meals = pair.meals
                         if(materials.isEmpty()) {
                             materialViewModel.setup(dataSource.materialsBackup()) { findDrawable(it) }
                         } else {
                             materialViewModel.setup(materials) { findDrawable(it) }
                         }
 
-                        mealsViewModel.meals.collect { meals ->
-                            if(meals.isEmpty()) {
-                                mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it) }
-                            } else {
-                                mealsViewModel.setup(meals) { findDrawable(it) }
-                            }
-                            mealsViewModel.updateWithMaterials(materialViewModel.items?: emptyList())
+                        if(meals.isEmpty()) {
+                            mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it) }
+                        } else {
+                            mealsViewModel.setup(meals) { findDrawable(it) }
                         }
+                        mealsViewModel.updateWithMaterials(materialViewModel.items?: emptyList())
                     }
                 }
 

@@ -56,18 +56,6 @@ class MealsViewModel @Inject constructor(
     private var idMap: Map<Int, Material> = mutableMapOf()
     private var cookIdMap: Map<Int, List<Material>> = mutableMapOf()
 
-    init {
-        viewModelScope.launch {
-            try {
-                val fetchedItems = repo.fetchMeals()
-                _meals.value = fetchedItems
-                search.value = ""
-            } catch (e: Exception) {
-                println("Failed to fetch items ${e.message}")
-            }
-        }
-    }
-
     override fun sort(choice: Int, list: List<Meal>?): List<Meal>? {
         return when (choice) {
             SORT_ID_INC ->
@@ -99,9 +87,14 @@ class MealsViewModel @Inject constructor(
         pair.let { (cookId, id) ->
             when(cookId) {
                 Other.id -> {
-                    find(id)?.let {
-                        text = it.name
-                        materials = listOf(it)
+                    if(id != 0) {
+                        find(id)?.let {
+                            text = it.name
+                            materials = listOf(it)
+                        }
+                    } else {
+                        text = CookId.fromInt(cookId)?.name?:""
+                        materials = findByCookId(cookId)?: emptyList()
                     }
                 }
                 Insect.id -> {

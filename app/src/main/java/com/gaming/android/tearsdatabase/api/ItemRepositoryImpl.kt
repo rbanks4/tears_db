@@ -1,5 +1,6 @@
 package com.gaming.android.tearsdatabase.api
 
+import com.gaming.android.tearsdatabase.api.response.MaterialsAndMealsResponse
 import com.gaming.android.tearsdatabase.models.Armor
 import com.gaming.android.tearsdatabase.models.Bow
 import com.gaming.android.tearsdatabase.models.Effect
@@ -43,5 +44,9 @@ class ItemRepositoryImpl @Inject constructor(
 
     override suspend fun fetchWeapons(): List<Weapon> {
         return api.getWeapons().weapons
+    }
+
+    override suspend fun fetchMaterialsAndMeals(): MaterialsAndMealsResponse {
+        return api.getMaterialsAndMeals()
     }
 }

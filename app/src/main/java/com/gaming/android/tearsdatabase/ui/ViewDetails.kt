@@ -843,6 +843,7 @@ class ViewDetails {
                         color = MaterialTheme.colorScheme.tertiaryContainer,
                         modifier = Modifier
                             .padding(1.dp)
+                            .fillMaxWidth(1f)
                     ) {
                     Column(
                         modifier = Modifier. padding(8.dp).horizontalScroll(rememberScrollState()),

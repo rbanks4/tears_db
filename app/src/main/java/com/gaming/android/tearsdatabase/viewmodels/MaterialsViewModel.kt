@@ -5,9 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.api.ItemRepository
-import com.gaming.android.tearsdatabase.models.Effect
+import com.gaming.android.tearsdatabase.api.response.MaterialsAndMealsResponse
 import com.gaming.android.tearsdatabase.models.Material
-import com.gaming.android.tearsdatabase.models.submodels.CookId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -36,15 +35,20 @@ class MaterialsViewModel @Inject constructor(
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
-    private val _materials: MutableStateFlow<List<Material>> = MutableStateFlow(emptyList())
-    val materials: StateFlow<List<Material>>
-        get() = _materials.asStateFlow()
+    private val _response: MutableStateFlow<MaterialsAndMealsResponse> =
+        MutableStateFlow(MaterialsAndMealsResponse(
+            emptyList(),
+            emptyList()
+        ))
+
+    val response: StateFlow<MaterialsAndMealsResponse>
+        get() = _response.asStateFlow()
 
     init {
         viewModelScope.launch {
             try {
-                val fetchedItems = repo.fetchMaterials()
-                _materials.value = fetchedItems
+                val fetchedMAndM = repo.fetchMaterialsAndMeals()
+                _response.value = fetchedMAndM
             } catch (e: Exception) {
                 println("Failed to fetch items ${e.message}")
             }

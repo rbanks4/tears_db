@@ -3,6 +3,7 @@ package com.gaming.android.tearsdatabase.api
 import com.gaming.android.tearsdatabase.api.response.ArmorResponse
 import com.gaming.android.tearsdatabase.api.response.BowsResponse
 import com.gaming.android.tearsdatabase.api.response.EffectResponse
+import com.gaming.android.tearsdatabase.api.response.MaterialsAndMealsResponse
 import com.gaming.android.tearsdatabase.api.response.MaterialsResponse
 import com.gaming.android.tearsdatabase.api.response.MealsResponse
 import com.gaming.android.tearsdatabase.api.response.RoastedFoodResponse
@@ -38,4 +39,7 @@ interface ApiService {
 
     @GET("shields")
     suspend fun getShields(): ShieldsResponse
+
+    @GET("materialsAndMeals")
+    suspend fun getMaterialsAndMeals(): MaterialsAndMealsResponse
 }
