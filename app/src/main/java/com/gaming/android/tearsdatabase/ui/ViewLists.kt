@@ -96,7 +96,7 @@ class ViewLists {
                             items(
                                 count = displayedWeapons.size,
                                 key = {
-                                    displayedWeapons[it].compendium_no
+                                    displayedWeapons[it]._id
                                 }
                             ) { index ->
                                 WeaponCard(
@@ -167,7 +167,7 @@ class ViewLists {
                             items(
                                 count = displayedMaterials.size,
                                 key = {
-                                    displayedMaterials[it].name
+                                    displayedMaterials[it]._id
                                 }
                             ) { index ->
                                 MaterialCard(
@@ -239,7 +239,7 @@ class ViewLists {
                             items(
                                 count = displayedBows.size,
                                 key = {
-                                    displayedBows[it].compendium_no
+                                    displayedBows[it]._id
                                 }
                             ) { index ->
                                 BowCard(
@@ -311,7 +311,7 @@ class ViewLists {
                             items(
                                 count = displayedShields.size,
                                 key = {
-                                    displayedShields[it].compendium_no
+                                    displayedShields[it]._id
                                 }
                             ) { index ->
                                 ShieldCard(
@@ -384,7 +384,7 @@ class ViewLists {
                             items(
                                 count = displayed.size,
                                 key = {
-                                    displayed[it].actor_name
+                                    displayed[it]._id
                                 }
                             ) { index ->
                                 RoastedFoodCard(

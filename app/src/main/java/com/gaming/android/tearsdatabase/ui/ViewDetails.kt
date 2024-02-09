@@ -2,16 +2,11 @@ package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -37,13 +32,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.*
-import com.gaming.android.tearsdatabase.models.submodels.CookId
 import com.gaming.android.tearsdatabase.models.submodels.EffectId
 import com.gaming.android.tearsdatabase.theme.TearsTheme
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 class ViewDetails {
     companion object {
@@ -136,13 +128,6 @@ class ViewDetails {
                     )
 
                     Spacer(Modifier.padding(all = 8.dp))
-
-                    val effectTest = EffectId.entries.filter { it.id == item.effect_id }.first()
-                    val effectName = stringResource(id = effectTest.effectName)
-                    DetailRow(
-                        name = "Cooking Details:",
-                        value = "${item.cook_id} and ${item.effect_id} so that ${effectName}"
-                    )
 
                     if (item.additional_damage != -1) {
                         DetailRow(
@@ -303,27 +288,17 @@ class ViewDetails {
                         )
                     }
 
-                    if (bow.sub_type.isNotEmpty()) {
-                        DetailRow(
-                            name = "Sub Type: ",
-                            value = bow.sub_type
-                        )
-                    }
-
-                    if (bow.sub_type2.isNotEmpty()) {
-                        DetailRow(
-                            name = "Sub Type 2: ",
-                            value = bow.sub_type2
-                        )
-                    }
-
                     if (bow.other.isNotEmpty()) {
                         DetailRow(
-                            name = "Other Type: ",
+                            name = "Specialty: ",
                             value = bow.other
                         )
                     }
 
+                    if (bow.sub_type.isNotEmpty()||bow.sub_type2.isNotEmpty()) {
+                        val combinedList = bow.sub_type + bow.sub_type2
+                        ShowSubRow(title = "Modifiers", list = combinedList.toSet().toList())
+                    }
                 }
             }
         }
@@ -346,7 +321,7 @@ class ViewDetails {
                         image = shield.image,
                         title = shield.name,
                         subLabel = "Compendium no.",
-                        subtitle = shield.compendium_no.toString()
+                        subtitle = shield.compendium.toString()
                     )
                     Spacer(Modifier.padding(all = 8.dp))
                     DetailRow(name = "Guard Power:", value = shield.guard_power.toString())
@@ -367,12 +342,8 @@ class ViewDetails {
                         )
                     }
 
-                    if (shield.sub_type.isNotEmpty()) {
-                        DetailRow(name = "Sub Type:", value = shield.sub_type)
-                    }
-
-                    if (shield.sub_type2.isNotEmpty()) {
-                        DetailRow(name = "Subtype2:", value = shield.sub_type2)
+                    if (shield.sub_type.isNotEmpty() || shield.sub_type2.isNotEmpty()) {
+                        ShowSubRow(title = "Modifier", list = shield.sub_type + shield.sub_type2)
                     }
 
                 }
@@ -846,7 +817,9 @@ class ViewDetails {
                             .fillMaxWidth(1f)
                     ) {
                     Column(
-                        modifier = Modifier. padding(8.dp).horizontalScroll(rememberScrollState()),
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .horizontalScroll(rememberScrollState()),
                         horizontalAlignment = Alignment.Start
                     ) {
                         for (index in materials.indices) {

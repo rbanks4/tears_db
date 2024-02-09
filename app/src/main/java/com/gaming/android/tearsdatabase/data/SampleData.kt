@@ -7,10 +7,10 @@ import com.gaming.android.tearsdatabase.models.submodels.EffectId.*
 
 object SampleData {
     val weapons = listOf(
-        Weapon("Boat Oar", 3, 3, 3, 3, 3, listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(
+        Weapon(1,"Boat Oar", 3, 3, 3, 3, 3, listOf("Blunt"), 3, 3, listOf("Blunt"), 3, 3).setDrawable(
             R.drawable.boat_oar
         ),
-        Weapon(
+        Weapon(2,
             "Bokoblin Arm",
             3,
             3,
@@ -24,7 +24,7 @@ object SampleData {
             3,
             3
         ).setDrawable(R.drawable.bokoblin_arm),
-        Weapon(
+        Weapon(3,
             "Boomerang",
             3,
             3,
@@ -38,7 +38,7 @@ object SampleData {
             3,
             3
         ).setDrawable(R.drawable.boomerang),
-        Weapon(
+        Weapon(4,
             "Cobble Crusher (Intact)",
             3,
             3,
@@ -52,7 +52,7 @@ object SampleData {
             3,
             3
         ).setDrawable(R.drawable.cobble_crusher_intact),
-        Weapon(
+        Weapon(5,
             "Feathered Edge",
             3,
             3,
@@ -66,7 +66,7 @@ object SampleData {
             3,
             3
         ).setDrawable(R.drawable.feathered_edge),
-        Weapon(
+        Weapon(6,
             "Forest Dweller's Spear",
             3,
             3,
@@ -80,7 +80,7 @@ object SampleData {
             3,
             3
         ).setDrawable(R.drawable.forest_dwellers_spear),
-        Weapon(
+        Weapon(7,
             "Gloom Sword",
             3,
             3,
@@ -94,7 +94,7 @@ object SampleData {
             3,
             3
         ).setDrawable(R.drawable.gloom_sword),
-        Weapon(
+        Weapon(8,
             "Knight's Claymore",
             3,
             3,
@@ -108,7 +108,7 @@ object SampleData {
             3,
             3
         ).setDrawable(R.drawable.knights_claymore),
-        Weapon(
+        Weapon(9,
             "Lizal Boomerang",
             3,
             3,
@@ -122,7 +122,7 @@ object SampleData {
             3,
             3
         ).setDrawable(R.drawable.lizal_boomerang),
-        Weapon(
+        Weapon(10,
             "Gnarled Wooden Stick",
             3,
             3,
@@ -136,7 +136,7 @@ object SampleData {
             3,
             3
         ).setDrawable(R.drawable.gnarled_wooden_stick),
-        Weapon(
+        Weapon(11,
             "Gerudo Spear (Intact)",
             3,
             3,
@@ -386,49 +386,49 @@ object SampleData {
     )
 
     val bows = listOf(
-        Bow("Traveler's Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+        Bow(1,"Traveler's Bow", 3, 3, 3, 3, 3.3f, 3.3f, listOf("Bone"), 3, listOf("Blunt"), "IsShotBow")
             .setDrawable(R.drawable.travelers_bow),
-        Bow("Soldier's Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+        Bow(2,"Soldier's Bow", 3, 3, 3, 3, 3.3f, 3.3f, listOf("Bone"), 3, listOf("Blunt"), "IsShotBow")
             .setDrawable(R.drawable.soldiers_bow),
-        Bow("Spiked Boko Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+        Bow(3,"Spiked Boko Bow", 3, 3, 3, 3, 3.3f, 3.3f, listOf("Bone"), 3, listOf("Blunt"), "IsShotBow")
             .setDrawable(R.drawable.spiked_boko_bow),
-        Bow("Boko Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+        Bow(4,"Boko Bow", 3, 3, 3, 3, 3.3f, 3.3f, listOf("Bone"), 3, listOf("Blunt"), "IsShotBow")
             .setDrawable(R.drawable.boko_bow),
-        Bow("Lizal Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+        Bow(5,"Lizal Bow", 3, 3, 3, 3, 3.3f, 3.3f, listOf("Bone"), 3, listOf("Blunt"), "IsShotBow")
             .setDrawable(R.drawable.lizal_bow),
-        Bow("Lynel Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+        Bow(6,"Lynel Bow", 3, 3, 3, 3, 3.3f, 3.3f, listOf("Bone"), 3, listOf("Blunt"), "IsShotBow")
             .setDrawable(R.drawable.lynel_bow),
-        Bow("Strengtheneed Lizal Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+        Bow(7,"Strengtheneed Lizal Bow", 3, 3, 3, 3, 3.3f, 3.3f, listOf("Bone"), 3, listOf("Blunt"), "IsShotBow")
             .setDrawable(R.drawable.strengthened_lizal_bow),
-        Bow("Forest Dweller's Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+        Bow(8,"Forest Dweller's Bow", 3, 3, 3, 3, 3.3f, 3.3f, listOf("Bone"), 3, listOf("Blunt"), "IsShotBow")
             .setDrawable(R.drawable.forest_dwellers_bow),
-        Bow("Zora Bow", 3, 3, 3, 3, 3.3f, 3.3f, "Bone", 3, "Blunt", "IsShotBow")
+        Bow(9,"Zora Bow", 3, 3, 3, 3, 3.3f, 3.3f, listOf("Bone"), 3, listOf("Blunt"), "IsShotBow")
             .setDrawable(R.drawable.zora_bow)
     )
 
     val shields = listOf(
-        Shield("Traveler's Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+        Shield(1,"Traveler's Shield", 3, 3, 3, 3.3f, 3.3f, listOf("Blunt"), 3, listOf("GuardEnhance"))
             .setDrawable(R.drawable.travelers_shield),
-        Shield("Soldier's Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+        Shield(2, "Soldier's Shield", 3, 3, 3, 3.3f, 3.3f, listOf("Blunt"), 3, listOf("GuardEnhance"))
             .setDrawable(R.drawable.soldiers_shield),
-        Shield("Spiked Boko Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+        Shield(3, "Spiked Boko Shield", 3, 3, 3, 3.3f, 3.3f, listOf("Blunt"), 3, listOf("GuardEnhance"))
             .setDrawable(R.drawable.spiked_boko_shield),
-        Shield("Boko Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+        Shield(4, "Boko Shield", 3, 3, 3, 3.3f, 3.3f, listOf("Blunt"), 3, listOf("GuardEnhance"))
             .setDrawable(R.drawable.boko_shield),
-        Shield("Lizal Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+        Shield(5, "Lizal Shield", 3, 3, 3, 3.3f, 3.3f, listOf("Blunt"), 3, listOf("GuardEnhance"))
             .setDrawable(R.drawable.lizal_shield),
-        Shield("Lynel Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+        Shield(6, "Lynel Shield", 3, 3, 3, 3.3f, 3.3f, listOf("Blunt"), 3, listOf("GuardEnhance"))
             .setDrawable(R.drawable.lynel_shield),
-        Shield("Savage Lynel Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+        Shield(7, "Savage Lynel Shield", 3, 3, 3, 3.3f, 3.3f, listOf("Blunt"), 3, listOf("GuardEnhance"))
             .setDrawable(R.drawable.savage_lynel_shield),
-        Shield("Zonaite Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+        Shield(8, "Zonaite Shield", 3, 3, 3, 3.3f, 3.3f, listOf("Blunt"), 3, listOf("GuardEnhance"))
             .setDrawable(R.drawable.zonaite_shield),
-        Shield("Zora Shield", 3, 3, 3, 3.3f, 3.3f, "Blunt", 3, "3.3f")
+        Shield(9, "Zora Shield", 3, 3, 3, 3.3f, 3.3f, listOf("Blunt"), 3, listOf("GuardEnhance"))
             .setDrawable(R.drawable.zora_shield)
     )
 
     val roastedFood = listOf(
-        RoastedFood(
+        RoastedFood(1,
             "Item_Boiled_A_01",
             "Hard-Boiled Egg",
             1,
@@ -443,7 +443,7 @@ object SampleData {
             "blue"
         )
             .setDrawable(R.drawable.hard_boiled_egg),
-        RoastedFood(
+        RoastedFood(2,
             "Item_Boiled_A_01",
             "Hard-Boiled Egg",
             1,
@@ -458,7 +458,7 @@ object SampleData {
             "blue"
         )
             .setDrawable(R.drawable.hard_boiled_egg),
-        RoastedFood(
+        RoastedFood(3,
             "Item_Boiled_A_01",
             "Hard-Boiled Egg",
             1,
@@ -473,7 +473,7 @@ object SampleData {
             "blue"
         )
             .setDrawable(R.drawable.hard_boiled_egg),
-        RoastedFood(
+        RoastedFood(4,
             "Item_Boiled_A_01",
             "Hard-Boiled Egg",
             1,
@@ -544,7 +544,7 @@ object SampleData {
     )
 
     val armor = listOf(
-        Armor(
+        Armor(1,
             "Armor_001_Head",
             "Barbarian Helm",
             "Barbarian",
@@ -570,7 +570,7 @@ object SampleData {
             "Royal Hidden Passage (entrance location -0253,0764,0087), break rocks near electric Like-Like. Enter prison cell and move boulder to climb to tunnel to cell on the other side.",
             "-0267, 0638, -0035"
         ).setDrawable(R.drawable.barbarian_helm),
-        Armor(
+        Armor(2,
             "Armor_001_Head",
             "Hylian Hood",
             "Hylia",
@@ -596,7 +596,7 @@ object SampleData {
             "Lookout Landing (Shop)",
             ""
         ).setDrawable(R.drawable.hylian_hood),
-        Armor(
+        Armor(3,
             "Armor_001_Head",
             "Hylian Hood",
             "Hylia",
@@ -622,7 +622,7 @@ object SampleData {
             "Lookout Landing (Shop)",
             ""
         ).setDrawable(R.drawable.hylian_hood),
-        Armor(
+        Armor(4,
             "Armor_001_Head",
             "Hylian Hood",
             "Hylia",
@@ -648,7 +648,7 @@ object SampleData {
             "Lookout Landing (Shop)",
             ""
         ).setDrawable(R.drawable.hylian_hood),
-        Armor(
+        Armor(5,
             "Armor_001_Head",
             "Hylian Hood",
             "Hylia",

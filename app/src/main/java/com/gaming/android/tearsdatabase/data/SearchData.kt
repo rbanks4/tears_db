@@ -1,8 +1,6 @@
 package com.gaming.android.tearsdatabase.data
 
-import android.util.Log
-import com.gaming.android.tearsdatabase.models.*
-import com.gaming.android.tearsdatabase.viewmodels.*
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.ItemViewModel
 
 class SearchData {
     companion object {

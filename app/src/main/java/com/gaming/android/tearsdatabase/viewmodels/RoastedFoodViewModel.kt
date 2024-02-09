@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.api.ItemRepository
-import com.gaming.android.tearsdatabase.models.Effect
 import com.gaming.android.tearsdatabase.models.RoastedFood
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.ItemViewModel
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_LIST
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_STRING
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,7 +24,7 @@ class RoastedFoodViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle): ViewModel(),
     ItemViewModel<RoastedFood> {
     override var items: List<RoastedFood>?
-        get() = savedStateHandle.get<List<RoastedFood>>(ROASTED_FOOD_ITEM)
+        get() = savedStateHandle.get<List<RoastedFood>>(ROASTED_FOOD_ITEM)?.toSet()?.sortedBy { it.recipe_no }
         set(value) = savedStateHandle.set(ROASTED_FOOD_ITEM, value)
 
     override var searchList: List<RoastedFood>?
