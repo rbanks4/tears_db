@@ -1,4 +1,4 @@
-package com.gaming.android.tearsdatabase.viewmodels
+package com.gaming.android.tearsdatabase.viewmodels.interfaces
 
 import com.gaming.android.tearsdatabase.data.SearchData.Companion.queryItems
 import com.gaming.android.tearsdatabase.data.SortData.Companion.onSortMenuItemSelected

@@ -1,44 +1,45 @@
 package com.gaming.android.tearsdatabase.api
 
-import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import com.gaming.android.tearsdatabase.api.response.ArmorResponse
+import com.gaming.android.tearsdatabase.api.response.BowsResponse
+import com.gaming.android.tearsdatabase.api.response.EffectResponse
+import com.gaming.android.tearsdatabase.api.response.MaterialsAndMealsResponse
+import com.gaming.android.tearsdatabase.api.response.MaterialsResponse
+import com.gaming.android.tearsdatabase.api.response.MealsResponse
+import com.gaming.android.tearsdatabase.api.response.RoastedFoodResponse
+import com.gaming.android.tearsdatabase.api.response.ShieldsResponse
+import com.gaming.android.tearsdatabase.api.response.WeaponsResponse
+import retrofit2.http.GET
 
 const val API_KEY_TAG = "api-key: "
 const val KEY = "xzEOCq63EkHsw8PIh9CAbDPuERVTOuNKJSQSivxYvZBcv8hmuwk6FfaZhuGXztoJ"
-const val FIND_ALL = "action/find"
+const val FIND_ALL = "data/v1/action/find"
 interface ApiService {
 
-    @Headers(API_KEY_TAG + KEY)
-    @POST(FIND_ALL)
-    fun getWeapons(@Body request: DataRequest): Call<WeaponsResponse>
+    @GET("weapons2")
+    suspend fun getWeapons(): WeaponsResponse
 
-    @Headers(API_KEY_TAG + KEY)
-    @POST(FIND_ALL)
-    fun getMaterials(@Body request: DataRequest): Call<MaterialsResponse>
+    @GET("materials")
+    suspend fun getMaterials(): MaterialsResponse
 
-    @Headers(API_KEY_TAG + KEY)
-    @POST(FIND_ALL)
-    fun getBows(@Body request: DataRequest): Call<BowsResponse>
+    @GET("bows")
+    suspend fun getBows(): BowsResponse
 
-    @Headers(API_KEY_TAG + KEY)
-    @POST(FIND_ALL)
-    fun getShields(@Body request: DataRequest): Call<ShieldsResponse>
+    @GET("armor2")
+    suspend fun getArmor(): ArmorResponse
 
-    @Headers(API_KEY_TAG + KEY)
-    @POST(FIND_ALL)
-    fun getRoastedFood(@Body request: DataRequest): Call<RoastedFoodResponse>
+    @GET("effects")
+    suspend fun getEffects(): EffectResponse
 
-    @Headers(API_KEY_TAG + KEY)
-    @POST(FIND_ALL)
-    fun getMeals(@Body request: DataRequest): Call<MealsResponse>
+    @GET("meals2")
+    suspend fun getMeals(): MealsResponse
 
-    @Headers(API_KEY_TAG + KEY)
-    @POST(FIND_ALL)
-    fun getArmor(@Body request: DataRequest): Call<ArmorResponse>
+    @GET("roasted")
+    suspend fun getRoastedFoods(): RoastedFoodResponse
 
-    @Headers(API_KEY_TAG + KEY)
-    @POST(FIND_ALL)
-    fun getEffects(@Body request: DataRequest): Call<EffectResponse>
+    @GET("shields")
+    suspend fun getShields(): ShieldsResponse
+
+    @GET("materialsAndMeals")
+    suspend fun getMaterialsAndMeals(): MaterialsAndMealsResponse
 }

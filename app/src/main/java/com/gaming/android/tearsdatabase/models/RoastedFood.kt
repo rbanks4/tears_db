@@ -5,6 +5,7 @@ import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
 
 data class RoastedFood(
+    val _id: Int,
     val actor_name: String,
     override val name: String,
     val recipe_no: Int,

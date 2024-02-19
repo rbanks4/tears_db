@@ -5,6 +5,7 @@ import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
 
 data class Material(
+    val _id: Int,
     override val name: String,
     val additional_damage: Int?,
     val selling_price: Int?,
@@ -21,7 +22,9 @@ data class Material(
     val boost_hp_recover: Int?,
     val boost_max_heart: Int?,
     val boost_max_stamina: Int?,
-    val boost_critical_cook: Int?
+    val boost_critical_cook: Int?,
+    val cook_id: Int,
+    val effect_id: Int
     ): Item<Material> {
     @DrawableRes
     override var image: Int = R.drawable.hot_footed_frog

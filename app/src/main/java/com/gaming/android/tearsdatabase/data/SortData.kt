@@ -1,8 +1,6 @@
 package com.gaming.android.tearsdatabase.data
 
-import com.gaming.android.tearsdatabase.*
-import com.gaming.android.tearsdatabase.models.*
-import com.gaming.android.tearsdatabase.viewmodels.*
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.ItemViewModel
 
 class SortData {
     companion object {

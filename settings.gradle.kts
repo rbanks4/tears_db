@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Tears Database"
-include ':app'
+include ("app")

@@ -5,11 +5,12 @@ import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
 
 data class Armor(
+    val _id: Int,
     val actor_name: String,
     override val name: String,
     val set_name: String,
-    val effect: String,
-    val set_bonus: String,
+    val effect: List<String>,
+    val set_bonus: List<String>,
     val buying_price: Int,
     val creating_price: Int,
     val base_defense: Int,
@@ -22,11 +23,11 @@ data class Armor(
     val selling_price_s2: Int?,
     val selling_price_s3: Int?,
     val selling_price_s4: Int?,
-    val upgrade_s1: String,
-    val upgrade_s2: String,
-    val upgrade_s3: String,
-    val upgrade_s4: String,
-    val total_upgrades: String,
+    val upgrade_s1: List<String>,
+    val upgrade_s2: List<String>,
+    val upgrade_s3: List<String>,
+    val upgrade_s4: List<String>,
+    val total_upgrades: List<String>,
     val location: String,
     val coordinates: String
 ): Item<Armor> {
