@@ -44,8 +44,7 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             return names
         }
 
-        fun getEffectsByName(map: Map<String, Effect>?, name: String): List<Effect> {
-            val names = splitEffectNames(name)
+        fun getEffectsByName(map: Map<String, Effect>?, names: List<String>): List<Effect> {
             return names.mapNotNull {
                 map?.get(it)
             }
@@ -63,9 +62,24 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
                 .lowercase()
         }
 
-        fun recipeFormat(recipe: String): String {
-            return recipe.replace(" or", " or\n")
-                .replace(" and", " and\n")
+        fun recipeFormat(recipe: List<List<String>>): List<String> {
+            var recipeList = mutableListOf<String>()
+            for(ingredients in recipe.indices){
+                var countLabel = ingredients + 1
+                for(option in recipe[ingredients].indices){
+                    var optString = recipe[ingredients][option]
+                    if(option != recipe[ingredients].lastIndex)
+                        optString = "$optString, or "
+                    if(recipeList.lastIndex != ingredients) {
+                        recipeList.add(
+                            ingredients, "Cook Slot $countLabel: $optString"
+                        )
+                    } else {
+                        recipeList[ingredients] += optString
+                    }
+                }
+            }
+            return recipeList
         }
 
         fun readJsonBackup(context: Context, name: String): String? {

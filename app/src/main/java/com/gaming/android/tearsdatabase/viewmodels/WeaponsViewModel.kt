@@ -1,19 +1,19 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gaming.android.tearsdatabase.App
 import com.gaming.android.tearsdatabase.SORT_DAMAGE_DEC
 import com.gaming.android.tearsdatabase.SORT_DAMAGE_INC
 import com.gaming.android.tearsdatabase.SORT_DURABILITY_DEC
 import com.gaming.android.tearsdatabase.SORT_DURABILITY_INC
 import com.gaming.android.tearsdatabase.api.ItemRepository
-import com.gaming.android.tearsdatabase.api.ItemRepositoryImpl
-import com.gaming.android.tearsdatabase.data.DataSource
 import com.gaming.android.tearsdatabase.models.Weapon
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.BattleItemViewModel
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.ItemViewModel
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_LIST
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_STRING
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -29,9 +29,9 @@ class WeaponsViewModel @Inject constructor(
     private val repo: ItemRepository,
     private val savedStateHandle: SavedStateHandle
 ): ViewModel(),
-    ItemViewModel<Weapon> {
+    ItemViewModel<Weapon>, BattleItemViewModel<Weapon> {
     override var items: List<Weapon>?
-        get() = savedStateHandle.get<List<Weapon>>(WEAPONS_ITEM)
+        get() = savedStateHandle.get<List<Weapon>>(WEAPONS_ITEM)?.toSet()?.sortedBy { it.compendium_no }
         set(value) = savedStateHandle.set(WEAPONS_ITEM, value)
 
     override var searchList: List<Weapon>?
@@ -77,24 +77,7 @@ class WeaponsViewModel @Inject constructor(
     }
 
     override fun search(regex: Regex, viewModel: ItemViewModel<Weapon>): List<Weapon> {
-        var finalList: List<Weapon>? = listOf()
-        viewModel.items?.let { list ->
-            val nameList = list.filter {
-                it.name.lowercase().matches(".*$regex.*".toRegex())
-            }
-            val subList = list.filter {
-                if (it.sub_type.isNotEmpty())
-                    it.sub_type.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            val subList2 = list.filter {
-                if (it.sub_type2.isNotEmpty())
-                    it.sub_type2.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-
-            finalList = nameList + subList + subList2
-        }
+        val finalList = searchItemsWithSubtype(viewModel.items, regex.toString())
         return finalList?: listOf()
     }
 }

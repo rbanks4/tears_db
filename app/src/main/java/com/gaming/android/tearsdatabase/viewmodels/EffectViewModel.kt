@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.api.ItemRepository
 import com.gaming.android.tearsdatabase.models.Effect
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.ItemViewModel
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_LIST
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_STRING
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

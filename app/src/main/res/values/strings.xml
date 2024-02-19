@@ -36,4 +36,41 @@
     <string name="menu_box_icon_description">More</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- cooking strings for enums -->
+    <!-- cook id names -->
+    <string name="c_foreign">Cook Foreign</string>
+    <string name="c_fish">Cook Fish</string>
+    <string name="c_mushroom">Cook Mushroom</string>
+    <string name="c_crab">Cook Crab</string>
+    <string name="c_snail">Cook Snail</string>
+    <string name="c_plant">Cook Plant</string>
+    <string name="c_fruit">Cook Fruit</string>
+    <string name="c_meat">Cook Meat</string>
+    <string name="c_ore">Cook Ore</string>
+    <string name="c_enemy">Cook Enemy</string>
+    <string name="c_insect">Cook Insect</string>
+    <string name="c_other">Cook Other</string>
+    <string name="c_dragon">Cook Dragon</string>
+
+    <!-- effect id names -->
+    <string name="e_none">None</string>
+    <string name="e_enduring">Enduring</string>
+    <string name="e_spicy">Spicy</string>
+    <string name="e_electro">Electro</string>
+    <string name="e_hasty">Hasty</string>
+    <string name="e_sneaky">Sneaky</string>
+    <string name="e_fireproof">Fireproof</string>
+    <string name="e_tough">Tough</string>
+    <string name="e_bright">Bright</string>
+    <string name="e_energizing">Energizing</string>
+    <string name="e_chilly">Chilly</string>
+    <string name="e_sticky">Sticky</string>
+    <string name="e_mighty">Mighty</string>
+    <string name="e_hearty">Hearty</string>
+    <string name="e_atk_up_hot">AttackUpHot</string>
+    <string name="e_atk_up_cold">AttackUpCold</string>
+    <string name="e_atk_up_thunder">AttackUpThunderstorm</string>
+    <string name="e_miasma_guard">MiasmaGuard</string>
+    <string name="e_swim_speed_up">SwimSpeedUp</string>
 </resources>

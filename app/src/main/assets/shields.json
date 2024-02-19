@@ -1,433 +1,567 @@
 {
   "shields": [
     {
-      "_id": "64b4a2735b7bd0eaa40ad648",
-      "name": "Wooden Shield",
+      "additional_damage": null,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
       "compendium": 474,
-      "guard_power": 2,
       "durability": 12,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "name": "Wooden Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 2,
+      "_id": 3000,
+      "shield_surfing_damage_ratio": 1
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad649",
-      "name": "Soldier's Shield",
+      "additional_damage": 4,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
       "compendium": 479,
-      "guard_power": 16,
       "durability": 16,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 4,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "name": "Soldier's Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 16,
+      "_id": 3001,
+      "shield_surfing_damage_ratio": 1
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad64a",
-      "name": "Knight's Shield",
-      "compendium": 480,
-      "guard_power": 40,
-      "durability": 23,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
       "additional_damage": 10,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 480,
+      "durability": 23,
+      "name": "Knight's Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 40,
+      "_id": 3002,
+      "shield_surfing_damage_ratio": 1
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad64b",
-      "name": "Boko Shield",
+      "additional_damage": null,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
       "compendium": 492,
-      "guard_power": 3,
       "durability": 5,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "name": "Boko Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 3,
+      "_id": 3003,
+      "shield_surfing_damage_ratio": 1
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad64c",
-      "name": "Spiked Boko Shield",
+      "additional_damage": 2,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": [
+        "Blunt",
+        "Bone"
+      ],
       "compendium": 493,
-      "guard_power": 10,
       "durability": 7,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt\nBone",
-      "additional_damage": 2,
-      "sub_type2": "Blunt\nGuardEnhance\nBone"
+      "name": "Spiked Boko Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance",
+        "Bone"
+      ],
+      "guard_power": 10,
+      "_id": 3004,
+      "shield_surfing_damage_ratio": 1
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad64d",
-      "name": "Dragonbone Boko Shield",
-      "compendium": 494,
-      "guard_power": 25,
-      "durability": 8,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt\nBone",
       "additional_damage": 6,
-      "sub_type2": "Blunt\nGuardEnhance\nBone"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad64e",
-      "name": "Lizal Shield",
-      "compendium": 495,
-      "guard_power": 15,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": [
+        "Blunt",
+        "Bone"
+      ],
+      "compendium": 494,
       "durability": 8,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 3,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "name": "Dragonbone Boko Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance",
+        "Bone"
+      ],
+      "guard_power": 25,
+      "_id": 3005,
+      "shield_surfing_damage_ratio": 1
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad64f",
-      "name": "Reinforced Lizal Shield",
+      "additional_damage": 3,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 495,
+      "durability": 8,
+      "name": "Lizal Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 15,
+      "_id": 3006,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 5,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
       "compendium": 496,
+      "durability": 12,
+      "name": "Reinforced Lizal Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
       "guard_power": 22,
-      "durability": 12,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 5,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "_id": 3007,
+      "shield_surfing_damage_ratio": 1
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad650",
-      "name": "Steel Lizal Shield",
+      "additional_damage": 8,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
       "compendium": 497,
-      "guard_power": 35,
       "durability": 15,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 0.5,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 8,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "name": "Steel Lizal Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 35,
+      "_id": 3008,
+      "shield_surfing_damage_ratio": 0.5
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad651",
-      "name": "Lynel Shield",
-      "compendium": 501,
-      "guard_power": 30,
-      "durability": 12,
+      "additional_damage": 7,
+      "shield_surfing_friction": 1,
       "base_attack": 7,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt\nShieldBash",
-      "additional_damage": 7,
-      "sub_type2": "GuardEnhance\nShieldBash\nShieldBashAnmChange"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad652",
-      "name": "Mighty Lynel Shield",
-      "compendium": 502,
-      "guard_power": 44,
-      "durability": 15,
-      "base_attack": 13,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt\nShieldBash",
-      "additional_damage": 13,
-      "sub_type2": "GuardEnhance\nShieldBash\nShieldBashAnmChange"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad653",
-      "name": "Savage Lynel Shield",
-      "compendium": 503,
-      "guard_power": 62,
-      "durability": 20,
-      "base_attack": 21,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt\nShieldBash",
-      "additional_damage": 21,
-      "sub_type2": "GuardEnhance\nShieldBash\nShieldBashAnmChange"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad654",
-      "name": "Rusty Shield",
-      "compendium": 490,
-      "guard_power": 3,
-      "durability": 16,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad655",
-      "name": "Royal Shield",
-      "compendium": 481,
-      "guard_power": 55,
-      "durability": 29,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 13,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad656",
-      "name": "Forest Dweller's Shield",
-      "compendium": 482,
+      "sub_type": [
+        "Blunt",
+        "ShieldBash"
+      ],
+      "compendium": 501,
+      "durability": 12,
+      "name": "Lynel Shield",
+      "sub_type2": [
+        "GuardEnhance",
+        "ShieldBash",
+        "ShieldBashAnmChange"
+      ],
       "guard_power": 30,
-      "durability": 18,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
+      "_id": 3009,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 13,
       "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
+      "base_attack": 13,
+      "sub_type": [
+        "Blunt",
+        "ShieldBash"
+      ],
+      "compendium": 502,
+      "durability": 15,
+      "name": "Mighty Lynel Shield",
+      "sub_type2": [
+        "GuardEnhance",
+        "ShieldBash",
+        "ShieldBashAnmChange"
+      ],
+      "guard_power": 44,
+      "_id": 3010,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 21,
+      "shield_surfing_friction": 1,
+      "base_attack": 21,
+      "sub_type": [
+        "Blunt",
+        "ShieldBash"
+      ],
+      "compendium": 503,
+      "durability": 20,
+      "name": "Savage Lynel Shield",
+      "sub_type2": [
+        "GuardEnhance",
+        "ShieldBash",
+        "ShieldBashAnmChange"
+      ],
+      "guard_power": 62,
+      "_id": 3011,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": null,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 490,
+      "durability": 16,
+      "name": "Rusty Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 3,
+      "_id": 3012,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 13,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 481,
+      "durability": 29,
+      "name": "Royal Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 55,
+      "_id": 3013,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
       "additional_damage": 7,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 482,
+      "durability": 18,
+      "name": "Forest Dweller's Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 30,
+      "_id": 3014,
+      "shield_surfing_damage_ratio": 1
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad657",
-      "name": "Zora Shield",
+      "additional_damage": 4,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
       "compendium": 483,
+      "durability": 20,
+      "name": "Zora Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
       "guard_power": 24,
-      "durability": 20,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 4,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "_id": 3015,
+      "shield_surfing_damage_ratio": 1
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad658",
-      "name": "Gerudo Shield",
-      "compendium": 485,
-      "guard_power": 28,
-      "durability": 20,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 0.6999999881,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
       "additional_damage": 5,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad659",
-      "name": "Hylian Shield",
-      "compendium": 471,
-      "guard_power": 90,
-      "durability": 800,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
       "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 22,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad65a",
-      "name": "Hunter's Shield",
-      "compendium": 476,
-      "guard_power": 3,
-      "durability": 10,
       "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad65b",
-      "name": "Fisherman's Shield",
-      "compendium": 477,
-      "guard_power": 3,
-      "durability": 10,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad65c",
-      "name": "Royal Guard's Shield",
-      "compendium": 491,
-      "guard_power": 70,
-      "durability": 14,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 3,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 17,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad65d",
-      "name": "Emblazoned Shield",
-      "compendium": 475,
-      "guard_power": 3,
-      "durability": 12,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad65e",
-      "name": "Traveler's Shield",
-      "compendium": 478,
-      "guard_power": 4,
-      "durability": 12,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad65f",
-      "name": "Radiant Shield",
-      "compendium": 486,
-      "guard_power": 35,
-      "durability": 26,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 0.6000000238,
-      "shield_surfing_friction": 0.1000000015,
-      "sub_type": "Blunt",
-      "additional_damage": 8,
-      "sub_type2": "Blunt\nGuardEnhance\nShieldSurfingslipperinessUp"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad660",
-      "name": "Daybreaker",
-      "compendium": 487,
-      "guard_power": 48,
-      "durability": 60,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 0.5,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 12,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad661",
-      "name": "Pot Lid",
-      "compendium": 472,
-      "guard_power": 1,
-      "durability": 10,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad662",
-      "name": "Shield of the Mind's Eye",
-      "compendium": 488,
-      "guard_power": 16,
-      "durability": 16,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 0.25,
-      "sub_type": "Blunt",
-      "additional_damage": 4,
-      "sub_type2": "Blunt\nGuardEnhance\nShieldSurfingslipperinessUp"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad663",
-      "name": "Kite Shield",
-      "compendium": 484,
-      "guard_power": 14,
-      "durability": 16,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 3,
-      "sub_type2": "Blunt\nGuardEnhance\nSpWing"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad664",
-      "name": "Sea-Breeze Shield",
-      "compendium": 489,
-      "guard_power": 65,
-      "durability": 90,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
-      "additional_damage": 16,
-      "sub_type2": "Blunt\nGuardEnhance"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad665",
-      "name": "Zonaite Shield",
-      "compendium": 498,
-      "guard_power": 11,
-      "durability": 15,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt\nZonauEnergyEfficiencyUp",
-      "additional_damage": 2,
-      "sub_type2": "Blunt\nGuardEnhance\nZonau"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad666",
-      "name": "Strong Zonaite Shield",
-      "compendium": 499,
-      "guard_power": 26,
-      "durability": 15,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt\nZonauEnergyEfficiencyUp",
-      "additional_damage": 9,
-      "sub_type2": "Blunt\nGuardEnhance\nZonau"
-    },
-    {
-      "_id": "64b4a2735b7bd0eaa40ad667",
-      "name": "Mighty Zonaite Shield",
-      "compendium": 500,
-      "guard_power": 50,
+      "sub_type": ["Blunt"],
+      "compendium": 485,
       "durability": 20,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
-      "shield_surfing_friction": 1,
-      "sub_type": "Blunt\nZonauEnergyEfficiencyUp",
-      "additional_damage": 12,
-      "sub_type2": "Blunt\nGuardEnhance\nZonau"
+      "name": "Gerudo Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 28,
+      "_id": 3016,
+      "shield_surfing_damage_ratio": 0.6999999881
     },
     {
-      "_id": "64b4a2735b7bd0eaa40ad668",
-      "name": "Old Wooden Shield",
-      "compendium": 473,
-      "guard_power": 2,
-      "durability": 12,
-      "base_attack": null,
-      "shield_surfing_damage_ratio": 1,
+      "additional_damage": 22,
       "shield_surfing_friction": 1,
-      "sub_type": "Blunt",
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 471,
+      "durability": 800,
+      "name": "Hylian Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 90,
+      "_id": 3017,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
       "additional_damage": null,
-      "sub_type2": "Blunt\nGuardEnhance"
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 476,
+      "durability": 10,
+      "name": "Hunter's Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 3,
+      "_id": 3018,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": null,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 477,
+      "durability": 10,
+      "name": "Fisherman's Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 3,
+      "_id": 3019,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 17,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 491,
+      "durability": 14,
+      "name": "Royal Guard's Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 70,
+      "_id": 3020,
+      "shield_surfing_damage_ratio": 3
+    },
+    {
+      "additional_damage": null,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 475,
+      "durability": 12,
+      "name": "Emblazoned Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 3,
+      "_id": 3021,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": null,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 478,
+      "durability": 12,
+      "name": "Traveler's Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 4,
+      "_id": 3022,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 8,
+      "shield_surfing_friction": 0.1000000015,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 486,
+      "durability": 26,
+      "name": "Radiant Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance",
+        "ShieldSurfingslipperinessUp"
+      ],
+      "guard_power": 35,
+      "_id": 3023,
+      "shield_surfing_damage_ratio": 0.6000000238
+    },
+    {
+      "additional_damage": 12,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 487,
+      "durability": 60,
+      "name": "Daybreaker",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 48,
+      "_id": 3024,
+      "shield_surfing_damage_ratio": 0.5
+    },
+    {
+      "additional_damage": null,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 472,
+      "durability": 10,
+      "name": "Pot Lid",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 1,
+      "_id": 3025,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 4,
+      "shield_surfing_friction": 0.25,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 488,
+      "durability": 16,
+      "name": "Shield of the Mind's Eye",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance",
+        "ShieldSurfingslipperinessUp"
+      ],
+      "guard_power": 16,
+      "_id": 3026,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 3,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 484,
+      "durability": 16,
+      "name": "Kite Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance",
+        "SpWing"
+      ],
+      "guard_power": 14,
+      "_id": 3027,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 16,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 489,
+      "durability": 90,
+      "name": "Sea-Breeze Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 65,
+      "_id": 3028,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 2,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": [
+        "Blunt",
+        "ZonauEnergyEfficiencyUp"
+      ],
+      "compendium": 498,
+      "durability": 15,
+      "name": "Zonaite Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance",
+        "Zonau"
+      ],
+      "guard_power": 11,
+      "_id": 3029,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 9,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": [
+        "Blunt",
+        "ZonauEnergyEfficiencyUp"
+      ],
+      "compendium": 499,
+      "durability": 15,
+      "name": "Strong Zonaite Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance",
+        "Zonau"
+      ],
+      "guard_power": 26,
+      "_id": 3030,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": 12,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": [
+        "Blunt",
+        "ZonauEnergyEfficiencyUp"
+      ],
+      "compendium": 500,
+      "durability": 20,
+      "name": "Mighty Zonaite Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance",
+        "Zonau"
+      ],
+      "guard_power": 50,
+      "_id": 3031,
+      "shield_surfing_damage_ratio": 1
+    },
+    {
+      "additional_damage": null,
+      "shield_surfing_friction": 1,
+      "base_attack": null,
+      "sub_type": ["Blunt"],
+      "compendium": 473,
+      "durability": 12,
+      "name": "Old Wooden Shield",
+      "sub_type2": [
+        "Blunt",
+        "GuardEnhance"
+      ],
+      "guard_power": 2,
+      "_id": 3032,
+      "shield_surfing_damage_ratio": 1
     }
   ]
 }

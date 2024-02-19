@@ -1,17 +1,26 @@
 package com.gaming.android.tearsdatabase.viewmodels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.SORT_ID_INC
 import com.gaming.android.tearsdatabase.api.ItemRepository
-import com.gaming.android.tearsdatabase.models.Effect
+import com.gaming.android.tearsdatabase.models.Material
 import com.gaming.android.tearsdatabase.models.Meal
+import com.gaming.android.tearsdatabase.models.RecipePair
+import com.gaming.android.tearsdatabase.models.submodels.CookId
+import com.gaming.android.tearsdatabase.models.submodels.CookId.*
+import com.gaming.android.tearsdatabase.models.submodels.EffectId
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.ItemViewModel
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_LIST
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_STRING
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
 private const val MEALS_ITEM = "meals"
@@ -23,7 +32,7 @@ class MealsViewModel @Inject constructor(
 ): ViewModel(),
     ItemViewModel<Meal> {
     override var items: List<Meal>?
-        get() = savedStateHandle.get<List<Meal>>(MEALS_ITEM)
+        get() = savedStateHandle.get<List<Meal>>(MEALS_ITEM)?.toSet()?.sortedBy { it.recipe_no }
         set(value) = savedStateHandle.set(MEALS_ITEM, value)
 
     override var searchList: List<Meal>?
@@ -38,16 +47,14 @@ class MealsViewModel @Inject constructor(
     val meals: StateFlow<List<Meal>>
         get() = _meals.asStateFlow()
 
-    init {
-        viewModelScope.launch {
-            try {
-                val fetchedItems = repo.fetchMeals()
-                _meals.value = fetchedItems
-            } catch (e: Exception) {
-                println("Failed to fetch items ${e.message}")
-            }
-        }
-    }
+    private val search = MutableStateFlow(savedStateHandle.get<String>(SEARCH_STRING) ?: "")
+
+    val liveMeals: LiveData<List<Meal>> = search.flatMapLatest {
+        flowOf(search(it.toRegex(), this).toSet().toList())
+    }.asLiveData()
+
+    private var idMap: Map<Int, Material> = mutableMapOf()
+    private var cookIdMap: Map<Int, List<Material>> = mutableMapOf()
 
     override fun sort(choice: Int, list: List<Meal>?): List<Meal>? {
         return when (choice) {
@@ -57,19 +64,70 @@ class MealsViewModel @Inject constructor(
         }
     }
 
+    fun setSearch(query: String) {
+        search.value = ".*$query.*"
+    }
+
+    fun updateWithMaterials(materials: List<Material>) {
+        idMap = materials.associateBy(Material::_id)
+        cookIdMap = materials.groupBy { it.cook_id }
+    }
+
+    fun find(id: Int): Material? {
+        return idMap[id]
+    }
+
+    fun findByCookId(cookId: Int): List<Material>? {
+        return cookIdMap[cookId]
+    }
+
+    fun findMaterialsForRecipe(pair: Pair<Int, Int>): RecipePair {
+        var materials = listOf<Material>()
+        var text = ""
+        pair.let { (cookId, id) ->
+            when(cookId) {
+                Other.id -> {
+                    if(id != 0) {
+                        find(id)?.let {
+                            text = it.name
+                            materials = listOf(it)
+                        }
+                    } else {
+                        text = CookId.fromInt(cookId)?.name?:""
+                        materials = findByCookId(cookId)?: emptyList()
+                    }
+                }
+                Insect.id -> {
+
+                    if (id == EffectId.None.id) {
+                        text = Insect.name
+                        materials = findByCookId(cookId)?: emptyList()
+                    } else {
+                        EffectId.fromInt(id)?.let {effect ->
+                            text = "${effect.name} ${Insect.name}"
+                        }
+                        materials = findByCookId(cookId)?.filter { it.effect_id == id }?: emptyList()
+                    }
+                }
+                else -> {
+                    text = CookId.fromInt(cookId)?.name?:""
+                    materials = findByCookId(cookId)?: emptyList()
+                }
+            }
+        }
+        return RecipePair(text, materials)
+    }
+
     override fun search(regex: Regex, viewModel: ItemViewModel<Meal>): List<Meal> {
         var finalList: List<Meal>?
         viewModel.items.let { list ->
             val nameList = list!!.filter {
                 it.name.lowercase().matches(".*$regex.*".toRegex())
             }
-            val subList = list!!.filter {
-                if (it.recipe.isNotEmpty())
-                    it.recipe.lowercase().replace("\n", "").matches(".*$regex.*".toRegex())
-                else false
-            }
-            finalList = nameList + subList
+
+            finalList = nameList
         }
-        return finalList?:listOf()
+
+        return finalList?: listOf()
     }
 }

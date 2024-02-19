@@ -5,8 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.api.ItemRepository
-import com.gaming.android.tearsdatabase.models.Effect
+import com.gaming.android.tearsdatabase.api.response.MaterialsAndMealsResponse
 import com.gaming.android.tearsdatabase.models.Material
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.ItemViewModel
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_LIST
+import com.gaming.android.tearsdatabase.viewmodels.interfaces.SEARCH_STRING
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,7 +27,7 @@ class MaterialsViewModel @Inject constructor(
 ): ViewModel(),
     ItemViewModel<Material> {
     override var items: List<Material>?
-        get() = savedStateHandle.get<List<Material>>(MATERIALS_ITEM)
+        get() = savedStateHandle.get<List<Material>>(MATERIALS_ITEM)?.toSet()?.sortedBy { it._id }
         set(value) = savedStateHandle.set(MATERIALS_ITEM, value)
 
     override var searchList: List<Material>?
@@ -35,15 +38,20 @@ class MaterialsViewModel @Inject constructor(
         get() = savedStateHandle.get<String>(SEARCH_STRING)
         set(value) = savedStateHandle.set(SEARCH_STRING, value)
 
-    private val _materials: MutableStateFlow<List<Material>> = MutableStateFlow(emptyList())
-    val materials: StateFlow<List<Material>>
-        get() = _materials.asStateFlow()
+    private val _response: MutableStateFlow<MaterialsAndMealsResponse> =
+        MutableStateFlow(MaterialsAndMealsResponse(
+            emptyList(),
+            emptyList()
+        ))
+
+    val response: StateFlow<MaterialsAndMealsResponse>
+        get() = _response.asStateFlow()
 
     init {
         viewModelScope.launch {
             try {
-                val fetchedItems = repo.fetchMaterials()
-                _materials.value = fetchedItems
+                val fetchedMAndM = repo.fetchMaterialsAndMeals()
+                _response.value = fetchedMAndM
             } catch (e: Exception) {
                 println("Failed to fetch items ${e.message}")
             }

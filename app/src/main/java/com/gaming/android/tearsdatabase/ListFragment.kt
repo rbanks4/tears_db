@@ -1,7 +1,6 @@
 package com.gaming.android.tearsdatabase
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +36,8 @@ import kotlinx.coroutines.launch
 class ListFragment : Fragment() {
 
     private var _binding: FragmentListBinding? = null
-    private val binding get() = checkNotNull(_binding) {
+    private val binding
+        get() = checkNotNull(_binding) {
         "Cannot access ListFragment binding. Is the view visible?"
     }
 
@@ -110,12 +110,21 @@ class ListFragment : Fragment() {
 
                 //materials
                 launch {
-                    materialViewModel.materials.collect { items ->
-                        if(items.isEmpty()) {
+                    materialViewModel.response.collect { pair ->
+                        val materials = pair.materials
+                        val meals = pair.meals
+                        if(materials.isEmpty()) {
                             materialViewModel.setup(dataSource.materialsBackup()) { findDrawable(it) }
                         } else {
-                            materialViewModel.setup(items) { findDrawable(it) }
+                            materialViewModel.setup(materials) { findDrawable(it) }
                         }
+
+                        if(meals.isEmpty()) {
+                            mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it) }
+                        } else {
+                            mealsViewModel.setup(meals) { findDrawable(it) }
+                        }
+                        mealsViewModel.updateWithMaterials(materialViewModel.items?: emptyList())
                     }
                 }
 
@@ -141,16 +150,16 @@ class ListFragment : Fragment() {
                     }
                 }
 
-                //meals
-                launch {
-                    mealsViewModel.meals.collect { items ->
-                        if(items.isEmpty()) {
-                            mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it) }
-                        } else {
-                            mealsViewModel.setup(items) { findDrawable(it) }
-                        }
-                    }
-                }
+//                //meals
+//                launch {
+//                    mealsViewModel.meals.collect { items ->
+//                        if(items.isEmpty()) {
+//                            mealsViewModel.setup(dataSource.recipeBackup()) { findDrawable(it) }
+//                        } else {
+//                            mealsViewModel.setup(items) { findDrawable(it) }
+//                        }
+//                    }
+//                }
 
                 //shields
                 launch {
