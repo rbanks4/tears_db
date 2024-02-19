@@ -27,7 +27,7 @@ class MaterialsViewModel @Inject constructor(
 ): ViewModel(),
     ItemViewModel<Material> {
     override var items: List<Material>?
-        get() = savedStateHandle.get<List<Material>>(MATERIALS_ITEM)
+        get() = savedStateHandle.get<List<Material>>(MATERIALS_ITEM)?.toSet()?.sortedBy { it._id }
         set(value) = savedStateHandle.set(MATERIALS_ITEM, value)
 
     override var searchList: List<Material>?

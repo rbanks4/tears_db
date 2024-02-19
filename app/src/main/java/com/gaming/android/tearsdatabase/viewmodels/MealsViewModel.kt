@@ -32,7 +32,7 @@ class MealsViewModel @Inject constructor(
 ): ViewModel(),
     ItemViewModel<Meal> {
     override var items: List<Meal>?
-        get() = savedStateHandle.get<List<Meal>>(MEALS_ITEM)
+        get() = savedStateHandle.get<List<Meal>>(MEALS_ITEM)?.toSet()?.sortedBy { it.recipe_no }
         set(value) = savedStateHandle.set(MEALS_ITEM, value)
 
     override var searchList: List<Meal>?
@@ -118,26 +118,6 @@ class MealsViewModel @Inject constructor(
         return RecipePair(text, materials)
     }
 
-//    override fun setup(list: List<Meal>, findDrawable: (Meal) -> Meal) {
-//        super.setup(list, findDrawable)
-//        var newList: List<Meal>
-//        var recipeList: MutableList<Map<CookId, Int>> = mutableListOf()
-//        list.forEach { meal ->
-//            meal.recipe.forEach { recipeItems ->
-//                recipeItems.zipWithNext().forEach { (cookId, id) ->
-//                    when(cookId) {
-//                        Other.id -> {
-//                            recipeList.add(mapOf(Other to id))
-//                        }
-//                    }
-////                    var cookId = CookId.entries.filter { recipeName.contains(it.name) }.first()
-////                    var effectId = EffectId.entries.filter { recipeName.contains(it.name) }.first()
-////                    recipeList.add(mapOf(cookId to effectId))
-//                }
-//            }
-//        }
-//    }
-
     override fun search(regex: Regex, viewModel: ItemViewModel<Meal>): List<Meal> {
         var finalList: List<Meal>?
         viewModel.items.let { list ->
@@ -145,26 +125,9 @@ class MealsViewModel @Inject constructor(
                 it.name.lowercase().matches(".*$regex.*".toRegex())
             }
 
-//            val subList = list!!.filter {
-//                var matches: Boolean = false
-//                it.recipe.forEach {
-//                    it.forEach{
-//                        if(!matches) {
-//                            matches = it
-//                                .lowercase()
-//                                .replace("\n", "")
-//                                .matches(".*$regex.*".toRegex())
-//                        }
-//                    }
-//                }
-//
-//                matches
-//            }
-
-            finalList = nameList //+ subList
+            finalList = nameList
         }
 
-        //searchList = finalList?: listOf()
         return finalList?: listOf()
     }
 }
