@@ -65,6 +65,11 @@ class EffectViewModel @Inject constructor(
                     3 -> newMap[it.name]?.effect_level3 = it
                 }
             } else {
+                when(it.level) {
+                    1 -> it.effect_level1 = it
+                    2 -> it.effect_level2 = it
+                    3 -> it.effect_level3 = it
+                }
                 newMap[it.name] = it
             }
         }
