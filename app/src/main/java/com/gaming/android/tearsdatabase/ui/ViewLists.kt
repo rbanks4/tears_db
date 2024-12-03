@@ -5,11 +5,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -46,18 +49,18 @@ class ViewLists {
         ) {
             val displayedWeapons = remember { mutableStateListOf<Weapon>() }
 
-            val selectedWeapon = remember { mutableStateOf(SampleData.weapons[1]) }
-            val open = remember { mutableStateOf(false) }
-            val currentQuery = remember { mutableStateOf("") }
+            var selectedWeapon by remember { mutableStateOf(SampleData.weapons[1]) }
+            var open by remember { mutableStateOf(false) }
+            var currentQuery by remember { mutableStateOf("") }
 
-            if (open.value) {
+            if (open) {
                 Dialog(
-                    onDismissRequest = { open.value = false },
-                    content = { WeaponDetails(selectedWeapon.value) }
+                    onDismissRequest = { open = false },
+                    content = { WeaponDetails(selectedWeapon) }
                 )
             }
 
-            if (displayedWeapons.isEmpty() && currentQuery.value.isEmpty()) {
+            if (displayedWeapons.isEmpty() && currentQuery.isEmpty()) {
                 displayedWeapons.clear()
                 weapons?.map {
                     displayedWeapons.add(it)
@@ -68,8 +71,9 @@ class ViewLists {
                 Scaffold(
                     topBar = {
                         TopBar(
+                            currentSearch = currentQuery,
                             onQuerySearch = {
-                                currentQuery.value = it
+                                currentQuery = it
                                 displayedWeapons.clear()
                                 onQuery(it)?.map { weapon ->
                                     displayedWeapons.add(weapon)
@@ -89,11 +93,18 @@ class ViewLists {
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
                         modifier = Modifier.padding(contentPadding),
                         content = {
-                            items(displayedWeapons.size) { index ->
-                                WeaponCard(wpn = displayedWeapons[index], onClick = {
-                                    selectedWeapon.value = it
-                                    open.value = true
-                                })
+                            items(
+                                count = displayedWeapons.size,
+                                key = {
+                                    displayedWeapons[it]._id
+                                }
+                            ) { index ->
+                                WeaponCard(
+                                    wpn = displayedWeapons[index],
+                                    onClick = {
+                                        selectedWeapon = it
+                                        open = true },
+                                    modifier = Modifier.padding(8.dp))
                             }
                         })
                 }
@@ -112,16 +123,16 @@ class ViewLists {
 
             val selectedMaterial = remember { mutableStateOf(SampleData.materials[1]) }
             val open = remember { mutableStateOf(false) }
-            val currentQuery = remember { mutableStateOf("") }
+            var currentQuery by remember { mutableStateOf("") }
 
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { MaterialDetails(selectedMaterial.value, getEffectsByName(effect, selectedMaterial.value.effect_type)) }
+                    content = { MaterialDetails(selectedMaterial.value, getEffectsByName(effect, listOf(selectedMaterial.value.effect_type))) }
                 )
             }
 
-            if (displayedMaterials.isEmpty() && currentQuery.value.isEmpty()) {
+            if (displayedMaterials.isEmpty() && currentQuery.isEmpty()) {
                 displayedMaterials.clear()
                 materials?.map {
                     displayedMaterials.add(it)
@@ -131,8 +142,9 @@ class ViewLists {
                 Scaffold(
                     topBar = {
                         TopBar(
+                            currentSearch = currentQuery,
                             onQuerySearch = {
-                                currentQuery.value = it
+                                currentQuery = it
                                 displayedMaterials.clear()
                                 onQuery(it)?.map { material ->
                                     displayedMaterials.add(material)
@@ -152,11 +164,19 @@ class ViewLists {
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
                         modifier = Modifier.padding(contentPadding),
                         content = {
-                            items(displayedMaterials.size) { index ->
-                                MaterialCard(mat = displayedMaterials[index], onClick = {
-                                    selectedMaterial.value = it
-                                    open.value = true
-                                }, effect = getEffectsByName(effect, displayedMaterials[index].effect_type))
+                            items(
+                                count = displayedMaterials.size,
+                                key = {
+                                    displayedMaterials[it]._id
+                                }
+                            ) { index ->
+                                MaterialCard(
+                                    mat = displayedMaterials[index],
+                                    onClick = {
+                                        selectedMaterial.value = it
+                                        open.value = true },
+                                    effect = getEffectsByName(effect, listOf(displayedMaterials[index].effect_type)),
+                                    modifier = Modifier.padding(8.dp))
                             }
                         })
 
@@ -175,7 +195,7 @@ class ViewLists {
 
             val selectedBow = remember { mutableStateOf(SampleData.bows[1]) }
             val open = remember { mutableStateOf(false) }
-            val currentQuery = remember { mutableStateOf("") }
+            var currentQuery by remember { mutableStateOf("") }
 
             if (open.value) {
                 Dialog(
@@ -184,7 +204,7 @@ class ViewLists {
                 )
             }
 
-            if (displayedBows.isEmpty() && currentQuery.value.isEmpty()) {
+            if (displayedBows.isEmpty() && currentQuery.isEmpty()) {
                 displayedBows.clear()
                 bows?.map {
                     displayedBows.add(it)
@@ -194,8 +214,9 @@ class ViewLists {
                 Scaffold(
                     topBar = {
                         TopBar(
+                            currentSearch = currentQuery,
                             onQuerySearch = {
-                                currentQuery.value = it
+                                currentQuery = it
                                 displayedBows.clear()
                                 onQuery(it)?.map { material ->
                                     displayedBows.add(material)
@@ -215,11 +236,18 @@ class ViewLists {
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
                         modifier = Modifier.padding(contentPadding),
                         content = {
-                            items(displayedBows.size) { index ->
-                                BowCard(bow = displayedBows[index], onClick = {
-                                    selectedBow.value = it
-                                    open.value = true
-                                })
+                            items(
+                                count = displayedBows.size,
+                                key = {
+                                    displayedBows[it]._id
+                                }
+                            ) { index ->
+                                BowCard(
+                                    bow = displayedBows[index],
+                                    onClick = {
+                                        selectedBow.value = it
+                                        open.value = true },
+                                    modifier = Modifier.padding(8.dp))
                             }
                         })
 
@@ -238,7 +266,7 @@ class ViewLists {
 
             val selectedShield = remember { mutableStateOf(SampleData.shields[1]) }
             val open = remember { mutableStateOf(false) }
-            val currentQuery = remember { mutableStateOf("") }
+            var currentQuery by remember { mutableStateOf("") }
 
             if (open.value) {
                 Dialog(
@@ -248,7 +276,7 @@ class ViewLists {
             }
 
 
-            if (displayedShields.isEmpty() && currentQuery.value.isEmpty()) {
+            if (displayedShields.isEmpty() && currentQuery.isEmpty()) {
                 displayedShields.clear()
                 shields?.map {
                     displayedShields.add(it)
@@ -258,8 +286,9 @@ class ViewLists {
                 Scaffold(
                     topBar = {
                         TopBar(
+                            currentSearch = currentQuery,
                             onQuerySearch = {
-                                currentQuery.value = it
+                                currentQuery = it
                                 displayedShields.clear()
                                 onQuery(it)?.map { material ->
                                     displayedShields.add(material)
@@ -279,11 +308,18 @@ class ViewLists {
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
                         modifier = Modifier.padding(contentPadding),
                         content = {
-                            items(displayedShields.size) { index ->
-                                ShieldCard(shield = displayedShields[index], onClick = {
-                                    selectedShield.value = it
-                                    open.value = true
-                                })
+                            items(
+                                count = displayedShields.size,
+                                key = {
+                                    displayedShields[it]._id
+                                }
+                            ) { index ->
+                                ShieldCard(
+                                    shield = displayedShields[index],
+                                    onClick = {
+                                        selectedShield.value = it
+                                        open.value = true },
+                                    modifier = Modifier.padding(8.dp))
                             }
                         })
 
@@ -304,16 +340,16 @@ class ViewLists {
 
             val selected = remember { mutableStateOf(SampleData.roastedFood[1]) }
             val open = remember { mutableStateOf(false) }
-            val currentQuery = remember { mutableStateOf("") }
+            var currentQuery by remember { mutableStateOf("") }
 
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { RoastedFoodDetails(selected.value, getEffectsByName(effect, selected.value.effect_type)) }
+                    content = { RoastedFoodDetails(selected.value, getEffectsByName(effect, listOf(selected.value.effect_type))) }
                 )
             }
 
-            if (displayed.isEmpty() && currentQuery.value.isEmpty()) {
+            if (displayed.isEmpty() && currentQuery.isEmpty()) {
                 displayed.clear()
                 roastedFoods?.map {
                     displayed.add(it)
@@ -323,8 +359,9 @@ class ViewLists {
                 Scaffold(
                     topBar = {
                         TopBar(
+                            currentSearch = currentQuery,
                             onQuerySearch = {
-                                currentQuery.value = it
+                                currentQuery = it
                                 displayed.clear()
                                 onQuery(it)?.map { material ->
                                     displayed.add(material)
@@ -344,11 +381,19 @@ class ViewLists {
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
                         modifier = Modifier.padding(contentPadding),
                         content = {
-                            items(displayed.size) { index ->
-                                RoastedFoodCard(item = displayed[index], onClick = {
-                                    selected.value = it
-                                    open.value = true
-                                }, getEffectsByName(effect, displayed[index].effect_type))
+                            items(
+                                count = displayed.size,
+                                key = {
+                                    displayed[it]._id
+                                }
+                            ) { index ->
+                                RoastedFoodCard(
+                                    item = displayed[index],
+                                    onClick = {
+                                        selected.value = it
+                                        open.value = true },
+                                    effect = getEffectsByName(effect, listOf(displayed[index].effect_type)),
+                                    modifier = Modifier.padding(8.dp))
                             }
                         })
 
@@ -359,45 +404,49 @@ class ViewLists {
         @Composable
         fun MealList(
             meals: List<Meal>?,
+            materials: List<Material>?,
             openDrawer: () -> Unit,
-            onQuery: (String) -> List<Meal>?,
-            onMenuItemSelected: (Int) -> List<Meal>?
+            onQuery: (String) -> Unit,
+            onMenuItemSelected: (Int) -> List<Meal>?,
+            findList: (Pair<Int,Int>) -> RecipePair
         ) {
             val displayed = remember { mutableStateListOf<Meal>() }
 
             val selected = remember { mutableStateOf(SampleData.meals[1]) }
             val open = remember { mutableStateOf(false) }
-            val currentQuery = remember { mutableStateOf("") }
+            var currentQuery by remember { mutableStateOf("") }
 
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { MealDetails(selected.value) }
+                    content = { MealDetails(selected.value, {findList(it)}) }
                 )
             }
 
-
-            if (displayed.isEmpty() && currentQuery.value.isEmpty()) {
+            if (displayed.isEmpty() && currentQuery.isEmpty()) {
                 displayed.clear()
                 meals?.map {
                     displayed.add(it)
                 }
             }
+
             Row(modifier = Modifier.padding(all = 8.dp)) {
                 Scaffold(
                     topBar = {
                         TopBar(
+                            currentSearch = currentQuery,
                             onQuerySearch = {
-                                currentQuery.value = it
+                                currentQuery = it
                                 displayed.clear()
-                                onQuery(it)?.map { material ->
-                                    displayed.add(material)
+                                meals?.map { meal ->
+                                    displayed.add(meal)
                                 }
+                                onQuery(it)
                             },
                             onListEdit = {
                                 displayed.clear()
-                                onMenuItemSelected(it)?.map { shield ->
-                                    displayed.add(shield)
+                                onMenuItemSelected(it)?.map { meals ->
+                                    displayed.add(meals)
                                 }
                             },
                             onOpenDrawer = { openDrawer() },
@@ -408,11 +457,19 @@ class ViewLists {
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
                         modifier = Modifier.padding(contentPadding),
                         content = {
-                            items(displayed.size) { index ->
-                                MealCard(item = displayed[index], onClick = {
+                            items(
+                                count = displayed.size,
+                                key = {
+                                    displayed[it]._id
+                                }
+                            ) {
+                            MealCard(
+                                item = displayed[it],
+                                materials = materials?: emptyList(),
+                                onClick = {
                                     selected.value = it
-                                    open.value = true
-                                })
+                                    open.value = true },
+                                modifier = Modifier.padding(8.dp))
                             }
                         })
 
@@ -431,17 +488,17 @@ class ViewLists {
             val displayed = remember { mutableStateListOf<Armor>() }
 
             val selected = remember { mutableStateOf(SampleData.armor[1]) }
-            val open = remember { mutableStateOf(false) }
-            val currentQuery = remember { mutableStateOf("") }
+            var open by remember { mutableStateOf(false) }
+            var currentQuery by remember { mutableStateOf("") }
 
-            if (open.value) {
+            if (open) {
                 Dialog(
-                    onDismissRequest = { open.value = false },
+                    onDismissRequest = { open = false },
                     content = { ArmorDetails(selected.value, getEffectsByName(effect, selected.value.effect)) }
                 )
             }
 
-            if (displayed.isEmpty() && currentQuery.value.isEmpty()) {
+            if (displayed.isEmpty() && currentQuery.isEmpty()) {
                 displayed.clear()
                 armor?.map {
                     displayed.add(it)
@@ -451,8 +508,9 @@ class ViewLists {
                 Scaffold(
                     topBar = {
                         TopBar(
+                            currentSearch = currentQuery,
                             onQuerySearch = {
-                                currentQuery.value = it
+                                currentQuery = it
                                 displayed.clear()
                                 onQuery(it)?.map { material ->
                                     displayed.add(material)
@@ -472,14 +530,19 @@ class ViewLists {
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
                         modifier = Modifier.padding(contentPadding),
                         content = {
-                            items(displayed.size) { index ->
+                            items(
+                                count = displayed.size,
+                                key = {
+                                    displayed[it].actor_name
+                                }
+                            ) { index ->
                                 ArmorCard(
                                     item = displayed[index],
                                     onClick = {
-                                    selected.value = it
-                                    open.value = true
-                                },
-                                    effect = getEffectsByName(effect, displayed[index].effect))
+                                        selected.value = it
+                                        open = true },
+                                    effect = getEffectsByName(effect, displayed[index].effect),
+                                    modifier = Modifier.padding(8.dp))
                             }
                         })
                 }
@@ -536,7 +599,7 @@ class ViewLists {
     @Composable
     fun PreviewMealList() {
         TearsTheme {
-            MealList(meals = SampleData.meals, openDrawer = {}, onQuery = { SampleData.meals }, onMenuItemSelected = { SampleData. meals })
+            MealList(meals = SampleData.meals, materials = SampleData.materials, openDrawer = {}, onQuery = { SampleData.meals }, onMenuItemSelected = { SampleData. meals }, findList = { RecipePair("Insects", SampleData.materials) })
         }
     }
 

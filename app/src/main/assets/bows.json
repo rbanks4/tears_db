@@ -1,424 +1,562 @@
 {
-  "documents": [
+  "bows": [
     {
-      "_id": "64b164bf364ee8da3bd9d2b0",
-      "name": "Spiked Boko Bow",
-      "compendium_no": 457,
-      "base_attack": 12,
-      "durability": 20,
-      "range": 20,
+      "_id": 4000,
       "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "Bone",
-      "additional_damage": 3,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange\nBone",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2af",
-      "name": "Soldier's Bow",
-      "compendium_no": 444,
-      "base_attack": 14,
-      "durability": 36,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 3,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2b5",
-      "name": "Forest Dweller's Bow",
-      "compendium_no": 447,
-      "base_attack": 15,
-      "durability": 35,
-      "range": 20,
-      "drawing_time": 1.600000024,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 3,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": "IsShotBow"
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2bc",
-      "name": "Great Eagle Bow",
-      "compendium_no": 451,
-      "base_attack": 28,
-      "durability": 60,
-      "range": 40,
-      "drawing_time": 1.799999952,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 7,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": "IsShotBow"
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2c5",
-      "name": "Dusk Bow",
-      "compendium_no": 455,
-      "base_attack": 30,
-      "durability": 40,
-      "range": 40,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 7,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2b4",
-      "name": "Strengthened Lizal Bow",
-      "compendium_no": 460,
-      "base_attack": 25,
-      "durability": 35,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 6,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2b8",
-      "name": "Swallow Bow",
-      "compendium_no": 449,
-      "base_attack": 8,
-      "durability": 30,
-      "range": 40,
-      "drawing_time": 1.299999952,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 2,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2b6",
-      "name": "Zora Bow",
-      "compendium_no": 448,
-      "base_attack": 20,
-      "durability": 40,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 3,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2bb",
-      "name": "Dragonbone Boko Bow",
-      "compendium_no": 458,
-      "base_attack": 24,
-      "durability": 30,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "Bone",
-      "additional_damage": 6,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange\nBone",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2bd",
-      "name": "Phrenic Bow",
-      "compendium_no": 453,
-      "base_attack": 10,
-      "durability": 45,
-      "range": 40,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 2,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": "IsLongRangeBow"
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2c1",
-      "name": "Knight's Bow",
-      "compendium_no": 445,
-      "base_attack": 26,
-      "durability": 48,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 6,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2c3",
-      "name": "Wooden Bow",
-      "compendium_no": 442,
-      "base_attack": 4,
-      "durability": 20,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
+      "other": "",
       "additional_damage": null,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2ba",
-      "name": "Mighty Lynel Bow",
-      "compendium_no": 463,
-      "base_attack": 20,
-      "durability": 35,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 5,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": "IsShotBow"
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2ca",
-      "name": "Old Wooden Bow",
-      "compendium_no": 441,
-      "base_attack": 4,
-      "durability": 20,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2ae",
-      "name": "Traveler's Bow",
-      "compendium_no": 443,
       "base_attack": 5,
+      "sub_type": [],
       "durability": 22,
-      "range": 20,
-      "drawing_time": 1,
       "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
+      "name": "Traveler's Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 443
     },
     {
-      "_id": "64b164bf364ee8da3bd9d2b1",
-      "name": "Boko Bow",
-      "compendium_no": 456,
-      "base_attack": 4,
-      "durability": 16,
-      "range": 20,
+      "_id": 4001,
       "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2b7",
-      "name": "Gerudo Bow",
-      "compendium_no": 452,
-      "base_attack": 25,
-      "durability": 40,
-      "range": 40,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
+      "other": "",
       "additional_damage": 3,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": "IsLongRangeBow"
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2be",
-      "name": "Steel Lizal Bow",
-      "compendium_no": 461,
-      "base_attack": 36,
-      "durability": 50,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 9,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2c7",
-      "name": "Construct Bow",
-      "compendium_no": 466,
-      "base_attack": 5,
-      "durability": 18,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": null,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange\nZonau",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2b3",
-      "name": "Lynel Bow",
-      "compendium_no": 462,
-      "base_attack": 10,
-      "durability": 30,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 2,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": "IsShotBow"
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2b9",
-      "name": "Falcon Bow",
-      "compendium_no": 450,
       "base_attack": 14,
-      "durability": 35,
-      "range": 40,
-      "drawing_time": 1.600000024,
+      "sub_type": [],
+      "durability": 36,
       "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 5,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
+      "name": "Soldier's Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 444
     },
     {
-      "_id": "64b164bf364ee8da3bd9d2bf",
-      "name": "Savage Lynel Bow",
-      "compendium_no": 464,
-      "base_attack": 32,
-      "durability": 45,
-      "range": 20,
+      "_id": 4002,
       "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 8,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": "IsShotBow"
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2c9",
-      "name": "Mighty Construct Bow",
-      "compendium_no": 468,
-      "base_attack": 24,
-      "durability": 34,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 6,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange\nZonau",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2b2",
-      "name": "Lizal Bow",
-      "compendium_no": 459,
-      "base_attack": 14,
-      "durability": 25,
-      "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "Bone",
+      "other": "",
       "additional_damage": 3,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange\nBone",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2c0",
-      "name": "Royal Guard's Bow",
-      "compendium_no": 454,
-      "base_attack": 50,
+      "base_attack": 12,
+      "sub_type": [
+        "Bone"
+      ],
       "durability": 20,
-      "range": 30,
-      "drawing_time": 1.5,
-      "reload_time": 0.8000000119,
-      "sub_type": "",
-      "additional_damage": 12,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2c2",
-      "name": "Royal Bow",
-      "compendium_no": 446,
-      "base_attack": 38,
-      "durability": 60,
-      "range": 20,
-      "drawing_time": 1,
       "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 9,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
+      "name": "Spiked Boko Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange",
+        "Bone"
+      ],
+      "range": 20,
+      "compendium_no": 457
     },
     {
-      "_id": "64b164bf364ee8da3bd9d2c4",
-      "name": "Duplex Bow",
-      "compendium_no": 465,
+      "_id": 4003,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": null,
+      "base_attack": 4,
+      "sub_type": [],
+      "durability": 16,
+      "reload_time": 1,
+      "name": "Boko Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 456
+    },
+    {
+      "_id": 4004,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 3,
       "base_attack": 14,
-      "durability": 18,
-      "range": 40,
-      "drawing_time": 1,
+      "sub_type": [
+        "Bone"
+      ],
+      "durability": 25,
       "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 3,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": "IsRapidBow"
-    },
-    {
-      "_id": "64b164bf364ee8da3bd9d2c6",
-      "name": "Zonaite Bow",
-      "compendium_no": 469,
-      "base_attack": 30,
-      "durability": 50,
+      "name": "Lizal Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange",
+        "Bone"
+      ],
       "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "ZonauEnergyEfficiencyUp\nBatteryUser",
-      "additional_damage": 7,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange\nZonau",
-      "other": ""
+      "compendium_no": 459
     },
     {
-      "_id": "64b164bf364ee8da3bd9d2c8",
-      "name": "Strong Construct Bow",
-      "compendium_no": 467,
-      "base_attack": 11,
-      "durability": 26,
+      "_id": 4005,
+      "drawing_time": 1,
+      "other": "IsShotBow",
+      "additional_damage": 2,
+      "base_attack": 10,
+      "sub_type": [],
+      "durability": 30,
+      "reload_time": 1,
+      "name": "Lynel Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
       "range": 20,
-      "drawing_time": 1,
-      "reload_time": 1,
-      "sub_type": "",
-      "additional_damage": 3,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange\nZonau",
-      "other": ""
+      "compendium_no": 462
     },
     {
-      "_id": "64b164bf364ee8da3bd9d2cb",
-      "name": "Demon King's Bow",
-      "compendium_no": 470,
+      "_id": 4006,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 6,
       "base_attack": 25,
-      "durability": 42,
-      "range": 30,
-      "drawing_time": 1,
+      "sub_type": [],
+      "durability": 35,
       "reload_time": 1,
-      "sub_type": "AttackUpByLife",
+      "name": "Strengthened Lizal Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 460
+    },
+    {
+      "_id": 4007,
+      "drawing_time": 1.600000024,
+      "other": "IsShotBow",
+      "additional_damage": 3,
+      "base_attack": 15,
+      "sub_type": [],
+      "durability": 35,
+      "reload_time": 1,
+      "name": "Forest Dweller's Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 447
+    },
+    {
+      "_id": 4008,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 3,
+      "base_attack": 20,
+      "sub_type": [],
+      "durability": 40,
+      "reload_time": 1,
+      "name": "Zora Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 448
+    },
+    {
+      "_id": 4009,
+      "drawing_time": 1,
+      "other": "IsLongRangeBow",
+      "additional_damage": 3,
+      "base_attack": 25,
+      "sub_type": [],
+      "durability": 40,
+      "reload_time": 1,
+      "name": "Gerudo Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 40,
+      "compendium_no": 452
+    },
+    {
+      "_id": 4010,
+      "drawing_time": 1.299999952,
+      "other": "",
+      "additional_damage": 2,
+      "base_attack": 8,
+      "sub_type": [],
+      "durability": 30,
+      "reload_time": 1,
+      "name": "Swallow Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 40,
+      "compendium_no": 449
+    },
+    {
+      "_id": 4011,
+      "drawing_time": 1.600000024,
+      "other": "",
+      "additional_damage": 5,
+      "base_attack": 14,
+      "sub_type": [],
+      "durability": 35,
+      "reload_time": 1,
+      "name": "Falcon Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 40,
+      "compendium_no": 450
+    },
+    {
+      "_id": 4012,
+      "drawing_time": 1,
+      "other": "IsShotBow",
+      "additional_damage": 5,
+      "base_attack": 20,
+      "sub_type": [],
+      "durability": 35,
+      "reload_time": 1,
+      "name": "Mighty Lynel Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 463
+    },
+    {
+      "_id": 4013,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 6,
+      "base_attack": 24,
+      "sub_type": [
+        "Bone"
+      ],
+      "durability": 30,
+      "reload_time": 1,
+      "name": "Dragonbone Boko Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange",
+        "Bone"
+      ],
+      "range": 20,
+      "compendium_no": 458
+    },
+    {
+      "_id": 4014,
+      "drawing_time": 1.799999952,
+      "other": "IsShotBow",
+      "additional_damage": 7,
+      "base_attack": 28,
+      "sub_type": [],
+      "durability": 60,
+      "reload_time": 1,
+      "name": "Great Eagle Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 40,
+      "compendium_no": 451
+    },
+    {
+      "_id": 4015,
+      "drawing_time": 1,
+      "other": "IsLongRangeBow",
+      "additional_damage": 2,
+      "base_attack": 10,
+      "sub_type": [],
+      "durability": 45,
+      "reload_time": 1,
+      "name": "Phrenic Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 40,
+      "compendium_no": 453
+    },
+    {
+      "_id": 4016,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 9,
+      "base_attack": 36,
+      "sub_type": [],
+      "durability": 50,
+      "reload_time": 1,
+      "name": "Steel Lizal Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 461
+    },
+    {
+      "_id": 4017,
+      "drawing_time": 1,
+      "other": "IsShotBow",
+      "additional_damage": 8,
+      "base_attack": 32,
+      "sub_type": [],
+      "durability": 45,
+      "reload_time": 1,
+      "name": "Savage Lynel Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 464
+    },
+    {
+      "_id": 4018,
+      "drawing_time": 1.5,
+      "other": "",
+      "additional_damage": 12,
+      "base_attack": 50,
+      "sub_type": [],
+      "durability": 20,
+      "reload_time": 0.8000000119,
+      "name": "Royal Guard's Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 30,
+      "compendium_no": 454
+    },
+    {
+      "_id": 4019,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 6,
+      "base_attack": 26,
+      "sub_type": [],
+      "durability": 48,
+      "reload_time": 1,
+      "name": "Knight's Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 445
+    },
+    {
+      "_id": 4020,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 9,
+      "base_attack": 38,
+      "sub_type": [],
+      "durability": 60,
+      "reload_time": 1,
+      "name": "Royal Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 446
+    },
+    {
+      "_id": 4021,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": null,
+      "base_attack": 4,
+      "sub_type": [],
+      "durability": 20,
+      "reload_time": 1,
+      "name": "Wooden Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 442
+    },
+    {
+      "_id": 4022,
+      "drawing_time": 1,
+      "other": "IsRapidBow",
+      "additional_damage": 3,
+      "base_attack": 14,
+      "sub_type": [],
+      "durability": 18,
+      "reload_time": 1,
+      "name": "Duplex Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 40,
+      "compendium_no": 465
+    },
+    {
+      "_id": 4023,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 7,
+      "base_attack": 30,
+      "sub_type": [],
+      "durability": 40,
+      "reload_time": 1,
+      "name": "Dusk Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 40,
+      "compendium_no": 455
+    },
+    {
+      "_id": 4024,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 7,
+      "base_attack": 30,
+      "sub_type": [
+        "ZonauEnergyEfficiencyUp",
+        "BatteryUser"
+      ],
+      "durability": 50,
+      "reload_time": 1,
+      "name": "Zonaite Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange",
+        "Zonau"
+      ],
+      "range": 20,
+      "compendium_no": 469
+    },
+    {
+      "_id": 4025,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": null,
+      "base_attack": 5,
+      "sub_type": [],
+      "durability": 18,
+      "reload_time": 1,
+      "name": "Construct Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange",
+        "Zonau"
+      ],
+      "range": 20,
+      "compendium_no": 466
+    },
+    {
+      "_id": 4026,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 3,
+      "base_attack": 11,
+      "sub_type": [],
+      "durability": 26,
+      "reload_time": 1,
+      "name": "Strong Construct Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange",
+        "Zonau"
+      ],
+      "range": 20,
+      "compendium_no": 467
+    },
+    {
+      "_id": 4027,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": 6,
+      "base_attack": 24,
+      "sub_type": [],
+      "durability": 34,
+      "reload_time": 1,
+      "name": "Mighty Construct Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange",
+        "Zonau"
+      ],
+      "range": 20,
+      "compendium_no": 468
+    },
+    {
+      "_id": 4028,
+      "drawing_time": 1,
+      "other": "",
+      "additional_damage": null,
+      "base_attack": 4,
+      "sub_type": [],
+      "durability": 20,
+      "reload_time": 1,
+      "name": "Old Wooden Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 20,
+      "compendium_no": 441
+    },
+    {
+      "_id": 4029,
+      "drawing_time": 1,
+      "other": "",
       "additional_damage": 11,
-      "sub_type2": "Blunt\nShieldSurfingslipperinessDown\nShieldBashAnmChange",
-      "other": ""
+      "base_attack": 25,
+      "sub_type": [
+        "AttackUpByLife"
+      ],
+      "durability": 42,
+      "reload_time": 1,
+      "name": "Demon King's Bow",
+      "sub_type2": [
+        "Blunt",
+        "ShieldSurfingslipperinessDown",
+        "ShieldBashAnmChange"
+      ],
+      "range": 30,
+      "compendium_no": 470
     }
   ]
 }

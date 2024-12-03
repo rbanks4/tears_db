@@ -5,16 +5,17 @@ import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
 
 data class Shield(
+    val _id: Int,
     override val name: String,
-    val compendium_no: Int,
+    val compendium: Int,
     val guard_power: Int,
     val durability: Int,
     val shield_surfing_damage_ratio: Float,
     val shield_surfing_friction: Float,
-    val sub_type: String,
+    override val sub_type: List<String>,
     val additional_damage: Int?,
-    val sub_type2: String
-): Item<Shield> {
+    override val sub_type2: List<String>
+): Item<Shield>, BattleItem<Shield> {
     @DrawableRes
     override var image: Int = R.drawable.travelers_shield
 

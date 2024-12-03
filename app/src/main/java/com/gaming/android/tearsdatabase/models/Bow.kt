@@ -5,6 +5,7 @@ import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
 
 data class Bow(
+    val _id: Int,
     override val name: String,
     val compendium_no: Int,
     val base_attack: Int,
@@ -12,11 +13,11 @@ data class Bow(
     val range: Int,
     val drawing_time: Float,
     val reload_time: Float,
-    val sub_type: String,
+    override val sub_type: List<String>,
     val additional_damage: Int?,
-    val sub_type2: String,
+    override val sub_type2: List<String>,
     val other: String
-): Item<Bow> {
+): Item<Bow>, BattleItem<Bow> {
     @DrawableRes
     override var image: Int = R.drawable.wooden_stick
 
