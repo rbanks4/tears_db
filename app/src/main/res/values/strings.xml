@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tears Database</string>
+    <string name="app_name" translatable="false">Tears Database</string>
     <string name="weapon_damage">Damage: %d</string>
     <string name="weapon_durability">Durability: %d</string>
     <string name="weapon_subtype">Subtype: %s</string>

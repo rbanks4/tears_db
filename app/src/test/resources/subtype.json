@@ -1,0 +1,196 @@
+{
+  "subtypes": [
+  {
+    "id": 0,
+    "name": "Blunt",
+    "alternate": "",
+    "description": "cannot cut"
+  },
+  {
+    "id": 1,
+    "name": "ShatterLevelUp",
+    "alternate": "Demolisher",
+    "description": "1.5x damage on rock type enemies. Breaks rocks more efficiently"
+  },
+  {
+    "id": 2,
+    "name": "ShieldSurfingslipperinessDown",
+    "alternate": "",
+    "description": "harder to shield surf"
+  },
+  {
+    "id": 3,
+    "name": "AtExpandLarge",
+    "alternate": "",
+    "description": "larger when picked up by foe"
+  },
+  {
+    "id": 4,
+    "name": "ShieldBash",
+    "alternate": "",
+    "description": "breaks block"
+  },
+  {
+    "id": 5,
+    "name": "ShieldBashAnmChange",
+    "alternate": "",
+    "description": ""
+  },
+  {
+    "id": 6,
+    "name": "ShatterWeapon",
+    "alternate": "",
+    "description": "breaks rocks efficiently"
+  },
+  {
+    "id": 7,
+    "name": "HystericalStrength",
+    "alternate": "Desperate Strength",
+    "description": "weapon has x2 damage when link has 1 heart or less"
+  },
+  {
+    "id": 8,
+    "name": "UnlikeBat",
+    "alternate": "Two Handed Sword",
+    "description": "2 handed weapon"
+  },
+  {
+    "id": 9,
+    "name": "Katana",
+    "alternate": "Wind Razor",
+    "description": "Creates wind blade projectile when swung"
+  },
+  {
+    "id": 10,
+    "name": "RicketyDamageUp",
+    "alternate": "Breaking Point",
+    "description": "x2 damage when about to break or durability < 4"
+  },
+  {
+    "id": 11,
+    "name": "HighDurability",
+    "alternate": "Extra Durable",
+    "description": "Higher than normal durability"
+  },
+  {
+    "id": 12,
+    "name": "Miasma",
+    "alternate": "Gloom Toll",
+    "description": "Slowly consumes heart when using the weapon"
+  },
+  {
+    "id": 13,
+    "name": "AttachmentDamageUp",
+    "alternate": "Strong Fusion",
+    "description": "x2 of fused item damage"
+  },
+  {
+    "id": 14,
+    "name": "WaterDamageUp",
+    "alternate": "Water Warrior",
+    "description": "x2 more damage when wet"
+  },
+  {
+    "id": 15,
+    "name": "ZonauDamageUp",
+    "alternate": "Zonaite-Powered",
+    "description": "adds damage if the fused material is zonai"
+  },
+  {
+    "id": 16,
+    "name": "ZonauEnergyEfficiencyUp",
+    "alternate": "",
+    "description": "use less battery power on zonai fused material"
+  },
+  {
+    "id": 17,
+    "name": "BluntWithAnyAttachment",
+    "alternate": "",
+    "description": "turns any attachment to blunt"
+  },
+  {
+    "id": 18,
+    "name": "Zonau",
+    "alternate": "",
+    "description": "Zonai based"
+  },
+  {
+    "id": 19,
+    "name": "RushDamageUp",
+    "alternate": "Improved Flurry Rush",
+    "description": "Perfect dodge flurry attacks do x2 damage"
+  },
+  {
+    "id": 20,
+    "name": "Bone",
+    "alternate": "",
+    "description": "Bone weapon"
+  },
+  {
+    "id": 21,
+    "name": "ImpressiveGrip",
+    "alternate": "",
+    "description": "weapon less likely to drop from hands"
+  },
+  {
+    "id": 22,
+    "name": "CreateWind",
+    "alternate": "",
+    "description": "creates a gust of wind in front when swung"
+  },
+  {
+    "id": 23,
+    "name": "StealthAttackUp",
+    "alternate": "Improved Sneakstrike",
+    "description": "16x sneakstrike damage instead of 8x"
+  },
+  {
+    "id": 24,
+    "name": "Torch",
+    "alternate": "",
+    "description": "uses much less durability when burning"
+  },
+  {
+    "id": 25,
+    "name": "ChargeSpeedUp",
+    "alternate": "Quick Charge",
+    "description": "Charge attacks charge twice as fast"
+  },
+  {
+    "id": 26,
+    "name": "Boomerang",
+    "alternate": "",
+    "description": "Will come back when it reaches max distance thrown"
+  },
+  {
+    "id": 27,
+    "name": "BoomerangZRotate",
+    "alternate": "",
+    "description": ""
+  },
+  {
+    "id": 28,
+    "name": "Reuse",
+    "alternate": "Fuse Recycling",
+    "description": "Allows reuse of one-time use materials (like puffshroom)"
+  },
+  {
+    "id": 29,
+    "name": "DecreaseChargeAttackStamina",
+    "alternate": "Charge Atk. Stamina Up",
+    "description": "Use less stamina when charging for attack"
+  },
+  {
+    "id": 30,
+    "name": "MasterSword",
+    "alternate": "",
+    "description": "only available to master sword"
+  },
+  {
+    "id": 31,
+    "name": "DefeatMiasma",
+    "alternate": "Revitalized Sword of Legend",
+    "description": "15 more damage to miasma enemies. Master sword only. Does not apply to fuse materials."
+  }
+]
+}
