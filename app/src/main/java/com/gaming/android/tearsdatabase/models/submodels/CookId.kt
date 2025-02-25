@@ -20,7 +20,8 @@ enum class CookId(
     Insect(10, R.string.c_insect),
     //Veggie(11),
     Other(12, R.string.c_other),
-    Dragon(13, R.string.c_dragon);
+    Dragon(13, R.string.c_dragon),
+    Unique(14, R.string.c_unique);
 
     companion object {
         private val map = entries.associateBy(CookId::id)

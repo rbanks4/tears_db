@@ -3,6 +3,8 @@ package com.gaming.android.tearsdatabase.models
 import android.content.Context
 import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
+import com.gaming.android.tearsdatabase.models.submodels.CookId
+import com.gaming.android.tearsdatabase.models.submodels.EffectId
 
 data class Material(
     val _id: Int,
@@ -28,6 +30,11 @@ data class Material(
     ): Item<Material> {
     @DrawableRes
     override var image: Int = R.drawable.hot_footed_frog
+
+    val cookEffectType: EffectId
+        get() = EffectId.fromInt(effect_id) ?: EffectId.None
+    val cookType: CookId
+        get() = CookId.fromInt(cook_id) ?: CookId.Other
 
     override fun get(): Material {
         return this

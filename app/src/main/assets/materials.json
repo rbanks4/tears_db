@@ -151,7 +151,7 @@
       "additional_damage_rate_arrow": null,
       "name": "Fairy",
       "boost_critical_cook": null,
-      "effect_id": 0,
+      "effect_id": 206,
       "effect_time": 0
     },
     {

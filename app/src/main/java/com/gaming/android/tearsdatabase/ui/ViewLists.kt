@@ -1,19 +1,45 @@
 package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
+import android.util.Log
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Shapes
+import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -21,6 +47,8 @@ import com.gaming.android.tearsdatabase.*
 import com.gaming.android.tearsdatabase.data.DataSource.Companion.getEffectsByName
 import com.gaming.android.tearsdatabase.data.SampleData
 import com.gaming.android.tearsdatabase.models.*
+import com.gaming.android.tearsdatabase.models.submodels.CookId
+import com.gaming.android.tearsdatabase.models.submodels.EffectId
 import com.gaming.android.tearsdatabase.theme.TearsTheme
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.BowCard
 import com.gaming.android.tearsdatabase.ui.ViewCards.Companion.MaterialCard
@@ -111,25 +139,89 @@ class ViewLists {
             }
         }
 
+        @OptIn(ExperimentalMaterial3Api::class)
         @Composable
         fun MaterialList(
             materials: List<Material>?,
+            recipes: List<Meal>? = null,
             effect: Map<String, Effect>?,
             openDrawer: () -> Unit,
             onQuery: (String) -> List<Material>?,
-            onMenuItemSelected: (Int) -> List<Material>?
+            onMenuItemSelected: (Int) -> List<Material>?,
+            findList: (Pair<Int, Int>) -> RecipePair
         ) {
             val displayedMaterials = remember { mutableStateListOf<Material>() }
 
             val selectedMaterial = remember { mutableStateOf(SampleData.materials[1]) }
             val open = remember { mutableStateOf(false) }
             var currentQuery by remember { mutableStateOf("") }
+            var cookList = remember { mutableStateListOf<Material>() }
+            val currentMeal = remember { mutableStateOf<Meal?>(null)}
 
             if (open.value) {
                 Dialog(
                     onDismissRequest = { open.value = false },
-                    content = { MaterialDetails(selectedMaterial.value, getEffectsByName(effect, listOf(selectedMaterial.value.effect_type))) }
+                    content = { MaterialDetails(
+                        selectedMaterial.value,
+                        getEffectsByName(effect, listOf(selectedMaterial.value.effect_type))
+                    )}
                 )
+            }
+
+            recipes?.let { rl ->
+                currentMeal.value = if (cookList.size > 0 && rl.isNotEmpty()) {
+                    //findMatchingMeal(it, cookList)
+                    var isPotion = false
+                    val recipeList =
+                        cookList.map { cl ->
+                            val cookId = cl.cook_id
+                            val effectId = if(cookId == CookId.Other.id) {
+                                 cl._id
+                            } else if (cookId == CookId.Mushroom.id) {
+                                EffectId.None.id
+                            } else { cl.effect_id }
+
+                            listOf(cookId, effectId)
+                        }.toMutableList()
+
+                    val result = rl.find { r ->
+                        val ingredients = r.recipe
+//                        recipeList.all {
+//                            val contains = ingredients.contains(it)
+//                            if(contains) Log.i("Material List", "Does $recipeList match $ingredients ?")
+//                            contains
+//                        }
+                        val potionCheck = if(isPotion) {
+                            ingredients.size == recipeList.size
+                        } else {
+                            true
+                        }
+
+                        recipeList.all { recipe ->
+                            ingredients.any { ingredient -> ingredient == recipe }
+                        } && potionCheck
+                    }
+
+                    val matchingRecipes = rl.filter { rec ->
+                        val ingredients = rec.recipe
+                        ingredients.all { list ->
+                            recipeList.any { target ->
+                                list.containsAll(target)
+                            }
+                        }
+                    }
+
+                    val matches = matchingRecipes
+
+
+
+                    if(result != null) {
+                        result
+                        //matches.get(0)
+                    } else rl.find { it.recipe_no == 145}
+                } else {
+                    null
+                }
             }
 
             if (displayedMaterials.isEmpty() && currentQuery.isEmpty()) {
@@ -159,6 +251,63 @@ class ViewLists {
                             onOpenDrawer = { openDrawer() },
                             menuType = MENU_TYPE_MATERIALS
                         )
+                    },
+                    bottomBar = {
+                        if(cookList.size > 0) {
+                            BottomAppBar(
+                                content = {
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceEvenly,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        for (c in cookList) {
+                                            Image(
+                                                modifier = Modifier
+                                                    .size(40.dp)
+                                                    .clickable { cookList.remove(c) },
+                                                painter = painterResource(id = c.image),
+                                                contentDescription = c.name
+                                            )
+                                        }
+
+                                        currentMeal.value?.let { meal ->
+                                            Column(
+                                                modifier = Modifier
+                                                    .background(
+                                                        color = MaterialTheme.colorScheme.tertiaryContainer,
+                                                        shape = RoundedCornerShape(10.dp)
+                                                    ),
+                                                horizontalAlignment = Alignment.CenterHorizontally,
+                                            ) {
+                                                val detailOpen = remember { mutableStateOf(false) }
+
+                                                if (detailOpen.value) {
+                                                    Dialog(
+                                                        onDismissRequest = { detailOpen.value = false },
+                                                        content = { MealDetails(meal, {findList(it)}) }
+                                                    )
+                                                }
+                                                Image(
+                                                    modifier = Modifier.size(40.dp)
+                                                        .padding(top = 5.dp)
+                                                        .clickable {
+                                                            detailOpen.value = true
+                                                        },
+                                                    painter = painterResource(id = meal.image),
+                                                    contentDescription = meal.name
+                                                )
+                                                Text(
+                                                    modifier = Modifier.padding(5.dp),
+                                                    text = meal.name,
+                                                    color = MaterialTheme.colorScheme.onTertiaryContainer
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+                            )
+                        }
                     }
                 ) { contentPadding ->
                     LazyVerticalGrid(columns = GridCells.Adaptive(100.dp),
@@ -175,6 +324,9 @@ class ViewLists {
                                     onClick = {
                                         selectedMaterial.value = it
                                         open.value = true },
+                                    onLongPress = {
+                                        if(cookList.size < 5) {
+                                            cookList.add(it) } },
                                     effect = getEffectsByName(effect, listOf(displayedMaterials[index].effect_type)),
                                     modifier = Modifier.padding(8.dp))
                             }
@@ -567,7 +719,7 @@ class ViewLists {
     @Composable
     fun PreviewMaterialList() {
         TearsTheme {
-            MaterialList(materials = SampleData.materials, openDrawer = {}, onQuery = { SampleData.materials }, onMenuItemSelected = { SampleData. materials }, effect = SampleData.effectMap)
+            MaterialList(materials = SampleData.materials, openDrawer = {}, onQuery = { SampleData.materials }, onMenuItemSelected = { SampleData. materials }, effect = SampleData.effectMap, findList = { RecipePair("Insects", SampleData.materials) })
         }
     }
 
@@ -609,5 +761,9 @@ class ViewLists {
         TearsTheme {
             ArmorList(armor = SampleData.armor, openDrawer = {}, onQuery = { SampleData.armor }, onMenuItemSelected = { SampleData. armor }, effect = SampleData.effectMap)
         }
+    }
+
+    fun findMatchingMeal(meals: List<Meal>, mats: List<Material>) {
+
     }
 }

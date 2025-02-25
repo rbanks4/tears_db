@@ -3,6 +3,8 @@ package com.gaming.android.tearsdatabase.models
 import android.content.Context
 import androidx.annotation.DrawableRes
 import com.gaming.android.tearsdatabase.R
+import com.gaming.android.tearsdatabase.models.submodels.CookId
+import com.gaming.android.tearsdatabase.models.submodels.EffectId
 
 data class Meal(
     val _id: Int,
@@ -16,7 +18,12 @@ data class Meal(
         ): Item<Meal> {
     @DrawableRes
     override var image: Int = R.drawable.mushroom_skewer
-    var recipeIds: MutableList<Pair<Int, Int>>? = mutableListOf()
+    val recipeList: List<List<Pair<CookId, EffectId>>>
+        get() = recipe.map { lists ->
+            lists.chunked(2).map { (cookId, effectId) ->
+                Pair(CookId.fromInt(cookId)?:CookId.Other, EffectId.fromInt(effectId)?:EffectId.None)
+            }
+        }
 
     override fun get(): Meal {
         return this

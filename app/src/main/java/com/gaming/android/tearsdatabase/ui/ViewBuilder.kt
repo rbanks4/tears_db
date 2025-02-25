@@ -3,6 +3,7 @@ package com.gaming.android.tearsdatabase.ui
 import android.content.res.Configuration
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -54,7 +55,7 @@ class ViewBuilder {
         ) {
             //var textState by remember { mutableStateOf("") }
             val ctx = LocalContext.current
-            Row(modifier = Modifier.padding(end = 8.dp)) {
+            Row(modifier = Modifier.padding(end = 8.dp).background(MaterialTheme.colorScheme.surface)) {
                 IconButton(
                     onClick = { onOpenDrawer() },
                     modifier = Modifier
@@ -74,13 +75,15 @@ class ViewBuilder {
                     },
                     modifier = Modifier.width(1000.dp),
                     readOnly = false,
+                    colors = TextFieldDefaults.colors(focusedTextColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                        focusedContainerColor = MaterialTheme.colorScheme.primaryContainer),
                     leadingIcon = {
                         Image(
                             painter = painterResource(id = R.drawable.search_vector),
                             contentDescription = ctx.getString(R.string.search_description),
                             modifier = Modifier
                                 .size(20.dp),
-                            colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.onSurface)
+                            colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.onPrimaryContainer)
                         )
                     },
                     trailingIcon = {
@@ -107,7 +110,8 @@ class ViewBuilder {
                 Box {
                     Icon(
                         imageVector = Icons.Default.MoreVert,
-                        contentDescription = ctx.getString(R.string.menu_box_icon_description)
+                        contentDescription = ctx.getString(R.string.menu_box_icon_description),
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer
                     )
                     DropdownMenu(
                         expanded = expanded,
@@ -236,10 +240,12 @@ class ViewBuilder {
                         )
                         MATERIALS_KEY -> MaterialList(
                             materials = materials.getCurrent(),
+                            recipes = meals.getCurrent(),
                             effect = effects.map,
                             openDrawer = { openDrawer() },
                             onQuery = { materials.query(it) },
-                            onMenuItemSelected = { materials.onItemSelected(it) }
+                            onMenuItemSelected = { materials.onItemSelected(it) },
+                            findList = { meals.findMaterialsForRecipe(it) }
                         )
                         ROASTED_CHILLED_KEY -> RoastedFoodList(
                             roastedFoods = roastedFoods.getCurrent(),

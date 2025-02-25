@@ -2,6 +2,7 @@ package com.gaming.android.tearsdatabase.data
 
 import com.gaming.android.tearsdatabase.R
 import com.gaming.android.tearsdatabase.models.*
+import com.gaming.android.tearsdatabase.models.submodels.CookId
 import com.gaming.android.tearsdatabase.models.submodels.CookId.*
 import com.gaming.android.tearsdatabase.models.submodels.EffectId.*
 
@@ -571,7 +572,7 @@ object SampleData {
             "-0267, 0638, -0035"
         ).setDrawable(R.drawable.barbarian_helm),
         Armor(2,
-            "Armor_001_Head",
+            "Armor_002_Head",
             "Hylian Hood",
             "Hylia",
             emptyList(),
@@ -597,9 +598,9 @@ object SampleData {
             ""
         ).setDrawable(R.drawable.hylian_hood),
         Armor(3,
-            "Armor_001_Head",
-            "Hylian Hood",
-            "Hylia",
+            "Armor_003_Head",
+            "Zora Helm",
+            "Zora",
             emptyList(),
             emptyList(),
             3,
@@ -621,11 +622,11 @@ object SampleData {
             listOf("20 Bokoblin Horns, 30 Bokoblin Fangs, 1500 rupees"),
             "Lookout Landing (Shop)",
             ""
-        ).setDrawable(R.drawable.hylian_hood),
+        ).setDrawable(R.drawable.zora_helm),
         Armor(4,
-            "Armor_001_Head",
-            "Hylian Hood",
-            "Hylia",
+            "Armor_004_Head",
+            "Radiant Shirt",
+            "Radiant",
             emptyList(),
             emptyList(),
             3,
@@ -647,11 +648,11 @@ object SampleData {
             listOf("20 Bokoblin Horns, 30 Bokoblin Fangs, 1500 rupees"),
             "Lookout Landing (Shop)",
             ""
-        ).setDrawable(R.drawable.hylian_hood),
+        ).setDrawable(R.drawable.radiant_shirt),
         Armor(5,
-            "Armor_001_Head",
-            "Hylian Hood",
-            "Hylia",
+            "Armor_005_Head",
+            "Toursers of Wind",
+            "Wind",
             emptyList(),
             emptyList(),
             3,
@@ -673,7 +674,7 @@ object SampleData {
             listOf("20 Bokoblin Horns, 30 Bokoblin Fangs, 1500 rupees"),
             "Lookout Landing (Shop)",
             ""
-        ).setDrawable(R.drawable.hylian_hood),
+        ).setDrawable(R.drawable.trousers_of_the_wind),
     )
 
     val effects = listOf(

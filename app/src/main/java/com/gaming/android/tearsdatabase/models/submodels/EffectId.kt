@@ -25,10 +25,19 @@ enum class EffectId(
     AttackUpCold(15, R.string.e_atk_up_cold),
     AttackUpThunderstorm(16, R.string.e_atk_up_thunder),
     MiasmaGuard(17, R.string.e_miasma_guard),
-    SwimSpeedUp(18, R.string.e_swim_speed_up);
+    SwimSpeedUp(18, R.string.e_swim_speed_up),
+    Honey(408, R.string.e_honey),
+    Fairy(206, R.string.e_fairy),
+    Unique(999, R.string.unique);
+
+
 
     companion object {
         private val map = EffectId.entries.associateBy(EffectId::id)
-        fun fromInt(id: Int) = map[id]
+        var m_id: Int = 0
+        fun fromInt(id: Int): EffectId {
+            if(id > SwimSpeedUp.id) this.m_id = id
+            return map[id]?:Unique
+        }
     }
 }
