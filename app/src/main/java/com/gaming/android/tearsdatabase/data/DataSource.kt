@@ -14,6 +14,7 @@ import com.gaming.android.tearsdatabase.api.response.ShieldsResponse
 import com.gaming.android.tearsdatabase.api.response.WeaponsResponse
 import com.gaming.android.tearsdatabase.models.*
 import com.google.gson.Gson
+import java.io.File
 import java.io.IOException
 import java.io.InputStream
 
@@ -99,6 +100,30 @@ data class DataSource(private val ctx: Context): ContextWrapper(ctx) {
             Log.d("DataSource", "Size of $name json: ${jsonString.length}")
 
             return jsonString
+        }
+
+        fun testWeapons(): WeaponsResponse? {
+            return Gson().fromJson(
+                testReadJson(WEAPONS_JSON),
+                WeaponsResponse::class.java
+            )
+        }
+
+        fun testReadJson(name: String): String? {
+            val json: String? = try {
+                val classLoader = this.javaClass.classLoader
+                val file = File(classLoader.getResource(name).file)
+                var inputStream = file.inputStream()
+                var bufferSize = inputStream.available()
+                var buffer = ByteArray(bufferSize)
+                inputStream.read(buffer)
+                inputStream.close()
+                String(buffer, Charsets.UTF_8)
+            } catch (e: IOException) {
+                e.printStackTrace()
+                null
+            }
+            return json
         }
     }
 

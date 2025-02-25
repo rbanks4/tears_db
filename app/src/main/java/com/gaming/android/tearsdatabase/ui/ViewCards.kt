@@ -1,14 +1,15 @@
 package com.gaming.android.tearsdatabase.ui
 
-import android.content.ClipData
 import android.content.res.Configuration
 import android.util.Log
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -17,6 +18,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,7 +31,10 @@ class ViewCards {
     companion object {
         @Composable
         fun WeaponCard(wpn: Weapon, onClick: (Weapon) -> Unit, modifier: Modifier = Modifier) {
-            Card(modifier = modifier) {
+            Card(modifier = modifier,
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer)) {
                 Column(modifier = Modifier.padding(all = 8.dp)) {
                     Image(
                         painter = painterResource(id = wpn.image),
@@ -72,7 +77,7 @@ class ViewCards {
         }
 
         @Composable
-        fun MaterialCard(mat: Material, onClick: (Material) -> Unit, effect: List<Effect>, modifier: Modifier = Modifier) {
+        fun MaterialCard(mat: Material, onClick: (Material) -> Unit, onLongPress: (Material) -> Unit, effect: List<Effect>, modifier: Modifier = Modifier) {
 
             val text = if (mat.hp_recover != 0 && mat.hp_recover != null)
                 "Hp Recover: ${mat.hp_recover}"
@@ -89,8 +94,15 @@ class ViewCards {
                             contentDescription = mat.name,
                             modifier = Modifier
                                 .size(100.dp)
-                                .clickable {
-                                    onClick(mat)
+                                .pointerInput(Unit) {
+                                    detectTapGestures(
+                                        onLongPress = {
+                                            onLongPress(mat)
+                                        },
+                                        onTap = {
+                                            onClick(mat)
+                                        }
+                                    )
                                 }
                         )
                         if (effect.isNotEmpty()) {
@@ -100,7 +112,9 @@ class ViewCards {
                                 modifier = Modifier
                                     .size(30.dp)
                                     .align(Alignment.TopEnd),
-                                tint = if (effect[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
+                                tint = if (effect[0].monochrome)
+                                    MaterialTheme.colorScheme.onSecondaryContainer
+                                else Color.Unspecified
                             )
                         }
                     }
@@ -112,8 +126,9 @@ class ViewCards {
                     Column(modifier = Modifier
                         .clickable { isExpanded = !isExpanded }
                         .align(Alignment.CenterHorizontally)) {
+                        var cookingPair = Pair(mat.cookType, mat.cookEffectType)
                         Text(
-                            text = mat.name,
+                            text = mat.name + " " + cookingPair,
                             color = MaterialTheme.colorScheme.secondary,
                             style = MaterialTheme.typography.titleSmall,
                             modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -215,7 +230,9 @@ class ViewCards {
                                 modifier = Modifier
                                     .size(30.dp)
                                     .align(Alignment.TopEnd),
-                                tint = if (effect[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
+                                tint = if (effect[0].monochrome)
+                                    MaterialTheme.colorScheme.onSecondaryContainer
+                                else Color.Unspecified
                             )
                         }
                     }
@@ -293,6 +310,7 @@ class ViewCards {
                                 .clickable {
                                     onClick(item)
                                 }
+                                .padding(10.dp)
                         )
                         if (effect.isNotEmpty()) {
                             Log.d("ViewCards.ArmorCard", "Showing: ${effect[0].name}")
@@ -302,7 +320,9 @@ class ViewCards {
                                 modifier = Modifier
                                     .size(30.dp)
                                     .align(Alignment.TopEnd),
-                                tint = if (effect[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
+                                tint = if (effect[0].monochrome)
+                                    MaterialTheme.colorScheme.onSecondaryContainer
+                                else Color.Unspecified
                             )
                         }
                     }
@@ -327,7 +347,6 @@ class ViewCards {
         fun ItemTitle(title: String){
             Text(
                 text = title,
-                color = MaterialTheme.colorScheme.secondary,
                 style = MaterialTheme.typography.titleSmall
             )
         }
@@ -369,6 +388,7 @@ class ViewCards {
                 MaterialCard(
                     mat= SampleData.materials[1],
                     onClick = {},
+                    onLongPress = {},
                     effect = SampleData.effects
                 )
             }

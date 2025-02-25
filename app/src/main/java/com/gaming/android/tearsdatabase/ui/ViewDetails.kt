@@ -1,6 +1,7 @@
 package com.gaming.android.tearsdatabase.ui
 
 import android.content.res.Configuration
+import androidx.appcompat.widget.ViewUtils
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -431,29 +432,31 @@ class ViewDetails {
                     var recipeList = mutableListOf<List<Material>>()
                     var labelList = mutableListOf<String>()
 
-                    for (ingredients in meal.recipe.indices) {
+                    for (ingredients in meal.recipeList.indices) {
 
                         recipeList.add(emptyList())
                         labelList.add("")
 
                         var count = 0
-                        val chunkedGroup = meal.recipe[ingredients].chunked(2)
+                        var labelString = ""
+                        val chunkedGroup = meal.recipeList[ingredients]
 
                         for (pair in chunkedGroup) {
 
-                            val newIngredients = findList(Pair(pair[0], pair[1]))
+                            val newIngredients = findList(Pair(pair.first.id, pair.second.id))
 
                             if (newIngredients.list.isNotEmpty()) {
-                                if(labelList[ingredients].isEmpty()) {
-                                    labelList[ingredients] += newIngredients.name
+                                labelString += if(labelString.isEmpty()) {
+                                    newIngredients.name
                                 } else if (chunkedGroup.size - 1 == count) {
-                                    labelList[ingredients] += ", or ${newIngredients.name}"
+                                    ", or ${newIngredients.name}"
                                 } else {
-                                    labelList[ingredients] += ", ${newIngredients.name}"
+                                    ", ${newIngredients.name}"
                                 }
-                                recipeList[ingredients] += newIngredients.list
-                                count++
+                                labelList[ingredients] += labelString
                             }
+                            recipeList[ingredients] += newIngredients.list.toSet().toList()
+                            count++
                         }
                     }
 
@@ -503,10 +506,10 @@ class ViewDetails {
                         effects
                     )
 
-                    SubtitleRow(name = armor.location)
+                    SubtitleRow(name = armor.location, MaterialTheme.colorScheme.secondary)
                     if (armor.coordinates.isNotEmpty()) {
                         Spacer(Modifier.padding(all = 4.dp))
-                        SubtitleRow(name = "Coordinates: ${armor.coordinates}")
+                        SubtitleRow(name = "Coordinates: ${armor.coordinates}", MaterialTheme.colorScheme.tertiary)
                     }
                     Spacer(Modifier.padding(all = 8.dp))
 
@@ -555,20 +558,20 @@ class ViewDetails {
         }
 
         @Composable
-        fun TitleRow(name: String) {
+        fun TitleRow(name: String, color: Color = MaterialTheme.colorScheme.onBackground) {
             Row {
                 Text(
                     text = name,
-                    color = MaterialTheme.colorScheme.secondary,
+                    color = color,
                     style = MaterialTheme.typography.titleLarge
                 )
             }
         }
 
         @Composable
-        fun SubtitleRow(name: String) {
+        fun SubtitleRow(name: String, color: Color = MaterialTheme.colorScheme.onBackground) {
             Row(Modifier.width(280.dp)) {
-                Text(text = name, style = MaterialTheme.typography.titleSmall, softWrap = true)
+                Text(text = name, color = color, style = MaterialTheme.typography.titleSmall, softWrap = true)
             }
         }
 
@@ -583,7 +586,11 @@ class ViewDetails {
                     style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(Modifier.padding(horizontal = 4.dp))
-                Text(text = value, style = MaterialTheme.typography.bodySmall)
+                if(name.lowercase().contains("heart") ||
+                    name.lowercase().contains("hp"))
+                    HeartMeter(count = value.toInt())
+                else
+                    Text(text = value, style = MaterialTheme.typography.bodySmall)
             }
         }
 
@@ -696,6 +703,7 @@ class ViewDetails {
                         modifier = Modifier
                             .size(100.dp)
                             .align(Alignment.Center)
+                            .padding(10.dp)
                     )
                     if (effects.isNotEmpty()) {
                         Icon(
@@ -704,7 +712,7 @@ class ViewDetails {
                             modifier = Modifier
                                 .size(30.dp)
                                 .align(Alignment.TopEnd),
-                            tint = if (effects[0].monochrome) MaterialTheme.colorScheme.onSurface else Color.Unspecified
+                            tint = if (effects[0].monochrome) MaterialTheme.colorScheme.onSecondaryContainer else Color.Unspecified
                         )
                     }
                 }
@@ -826,7 +834,7 @@ class ViewDetails {
                             val mats = materials[index]
                             if(labelList.size > 0) Text(
                                 text = labelList[index],
-                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                color = MaterialTheme.colorScheme.onTertiaryContainer,
                                 style = MaterialTheme.typography.bodySmall
                             )
                             Row(
@@ -889,6 +897,7 @@ class ViewDetails {
         showBackground = true,
         name = "Dark Mode"
     )
+    @Preview
     @Composable
     fun PreviewArmorDetailsView() {
         TearsTheme {

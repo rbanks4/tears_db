@@ -84,11 +84,11 @@ class MealsViewModel @Inject constructor(
     fun findMaterialsForRecipe(pair: Pair<Int, Int>): RecipePair {
         var materials = listOf<Material>()
         var text = ""
-        pair.let { (cookId, id) ->
+        pair.let { (cookId, effectId) ->
             when(cookId) {
-                Other.id -> {
-                    if(id != 0) {
-                        find(id)?.let {
+                Other.id, EffectId.Honey.id, EffectId.Fairy.id -> {
+                    if(EffectId.fromInt(effectId) == EffectId.Unique) {
+                        find(effectId)?.let {
                             text = it.name
                             materials = listOf(it)
                         }
@@ -99,14 +99,14 @@ class MealsViewModel @Inject constructor(
                 }
                 Insect.id -> {
 
-                    if (id == EffectId.None.id) {
+                    if (effectId == EffectId.None.id) {
                         text = Insect.name
                         materials = findByCookId(cookId)?: emptyList()
                     } else {
-                        EffectId.fromInt(id)?.let {effect ->
+                        EffectId.fromInt(effectId)?.let {effect ->
                             text = "${effect.name} ${Insect.name}"
                         }
-                        materials = findByCookId(cookId)?.filter { it.effect_id == id }?: emptyList()
+                        materials = findByCookId(cookId)?.filter { it.effect_id == effectId }?: emptyList()
                     }
                 }
                 else -> {
